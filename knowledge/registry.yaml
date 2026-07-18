@@ -1,0 +1,31 @@
+# Knowledge registry — index of every card (rule 1: no ungraded knowledge)
+# authority: user_confirmed | system_verified | doc_confirmed | inferred
+# freshness: stable | review_30d | snapshot
+schema: v1
+updated: 2026-07-18
+
+cards:
+  - id: market/sales-buildout-research-2026-07-18
+    title: How to build a B2B sales operation from scratch (verified research)
+    type: research
+    authority: doc_confirmed        # cited sources; per-finding confidence inside
+    confidence: per-finding (high/medium; 3 refuted claims listed)
+    date: 2026-07-18
+    freshness: stable               # foundational frameworks; re-check yearly
+    source: deep-research pass — 22 sources fetched, 25 claims adversarially verified
+
+  - id: evidence/2026-07-18-two-numbers
+    title: Annual account value + silent-churn value-at-risk (live Shopify snapshot)
+    type: evidence-snapshot
+    authority: system_verified      # read live from Shopify Admin API
+    date: 2026-07-18
+    freshness: snapshot             # immutable; supersede with a newer snapshot
+    source: greenteaeveryday.myshopify.com, read-only, first 100 accounts >8 orders
+
+  - id: accounts/_template
+    title: Chain dossier template (content pending Interview #2)
+    type: template
+    authority: n/a
+    date: 2026-07-18
+    freshness: stable
+    source: this repo
