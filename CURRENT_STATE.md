@@ -7,9 +7,9 @@
 
 | Phase | Scope | Status |
 |---|---|---|
-| 0 — Constitution | CLAUDE.md truth rules, structure, boundaries | **DRAFT LANDED** — awaiting Tom's written approval |
+| 0 — Constitution | CLAUDE.md truth rules, structure, boundaries | **APPROVED** (Tom, 2026-07-18) — see D-006 |
 | 1 — Seed verified knowledge | research findings, evidence snapshot, recipes | **LANDED** (this commit) |
-| 2 — Truth interviews with Tom | 5 sessions → `user_confirmed` doctrine + account dossiers | **NOT STARTED** — next up: Interview #1 (ICP) |
+| 2 — Truth interviews with Tom | 5 sessions → `user_confirmed` doctrine + account dossiers | **IN PROGRESS** — Interview #1 (ICP) underway |
 | 3 — System reconciliation | verify tag semantics, channel-move checks, contacts | not started (follows #2) |
 | 4 — Agents (read-only first) | declarations in `agents/` | not started |
 | 5 — Automations | only after base verified; outreach behind frozen flag | locked |
