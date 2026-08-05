@@ -2,9 +2,27 @@
 # authority: user_confirmed | system_verified | doc_confirmed | inferred
 # freshness: stable | review_30d | snapshot
 schema: v1
-updated: 2026-07-18
+updated: 2026-08-04
 
 cards:
+  - id: market/crm-buildvsbuy-2026-08-04
+    title: Lean CRM — build vs. adopt (7 candidates evaluated, licenses + RTL read at source)
+    type: research
+    authority: doc_confirmed        # repos/licenses/docs read directly; GT-side claims system_verified
+    confidence: high (5 items explicitly flagged unverified inside the card)
+    date: 2026-08-04
+    freshness: review_30d           # OSS licensing and RTL status move
+    source: candidate repos + license files + docs; GT claims verified in this workspace
+    feeds: doctrine/decisions.md D-012
+
+  - id: evidence/2026-08-04-journey-systems-check
+    title: Live systems behind the customer journey (Klaviyo, Make, Shopify, Canva, GT repos)
+    type: evidence-snapshot
+    authority: system_verified      # read live from each system
+    date: 2026-08-04
+    freshness: snapshot             # immutable; supersede with a newer snapshot
+    source: Klaviyo API, Make API (org 6913249), Shopify Admin API, Canva API, local repos
+
   - id: market/sales-buildout-research-2026-07-18
     title: How to build a B2B sales operation from scratch (verified research)
     type: research
