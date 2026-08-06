@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-07-18.
+> Last updated: 2026-08-06.
 
 ## Build ladder status
 
@@ -37,6 +37,7 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-007 | Annual-value method assumes steady rate; validate per tier | Recipe validation |
 | U-008 | "The website" scope — storefront vs. marketing site vs. B2B portal (separate runtime repo either way, per D-003) | Tom decision |
 | U-009 | Data quirk: account with 58 orders and ₪0.00 amountSpent — explain before trusting spend fields | Interview #3 / system check |
+| U-010 | 4 identity questions from the 2026-08-06 tracker build (MUZA×2, נונומימי/נונו, קפה עם, קלאוד ניין) — merge or keep separate? | Tom, via `knowledge/accounts/customer-notes.yaml` |
 
 ## Pointers
 
