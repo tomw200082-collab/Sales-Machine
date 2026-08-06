@@ -2,7 +2,7 @@
 # authority: user_confirmed | system_verified | doc_confirmed | inferred
 # freshness: stable | review_30d | snapshot
 schema: v1
-updated: 2026-07-18
+updated: 2026-08-06
 
 cards:
   - id: market/sales-buildout-research-2026-07-18
@@ -29,3 +29,11 @@ cards:
     date: 2026-07-18
     freshness: stable
     source: this repo
+
+  - id: accounts/customer-notes
+    title: Customer & product notes — living memory of the customer-product tracker
+    type: notes-store
+    authority: per-entry (user_confirmed / system_verified; inferred never policy)
+    date: 2026-08-06
+    freshness: review_30d           # every entry dated; sweep for stale identity questions
+    source: tracker dashboard sync blocks + rebuild observations (append-only)

@@ -1,0 +1,73 @@
+# GT customer & product notes — the living memory of the customer-product tracker.
+#
+# Purpose: everything worth remembering about an account between tracker rebuilds —
+# identity decisions, closed businesses, churn reasons, "don't call before 10:00",
+# supplier switches — so no rebuild rediscovers the same things.
+#
+# Contract (Sales-Machine rule 1 — every entry carries source, date, grade):
+#   key    "tax:<ח.פ>" | "nm:<normalized name>"  — customer keys exactly as in the
+#          tracker payload (gt-factory-os-production-brain/docs/analytics/) —
+#          or "prod:<product name>" for products.
+#   name   display name at write time (keys stay stable, names drift)
+#   date   YYYY-MM-DD — never an undated fact (rule 2)
+#   by     tom | claude
+#   grade  user_confirmed | system_verified | inferred  (inferred is never policy)
+#   text   free text. Hebrew welcome.
+#   tags   optional: [identity], [closed], [churn-reason], [ops], ...
+#
+# Append-only. Corrections = a newer entry, never an edit.
+#
+# Consumers:
+#   1. The tracker rebuild reads this file BEFORE computing (see
+#      gt-factory-os-production-brain/docs/analytics/README.md): identity answers
+#      merge/split customers, [closed] suppresses rescue-call moves, context notes
+#      are baked into the dashboard's customer cards.
+#   2. Tom writes new notes inside the dashboard itself; the page collects them and
+#      produces a sync block ("סנכרון הערות") that any Claude session appends here.
+
+schema: v1
+updated: 2026-08-06
+
+notes:
+  - key: "tax:323833277"
+    name: "MUZA COCKTAILS"
+    date: "2026-08-06"
+    by: claude
+    grade: system_verified
+    tags: [identity]
+    text: >-
+      קיימים שני חשבונות נפרדים בחשבונית ירוקה: MUZA COCKTAILS (ח.פ 323833277,
+      נטש — שקט 178 יום, ₪99,839 ב-12ח׳) ומוזה קוקטיילים בע"מ (ח.פ 517285599,
+      פעיל-בסכנה, ₪72,340). לא מוזגו. שאלה לתום: אותו גוף עסקי שהחליף ישות,
+      או שני לקוחות? אם החליף ישות — ה"נטישה" של הראשון היא מעבר חשבון, לא נטישה.
+
+  - key: "nm:נונומימי כיכר המושבה"
+    name: "נונומימי כיכר המושבה בע\"מ (הוד השרון)"
+    date: "2026-08-06"
+    by: claude
+    grade: system_verified
+    tags: [identity]
+    text: >-
+      התאמה דו-משמעית בשופיפיי (₪108,011): "נונומימי כיכר המושבה בע\"מ (הוד השרון)"
+      מול "משפחת נונו בע\"מ (הוד השרון)" בחשבונית ירוקה. שני שמות, אותה עיר.
+      לא מוזגו בכוונה. שאלה לתום: אותו סניף? אם כן — לאיזה ח.פ לשייך את המחזור?
+
+  - key: "nm:קפה עם"
+    name: "קפה עם (גבעת חן) / קפה וכו׳ בע״מ"
+    date: "2026-08-06"
+    by: claude
+    grade: system_verified
+    tags: [identity]
+    text: >-
+      זוג דו-משמעי (₪18,288 + ₪10,082): "קפה עם (גבעת חן)" ו"קפה וכו׳ בע״מ (קפה עם)"
+      מופיעים בשתי המערכות בהצלבה. ייתכן סניף/ישות של אותו עסק. לא מוזגו.
+
+  - key: "nm:קלאוד ניין"
+    name: "קלאוד ניין"
+    date: "2026-08-06"
+    by: claude
+    grade: system_verified
+    tags: [identity]
+    text: >-
+      "קלאוד ניין" (₪11,717 בשופיפיי) מתאים גם ל"קלאוד ניין" וגם ל"קלאוד ניין
+      (ליאור סופר)" בחשבונית ירוקה — כנראה אותו לקוח עם שתי רשומות. לא מוזג.
