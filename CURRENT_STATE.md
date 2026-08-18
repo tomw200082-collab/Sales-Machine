@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-08-06.
+> Last updated: 2026-08-17.
 
 ## Build ladder status
 
@@ -13,6 +13,20 @@
 | 3 — System reconciliation | verify tag semantics, channel-move checks, contacts | not started (follows #2) |
 | 4 — Agents (read-only first) | declarations in `agents/` | not started |
 | 5 — Automations | only after base verified; outreach behind frozen flag | locked |
+
+### Side track — the lead pipeline (factory-os lane, not this repo's phases)
+
+| Step | Scope | Status |
+|---|---|---|
+| Schema | `sales_core` — org / lead / append-only lead_event, phone normalisation, one `ingest_lead` write path | **LANDED** 2026-08-17 (gt-factory-os #219, migrations 0318–0321, 43/43 pgTAP) |
+| Import | the 2026-08-10 Meta export | **LANDED** — 188 leads / 186 businesses; 99 arrived after the intake died 2026-06-07 and had never been seen |
+| Workspace — data | mutation functions + `api_read.v_sales_*` views + admin-gated Fastify endpoints | **LANDED** 2026-08-17 (gt-factory-os #220, migrations 0322–0323, 24/24 + 16/16 pgTAP) |
+| Workspace — UI | portal `/apps` switchboard + `(sales)` route group: Today queue with the one-tap outcome loop, leads + drawer, orgs, quick-add, ⌘K search, PWA, settings. Hebrew RTL, admin-only | **LANDED** 2026-08-17 (gt-factory-os-portal #213, tranche 162) |
+| Live intake | Meta poller + Resend alert | **BLOCKED on Tom** — needs `META_PAGE_ACCESS_TOKEN` (Business Manager System User) and `RESEND_API_KEY`. Meta keeps leads 90 days; the earliest unseen ones expire early September |
+| Conversion job | first Shopify order for a matched org writes `won` + evidence | not started — `won` is already unwritable by any user, by CHECK constraint and by the API |
+
+Nothing in this track sends anything to a lead or a customer.
+`SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` remains `false`.
 
 ## Interview plan (Phase 2)
 
@@ -38,6 +52,9 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-008 | "The website" scope — storefront vs. marketing site vs. B2B portal (separate runtime repo either way, per D-003) | Tom decision |
 | U-009 | Data quirk: account with 58 orders and ₪0.00 amountSpent — explain before trusting spend fields | Interview #3 / system check |
 | U-010 | 4 identity questions from the 2026-08-06 tracker build (MUZA×2, נונומימי/נונו, קפה עם, קלאוד ניין) — merge or keep separate? | Tom, via `knowledge/accounts/customer-notes.yaml` |
+| U-011 | The Today queue currently holds all 188 leads, because every imported lead is genuinely untouched and past SLA. Honest, but a queue the size of the whole table is not "call these two, follow up on these three". Work the backlog down, or cap the daily queue? | Tom — product decision, deliberately not taken during the build |
+| U-012 | Erik's role and how leads get assigned. The schema and the queue already scope per assignee (`assignee = me OR unassigned`, admins see all); only the UI to assign at scale is missing | Tom, when a second person joins |
+| U-013 | Should the Facebook form ask for a business name again? The live form is two questions (name, phone, email), so an incoming lead is close to anonymous and the org has to be inferred | Tom + Alex — marketing decision with a direct data consequence |
 
 ## Pointers
 
