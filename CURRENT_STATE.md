@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-08-17.
+> Last updated: 2026-08-23.
 
 ## Build ladder status
 
@@ -22,8 +22,8 @@
 | Import | the 2026-08-10 Meta export | **LANDED** — 188 leads / 186 businesses; 99 arrived after the intake died 2026-06-07 and had never been seen |
 | Workspace — data | mutation functions + `api_read.v_sales_*` views + admin-gated Fastify endpoints | **LANDED** 2026-08-17 (gt-factory-os #220, migrations 0322–0323, 24/24 + 16/16 pgTAP) |
 | Workspace — UI | portal `/apps` switchboard + `(sales)` route group: Today queue with the one-tap outcome loop, leads + drawer, orgs, quick-add, ⌘K search, PWA, settings. Hebrew RTL, admin-only | **LANDED** 2026-08-17 (gt-factory-os-portal #213, tranche 162) |
-| Live intake | Meta poller + Resend alert | **BLOCKED on Tom** — needs `META_PAGE_ACCESS_TOKEN` (Business Manager System User) and `RESEND_API_KEY`. Meta keeps leads 90 days; the earliest unseen ones expire early September |
-| Conversion job | first Shopify order for a matched org writes `won` + evidence | not started — `won` is already unwritable by any user, by CHECK constraint and by the API |
+| Live intake | Meta poller + Resend alert | **LANDED (deployed dark)** 2026-08-23 — gt-factory-os PR #226, migration 0328, Edge Function `sales-leads-poll` v1 (ACTIVE, `verify_jwt=true`), cron jobs 27 (`*/10`) + 28 (`0 4 * * *`). Code, schedule and gate are in production; the poll ships `enabled=false` and no-ops without secrets. **Bring-up still BLOCKED on Tom** — `META_PAGE_ACCESS_TOKEN` (Business Manager System User) + `RESEND_API_KEY`, set in the Supabase dashboard. Meta keeps leads 90 days; the earliest unseen ones expire early September |
+| Conversion job + heartbeat | first Shopify order at-or-after a lead writes `won` + evidence; daily heartbeat reports leads/24h, last lead, poll status | **LANDED (deployed dark)** 2026-08-23 — same PR. `sales_core.convert_lead()` is now the sole writer of `won` (still unwritable by any user, by CHECK constraint and by the API). Heartbeat sends daily whether healthy or not, and treats a disabled poll as an alarm. Waits on the same two secrets |
 
 Nothing in this track sends anything to a lead or a customer.
 `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` remains `false`.
@@ -58,6 +58,10 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 
 ## Pointers
 
-- Module declaration (governance gate): `gt-factory-os-production-brain` PR #46 — DRAFT, awaiting Tom.
-- Latest evidence snapshot: `evidence/2026-07-18-two-numbers.md`.
+- Module declaration (governance gate): `gt-factory-os-production-brain`
+  `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
+  **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
+  "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
+- Latest evidence snapshot: `evidence/2026-08-23-live-intake-bringup.md`
+  (previous: `evidence/2026-07-18-two-numbers.md`).
 - Decisions log (incl. PROPOSED items awaiting Tom): `doctrine/decisions.md`.
