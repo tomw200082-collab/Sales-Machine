@@ -62,6 +62,8 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
-- Latest evidence snapshot: `evidence/2026-08-24-make-intake-handover.md`
-  (previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`).
+- Latest evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
+  (intake hand-over to Make) · `evidence/2026-08-24-sales-report.md` (sales report).
+  Previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`.
+- Sales report recipe: `recipes/sales-report.md` (taxonomy + anchors Tom-approved 2026-08-24).
 - Decisions log (incl. PROPOSED items awaiting Tom): `doctrine/decisions.md`.
