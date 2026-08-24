@@ -85,44 +85,86 @@ The hook watches **every form on the page**, not one form id. The scenario it
 replaced watched form `1656468138571162` (`0205.2025-HiTech-2question-new`) —
 not the live form at all.
 
-## Two things that are NOT ready, stated plainly
+## Two things that were NOT ready — both resolved the same day
 
-### A. The webhook has never delivered a lead
+*This section replaced its earlier form at 14:40Z. The earlier text recorded two
+open unknowns; both were closed, and one of them was closed by discovering the
+earlier reasoning was wrong. Keeping the stale version would have left a
+snapshot that reads as current and is not.*
 
-Tom created a test lead through Meta's lead-ads testing tool at
-`2026-08-24T11:53:41Z`. It exists in Meta — `leadgen_id 1771408137623570`,
-confirmed by reading the form's newest lead through Make. It never reached Make:
-hook queue 0, zero scenario executions.
+### A. The webhook now delivers — and one bad lead used to block every lead after it
 
-The stale hook (2797155, bound to the dead `GT Leads — Instant` scenario) was
-deleted along with the new one, and a single fresh hook (3598876) created so
-Make re-subscribes the page. **Unverified until another test lead is created.**
+Delivery works: a real lead reached Make and ran in **2.2 seconds**
+(execution `48522192…`, `2026-08-24T14:20:38Z`).
 
-### B. `field_data` is not in the Make app's lead output
+The delay had a second cause, and it is the more dangerous of the two. The
+scenario ran with **`sequential: true`** and Make's data-loss queue on. A bundle
+that fails is held; with sequential processing, everything behind it waits —
+**forever**. Measured live at 13:53Z: `dlqCount: 1`, `queueCount: 1`,
+`iswaiting: true`. A real lead was sitting behind a dead one, and nothing said
+so: no alarm fires for "Make is holding your leads", because from our side it
+looks exactly like a quiet day.
 
-The test lead was pushed through the exact production mapping. It was **rejected
-and kept**, which is the designed behaviour:
+**One malformed lead was enough to kill the entire pipeline, silently and
+permanently.** `sequential` is now off. Lead order carries no meaning here —
+`ingest_lead` is idempotent on `(source, external_id)` — so there was never
+anything to gain from it.
+
+### B. There is no `field_data`. The answers are in `data`, keyed by the form's own questions
+
+The earlier entry said the app "does not expose `field_data`" and concluded A had
+to be fixed before B could be settled. The first half was right; the conclusion
+was wrong, and waiting was unnecessary — the shape was readable all along
+through Make's `LeadInterface` RPC, which resolves per form.
+
+The v2 `New Lead` module emits **`data`**: an object keyed by each form's own
+questions, with metadata in camelCase (`leadgenId`, `dateCreated`,
+`campaignName`) rather than the Graph API's snake_case.
+
+Read from two unrelated live forms on the page:
+
+| Form | Standard keys | Custom question |
+|---|---|---|
+| `0305.2025-HiTech` (1771287887148857) | `שם מלא`, `מספר טלפון`, `email`, `city` | `מה_שם_החברה_שלך?` |
+| `0205.2025-2question-new` (1165807205227331) | `שם מלא`, `מספר טלפון`, `email`, `city` | `מה_שם_המסעדה/בית_הקפה/בר_שלך?` |
+
+Different campaigns, different custom questions, **byte-identical standard
+keys** — and both report those two under Meta's canonical titles ("Full name",
+"Phone number"). That is what marks them as Meta-generated rather than
+author-written, and it is the evidence the mapper's Hebrew entries rest on.
+Custom questions differ per form and are deliberately not mapped: they surface
+as `unmapped` and ride the alert.
+
+Also settled: the trigger's `fields` parameter is a **single-select string on
+the webhook**, not an array on the module. Setting it as an array did nothing at
+all.
+
+### The Graph API path has never worked, and the record said otherwise
+
+An interim fix routed `/ingest` to read each lead back from Meta, on the stated
+grounds that "188 historical leads map with zero unmapped fields" proved that
+path. Those leads are `source='import_meta_export'` — **a CSV**. The Graph path
+has never once succeeded against this page.
+
+`debug_token`, live, now names the cause exactly:
 
 ```
-reason: field_data missing or not an array
-raw:    {"route":"ingest","source":"facebook","form_id":"1165807205227331",
-         "created_at":"2026-08-24T11:53:41.000Z","field_data":null,
-         "external_id":"1771408137623570", ...}
+verdict: missing_scopes
+missing: ads_management, leads_retrieval, pages_show_list, pages_read_engagement
 ```
 
-`external_id` and `created_at` mapped correctly; every other field came back
-empty. Probing the app's v2 modules directly showed the same: `listLeads` and
-`GetLeadDetails` return `leadgenId`, `dateCreated`, `formId`, `adId`, `adName`,
-`adsetName`, `campaignId`, `campaignName`, `platform`, `isOrganic` — and no
-answers, no `field_data`, no `fields`, no `answers`.
+The read-back code is kept as a *preference* — correct the day those scopes
+exist, and it fails with a named error rather than silently — but nothing
+depends on it.
 
-`NewLeadMultiple` (the production trigger) is the one module with a `fields`
-parameter whose enum includes `field_data`, and it cannot be exercised without a
-webhook delivery. So A must be fixed before B can be settled.
+### A cron that failed 144 times a day, by design
 
-**No lead is lost by this.** `/ingest` stores every rejection with its full raw
-body, and the scenario has Make's data-loss queue on, so a refused bundle is
-replayable.
+`routePoll` never checked `state.enabled`. The gate was honoured inside
+`runPoll`, but form discovery runs **before** it, so a poll that is off forever
+by design still called Meta every ten minutes and wrote a failed row. Measured:
+6 runs in the last hour, 6 failed. A permanently-red table is a table people
+stop reading, and `poll_run` is the one the heartbeat is built on. A disabled
+poll now records a skip and makes no network call.
 
 ## A correction to the record
 

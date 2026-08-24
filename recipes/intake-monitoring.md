@@ -20,7 +20,7 @@ Everything except transport lives in the Edge Function. Make holds no data and
 makes no decisions. A second Make scenario, **"GT Sales — hourly pulse"**, exists
 only to prove the Facebook connection is still alive.
 
-## The five ways it breaks
+## The six ways it breaks
 
 | # | Failure | What it looks like from inside | How you find out | Time to notice |
 |---|---|---|---|---|
@@ -29,6 +29,7 @@ only to prove the Facebook connection is still alive.
 | 3 | **Meta stops delivering the webhook** (page subscription lost) | the pulse is still green — it reads the form, it does not receive pushes — but no lead arrives | pulse green + zero leads for longer than the quiet-day threshold; and the reconciliation query below | needs the query |
 | 4 | **A lead arrives in a shape the mapper does not know** | one lead missing, everything else fine | a row in `sales_core.lead_reject` with the full raw body, and a non-`ok` `poll_run` | immediate, on query |
 | 5 | **The alert email fails** | the lead is stored, Tom never hears | the lead carries no `alert_sent` event; the poll's sweep retries it | next sweep |
+| 6 | **Make holds the queue behind a failed bundle** | leads stop dead, permanently, after one bad one | nothing on our side — it looks exactly like a quiet week. Only Make shows it: `queueCount > 0` with `iswaiting: true` | needs the check below |
 
 Failure 3 is the one the pulse alone cannot catch, because the pulse proves the
 connection, not the subscription. That is what the reconciliation query is for.
@@ -80,6 +81,34 @@ select external_id, created_at
 A `leadgenId` present in Meta and absent here means the webhook is not being
 delivered — failure 3. The fix is to delete and recreate the Make hook so Make
 re-subscribes the page.
+
+### Is Make holding leads it never told us about? (mode 6)
+
+Found live on 2026-08-24, and the most dangerous mode here because it is
+**silent and permanent**. The scenario ran with `sequential: true` and Make's
+data-loss queue on. A bundle that fails is held — and under sequential
+processing, every lead behind it waits forever. Measured at 13:53Z:
+`dlqCount: 1`, `queueCount: 1`, `iswaiting: true`, with a real lead stuck
+behind a dead one.
+
+One malformed lead was enough to kill the whole pipeline. No signal we own
+fires for this: the pulse stays green, `lead_reject` stays empty (the bundle
+never reached us), and lead volume simply goes to zero — which is what a quiet
+week looks like.
+
+`sequential` is now **off**, which removes the mode rather than monitoring it:
+lead order carries no meaning, because `ingest_lead` is idempotent on
+`(source, external_id)`. Check it has not been switched back:
+
+```
+Make → scenario 7075235 → the scenario record:
+  metadata.scenario.sequential   must be false
+  dlqCount                       > 0 means bundles are held; clear or retry them
+  iswaiting                      true means the queue is stalled RIGHT NOW
+```
+
+The pulse cannot see this and neither can any query in this file. It is the one
+check that has to be made against Make itself.
 
 ### Is exactly one email going out per lead?
 
