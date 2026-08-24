@@ -126,18 +126,28 @@ select started_at, ok, summary, error
  limit 7;
 ```
 
-## Adjacent, and deliberately out of this lane
+## Adjacent — checked, and NOT broken
 
-Two failures live next door and are **not** part of the sales intake. They are
-named here so they are not mistaken for it:
+The 2026-08-24 masterprompt lists two neighbouring failures as live. Both were
+verified against the live system today and **neither is failing any more**. They
+are recorded here so nobody re-opens them from a stale note:
 
-- **`lionwheel_poll`** fails intermittently with
-  `date/time field value out of range: "23/08/2026 14:36"` — a DD/MM date parsed
-  as MM/DD, so it only fires when the day of month is greater than 12. A real
-  bug, unfixed, in the LionWheel lane.
-- **`dispatch-alerts-cron`** has been failing every run for days, with durations
-  that predate the 2026-08-23 GitHub Actions outage. Separate root cause,
-  uninvestigated.
+| Was reported as | Live state on 2026-08-24 | Why |
+|---|---|---|
+| `lionwheel_poll` failing intermittently on `date/time field value out of range: "23/08/2026 14:36"` | cron `lionwheel_poll` (`*/15`): **192 runs in 48h, 0 failures** | Fixed by gt-factory-os #230. LionWheel switched from ISO-8601 to `DD/MM/YYYY HH:MM`; `normalizeLwTimestamp` now handles both, with regression cover in `api/test/lionwheel_timestamp_normalisation.test.ts`. Today is the 24th — a day-of-month above 12 — so the old bug would be firing right now if it were still there. |
+| `dispatch-alerts-cron` failing every run for days | cron `dispatch_alerts` (`*/5`): **576 runs in 48h, 0 failures** | The failing GitHub Actions workflow was deleted by #229 ("stop the scheduled runs that starved this repo of Actions minutes"). The work itself runs as a Supabase cron job, and that job is green. |
+
+Verify before believing either row:
+
+```sql
+select j.jobname, j.schedule, j.active,
+       count(*) filter (where d.start_time > now() - interval '48 hours')                        as runs_48h,
+       count(*) filter (where d.status='failed' and d.start_time > now() - interval '48 hours')  as failed_48h
+  from cron.job j
+  left join cron.job_run_details d on d.jobid = j.jobid
+ group by 1,2,3
+ order by failed_48h desc;
+```
 
 Neither touches `sales_core`.
 
