@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-08-23.
+> Last updated: 2026-08-24.
 
 ## Build ladder status
 
@@ -22,8 +22,8 @@
 | Import | the 2026-08-10 Meta export | **LANDED** — 188 leads / 186 businesses; 99 arrived after the intake died 2026-06-07 and had never been seen |
 | Workspace — data | mutation functions + `api_read.v_sales_*` views + admin-gated Fastify endpoints | **LANDED** 2026-08-17 (gt-factory-os #220, migrations 0322–0323, 24/24 + 16/16 pgTAP) |
 | Workspace — UI | portal `/apps` switchboard + `(sales)` route group: Today queue with the one-tap outcome loop, leads + drawer, orgs, quick-add, ⌘K search, PWA, settings. Hebrew RTL, admin-only | **LANDED** 2026-08-17 (gt-factory-os-portal #213, tranche 162) |
-| Live intake | Meta poller + Resend alert | **LANDED (deployed dark)** 2026-08-23 — gt-factory-os PR #226, migration 0328, Edge Function `sales-leads-poll` v1 (ACTIVE, `verify_jwt=true`), cron jobs 27 (`*/10`) + 28 (`0 4 * * *`). Code, schedule and gate are in production; the poll ships `enabled=false` and no-ops without secrets. **Bring-up still BLOCKED on Tom** — `META_PAGE_ACCESS_TOKEN` (Business Manager System User) + `RESEND_API_KEY`, set in the Supabase dashboard. Meta keeps leads 90 days; the earliest unseen ones expire early September |
-| Conversion job + heartbeat | first Shopify order at-or-after a lead writes `won` + evidence; daily heartbeat reports leads/24h, last lead, poll status | **LANDED (deployed dark)** 2026-08-23 — same PR. `sales_core.convert_lead()` is now the sole writer of `won` (still unwritable by any user, by CHECK constraint and by the API). Heartbeat sends daily whether healthy or not, and treats a disabled poll as an alarm. Waits on the same two secrets |
+| Live intake | **Make → `/ingest`** (was: Meta poller) | **CODE LANDED, AWAITING SCENARIOS** 2026-08-24 — gt-factory-os PR #227, migration 0329, `sales-leads-poll` redeployed. **Architecture changed today (D-006, reverses D10):** Tom holds no Meta developer access — the only Business app (`Green Tea`) is WhatsApp-only and he is not its admin, and developer registration blocks at SMS verification — so no Graph API token can be issued at all. Proven by the token diagnostic: the token he did produce is valid and non-expiring but carries **none** of `ads_management` / `leads_retrieval` / `pages_show_list` / `pages_read_engagement`. Make's own Meta-approved app carries the leads instead; its Facebook connection (`gteveryday`, 6309050) was reauthorised 2026-08-24 and is valid to 2026-10-23. **Still open:** the two Make scenarios (lead transport + hourly pulse) are not built — awaiting Tom's go-ahead |
+| Conversion job + heartbeat | first Shopify order at-or-after a lead writes `won` + evidence; daily heartbeat | **LANDED** 2026-08-24. `sales_core.convert_lead()` is the sole writer of `won`. Heartbeat proven working 2026-08-24 04:00Z (sent, severity=alarm, correct). Now judges **whichever path is carrying leads** and, under Make, watches an **hourly pulse** — because with a third party in front a dead connection and a quiet day are otherwise indistinguishable, which is exactly how the 2026-06-07 failure hid for two months. Pulse route is live; the Make scenario that feeds it is not yet built |
 
 Nothing in this track sends anything to a lead or a customer.
 `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` remains `false`.
@@ -62,6 +62,6 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
-- Latest evidence snapshot: `evidence/2026-08-23-live-intake-bringup.md`
-  (previous: `evidence/2026-07-18-two-numbers.md`).
+- Latest evidence snapshot: `evidence/2026-08-24-make-intake-handover.md`
+  (previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`).
 - Decisions log (incl. PROPOSED items awaiting Tom): `doctrine/decisions.md`.
