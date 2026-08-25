@@ -86,9 +86,31 @@ Neither Canva design was opened for editing. Reads only.
 ## UNRESOLVED opened
 
 - **U-LWM-01 — no MATCHA packshot at bottle quality.** S11 and S12 are deliberately
-  typographic. Masterprompt §6.A says explicitly not to block on it. Needs a contact
-  sheet from `AI YASTREBOVA/CATALOG/MATCHA UBE HOJICHA/PRODUCT PHOTOS/` for Tom to
-  pick from — that folder holds ~60 files with opaque hashed names.
+  typographic. Masterprompt §6.A says explicitly not to block on it.
+
+  **The contact sheet §6.A asks for could not be built in this environment**, and the
+  reason is worth recording so it is not rediscovered. The folder is
+  `/AI YASTREBOVA/CATALOG/MATCHA UBE HOJICHA/PRODUCT PHOTOS/` (Dropbox ns_path
+  `ns:14671628787//CATALOG/MATCHA UBE HOJICHA/PRODUCT PHOTOS`, **not** the
+  `ns:13945604755` namespace the masterprompt cites — that path returns
+  `FILE_NOT_FOUND`). It holds **71 PNGs, 4.4–8.7 MB each**, hashed names.
+
+  All 71 are under the Google Drive MCP's 10 MB download cap, but **Drive does not
+  mirror this folder** — a title search for two of the filenames and for the folder
+  name returns nothing. And the Dropbox byte hosts are hard policy denials at the
+  egress proxy (`dl.dropboxusercontent.com`, `content.dropboxapi.com` → 403 CONNECT).
+  The PDF-extraction trick that rescued the glass photographs does not apply: these
+  images are not embedded in any deliverable that is reachable.
+
+  So there is no byte channel to them from here. Either Tom opens the folder himself,
+  or someone copies a handful into the Drive folder that already mirrors
+  `B-BAGEL-Tea-Programme` and a later session builds the sheet from there.
+
+  Related and already registered in `marketing-assets.md` (מאושר-טום 2026-08-06), in
+  case one of them serves: the matcha still-life
+  `PRODUCT PHOTOS/hf_20260727_113138_1cc0f989-38c9-48d0-8cc0-050c509d9c90.png`. It is
+  a lifestyle still-life (whisks + ice + pouch), not a clean packshot at the quality
+  of the three bottles, which is why it was not used.
 - **U-LWM-02 — the asterisk disagreement.** The drinks catalog marks eleven of the
   twelve with `* כולל הערכת עלות גרניש/קצף`; `drinks_final_figures.json` marks one
   (key `12`). The deck follows the catalog per masterprompt §2.2. Neither side was
