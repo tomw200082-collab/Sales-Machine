@@ -75,14 +75,22 @@ not treat its text as GT-owned. Flagged for Tom.
   "sentence starts with a Wh- word", "kill the adverbs". Its general rules
   transfer; its lists do not. Do not run it over Hebrew copy and call the
   result a clean pass.
+- **Do not call these skills directly — go through `gt-marketing-playbook`.**
+  It is the single entry point: it holds the order they run in (position →
+  story → asset → page → found → measure) and it loads GT's context before
+  anything is written. Called bare, each of these skills interviews from
+  scratch.
 - **Several skills read `.claude/product-marketing-context.md` before asking
   questions** (`copywriting`, `copy-editing`, `content-strategy`, `page-cro`,
-  and others). That file does not exist here, so they fall back to interviewing
-  the user every run. Writing it means writing GT positioning, ICP and brand
-  voice — **doctrine, and Tom is the sole approver** (`CLAUDE.md` rule 5). It
-  was deliberately not authored. The right way to create it is to derive it
-  from `doctrine/icp.md`, `doctrine/core-story.md` and `doctrine/pricing-logic.md`
-  and have Tom approve the result, not to let a skill invent it.
+  and others). That file does not exist yet. `gt-marketing-playbook` owns it:
+  first run it asks the capture-pass questions **once**, in one batch, using
+  the questions already written in `doctrine/icp.md`, `doctrine/core-story.md`
+  and `doctrine/pricing-logic.md` — then writes the answers with source, date
+  and authority grade, and never asks again. Unanswered fields stay
+  `UNRESOLVED` with a `U-0xx` line rather than being filled in. The file lives
+  in `.claude/` because it is a derived working artifact, **not doctrine** —
+  doctrine is Tom's, approved in writing and logged in `doctrine/decisions.md`
+  (rule 5).
 - **`programmatic-seo` assumes scale GT does not have.** It is built for
   hundreds of template-generated pages from a dataset. GT sells a few dozen
   SKUs. Vendored because the ask was for everything useful, but reach for
