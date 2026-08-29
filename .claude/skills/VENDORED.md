@@ -124,3 +124,269 @@ The four copy skills (`ogilvy`, `copywriting`, `copy-editing`, `stop-slop`) also
 live in `gt-factory-os-production-brain/.claude/skills/`, which carries the
 workspace-wide provenance ledger for every vendored skill. Keep the two copies
 byte-identical when updating.
+
+---
+
+# Vendored: `google/skills` (2026-08-29)
+
+Copied in from a second public upstream on 2026-08-29 at Tom's direction
+("download these skills — it will help with our social-networks project").
+
+The same framing as above applies: **these are tools, not truth.** They carry no
+authority grade, they make no claim about GT, and anything they produce is
+`inferred` until confirmed. They are API how-to documentation, not doctrine.
+
+| Upstream | Commit | License | Skills |
+|---|---|---|---|
+| [google/skills](https://github.com/google/skills) | `a7123f8` (2026-08-28) | Apache-2.0 (`LICENSE-google-skills-apache-2.0.txt`) | the 10 below |
+
+## Read this before reaching for them
+
+**There is no social-media skill in that repository.** The full catalog was
+checked: 127 skills across `cloud/` (110), `ads/` (13), `analytics/` (2) and
+`developers/` (2). Searching the whole upstream index for `instagram`,
+`facebook`, `tiktok`, `linkedin`, `social media`, `threads`, `whatsapp` and
+`business profile` returns **zero** hits; `youtube` appears exactly once, and
+only inside one skill's own description of what it can look up. Nothing here
+writes a post, plans a content calendar, or touches a social platform's API.
+
+What it *is*: developer documentation for Google's own advertising and
+measurement APIs, plus Google Cloud infrastructure. The parts that touch a
+social/paid motion at all are the **measurement and paid-media** ones — GA4
+reporting on the traffic social sends, and Google Ads / Customer Match on the
+paid side. For the actual social content work, the skills already in this
+directory (`gt-marketing-playbook` → `ogilvy`, `copywriting`, `content-strategy`)
+remain the ones that do it.
+
+## What was taken
+
+The 110 `cloud/` skills were **deliberately left behind** — GKE, Cloud Run, IAM,
+BigQuery, Spanner and the rest are factory/infrastructure concerns with no
+bearing on this repo, and 110 extra skill descriptions would load into every
+session's context for nothing. `finding-google-skills` (below) can fetch any of
+them on demand if one is ever actually needed.
+
+**Plausibly useful here — measurement & paid media (5)**
+
+| Skill | What it does |
+|---|---|
+| `google-analytics-data-api-basics` | Query GA4 reports programmatically — sessions, users, conversions, by source/medium. This is how you'd measure what social actually sends to the Shopify store |
+| `google-analytics-admin-api-basics` | GA4 account/property config: data streams, custom dimensions, conversion events, Google Ads links |
+| `google-ads-api-quickstart` | Google Ads API credentials, developer token, client libraries, first "retrieve campaigns" script |
+| `google-ads-api-mcp-setup` | Installs Google's open-source Google Ads MCP server so campaign/reporting data can be queried in natural language |
+| `google-ads-api-account-diagnostics` | Diagnoses conversion loss, low lead flow, lost impression share |
+
+**Audience / conversion plumbing — relevant only if paid retargeting is ever run (3)**
+
+`data-manager-api-setup` · `data-manager-api-audience-ingestion` ·
+`data-manager-api-event-ingestion` — uploading a customer list as a Customer
+Match audience, and pushing offline conversions back to Google.
+**These upload customer PII to Google.** That is a customer-data export, not a
+copy task: it sits squarely inside the External-action authorization rules and
+needs Tom's explicit word before a single row moves.
+
+**Catalog loaders (2)**
+
+`finding-google-skills` — looks up the right Google skill on demand from a
+**remote** catalog index (it fetches over the network at run time).
+`retrieving-developer-knowledge` — searches official Google developer docs, via
+the Developer Knowledge MCP server or a REST fallback. Neither is vendored
+knowledge; both are pointers to live Google endpoints.
+
+**Taken and then deleted the same day (7)** — Tom's call, 2026-08-29
+
+`google-mobile-ads-get-started` · `google-mobile-ads-banner` ·
+`google-mobile-ads-interstitial` · `google-mobile-ads-rewarded` ·
+`google-mobile-ads-android-migrate-to-next-gen` · `ima-sdk-client-side` ·
+`ima-dai-sdk`
+
+AdMob/Ad Manager monetization for an Android/iOS/Unity **app**, and video-ad
+serving (VAST/VMAP/DAI) for a **video player**. GT has neither. They came in
+because the ask was for the skills in that repo, not for a filtered subset;
+they were flagged as dead weight in the same breath and **deleted on Tom's
+word the same day**. Recorded here so a future reader knows they were
+considered and rejected, not overlooked — do not re-import them. Everything
+each of them covers is still reachable through upstream if GT ever ships a
+mobile app or serves video ads.
+
+## Notes before use
+
+- **Every one of these skills assumes Google API credentials this workspace does
+  not have.** A Google Ads developer token, an OAuth client, a GA4 property ID,
+  a Cloud project with the API enabled. None of that exists yet, and none of it
+  is set up by reading a skill. Each is a real onboarding step with its own
+  approval, not a five-minute task.
+- **`finding-google-skills` and `retrieving-developer-knowledge` reach out to
+  the network** at run time — a remote catalog index and Google's Developer
+  Knowledge endpoints. They are read-only lookups, but they are not offline.
+- **`google-ads-api-mcp-setup` installs a third-party MCP server** (Python +
+  pipx) and wires it into the assistant's config. That is a workspace-level
+  change, not a skill invocation — Tom's decision, not a side effect of asking
+  a question about campaigns.
+- **The Data Manager skills move customer PII to Google.** Email addresses and
+  phone numbers, hashed, uploaded as an audience. Treat every run as a
+  customer-facing external write: understand before writing, confirm before
+  acting, and nothing moves without Tom.
+- **Files only, no runtime code.** Markdown only, now that the mobile-ads set is
+  gone — its `skadnetwork-identifiers.xml` was the one data asset and left with
+  it. The upstream repo's `plugins/`, git submodules, `index.json` and
+  `.claude-plugin/` were not copied. `.claude/settings.json` was not modified.
+- **No edits on adoption.** All 10 remaining skill trees are byte-identical to
+  upstream.
+
+## Updating
+
+Re-clone `https://github.com/google/skills` and copy `skills/<category>/<name>/`
+over the local directory. No lockfile, no auto-update. Upstream says it is
+"under active development", so expect drift.
+
+## License
+
+Apache-2.0. Copyright remains with Google LLC. The full license text travelled
+with the skills as `LICENSE-google-skills-apache-2.0.txt` in this directory, as
+Apache-2.0 §4 requires for redistribution.
+
+---
+
+# Vendored: `Panniantong/Agent-Reach` (2026-08-29)
+
+Copied in on 2026-08-29 at Tom's direction, in the same breath as the Google
+skills above ("download this one to all the relevant repos too").
+
+| Upstream | Commit | License | What was taken |
+|---|---|---|---|
+| [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) | `06c202b` (2026-08-25, v1.5.0) | MIT (`agent-reach/LICENSE`) | `agent_reach/skill/` only — one skill |
+
+## This is not a skill repository
+
+Everything else vendored in this directory is markdown that works the moment it
+is read. **Agent Reach is a Python package** — a CLI that installs, routes and
+health-checks *other people's* tools (OpenCLI, twitter-cli, rdt-cli, bili-cli,
+yt-dlp, Jina Reader, mcporter/Exa) so an agent can read 15 platforms. The skill
+taken here is one directory inside it: a routing table that tells an agent which
+command to run. **The commands do not exist until the package is installed.**
+
+Only `agent_reach/skill/` was copied — the `agent_reach/` Python source, `tests/`,
+`config/`, `scripts/` and `pyproject.toml` were **not**, and must not be: this
+repo takes no runtime code, ever (`CLAUDE.md`, write boundaries). Installing the
+tool is `pip install agent-reach`, which happens in an environment, not in a
+commit.
+
+## What it would unlock — mapped to the digital roadmap
+
+This is the capability the Google skills did not have. Read-only access to:
+
+| Platform | What it can read | Roadmap tasks |
+|---|---|---|
+| Instagram | user search, profile, a user's recent posts, Explore | `i1` which account is official · `i6` opening baseline · competitor scans |
+| Facebook | search, pages, feed, group lists | `f3` page details |
+| LinkedIn | profile detail, company pages, people search, job search | `l1` company page · `l2` personal profile · `l6` target connection list |
+| YouTube | transcripts + video search | `y1` locating the channel · `y3` content recycling |
+| Web / RSS / Exa | any page as clean text, semantic web search | competitor and content research feeding `content-strategy` |
+| Twitter/X, Reddit | search, threads, discussion | market listening |
+
+## What actually works, and where — read this before promising anything
+
+**Zero config, works anywhere:** web page reading (Jina Reader), YouTube
+transcripts (yt-dlp), RSS, GitHub, Exa web search, V2EX, Bilibili.
+
+**Needs a desktop with the user's own logged-in Chrome:** Instagram, Facebook,
+LinkedIn, Reddit, XiaoHongShu. These route through OpenCLI, which reuses a real
+browser session. **They cannot work from the remote Claude Code container** — it
+has no Chrome profile and no GT logins, and never will. That is precisely the set
+of platforms the roadmap cares most about. They work in Claude Code running
+locally on Tom's own machine; nowhere else.
+
+**`pip install agent-reach` is blocked in the remote container** (the sandbox
+denied it on 2026-08-29). So in web/remote sessions this skill is documentation,
+not a working capability.
+
+## Account risk — decided 2026-08-29
+
+Reading Instagram, Facebook and LinkedIn through a logged-in browser session is
+against those platforms' terms of service. The session at risk is a real GT
+business account, and the failure mode is a restriction or a ban on the account
+the roadmap is trying to build up. The zero-config channels carry no such
+exposure.
+
+Tom was told the risk, said he understood it, and handed the decision over
+(2026-08-29). **The decision taken, and the standing rule until Tom overrides
+it:**
+
+- **Never point Agent Reach at a GT-owned social login.** Not Instagram, not
+  Facebook, not LinkedIn, not any account GT depends on. The downside is losing
+  the very asset the roadmap exists to build, it is irreversible, and no
+  competitor scan is worth it.
+- **Use the zero-config channels freely** — web page reading, YouTube
+  transcripts, RSS, GitHub, Exa search, V2EX. No account, no session, no
+  exposure. Public Instagram, Facebook and LinkedIn pages are readable this way
+  too, through Jina Reader, which is what `l1`, `l2`, `l6`, `i1` and `f3`
+  actually need: those tasks are about **public** pages and profiles.
+- **Where a task genuinely needs authenticated data** — follower counts over
+  time, insights, inbox — use the platform's own sanctioned API (Meta Graph API
+  for `i5`/`f4`, LinkedIn's API for the company page). Slower to set up,
+  sanctioned, and it does not put the account at risk.
+- **If a logged-in read is ever unavoidable**, it runs on a throwaway account
+  that GT does not depend on, never on the business account. Note this is still
+  against ToS; it only means a ban costs nothing.
+
+The reasoning in one line: the useful part of this tool for GT is the part that
+needs no login, and the part that needs a login is the part that can cost GT an
+account it cannot easily get back. Tom can reverse this at any time — it is a
+working rule, not doctrine.
+
+## The frozen-copy problem
+
+Upstream's entire value proposition is that **they chase platform breakage** —
+their own README's example is yt-dlp getting blocked by Bilibili and the router
+switching to bili-cli with no user action. A copy committed here does not
+receive those fixes. Treat this tree as a map of what the tool does, not as a
+current command reference: when the tool is actually installed, its own shipped
+skill is the authority, and this copy is a snapshot of 2026-08-25.
+
+## One edit on adoption
+
+Upstream's `SKILL_en.md` opens with `MUST USE when user wants to
+research/search/look up/find anything on the internet`. That fires on a large
+share of ordinary requests, in a workspace where the CLI is usually not
+installed — every one of those would send a session chasing commands that do not
+exist. A short **GT note** was prepended to the body of `SKILL.md` (not to the
+frontmatter, not to any reference) saying: check `agent-reach doctor --json`
+first, and if the command is not found, say so and stop instead of guessing.
+That is the only change. The seven `references/` files and `SKILL_zh.md` are
+byte-identical to upstream.
+
+## Layout note
+
+Upstream ships the Chinese `SKILL.md` and an English `SKILL_en.md` side by side.
+Here `SKILL.md` is the **English** one (so the skill loader reads English) and
+the Chinese original is kept alongside as `SKILL_zh.md` for fidelity. Note that
+`references/` is **Chinese only** upstream — the English skill points at Chinese
+reference files, including `career.md`, the LinkedIn one.
+
+## Where else this lives
+
+**Also vendored in `gt-factory-os-production-brain/.claude/skills/agent-reach/`,
+on Tom's call (2026-08-29)** — the research-flavoured skills that live in the
+brain (`messi`, `chief-of-staff-daily`, `domain-investigation`,
+`gt-marketing-architect`) are the ones most likely to reach for it. The two
+trees are **byte-identical, including the GT note**; keep them that way when
+updating, and note that the note's `.claude/skills/VENDORED.md` pointer is
+repo-relative, so it resolves correctly in both. The account-risk decision above
+is the workspace-wide rule, not a per-repo one.
+
+Not copied into `gt-factory-os` (backend) or `gt-factory-os-portal` (UI): neither
+has any use for reading Instagram, and their lane rules say not to write outside
+the dispatched lane.
+
+## Updating
+
+`git clone https://github.com/Panniantong/Agent-Reach` and copy
+`agent_reach/skill/` over this directory, re-applying the English/Chinese
+filename swap and the GT note. Better: install the real tool and let it ship its
+own current skill.
+
+## License
+
+MIT. Copyright (c) 2025 Agent Eyes. The full licence text travelled with the
+skill as `agent-reach/LICENSE`, as MIT requires.
