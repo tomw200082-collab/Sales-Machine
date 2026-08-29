@@ -124,3 +124,120 @@ The four copy skills (`ogilvy`, `copywriting`, `copy-editing`, `stop-slop`) also
 live in `gt-factory-os-production-brain/.claude/skills/`, which carries the
 workspace-wide provenance ledger for every vendored skill. Keep the two copies
 byte-identical when updating.
+
+---
+
+# Vendored: `google/skills` (2026-08-29)
+
+Copied in from a second public upstream on 2026-08-29 at Tom's direction
+("download these skills — it will help with our social-networks project").
+
+The same framing as above applies: **these are tools, not truth.** They carry no
+authority grade, they make no claim about GT, and anything they produce is
+`inferred` until confirmed. They are API how-to documentation, not doctrine.
+
+| Upstream | Commit | License | Skills |
+|---|---|---|---|
+| [google/skills](https://github.com/google/skills) | `a7123f8` (2026-08-28) | Apache-2.0 (`LICENSE-google-skills-apache-2.0.txt`) | the 17 below |
+
+## Read this before reaching for them
+
+**There is no social-media skill in that repository.** The full catalog was
+checked: 127 skills across `cloud/` (110), `ads/` (13), `analytics/` (2) and
+`developers/` (2). Searching the whole upstream index for `instagram`,
+`facebook`, `tiktok`, `linkedin`, `social media`, `threads`, `whatsapp` and
+`business profile` returns **zero** hits; `youtube` appears exactly once, and
+only inside one skill's own description of what it can look up. Nothing here
+writes a post, plans a content calendar, or touches a social platform's API.
+
+What it *is*: developer documentation for Google's own advertising and
+measurement APIs, plus Google Cloud infrastructure. The parts that touch a
+social/paid motion at all are the **measurement and paid-media** ones — GA4
+reporting on the traffic social sends, and Google Ads / Customer Match on the
+paid side. For the actual social content work, the skills already in this
+directory (`gt-marketing-playbook` → `ogilvy`, `copywriting`, `content-strategy`)
+remain the ones that do it.
+
+## What was taken
+
+The 110 `cloud/` skills were **deliberately left behind** — GKE, Cloud Run, IAM,
+BigQuery, Spanner and the rest are factory/infrastructure concerns with no
+bearing on this repo, and 110 extra skill descriptions would load into every
+session's context for nothing. `finding-google-skills` (below) can fetch any of
+them on demand if one is ever actually needed.
+
+**Plausibly useful here — measurement & paid media (5)**
+
+| Skill | What it does |
+|---|---|
+| `google-analytics-data-api-basics` | Query GA4 reports programmatically — sessions, users, conversions, by source/medium. This is how you'd measure what social actually sends to the Shopify store |
+| `google-analytics-admin-api-basics` | GA4 account/property config: data streams, custom dimensions, conversion events, Google Ads links |
+| `google-ads-api-quickstart` | Google Ads API credentials, developer token, client libraries, first "retrieve campaigns" script |
+| `google-ads-api-mcp-setup` | Installs Google's open-source Google Ads MCP server so campaign/reporting data can be queried in natural language |
+| `google-ads-api-account-diagnostics` | Diagnoses conversion loss, low lead flow, lost impression share |
+
+**Audience / conversion plumbing — relevant only if paid retargeting is ever run (3)**
+
+`data-manager-api-setup` · `data-manager-api-audience-ingestion` ·
+`data-manager-api-event-ingestion` — uploading a customer list as a Customer
+Match audience, and pushing offline conversions back to Google.
+**These upload customer PII to Google.** That is a customer-data export, not a
+copy task: it sits squarely inside the External-action authorization rules and
+needs Tom's explicit word before a single row moves.
+
+**Catalog loaders (2)**
+
+`finding-google-skills` — looks up the right Google skill on demand from a
+**remote** catalog index (it fetches over the network at run time).
+`retrieving-developer-knowledge` — searches official Google developer docs, via
+the Developer Knowledge MCP server or a REST fallback. Neither is vendored
+knowledge; both are pointers to live Google endpoints.
+
+**Vendored but almost certainly dead weight here (7)**
+
+`google-mobile-ads-get-started` · `google-mobile-ads-banner` ·
+`google-mobile-ads-interstitial` · `google-mobile-ads-rewarded` ·
+`google-mobile-ads-android-migrate-to-next-gen` · `ima-sdk-client-side` ·
+`ima-dai-sdk`
+
+These are AdMob/Ad Manager monetization for an Android/iOS/Unity **app**, and
+video-ad serving (VAST/VMAP/DAI) for a **video player**. GT has neither. They
+came in because the ask was for the skills in that repo, not for a filtered
+subset — but nothing in this workspace will ever fire them. Deleting the seven
+is a one-line change and costs nothing; left in place pending Tom's call.
+
+## Notes before use
+
+- **Every one of these skills assumes Google API credentials this workspace does
+  not have.** A Google Ads developer token, an OAuth client, a GA4 property ID,
+  a Cloud project with the API enabled. None of that exists yet, and none of it
+  is set up by reading a skill. Each is a real onboarding step with its own
+  approval, not a five-minute task.
+- **`finding-google-skills` and `retrieving-developer-knowledge` reach out to
+  the network** at run time — a remote catalog index and Google's Developer
+  Knowledge endpoints. They are read-only lookups, but they are not offline.
+- **`google-ads-api-mcp-setup` installs a third-party MCP server** (Python +
+  pipx) and wires it into the assistant's config. That is a workspace-level
+  change, not a skill invocation — Tom's decision, not a side effect of asking
+  a question about campaigns.
+- **The Data Manager skills move customer PII to Google.** Email addresses and
+  phone numbers, hashed, uploaded as an audience. Treat every run as a
+  customer-facing external write: understand before writing, confirm before
+  acting, and nothing moves without Tom.
+- **Files only, no runtime code.** Markdown and one XML data asset
+  (`google-mobile-ads-get-started/assets/skadnetwork-identifiers.xml`). The
+  upstream repo's `plugins/`, git submodules, `index.json` and `.claude-plugin/`
+  were not copied. `.claude/settings.json` was not modified.
+- **No edits on adoption.** All 17 skill trees are byte-identical to upstream.
+
+## Updating
+
+Re-clone `https://github.com/google/skills` and copy `skills/<category>/<name>/`
+over the local directory. No lockfile, no auto-update. Upstream says it is
+"under active development", so expect drift.
+
+## License
+
+Apache-2.0. Copyright remains with Google LLC. The full license text travelled
+with the skills as `LICENSE-google-skills-apache-2.0.txt` in this directory, as
+Apache-2.0 §4 requires for redistribution.
