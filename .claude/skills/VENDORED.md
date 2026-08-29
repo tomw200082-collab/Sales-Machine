@@ -138,7 +138,7 @@ authority grade, they make no claim about GT, and anything they produce is
 
 | Upstream | Commit | License | Skills |
 |---|---|---|---|
-| [google/skills](https://github.com/google/skills) | `a7123f8` (2026-08-28) | Apache-2.0 (`LICENSE-google-skills-apache-2.0.txt`) | the 17 below |
+| [google/skills](https://github.com/google/skills) | `a7123f8` (2026-08-28) | Apache-2.0 (`LICENSE-google-skills-apache-2.0.txt`) | the 10 below |
 
 ## Read this before reaching for them
 
@@ -193,18 +193,21 @@ needs Tom's explicit word before a single row moves.
 the Developer Knowledge MCP server or a REST fallback. Neither is vendored
 knowledge; both are pointers to live Google endpoints.
 
-**Vendored but almost certainly dead weight here (7)**
+**Taken and then deleted the same day (7)** — Tom's call, 2026-08-29
 
 `google-mobile-ads-get-started` · `google-mobile-ads-banner` ·
 `google-mobile-ads-interstitial` · `google-mobile-ads-rewarded` ·
 `google-mobile-ads-android-migrate-to-next-gen` · `ima-sdk-client-side` ·
 `ima-dai-sdk`
 
-These are AdMob/Ad Manager monetization for an Android/iOS/Unity **app**, and
-video-ad serving (VAST/VMAP/DAI) for a **video player**. GT has neither. They
-came in because the ask was for the skills in that repo, not for a filtered
-subset — but nothing in this workspace will ever fire them. Deleting the seven
-is a one-line change and costs nothing; left in place pending Tom's call.
+AdMob/Ad Manager monetization for an Android/iOS/Unity **app**, and video-ad
+serving (VAST/VMAP/DAI) for a **video player**. GT has neither. They came in
+because the ask was for the skills in that repo, not for a filtered subset;
+they were flagged as dead weight in the same breath and **deleted on Tom's
+word the same day**. Recorded here so a future reader knows they were
+considered and rejected, not overlooked — do not re-import them. Everything
+each of them covers is still reachable through upstream if GT ever ships a
+mobile app or serves video ads.
 
 ## Notes before use
 
@@ -224,11 +227,12 @@ is a one-line change and costs nothing; left in place pending Tom's call.
   phone numbers, hashed, uploaded as an audience. Treat every run as a
   customer-facing external write: understand before writing, confirm before
   acting, and nothing moves without Tom.
-- **Files only, no runtime code.** Markdown and one XML data asset
-  (`google-mobile-ads-get-started/assets/skadnetwork-identifiers.xml`). The
-  upstream repo's `plugins/`, git submodules, `index.json` and `.claude-plugin/`
-  were not copied. `.claude/settings.json` was not modified.
-- **No edits on adoption.** All 17 skill trees are byte-identical to upstream.
+- **Files only, no runtime code.** Markdown only, now that the mobile-ads set is
+  gone — its `skadnetwork-identifiers.xml` was the one data asset and left with
+  it. The upstream repo's `plugins/`, git submodules, `index.json` and
+  `.claude-plugin/` were not copied. `.claude/settings.json` was not modified.
+- **No edits on adoption.** All 10 remaining skill trees are byte-identical to
+  upstream.
 
 ## Updating
 
@@ -297,14 +301,39 @@ locally on Tom's own machine; nowhere else.
 denied it on 2026-08-29). So in web/remote sessions this skill is documentation,
 not a working capability.
 
-## Account risk — Tom's call, stated once
+## Account risk — decided 2026-08-29
 
 Reading Instagram, Facebook and LinkedIn through a logged-in browser session is
 against those platforms' terms of service. The session at risk is a real GT
 business account, and the failure mode is a restriction or a ban on the account
-the roadmap is trying to build up. The zero-config channels above carry no such
-exposure. Nobody should point this at a GT-owned social login without Tom saying
-so explicitly.
+the roadmap is trying to build up. The zero-config channels carry no such
+exposure.
+
+Tom was told the risk, said he understood it, and handed the decision over
+(2026-08-29). **The decision taken, and the standing rule until Tom overrides
+it:**
+
+- **Never point Agent Reach at a GT-owned social login.** Not Instagram, not
+  Facebook, not LinkedIn, not any account GT depends on. The downside is losing
+  the very asset the roadmap exists to build, it is irreversible, and no
+  competitor scan is worth it.
+- **Use the zero-config channels freely** — web page reading, YouTube
+  transcripts, RSS, GitHub, Exa search, V2EX. No account, no session, no
+  exposure. Public Instagram, Facebook and LinkedIn pages are readable this way
+  too, through Jina Reader, which is what `l1`, `l2`, `l6`, `i1` and `f3`
+  actually need: those tasks are about **public** pages and profiles.
+- **Where a task genuinely needs authenticated data** — follower counts over
+  time, insights, inbox — use the platform's own sanctioned API (Meta Graph API
+  for `i5`/`f4`, LinkedIn's API for the company page). Slower to set up,
+  sanctioned, and it does not put the account at risk.
+- **If a logged-in read is ever unavoidable**, it runs on a throwaway account
+  that GT does not depend on, never on the business account. Note this is still
+  against ToS; it only means a ban costs nothing.
+
+The reasoning in one line: the useful part of this tool for GT is the part that
+needs no login, and the part that needs a login is the part that can cost GT an
+account it cannot easily get back. Tom can reverse this at any time — it is a
+working rule, not doctrine.
 
 ## The frozen-copy problem
 
@@ -337,12 +366,18 @@ reference files, including `career.md`, the LinkedIn one.
 
 ## Where else this lives
 
-Vendored in this repo only. Social and market research is sales-and-marketing
-work, and this is the sales brain. `gt-factory-os` (backend), `gt-factory-os-portal`
-(UI) and `gt-factory-os-production-brain` (governance) have no use for reading
-Instagram, and their lane rules say not to write outside the dispatched lane —
-so no copies there. The brain's workspace-wide ledger carries a pointer back to
-this entry. Say the word if it should be duplicated.
+**Also vendored in `gt-factory-os-production-brain/.claude/skills/agent-reach/`,
+on Tom's call (2026-08-29)** — the research-flavoured skills that live in the
+brain (`messi`, `chief-of-staff-daily`, `domain-investigation`,
+`gt-marketing-architect`) are the ones most likely to reach for it. The two
+trees are **byte-identical, including the GT note**; keep them that way when
+updating, and note that the note's `.claude/skills/VENDORED.md` pointer is
+repo-relative, so it resolves correctly in both. The account-risk decision above
+is the workspace-wide rule, not a per-repo one.
+
+Not copied into `gt-factory-os` (backend) or `gt-factory-os-portal` (UI): neither
+has any use for reading Instagram, and their lane rules say not to write outside
+the dispatched lane.
 
 ## Updating
 
