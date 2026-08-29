@@ -241,3 +241,117 @@ over the local directory. No lockfile, no auto-update. Upstream says it is
 Apache-2.0. Copyright remains with Google LLC. The full license text travelled
 with the skills as `LICENSE-google-skills-apache-2.0.txt` in this directory, as
 Apache-2.0 §4 requires for redistribution.
+
+---
+
+# Vendored: `Panniantong/Agent-Reach` (2026-08-29)
+
+Copied in on 2026-08-29 at Tom's direction, in the same breath as the Google
+skills above ("download this one to all the relevant repos too").
+
+| Upstream | Commit | License | What was taken |
+|---|---|---|---|
+| [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) | `06c202b` (2026-08-25, v1.5.0) | MIT (`agent-reach/LICENSE`) | `agent_reach/skill/` only — one skill |
+
+## This is not a skill repository
+
+Everything else vendored in this directory is markdown that works the moment it
+is read. **Agent Reach is a Python package** — a CLI that installs, routes and
+health-checks *other people's* tools (OpenCLI, twitter-cli, rdt-cli, bili-cli,
+yt-dlp, Jina Reader, mcporter/Exa) so an agent can read 15 platforms. The skill
+taken here is one directory inside it: a routing table that tells an agent which
+command to run. **The commands do not exist until the package is installed.**
+
+Only `agent_reach/skill/` was copied — the `agent_reach/` Python source, `tests/`,
+`config/`, `scripts/` and `pyproject.toml` were **not**, and must not be: this
+repo takes no runtime code, ever (`CLAUDE.md`, write boundaries). Installing the
+tool is `pip install agent-reach`, which happens in an environment, not in a
+commit.
+
+## What it would unlock — mapped to the digital roadmap
+
+This is the capability the Google skills did not have. Read-only access to:
+
+| Platform | What it can read | Roadmap tasks |
+|---|---|---|
+| Instagram | user search, profile, a user's recent posts, Explore | `i1` which account is official · `i6` opening baseline · competitor scans |
+| Facebook | search, pages, feed, group lists | `f3` page details |
+| LinkedIn | profile detail, company pages, people search, job search | `l1` company page · `l2` personal profile · `l6` target connection list |
+| YouTube | transcripts + video search | `y1` locating the channel · `y3` content recycling |
+| Web / RSS / Exa | any page as clean text, semantic web search | competitor and content research feeding `content-strategy` |
+| Twitter/X, Reddit | search, threads, discussion | market listening |
+
+## What actually works, and where — read this before promising anything
+
+**Zero config, works anywhere:** web page reading (Jina Reader), YouTube
+transcripts (yt-dlp), RSS, GitHub, Exa web search, V2EX, Bilibili.
+
+**Needs a desktop with the user's own logged-in Chrome:** Instagram, Facebook,
+LinkedIn, Reddit, XiaoHongShu. These route through OpenCLI, which reuses a real
+browser session. **They cannot work from the remote Claude Code container** — it
+has no Chrome profile and no GT logins, and never will. That is precisely the set
+of platforms the roadmap cares most about. They work in Claude Code running
+locally on Tom's own machine; nowhere else.
+
+**`pip install agent-reach` is blocked in the remote container** (the sandbox
+denied it on 2026-08-29). So in web/remote sessions this skill is documentation,
+not a working capability.
+
+## Account risk — Tom's call, stated once
+
+Reading Instagram, Facebook and LinkedIn through a logged-in browser session is
+against those platforms' terms of service. The session at risk is a real GT
+business account, and the failure mode is a restriction or a ban on the account
+the roadmap is trying to build up. The zero-config channels above carry no such
+exposure. Nobody should point this at a GT-owned social login without Tom saying
+so explicitly.
+
+## The frozen-copy problem
+
+Upstream's entire value proposition is that **they chase platform breakage** —
+their own README's example is yt-dlp getting blocked by Bilibili and the router
+switching to bili-cli with no user action. A copy committed here does not
+receive those fixes. Treat this tree as a map of what the tool does, not as a
+current command reference: when the tool is actually installed, its own shipped
+skill is the authority, and this copy is a snapshot of 2026-08-25.
+
+## One edit on adoption
+
+Upstream's `SKILL_en.md` opens with `MUST USE when user wants to
+research/search/look up/find anything on the internet`. That fires on a large
+share of ordinary requests, in a workspace where the CLI is usually not
+installed — every one of those would send a session chasing commands that do not
+exist. A short **GT note** was prepended to the body of `SKILL.md` (not to the
+frontmatter, not to any reference) saying: check `agent-reach doctor --json`
+first, and if the command is not found, say so and stop instead of guessing.
+That is the only change. The seven `references/` files and `SKILL_zh.md` are
+byte-identical to upstream.
+
+## Layout note
+
+Upstream ships the Chinese `SKILL.md` and an English `SKILL_en.md` side by side.
+Here `SKILL.md` is the **English** one (so the skill loader reads English) and
+the Chinese original is kept alongside as `SKILL_zh.md` for fidelity. Note that
+`references/` is **Chinese only** upstream — the English skill points at Chinese
+reference files, including `career.md`, the LinkedIn one.
+
+## Where else this lives
+
+Vendored in this repo only. Social and market research is sales-and-marketing
+work, and this is the sales brain. `gt-factory-os` (backend), `gt-factory-os-portal`
+(UI) and `gt-factory-os-production-brain` (governance) have no use for reading
+Instagram, and their lane rules say not to write outside the dispatched lane —
+so no copies there. The brain's workspace-wide ledger carries a pointer back to
+this entry. Say the word if it should be duplicated.
+
+## Updating
+
+`git clone https://github.com/Panniantong/Agent-Reach` and copy
+`agent_reach/skill/` over this directory, re-applying the English/Chinese
+filename swap and the GT note. Better: install the real tool and let it ship its
+own current skill.
+
+## License
+
+MIT. Copyright (c) 2025 Agent Eyes. The full licence text travelled with the
+skill as `agent-reach/LICENSE`, as MIT requires.
