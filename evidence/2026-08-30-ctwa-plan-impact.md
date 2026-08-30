@@ -14,6 +14,46 @@
 > **Nothing here is a decision.** The proposed decisions are D-007 and D-008 in
 > `doctrine/decisions.md`, both `PROPOSED`, awaiting Tom.
 
+## Amendment, same day — the architecture was decided, and it is not the one this assessment assumed
+
+Everything below was written assuming CTWA would run through the **Cloud API**. Later on
+2026-08-30 Tom decided otherwise, in writing:
+
+> "מה שנעשה זה נשים על הטלפון שלי- שלא מחובר לDUALHOOK את הפנייה ישירות מהקמפיין לווצאפ"
+> … "זה המספר של העבודה שלי ויש עליו כבר ווצאפ ביזנס עם קטלוג והכל"
+
+The ad will open a chat on GT's **existing work number**, running the **WhatsApp Business
+app** — already a business account, already with a catalog, and not the Dualhook
+order-intake number. Recorded as **D-007, CONFIRMED**.
+
+**What that changes about the analysis below, and what it does not:**
+
+| Section below | Still true? |
+|---|---|
+| §2.1 WhatsApp API already live | True, and now beside the point — the lead path does not use it. The order-intake bot is untouched. |
+| §2.2 storage + workspace + 188 leads | **Unchanged and now more important.** The app records nothing; `sales_core` and `/ingest` are the only record. |
+| §2.3 the heartbeat is missing from the plan | **Unchanged.** The failure mode shifts from "webhook died" to "the ad stopped delivering, or leads stop being written down", so the check becomes: conversations started in Ads Manager vs. leads recorded in the portal. |
+| §3 the Meta-access blocker | **Dissolved.** An app-number CTWA ad needs Page admin + ad-account access, not developer access, not a WABA, not the `Green Tea` app. Verified against Meta/vendor documentation on 2026-08-30. |
+| §4.1 one number or two | **Answered.** Separate number, already business, already live. |
+| §4.2 fate of the 188 | **Unchanged and still open.** |
+| §5 governance gates | **Unchanged, and easier to hold:** nothing in the app path sends from our code, so `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` is not even in the path. |
+| §6 the 36-task table | Roughly 13 rows are deleted by this decision — stage 1, stage 5, the `referral` engineering (2.3b), and stage 7 deferred in favour of the app's native greeting, quick replies, labels and catalog. |
+| §7 stop the Make lead-transport work | **Unchanged, and firmer** — D-007 is now CONFIRMED, so there are no form submissions left to carry. |
+
+**The one thing this decision costs, stated plainly.** The WhatsApp Business app has no API
+and no webhook; Meta exposes no programmatic read of it, and any unofficial reader gets the
+number permanently banned — which is Alexander's own "אסור #2". So **no lead is captured
+automatically from the app.** The record layer is therefore a phone shortcut and an optional
+enrichment link in the auto-greeting, both POSTing to the existing `/ingest` route — whose
+own contract already names WhatsApp as an accepted caller, accepts a flat
+`phone` / `contact_name` / `campaign_name` body, and derives a stable `external_id` so a
+retried POST is idempotent rather than a duplicate lead. No backend work is required.
+
+Everything from "## Verdict" down is preserved unedited as the reasoning that stood before
+the decision, including the parts the decision overturned.
+
+---
+
 ## Verdict
 
 The plan is sound and its central argument is correct: a Click-to-WhatsApp ad removes
