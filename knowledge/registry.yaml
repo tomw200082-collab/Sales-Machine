@@ -2,7 +2,7 @@
 # authority: user_confirmed | system_verified | doc_confirmed | inferred
 # freshness: stable | review_30d | snapshot
 schema: v1
-updated: 2026-08-06
+updated: 2026-08-30
 
 cards:
   - id: market/sales-buildout-research-2026-07-18
@@ -37,3 +37,21 @@ cards:
     date: 2026-08-06
     freshness: review_30d           # every entry dated; sweep for stale identity questions
     source: tracker dashboard sync blocks + rebuild observations (append-only)
+
+  - id: evidence/2026-08-30-ctwa-plan-alexander-source
+    title: Alexander's Click-to-WhatsApp lead-system build plan (verbatim source)
+    type: evidence-snapshot
+    authority: doc_confirmed        # cited source; pasted by Tom, origin artifact unreadable to us
+    date: 2026-08-30
+    freshness: snapshot             # immutable; supersede with a newer version of the plan
+    source: Alexander, via Tom — claude.ai artifact 86a3d629-4de2-4255-8503-d72d240019dc
+    note: proposal input, NOT doctrine. Doctrine changes only by Tom (CLAUDE.md rule 5).
+
+  - id: evidence/2026-08-30-ctwa-plan-impact
+    title: What the CTWA plan changes about what we built — gap analysis and blockers
+    type: evidence-snapshot
+    authority: per-claim (system_verified for repo facts; doc_confirmed for the plan and
+      prior decisions; inferred marked inline and never policy)
+    date: 2026-08-30
+    freshness: snapshot             # immutable; supersede after Tom decides D-007
+    source: the four GT working trees read 2026-08-30, plus D-006, CURRENT_STATE, sales-declaration

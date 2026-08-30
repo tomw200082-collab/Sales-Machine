@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-08-24.
+> Last updated: 2026-08-30.
 
 ## Build ladder status
 
@@ -24,6 +24,7 @@
 | Workspace — UI | portal `/apps` switchboard + `(sales)` route group: Today queue with the one-tap outcome loop, leads + drawer, orgs, quick-add, ⌘K search, PWA, settings. Hebrew RTL, admin-only | **LANDED** 2026-08-17 (gt-factory-os-portal #213, tranche 162) |
 | Live intake | **Make → `/ingest`** (was: Meta poller) | **CODE LANDED, AWAITING SCENARIOS** 2026-08-24 — gt-factory-os PR #227, migration 0329, `sales-leads-poll` redeployed. **Architecture changed today (D-006, reverses D10):** Tom holds no Meta developer access — the only Business app (`Green Tea`) is WhatsApp-only and he is not its admin, and developer registration blocks at SMS verification — so no Graph API token can be issued at all. Proven by the token diagnostic: the token he did produce is valid and non-expiring but carries **none** of `ads_management` / `leads_retrieval` / `pages_show_list` / `pages_read_engagement`. Make's own Meta-approved app carries the leads instead; its Facebook connection (`gteveryday`, 6309050) was reauthorised 2026-08-24 and is valid to 2026-10-23. **Still open:** the two Make scenarios (lead transport + hourly pulse) are not built — awaiting Tom's go-ahead |
 | Conversion job + heartbeat | first Shopify order at-or-after a lead writes `won` + evidence; daily heartbeat | **LANDED** 2026-08-24. `sales_core.convert_lead()` is the sole writer of `won`. Heartbeat proven working 2026-08-24 04:00Z (sent, severity=alarm, correct). Now judges **whichever path is carrying leads** and, under Make, watches an **hourly pulse** — because with a third party in front a dead connection and a quiet day are otherwise indistinguishable, which is exactly how the 2026-06-07 failure hid for two months. Pulse route is live; the Make scenario that feeds it is not yet built |
+| **Architecture under review** | Alexander's CTWA plan (2026-08-30) would replace the lead form with a Click-to-WhatsApp ad | **PROPOSED, NOT DECIDED** — `doctrine/decisions.md` **D-007**. Replaces the entry point and the transport only; `sales_core`, `lead_event`, the workspace, the conversion job and the heartbeat all carry over. Blocked before it can start by the same Meta access gap D-006 records, which CTWA cannot route around. Assessment: `evidence/2026-08-30-ctwa-plan-impact.md`; source: `evidence/2026-08-30-ctwa-plan-alexander-source.md`. Consequence already actionable: **D-008** proposes not building the Make lead-transport scenario, which D-007 would make dead work |
 
 Nothing in this track sends anything to a lead or a customer.
 `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` remains `false`.
@@ -54,7 +55,13 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-010 | 4 identity questions from the 2026-08-06 tracker build (MUZA×2, נונומימי/נונו, קפה עם, קלאוד ניין) — merge or keep separate? | Tom, via `knowledge/accounts/customer-notes.yaml` |
 | U-011 | The Today queue currently holds all 188 leads, because every imported lead is genuinely untouched and past SLA. Honest, but a queue the size of the whole table is not "call these two, follow up on these three". Work the backlog down, or cap the daily queue? | Tom — product decision, deliberately not taken during the build |
 | U-012 | Erik's role and how leads get assigned. The schema and the queue already scope per assignee (`assignee = me OR unassigned`, admins see all); only the UI to assign at scale is missing | Tom, when a second person joins |
-| U-013 | Should the Facebook form ask for a business name again? The live form is two questions (name, phone, email), so an incoming lead is close to anonymous and the org has to be inferred | Tom + Alex — marketing decision with a direct data consequence |
+| U-013 | ~~Should the Facebook form ask for a business name again?~~ **SUPERSEDED 2026-08-30** — Alexander's plan removes the form entirely (D-007). The underlying need does not go away: a CTWA lead is *also* close to anonymous (a phone number and an ad id), so the qualifying question moves from the form into the first WhatsApp exchange | Folded into D-007; re-opens only if D-007 is rejected |
+| U-014 | **Who administers the `Green Tea` Meta app and GT's ad account, and will they grant Tom or the technical owner admin?** D-006 proved GT holds none of it. Stages 1, 2 and 5 of Alexander's plan are all blocked on it, and unlike lead forms there is no Make-shaped way around it. This is a five-minute action by the right person | Alexander — proposed as task 0.0, ahead of his own stage 0 |
+| U-015 | **One WhatsApp number or two?** GT already has a number in the API carrying B2B order intake. Sharing it means the CTWA auto-reply and the order bot receive one stream and must not answer over each other; separating it means two numbers, two webhooks, two quality ratings. The plan's own rule ("never put a customer-facing number in the API") was written without knowing one already is | Tom + Alexander — business decision; assessment §4.1 |
+| U-016 | **What happens to the 188 imported leads under CTWA?** They have no open 72h window, so every contact is a paid business-initiated template and lands squarely in the case task 5.4's legal review exists to settle. They are also the most qualified list GT has | Tom + Alexander, with 5.4's legal answer |
+| U-017 | Does a WhatsApp lead bot need an **Amendment B** to the sales module declaration? §11 lists Shopify-channel sends; this is a new integration surface | Tom — governance; `docs/decisions/modules/sales-declaration.md` |
+| U-018 | **The workbook ("ספר העבודה") has never been seen by this repo.** The plan defers the first-reply wording, the answer bank, the day-5 and day-12 follow-up copy and "the boundaries" to it. Every stage-4, stage-5 and stage-7 task depends on content we do not hold | Tom — obtain it from Alexander |
+| U-019 | **Unverified in the plan's cost model:** Meta's current 72-hour free-entry-point behaviour, and the Israel marketing-template tariff. The whole operational budget (task 5.3) rests on both. Reproduced from the plan, not confirmed against Meta's live pricing docs — rule 4 says check before writing | Technical — read Meta's pricing documentation directly, before any budget is approved |
 
 ## Pointers
 
@@ -62,6 +69,9 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
+- **Alexander's CTWA build plan (2026-08-30):** source verbatim at
+  `evidence/2026-08-30-ctwa-plan-alexander-source.md`; assessment against what GT already
+  runs at `evidence/2026-08-30-ctwa-plan-impact.md`. Proposed decisions: D-007, D-008.
 - Latest evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
   (intake hand-over to Make) · `evidence/2026-08-24-sales-report.md` (sales report).
   Previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`.
