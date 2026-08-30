@@ -55,3 +55,12 @@ cards:
     date: 2026-08-30
     freshness: snapshot             # immutable; supersede after Tom decides D-007
     source: the four GT working trees read 2026-08-30, plus D-006, CURRENT_STATE, sales-declaration
+
+  - id: evidence/2026-08-30-lead-intake-is-live
+    title: The Make intake was built, is live, and has a two-week hole
+    type: evidence-snapshot
+    authority: system_verified      # read from the live Make account and live Postgres
+    date: 2026-08-30
+    freshness: snapshot             # immutable; the hole closes when the export is ingested
+    source: Make team 1240098 (scenarios + executions), Supabase rvadsozabmxkkrktwgnv (sales_core.lead)
+    note: corrects a stale CURRENT_STATE line and the original text of D-008
