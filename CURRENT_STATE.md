@@ -58,6 +58,8 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-014 | לבסיסי הקוקטייל (סנגריה, מוזה, מרגריטה, קוסמו, טפיוקה) אין דף משקה ואין מפרט הגשה מתועד — הקטלוג מחריג קוקטיילים (תום, 2026-08-06). 22 שורות בתוכנית הצמיחה נושאות הצהרה במקום מפרט | תום — מפרט הגשה, או החלטה שאין צורך |
 | U-015 | 15 קיבוצי מותג בתוכנית הצמיחה (ויוינו, ביסקוטי, גאפן/ג׳אפן, קפה גן סיפור, בוטיק סנטרל ועוד) — קובצו לתכנון שיחה בלבד, `inferred`, **לא** מיזוג זהות. מצטרפים ל-U-010 ולא סוגרים אותו | תום — אישור קיבוץ, בנפרד ממיזוג זהות |
 | U-016 | סדר פעולות ההכנה (SOP לבריסטה) אינו מתועד ב-GT. תוכנית הצמיחה נושאת מנת רכיבים ממודל העלות, לא הוראות שהומצאו | תום / gt-assets-designer |
+| U-017 | גורל מלאי MUZA שנותר: 19 יחידות מוצר מוגמר, ~7,400 מדבקות ממותגות, וחומרי גלם שמישים (ג'ין, קמפרי, ורמוט, טריפל־סק, סירופים). מכירה / השמדה / החזקה — מחיקה נרשמת בלדג'ר ולכן צריכה מספר מתום | תום |
+| U-018 | 11 SKU שנמכרו כ-MUZA ואין בקוד שלהם `MUZ` (הקודמים בעברית + מארזי מתנה); לרובם אין שורת `items`. אישור שהרשימה שלמה לפני הארכוב | תום |
 
 ## Pointers
 
@@ -65,7 +67,11 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
-- Latest evidence snapshot: `evidence/2026-08-30-existing-customer-growth.md` — the
+- Latest evidence snapshot: `evidence/2026-08-30-muza-line-retirement.md` — Tom pulled the
+  MUZA line out of the company (2026-08-30); the growth plan was rebuilt without it and the
+  archival itself is handed to a fresh session as
+  `gt-factory-os-production-brain/docs/plans/2026-08-30-muza-line-retirement-masterprompt.md`.
+  It supersedes the numbers in, but not the record of, `evidence/2026-08-30-existing-customer-growth.md` — the
   existing-customer growth plan (20 phone calls + 133 WhatsApp rows, ₪722,865 opportunity /
   ₪584,795 gross profit, five correctness gates passed, nothing sent). Method of record:
   `gt-factory-os-production-brain/docs/plans/2026-08-30_existing_customer_growth.md`;
