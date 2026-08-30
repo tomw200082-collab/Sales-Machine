@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-08-24.
+> Last updated: 2026-08-30.
 
 ## Build ladder status
 
@@ -47,7 +47,7 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-003 | Tag semantics: `10off`, `50-29`, `300ml-23`, `shotef`, `net30`, `pl`/`client_key` metafields | Interview #3 + system verify |
 | U-004 | B2B records use placeholder login emails — where do real ordering contacts live? | Interview #4 |
 | U-005 | ICP ranking (segments × buyer type) | Interview #1 |
-| U-006 | Off-Shopify sales share (Green Invoice direct? distributor?) — required before any churn claim | Interview #4 + GI check |
+| U-006 | Off-Shopify sales share — **answered in practice**: Tom, `user_confirmed` 2026-08-24, "כל המכירות עוברות בשופיפיי". Kept open only until a Green Invoice document census confirms it independently | GI census |
 | U-007 | Annual-value method assumes steady rate; validate per tier | Recipe validation |
 | U-008 | "The website" scope — storefront vs. marketing site vs. B2B portal (separate runtime repo either way, per D-003) | Tom decision |
 | U-009 | Data quirk: account with 58 orders and ₪0.00 amountSpent — explain before trusting spend fields | Interview #3 / system check |
@@ -55,6 +55,9 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-011 | The Today queue currently holds all 188 leads, because every imported lead is genuinely untouched and past SLA. Honest, but a queue the size of the whole table is not "call these two, follow up on these three". Work the backlog down, or cap the daily queue? | Tom — product decision, deliberately not taken during the build |
 | U-012 | Erik's role and how leads get assigned. The schema and the queue already scope per assignee (`assignee = me OR unassigned`, admins see all); only the UI to assign at scale is missing | Tom, when a second person joins |
 | U-013 | Should the Facebook form ask for a business name again? The live form is two questions (name, phone, email), so an incoming lead is close to anonymous and the org has to be inferred | Tom + Alex — marketing decision with a direct data consequence |
+| U-014 | לבסיסי הקוקטייל (סנגריה, מוזה, מרגריטה, קוסמו, טפיוקה) אין דף משקה ואין מפרט הגשה מתועד — הקטלוג מחריג קוקטיילים (תום, 2026-08-06). 22 שורות בתוכנית הצמיחה נושאות הצהרה במקום מפרט | תום — מפרט הגשה, או החלטה שאין צורך |
+| U-015 | 15 קיבוצי מותג בתוכנית הצמיחה (ויוינו, ביסקוטי, גאפן/ג׳אפן, קפה גן סיפור, בוטיק סנטרל ועוד) — קובצו לתכנון שיחה בלבד, `inferred`, **לא** מיזוג זהות. מצטרפים ל-U-010 ולא סוגרים אותו | תום — אישור קיבוץ, בנפרד ממיזוג זהות |
+| U-016 | סדר פעולות ההכנה (SOP לבריסטה) אינו מתועד ב-GT. תוכנית הצמיחה נושאת מנת רכיבים ממודל העלות, לא הוראות שהומצאו | תום / gt-assets-designer |
 
 ## Pointers
 
@@ -62,7 +65,12 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
-- Latest evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
+- Latest evidence snapshot: `evidence/2026-08-30-existing-customer-growth.md` — the
+  existing-customer growth plan (20 phone calls + 133 WhatsApp rows, ₪722,865 opportunity /
+  ₪584,795 gross profit, five correctness gates passed, nothing sent). Method of record:
+  `gt-factory-os-production-brain/docs/plans/2026-08-30_existing_customer_growth.md`;
+  data: `docs/analytics/existing-customer-growth-2026-08-30.json`.
+  Previous (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
   (intake hand-over to Make) · `evidence/2026-08-24-sales-report.md` (sales report).
   Previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`.
 - Sales report recipe: `recipes/sales-report.md` (taxonomy + anchors Tom-approved 2026-08-24).
