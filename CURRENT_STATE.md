@@ -55,6 +55,26 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-011 | The Today queue currently holds all 188 leads, because every imported lead is genuinely untouched and past SLA. Honest, but a queue the size of the whole table is not "call these two, follow up on these three". Work the backlog down, or cap the daily queue? | Tom — product decision, deliberately not taken during the build |
 | U-012 | Erik's role and how leads get assigned. The schema and the queue already scope per assignee (`assignee = me OR unassigned`, admins see all); only the UI to assign at scale is missing | Tom, when a second person joins |
 | U-013 | Should the Facebook form ask for a business name again? The live form is two questions (name, phone, email), so an incoming lead is close to anonymous and the org has to be inferred | Tom + Alex — marketing decision with a direct data consequence |
+| U-014 | 5 of the 19 remaining MUZA units are stranded: `GTMX-MUZ-TRIL-1L` (4) and `GTMX-MUZ-PRPL-1L` (1) are ACTIVE on the storefront but their Shopify `available` reads 0, so nobody can buy them. Nothing self-corrects — the reconciler skips INACTIVE items and the mapping is retired. Set the two quantities by hand, or accept the 5 units as unsellable? | Tom — 2026-08-30 MUZA retirement |
+| U-015 | `GTCC-MUZ-JASJ-1L` (Muza Jasmin Jazz 1000ml) was left ACTIVE on Shopify, which reports 14 units. The system has no `items` row, no mapping and no balance for it, so there is no authoritative number to check that 14 against. Real stock to sell through, or a phantom to archive? | Tom — 2026-08-30 MUZA retirement |
+| U-016 | The 19 finished MUZA units and the ~7,400 MUZA-branded stickers still sit in inventory with no disposition. Sell through, write off, or hold? A write-off posts to the ledger and needs Tom's number. | Tom — masterprompt §6 B, deliberately left open |
+
+## Landed 2026-08-30
+
+- **MUZA line retired from every system.** Tom's instruction, in writing, same day.
+  System side complete: 15 `items` terminal `INACTIVE`, 20 `bom_head` `ARCHIVED`,
+  all 46 `integration_sku_map` rows `inactive` across shopify + lionwheel +
+  green_invoice. Storefront: 19 products archived, **7 kept ACTIVE because they
+  still carry stock** (Tom: `תשאיר מה שיש מלאי וכל השאר תארכב`).
+  **35 raw-material and packaging components untouched and still `ACTIVE`** —
+  the half of the instruction that gets dropped. `stock_ledger` unchanged at 182
+  rows; no quantity written anywhere. Migration `0340_muza_line_retirement.sql`
+  (applied prod) · manifest
+  `gt-factory-os-production-brain/docs/analytics/2026-08-30_muza_retirement_manifest.json`
+  · record `gt-factory-os-production-brain/docs/warehouses/catalog-truth.md`.
+  Opens U-014, U-015, U-016.
+  Sales-side note: `evidence/2026-08-30-existing-customer-growth.md` already
+  treats MUZA as retired, so nothing there is re-run.
 
 ## Pointers
 
