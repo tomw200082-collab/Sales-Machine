@@ -107,3 +107,16 @@ cards:
     source: >-
       masterprompt §W5, task f5. Every count and setting read live from sales_core
       2026-08-31. Binding only after Tom's written approval.
+
+  - id: evidence/2026-08-31-klaviyo-account-state
+    title: Klaviyo account state — 2,537 lapsed customers, zero emails ever sent
+    type: evidence-snapshot
+    authority: system_verified      # read-only Klaviyo API; every metric ID resolved to its name
+    date: 2026-08-31
+    freshness: snapshot             # immutable; segment counts move daily — re-read, never quote
+    source: >-
+      Klaviyo API account VimR5N. Win-Back Opportunities = 2,537 against a 2,969
+      consented base; 0 campaigns, 0 flows, 0 sending domains; all 9 segments and
+      2 lists created inside one 39-second installer window on 2026-07-18.
+      Churn Risks reads 0 for a structural reason, not an empirical one (U-029).
+      Six account-identity fields are wrong, country first (U-030).
