@@ -88,10 +88,12 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `doctrine/playbooks/linkedin-launch-kit.md`, `doctrine/playbooks/youtube-refresh-kit.md`,
   `doctrine/playbooks/tiktok-recovery-kit.md` · lead-response SOP
   `doctrine/playbooks/lead-response-sop.md` (binding only on Tom's written approval).
+  Coexistence liveness recipe `recipes/coexistence-liveness.md` (U-031).
   Credentials sheet and the 72-row action board live in Tom's Drive, **not in this repo** —
   no secret value is ever written here (`GT — כרטיס גישה` and `GT — לוח פעולות רשתות`,
-  folder `GT Everyday — נכסי מותג`). Tracker artifact: the digital roadmap, 72 tasks,
-  12 done as of 2026-08-31.
+  folder `GT Everyday — נכסי מותג`). Board as of 2026-08-31 end of session: 13 done,
+  14 ready to paste, 23 open, 6 blocked, 16 on the website track. The credentials sheet
+  still carries 24 rows and needs a 25th — TikTok (U-027).
 - Latest evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
   (intake hand-over to Make) · `evidence/2026-08-24-sales-report.md` (sales report).
   Previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`.
