@@ -65,6 +65,8 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-021 | The deck's margin percentages (77–87 %) imply the food cost arithmetically, which D-013 says is never stated. Do the margin figures stay? | Tom |
 | ~~U-022~~ | **CLOSED 2026-08-31** — owner named: **Tom** (D-018). The number **is** in use, and that is not a blocker: **coexistence** keeps it in the WhatsApp app while the Cloud API rides alongside, exactly as GT's order line has since 2026-06-26 (9,440 staff-echo events prove it). The artifact's warning that a number entering the API leaves the app permanently is true of classic onboarding, **not** of coexistence. Standing requirement: the app must be opened at least once every 13 days and never uninstalled, or coexistence lapses — needs a named owner | closed |
 
+| U-023 | Opt-out must be recorded on the lead and must cancel every queued follow-up (D-019). No column, no event type and no scheduler exists yet — this is a build item, not a question | build, before any follow-up runs |
+
 ## Pointers
 
 - Module declaration (governance gate): `gt-factory-os-production-brain`

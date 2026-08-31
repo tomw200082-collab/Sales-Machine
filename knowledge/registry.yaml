@@ -56,3 +56,13 @@ cards:
     freshness: snapshot             # immutable; supersede with a newer snapshot
     source: Supabase rvadsozabmxkkrktwgnv, read-only, 2026-08-31 11:32Z-12:10Z
 
+  - id: doctrine/outreach-legal
+    title: Israeli spam law (§30א) applied to GT's day-5 / day-12 follow-up sequence
+    type: doctrine
+    authority: doc_confirmed        # statute read from public sources; NOT legal advice
+    date: 2026-08-31
+    freshness: review_30d           # statutory amounts and case law move
+    source: סעיף 30א לחוק התקשורת (בזק ושידורים) התשמ"ב-1982, תיקון 40 · ע"א לפיד (2019)
+    decisions: D-019
+    open: three narrow questions for a lawyer (§6); U-023 (opt-out plumbing)
+
