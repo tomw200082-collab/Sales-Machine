@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-08-31 (second pass — Tom's rulings, and the lead-response session).
+> Last updated: 2026-08-31 (third pass — Tom's rulings, the lead-response session, and the agent's asset gap).
 
 ## Build ladder status
 
@@ -62,16 +62,18 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-017 (→ אלכס §6) | בנק התשובות חי ב-`knowledge/answers/answer-bank.yaml` (30 שורות). הגיליון שמערכת הלידים אמורה לקרוא ממנו — ⊥ נבנה, וכיוון הסנכרון ⊥ סוכם עם סשן מערכת הלידים. שני בנקים = כישלון D3 | תיאום בין-סשן + טום |
 | ~~U-018~~ | **נסגר 2026-08-31.** כשרות וחיי מדף — טום: "אין מסמכים, אני מאשר את שניהם כעובדה". מדורגים `user_confirmed`. בקשת תעודה מלקוח עוברת לאלכסנדר, כי אין מה לשלוח | — |
 | ~~U-019~~ | **נסגר 2026-08-31.** ארבע רשומות-השלילה נשארות פעילות בשופיפיי (טום: "תשאיר"). כלומר: ⊥ במחירון הלקוחות ו⊥ מוצעות בשיחה, אבל לקוח שמגיע לחנות יכול להזמין. זו הכרעה, ⊥ פער | — |
-| U-020 | 275 distinct phone numbers have written to GT's live WhatsApp since 2026-06-28 (163 in the last 30 days) and are classified `ignored_unknown_or_disabled`; essentially none exists in `sales_core` (1 of 275). How many are leads rather than unmapped customers, suppliers or staff? No identification layer exists to answer it. Shape argues most are not enquiries (avg 20.8 messages/sender; 117 conversations span >7 days); the lead-shaped floor is the 36 single-message senders, 11 of them in the last 30 days | build the first-message write (architecture doc §Q2), then measure for 30 days |
-| ~~U-021~~ | **CLOSED 2026-08-31** — Israel marketing template **$0.0353**/message (rate card effective 2026-07-01), graded `doc_confirmed` from a dated DOI-registered mirror, not from GT's console. Operating cost at current volume: **$2.78–$3.39/month**. Not a constraint. `doctrine/commercial-terms.md` §3.1 | closed; re-check after Meta's next quarterly card (~2026-10-01) |
-| U-022 | `META_PAGE_ACCESS_TOKEN` carries no Leads Access on the page — the cause of two real leads rejected on 2026-08-24 (leadgen `1807021066847822`, `1469012341930658`), recoverable from Meta only until **2026-11-22**. Distinct from D-006: Make carries the lead, this token fetches its content | technical — next intake session |
-| U-023 | A second Facebook form id, `1771287887148857`, appears in `lead_reject` but the pulse reports `forms_visible: 1`. Live form or stale test form? | Tom + Alex, via Meta Ads Manager |
-| ~~U-024~~ | **WITHDRAWN 2026-08-31** — not an open question. Tom decided the opening menu's price is deliberately never stated (D-018); it is a transfer row by design | closed |
-| ~~U-025~~ | **CLOSED 2026-08-31** — the order cutoff is **14:00** (Tom). Worth six days to a north/south customer, one to three in the centre | closed |
-| ~~U-026~~ | **CLOSED 2026-08-31** — derived from 1,555 completed LionWheel deliveries: צפון=שלישי · דרום=רביעי (**including Jerusalem and the Shfela**) · מרכז=ראשון/שני/חמישי. `doctrine/commercial-terms.md` §3 | closed |
-| U-027 | The deck's margin percentages (77–87 %) imply the food cost arithmetically, which D-018 says is never stated. Do the margin figures stay? | Tom |
-| ~~U-028~~ | **CLOSED 2026-08-31** — owner named: **Tom** (D-023). The number **is** in use, and that is not a blocker: **coexistence** keeps it in the WhatsApp app while the Cloud API rides alongside, exactly as GT's order line has since 2026-06-26 (9,440 staff-echo events prove it). The artifact's warning that a number entering the API leaves the app permanently is true of classic onboarding, **not** of coexistence. Standing requirement: the app must be opened at least once every 13 days and never uninstalled, or coexistence lapses — needs a named owner | closed |
-| U-029 | Opt-out must be recorded on the lead and must cancel every queued follow-up (D-024). No column, no event type and no scheduler exists yet — this is a build item, not a question | build, before any follow-up runs |
+| U-020 | תיקיית `05 · מה שולחים ללקוח` בדרייב ריקה. הסוכן יודע מה להגיד ו**אין לו קובץ אחד לשלוח**: קטלוג המשקאות בתוקף (PDF), מחירון ללקוח (PDF), סרטוני ההדרכה שהספר מבטיח, ו-48 המתכונים. שלב 03 ברצף השיחה הוא "שולחים ערכה" — בלי הקבצים הוא ⊥ ניתן לביצוע | **טום — בתהליך.** הצהיר 2026-08-31 שיעלה חומרים שיווקיים ל-`06 · העלאות` |
+| U-021 | 17 מתוך 17 כללי `boundaries/refusals.yaml` מסתיימים ב"מעביר לאלכסנדר" — ו**אין בשום קובץ מספר, מייל או קבוצה**. סוכן ווצאפ שיגיע לכלל כזה נעצר באמצע שיחה בלי מסלול המשך | טום — פרט קשר אחד, ואז כרטיס `user_confirmed` |
+| U-022 | 275 distinct phone numbers have written to GT's live WhatsApp since 2026-06-28 (163 in the last 30 days) and are classified `ignored_unknown_or_disabled`; essentially none exists in `sales_core` (1 of 275). How many are leads rather than unmapped customers, suppliers or staff? No identification layer exists to answer it. Shape argues most are not enquiries (avg 20.8 messages/sender; 117 conversations span >7 days); the lead-shaped floor is the 36 single-message senders, 11 of them in the last 30 days | build the first-message write (architecture doc §Q2), then measure for 30 days |
+| ~~U-023~~ | **CLOSED 2026-08-31** — Israel marketing template **$0.0353**/message (rate card effective 2026-07-01), graded `doc_confirmed` from a dated DOI-registered mirror, not from GT's console. Operating cost at current volume: **$2.78–$3.39/month**. Not a constraint. `doctrine/commercial-terms.md` §3.1 | closed; re-check after Meta's next quarterly card (~2026-10-01) |
+| U-024 | `META_PAGE_ACCESS_TOKEN` carries no Leads Access on the page — the cause of two real leads rejected on 2026-08-24 (leadgen `1807021066847822`, `1469012341930658`), recoverable from Meta only until **2026-11-22**. Distinct from D-006: Make carries the lead, this token fetches its content | technical — next intake session |
+| U-025 | A second Facebook form id, `1771287887148857`, appears in `lead_reject` but the pulse reports `forms_visible: 1`. Live form or stale test form? | Tom + Alex, via Meta Ads Manager |
+| ~~U-026~~ | **WITHDRAWN 2026-08-31** — not an open question. Tom decided the opening menu's price is deliberately never stated (D-018); it is a transfer row by design | closed |
+| ~~U-027~~ | **CLOSED 2026-08-31** — the order cutoff is **14:00** (Tom). Worth six days to a north/south customer, one to three in the centre | closed |
+| ~~U-028~~ | **CLOSED 2026-08-31** — derived from 1,555 completed LionWheel deliveries: צפון=שלישי · דרום=רביעי (**including Jerusalem and the Shfela**) · מרכז=ראשון/שני/חמישי. `doctrine/commercial-terms.md` §3 | closed |
+| U-029 | The deck's margin percentages (77–87 %) imply the food cost arithmetically, which D-018 says is never stated. Do the margin figures stay? | Tom |
+| ~~U-030~~ | **CLOSED 2026-08-31** — owner named: **Tom** (D-023). The number **is** in use, and that is not a blocker: **coexistence** keeps it in the WhatsApp app while the Cloud API rides alongside, exactly as GT's order line has since 2026-06-26 (9,440 staff-echo events prove it). The artifact's warning that a number entering the API leaves the app permanently is true of classic onboarding, **not** of coexistence. Standing requirement: the app must be opened at least once every 13 days and never uninstalled, or coexistence lapses — needs a named owner | closed |
+| U-031 | Opt-out must be recorded on the lead and must cancel every queued follow-up (D-024). No column, no event type and no scheduler exists yet — this is a build item, not a question | build, before any follow-up runs |
 
 ## החלטות שממתינות לטום — עודכן 2026-08-31
 
@@ -91,6 +93,14 @@ TOM-D (700 ו-8 שנים מאושרים) · TOM-E (HOJICHA נשאר, + 1 ק״ג 
 | 5 | עונתיות + תסריט מלון/קייטרינג/משרד | U-015 |
 | 6 | כיוון הסנכרון של גיליון הלידים | U-017, D3 |
 | 7 | `כ-17 קלוריות` — מקור או הסרה · ארבע רשומות-השלילה עדיין בנות-הזמנה | CLAIM-3, U-019 |
+
+**פתוח על טום בלבד — ⊥ דורש את אלכס:**
+
+| מה | מצב |
+|---|---|
+| **חומרים שיווקיים לשליחה** (U-020) — קטלוג, מחירון ללקוח, סרטוני הדרכה, מתכונים → `06 · העלאות` בדרייב | **בתהליך.** טום 2026-08-31: "אני אכניס שם חומרים שיווקיים לשליחה" |
+| **פרט קשר לאלכסנדר** (U-021) — היעד של 17 כללי ההסלמה | פתוח |
+| **סנכרון הדרייב** — 6 מ-10 הקבצים ⊥ זהים בייט-לבייט לבנייה שבריפו. הכלי מאפשר רק יצירה+מחיקה, ⊥ החלפה בתוכן, כלומר ה-file-ID משתנים | פתוח — נשאל, ⊥ נענה |
 
 ## פריטי ניקיון (⊥ חוסמים)
 
