@@ -1,0 +1,574 @@
+<title>ספר העבודה של GT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Heebo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#F1F3EE; --surface:#FBFCF9; --sunk:#E8EBE3;
+  --ink:#161A15; --ink-2:#576155; --ink-3:#7C8778;
+  --rule:#D9DED2; --rule-2:#C4CBBB;
+  --leaf:#2E6B4C;            /* steeped tea — the one bold colour */
+  --leaf-soft:#E2EFE7;
+  --chill:#3A6B84;           /* the fridge side of the category */
+  --chill-soft:#E2EDF2;
+  --open:#9E4526; --open-soft:#F6E6DF;
+  --hold:#7E6413; --hold-soft:#F4EEDA;
+  --shadow:0 1px 2px rgba(22,26,21,.05),0 8px 24px -16px rgba(22,26,21,.28);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F120E; --surface:#171B15; --sunk:#1E2320;
+    --ink:#E9EDE3; --ink-2:#A3AC9C; --ink-3:#7D8878;
+    --rule:#2A3027; --rule-2:#3A4235;
+    --leaf:#77C79A; --leaf-soft:#1B2C22;
+    --chill:#84B8D0; --chill-soft:#17262D;
+    --open:#E08A66; --open-soft:#2E1D15;
+    --hold:#D9BC63; --hold-soft:#2A2412;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.8);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F120E; --surface:#171B15; --sunk:#1E2320;
+  --ink:#E9EDE3; --ink-2:#A3AC9C; --ink-3:#7D8878;
+  --rule:#2A3027; --rule-2:#3A4235;
+  --leaf:#77C79A; --leaf-soft:#1B2C22;
+  --chill:#84B8D0; --chill-soft:#17262D;
+  --open:#E08A66; --open-soft:#2E1D15;
+  --hold:#D9BC63; --hold-soft:#2A2412;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:"Heebo",-apple-system,"Segoe UI",system-ui,sans-serif;
+  font-size:16.5px;line-height:1.62;direction:rtl;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;font-size:.82em;direction:ltr;unicode-bidi:embed}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.prose{max-width:64ch}
+
+/* ---------- top rail ---------- */
+.rail{
+  position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 88%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);
+}
+.rail .wrap{display:flex;align-items:center;gap:14px;height:56px;overflow-x:auto;scrollbar-width:none}
+.rail .wrap::-webkit-scrollbar{display:none}
+.brand{font-weight:800;letter-spacing:.02em;white-space:nowrap;color:var(--ink)}
+.brand span{color:var(--leaf)}
+.chips{display:flex;gap:2px;margin-inline-start:auto}
+.chips a{
+  display:flex;align-items:baseline;gap:5px;padding:5px 9px;border-radius:7px;
+  text-decoration:none;color:var(--ink-2);font-size:13.5px;white-space:nowrap;
+}
+.chips a b{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);font-weight:500}
+.chips a:hover{background:var(--sunk);color:var(--ink)}
+.chips a:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--leaf);outline-offset:2px}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(44px,7vw,88px) 0 clamp(28px,4vw,44px)}
+.eyebrow{
+  font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--leaf);
+  font-weight:700;margin:0 0 18px;
+}
+h1{
+  font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:800;
+  font-size:clamp(38px,6.4vw,68px);line-height:1.04;letter-spacing:-.015em;
+  margin:0 0 20px;text-wrap:balance;
+}
+.lede{font-size:clamp(17px,2.1vw,20px);color:var(--ink-2);margin:0;max-width:56ch;text-wrap:pretty}
+
+/* ---------- stat strip ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin:34px 0 0}
+.stat{background:var(--surface);padding:18px 20px}
+.stat .v{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:clamp(26px,3.6vw,36px);
+  font-weight:700;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.stat .k{font-size:12.5px;color:var(--ink-2);margin-top:7px}
+.stat .s{font-size:11px;color:var(--ink-3);margin-top:3px}
+
+/* ---------- sections ---------- */
+section{padding:clamp(40px,6vw,72px) 0;border-top:1px solid var(--rule)}
+.sechead{display:flex;align-items:baseline;gap:14px;margin:0 0 8px}
+.num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--leaf);
+  font-weight:600;padding-top:6px}
+h2{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:clamp(25px,3.4vw,36px);
+  font-weight:700;margin:0;letter-spacing:-.01em;text-wrap:balance}
+h3{font-size:16px;font-weight:700;margin:34px 0 12px;letter-spacing:.005em}
+h4{font-size:14px;font-weight:700;margin:0 0 6px}
+p{margin:0 0 14px;text-wrap:pretty}
+section > .wrap > .prose > p:last-child{margin-bottom:0}
+
+/* ---------- cards / callouts ---------- */
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin:24px 0 0}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:22px 0 0}
+.note{border-inline-start:3px solid var(--leaf);background:var(--leaf-soft);
+  padding:14px 18px;border-radius:0 10px 10px 0;margin:22px 0;font-size:15px;color:var(--ink)}
+.note.warn{border-color:var(--open);background:var(--open-soft)}
+.note.cold{border-color:var(--chill);background:var(--chill-soft)}
+.note b{display:block;margin-bottom:4px}
+
+/* ---------- tables ---------- */
+.scroller{overflow-x:auto;border:1px solid var(--rule);border-radius:12px;background:var(--surface);margin:22px 0 0}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:520px}
+th,td{padding:10px 14px;text-align:right;border-bottom:1px solid var(--rule)}
+thead th{background:var(--sunk);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-2);font-weight:700}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--sunk)}
+td.n,th.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+td.name{font-weight:500}
+caption{caption-side:bottom;padding:11px 14px;font-size:12.5px;color:var(--ink-3);text-align:right;border-top:1px solid var(--rule)}
+tr.grp td{background:var(--sunk);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-2);font-weight:700}
+
+/* ---------- pills ---------- */
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;
+  padding:2px 9px;border-radius:999px;white-space:nowrap;letter-spacing:.02em}
+.pill.ok{background:var(--leaf-soft);color:var(--leaf)}
+.pill.draft{background:var(--hold-soft);color:var(--hold)}
+.pill.move{background:var(--chill-soft);color:var(--chill)}
+.pill.open{background:var(--open-soft);color:var(--open)}
+
+/* ---------- filters ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:7px;margin:24px 0 0}
+.filters button{
+  font:inherit;font-size:13.5px;font-weight:600;padding:6px 14px;border-radius:999px;
+  border:1px solid var(--rule-2);background:var(--surface);color:var(--ink-2);cursor:pointer;
+  transition:background .12s,color .12s,border-color .12s;
+}
+.filters button:hover{border-color:var(--leaf);color:var(--ink)}
+.filters button[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+
+/* ---------- q&a ---------- */
+.qa{border:1px solid var(--rule);border-radius:12px;background:var(--surface);overflow:hidden;margin:22px 0 0}
+.qa details{border-bottom:1px solid var(--rule)}
+.qa details:last-child{border-bottom:0}
+.qa summary{display:flex;align-items:center;gap:10px;padding:13px 18px;cursor:pointer;
+  font-weight:600;font-size:15.5px;list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";margin-inline-start:auto;color:var(--ink-3);font-weight:400;font-size:19px;line-height:1}
+.qa details[open] summary::after{content:"−"}
+.qa summary:hover{background:var(--sunk)}
+.qa .body{padding:0 18px 16px;font-size:15px;color:var(--ink)}
+.qa .body .src{margin-top:10px;font-size:12px;color:var(--ink-3)}
+
+/* ---------- stages ---------- */
+.stage{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.stage:last-child{border-bottom:0}
+.stage .idx{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--leaf);font-weight:600;padding-top:3px}
+.stage .when{font-size:12px;color:var(--ink-3);margin-bottom:2px}
+.script{background:var(--sunk);border-radius:10px;padding:13px 16px;margin-top:10px;font-size:14.5px;
+  border-inline-start:2px solid var(--rule-2)}
+
+/* ---------- provenance ---------- */
+.stamp{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:20px 22px;margin:30px 0 0}
+.stamp dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:12px 0 0;font-size:13.5px}
+.stamp dt{color:var(--ink-3)}
+.stamp dd{margin:0;font-family:"IBM Plex Mono",monospace;font-size:12.5px;direction:ltr;text-align:right;
+  unicode-bidi:embed;word-break:break-all}
+footer{border-top:1px solid var(--rule);padding:34px 0 60px;color:var(--ink-3);font-size:13.5px}
+footer a{color:var(--leaf)}
+.small{font-size:13px;color:var(--ink-2)}
+ul.tight{margin:8px 0 0;padding-inline-start:20px}
+ul.tight li{margin-bottom:5px}
+@media(max-width:640px){
+  .rail .wrap{height:52px}.chips{display:none}
+  .stage{grid-template-columns:1fr;gap:6px}
+}
+</style>
+<div class="rail"><div class="wrap"><div class="brand">GT <span>everyday</span></div><nav class="chips">
+<a href="#sell"><b>01</b>מה מוכרים</a>
+<a href="#numbers"><b>02</b>המספרים</a>
+<a href="#pricelist"><b>03</b>מחירון</a>
+<a href="#drinks"><b>04</b>48 משקאות</a>
+<a href="#lead"><b>05</b>הליד</a>
+<a href="#send"><b>06</b>מה שולחים</a>
+<a href="#answers"><b>07</b>בנק תשובות</a>
+<a href="#limits"><b>08</b>הגבולות</a>
+<a href="#open"><b>09</b>עוד לא סגור</a>
+</nav></div></div>
+<header class="hero"><div class="wrap">
+<p class="eyebrow">ספר עבודה · שיווק ומכירות</p>
+<h1>קטגוריה שלמה בין הקפה למקרר</h1>
+<p class="lede">כל מה שצריך כדי לענות ללקוח מסעדה — מהרגע שהליד נכנס ועד ההזמנה הראשונה. מוצרים, מספרים, נוסחים ותשובות.</p>
+<div class="stats">
+<div class="stat"><div class="v">₪3.25</div><div class="k">עלות תמצית לכוס</div><div class="s">חליטה קרה · 50 מ״ל</div></div>
+<div class="stat"><div class="v">₪20</div><div class="k">מחיר מומלץ לצרכן</div><div class="s">כולל מע״מ 18%</div></div>
+<div class="stat"><div class="v">81%</div><div class="k">רווח על ההכנסה נטו</div><div class="s">נגזר מהנוסחה</div></div>
+<div class="stat"><div class="v">48</div><div class="k">משקאות</div><div class="s">בשלוש קטגוריות</div></div>
+<div class="stat"><div class="v">40</div><div class="k">מוצרים במחירון</div><div class="s">8 מוחזקים עד הכרעת טום</div></div>
+</div>
+<div class="note cold"><b>העמוד הזה הוא תצוגה, לא המקור.</b>כל מספר כאן נקרא מ-<span class="mono">Sales-Machine/knowledge/</span> ונבדק מול המקור המאושר לפני שהודפס. מחיר משתנה — מעדכנים במאגר, והעמוד נבנה מחדש.</div>
+</div></header>
+<section id="sell"><div class="wrap"><div class="sechead"><span class="num">01</span><h2>מה אנחנו מוכרים</h2></div><div class="prose">
+<p>GT מייצרת בחולון תמציות תה טבעיות ומייבאת אבקות מאצ&#x27;ה ואובה. הלקוחות הם בתי קפה ומסעדות — ואנחנו לא מוכרים להם מוצר, אלא קטגוריה שלמה בתפריט.</p>
+<p>הקטגוריה יושבת במקום שהיה ריק: בין הקפה למשקאות המוכנים מהמקרר. משקאות מיוחדים שמכינים במקום, מהר ובאיכות גבוהה. היא קצת פחות רווחית מקפה, ומשמעותית יותר רווחית מפחית.</p>
+<p>המוצרים ללא חומרים משמרים, ללא צבעי מאכל וללא תמציות טעם. חומרי הגלם מיובאים ישירות מהמגדלים, והייצור והיבוא נמצאים תחת קורת גג אחת.</p>
+<p>שתי קטגוריות מוצר — תמציות תה ואבקות — ובנוסף מוצרים נלווים: מחיות פרי ועזרי הכנה. שלוש קטגוריות משקה: תה, צ&#x27;אי ואבקות.</p>
+</div>
+<h3>הקו שחשוב להבין</h3><p class="prose small">ההבדל התפעולי האמיתי אינו בין הטעמים — הוא בין נוזל לאבקה.</p><div class="grid2">
+<div class="card"><h4>נוזל <span class="small">· תה וצ&#x27;אי</span></h4><p class="small" style="margin:0">אותו בקבוק, מנה של 50 מ״ל, עלות ₪3.25, ופעולה אחת — לשפוך. ברמן שיודע להכין חליטה קרה כבר יודע להכין צ&#x27;אי. לא צריך ללמד כלום, רק לתת בקבוק שני.</p></div>
+<div class="card"><h4>אבקה <span class="small">· מאצ&#x27;ה ואובה</span></h4><p class="small" style="margin:0">קודם מכינים בסיס — 1.8 גרם מאצ&#x27;ה או 2 גרם אובה ב-50 מ״ל מים. צריך מקציף או מטרפה, וחלב. לכן הצעת אבקות תמיד כוללת את הציוד, ולא מציעה אותו בנפרד אחר כך.</p></div>
+</div></div></section>
+<section id="numbers"><div class="wrap"><div class="sechead"><span class="num">02</span><h2>המספרים</h2></div><p class="prose">אלה המספרים שסוגרים עסקה. שווה לדעת אותם בעל פה.</p>
+<div class="scroller"><table><thead><tr><th>מוצר</th><th class="n">מחיר ליחידה</th><th class="n">מנה</th><th class="n">מנות ליחידה</th><th class="n">עלות למנה</th></tr></thead><tbody>
+<tr><td class="name">תמצית תה · 1 ליטר</td><td class="n">₪65</td><td class="n">50 מ״ל</td><td class="n">20</td><td class="n"><b>₪3.25</b></td></tr>
+<tr><td class="name">תמצית תה · 500 מ״ל</td><td class="n">₪33</td><td class="n">50 מ״ל</td><td class="n">10</td><td class="n"><b>₪3.30</b></td></tr>
+<tr><td class="name">MATCHA שיזואוקה 500 גרם · 500 גרם</td><td class="n">₪590</td><td class="n">1.8 גרם</td><td class="n">277</td><td class="n"><b>₪2.13</b></td></tr>
+<tr><td class="name">UBE — אבקת שורש יאם סגול, 1 ק״ג · 1 ק״ג</td><td class="n">₪340</td><td class="n">2 גרם</td><td class="n">500</td><td class="n"><b>₪0.68</b></td></tr>
+<tr><td class="name">UBE — אבקת שורש יאם סגול, 500 גרם · 500 גרם</td><td class="n">₪175</td><td class="n">2 גרם</td><td class="n">250</td><td class="n"><b>₪0.70</b></td></tr>
+<tr><td class="name">ODK מחית מנגו 1 ליטר · 1 ליטר</td><td class="n">₪60</td><td class="n">40 מ״ל</td><td class="n">25</td><td class="n"><b>₪2.40</b></td></tr>
+<tr><td class="name">ODK מחית תות 1 ליטר · 1 ליטר</td><td class="n">₪60</td><td class="n">40 מ״ל</td><td class="n">25</td><td class="n"><b>₪2.40</b></td></tr>
+<tr><td class="name">ODK מחית אפרסק 1 ליטר · 1 ליטר</td><td class="n">₪60</td><td class="n">40 מ״ל</td><td class="n">25</td><td class="n"><b>₪2.40</b></td></tr>
+</tbody><caption>עלות התמצית בלבד — מים, קרח וגרניש אינם מתומחרים. · מחירי היחידה ללא מע״מ (<span class="mono">knowledge/products/catalog.yaml</span>)</caption></table></div>
+<h3>לפי קטגוריית משקה</h3><div class="scroller"><table><thead><tr><th>קטגוריה</th><th class="n">משקאות</th><th class="n">עלות למנה</th><th class="n">מחיר</th><th class="n">רווח</th></tr></thead><tbody>
+<tr><td class="name">תה</td><td class="n">16</td><td class="n">₪2.88–₪4.80</td><td class="n">₪20–₪33</td><td class="n">79–86%</td></tr>
+<tr><td class="name">צ&#x27;אי</td><td class="n">11</td><td class="n">₪3.70–₪6.57</td><td class="n">₪22–₪32</td><td class="n">76–84%</td></tr>
+<tr><td class="name">אבקות</td><td class="n">21</td><td class="n">₪2.85–₪6.86</td><td class="n">₪26–₪44</td><td class="n">76–87%</td></tr>
+</tbody><caption>מחושב מ-48 המשקאות, לא מוקלד (<span class="mono">knowledge/drinks/catalog.yaml</span>)</caption></table></div>
+<div class="note"><b>הכלל</b>תמיד להוביל במספר למנה. פחית מאצ&#x27;ה ב-₪590 נשמעת יקרה, אבל היא ₪2.13 למנה. לקוח שרואה ₪590 קודם נושר לפני שהבין.</div>
+</div></section>
+<section id="pricelist"><div class="wrap"><div class="sechead"><span class="num">03</span><h2>מחירון מוצרים</h2></div><p class="prose">11 תמציות באותו מחיר בדיוק, בשני נפחים. אין הפרש מחיר בין טעמים — נקודה שמפשטת כל שיחת מכירה.</p>
+<div class="scroller"><table><thead><tr><th>תמצית</th><th>רכיבים</th><th class="n">500 מ״ל</th><th class="n">1 ליטר</th></tr></thead><tbody>
+<tr><td class="name">AMERICAN · חליטה אמריקאית</td><td class="small">תה שחור, תה סיני מיושן, יוזו, לימון, ליים, ברגמוט, תפוזים</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+<tr><td class="name">CALM · חליטה צרפתית <span class="pill ok">נטול קפאין</span></td><td class="small">קמומיל, תפוח, ציפורן</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+<tr><td class="name">CONSCIOUSNESS · חליטה קוריאנית</td><td class="small">70% תה יסמין, ליצ&#x27;י</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+<tr><td class="name">DESERTEA · חליטה מדברית <span class="pill ok">נטול קפאין</span></td><td class="small">לואיזה, נענע, אורגנו, מליסה, מרווה, זוטה לבנה</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+<tr><td class="name">DETOX · חליטה ישראלית</td><td class="small">תה ירוק, לואיזה, נענע, ליים</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+<tr><td class="name">DETOX ללא סוכר</td><td class="small">תה ירוק, לואיזה, נענע, ליים</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+<tr><td class="name">ENERGY · חליטת שנגחאי</td><td class="small">תה ירוק, למון גראס, נענע, לימון</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+<tr><td class="name">FRESH · חליטה תאילנדית <span class="pill ok">נטול קפאין</span></td><td class="small">היביסקוס, ליים</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+<tr><td class="name">FRESH ללא סוכר <span class="pill ok">נטול קפאין</span></td><td class="small">היביסקוס, ליים</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+<tr><td class="name">NAMASTEA · צ&#x27;אי מסאלה הודי</td><td class="small">שני זני תה שחור, קינמון, הל, ג&#x27;ינג&#x27;ר, פלפל שחור, ציפורן</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+<tr><td class="name">REVIVE · חליטה יפנית</td><td class="small">70% סנצ&#x27;ה יפנית, פסיפלורה</td><td class="n">₪33</td><td class="n">₪65</td></tr>
+</tbody><caption>ללא מע״מ · מקור: <span class="mono">docs/pricing/2026-08-05_shopify_products_exvat.tsv</span></caption></table></div>
+<h3>אבקות וערכות</h3><div class="scroller"><table><thead><tr><th>פריט</th><th class="mono">SKU</th><th class="n">מחיר</th><th class="n">עלות למנה</th></tr></thead><tbody>
+<tr><td class="name">HOJICHA 1 ק״ג</td><td class="mono">GT-HOJ-BLK-1000</td><td class="n">₪750</td><td class="n">—</td></tr>
+<tr><td class="name">MATCHA שיזואוקה 500 גרם</td><td class="mono">GT-SHI-CER-500</td><td class="n">₪590</td><td class="n">₪2.13</td></tr>
+<tr><td class="name">MATCHA 22×18 גרם — מנות אישיות</td><td class="mono">GT-SHI-CER-18*22</td><td class="n">₪590</td><td class="n">—</td></tr>
+<tr><td class="name">HOJICHA 500 גרם</td><td class="mono">GT-HOJ-BLK-500</td><td class="n">₪375</td><td class="n">—</td></tr>
+<tr><td class="name">UBE — אבקת שורש יאם סגול, 1 ק״ג</td><td class="mono">UBE-POWDER-1-KG</td><td class="n">₪340</td><td class="n">₪0.68</td></tr>
+<tr><td class="name">UBE — אבקת שורש יאם סגול, 500 גרם</td><td class="mono">UBE-POWDER-0.5-KG</td><td class="n">₪175</td><td class="n">₪0.70</td></tr>
+<tr><td class="name">MATCHA KIT — ערכת מאצ&#x27;ה מלאה</td><td class="mono">GT-MAT-KIT</td><td class="n">₪170</td><td class="n">—</td></tr>
+</tbody></table></div>
+<h3>מחיות פרי</h3><div class="scroller"><table><thead><tr><th>פריט</th><th class="mono">SKU</th><th class="n">מחיר</th><th class="n">עלות למנה</th></tr></thead><tbody>
+<tr><td class="name">ODK מחית מנגו 1 ליטר</td><td class="mono">GT-ODK-MAN-1</td><td class="n">₪60</td><td class="n">₪2.40</td></tr>
+<tr><td class="name">ODK מחית תות 1 ליטר</td><td class="mono">GT-ODK-STR-1</td><td class="n">₪60</td><td class="n">₪2.40</td></tr>
+<tr><td class="name">ODK מחית אפרסק 1 ליטר</td><td class="mono">GT-ODK-PEA-1</td><td class="n">₪60</td><td class="n">₪2.40</td></tr>
+</tbody></table></div>
+<h3>עזרי הכנה</h3><div class="scroller"><table><thead><tr><th>פריט</th><th class="mono">SKU</th><th class="n">מחיר</th><th class="n">עלות למנה</th></tr></thead><tbody>
+<tr><td class="name">קערת מאצ&#x27;ה קרמית</td><td class="mono">AP-BWL-MAT</td><td class="n">₪118</td><td class="n">—</td></tr>
+<tr><td class="name">מקציף מאצ&#x27;ה חשמלי</td><td class="mono">AP-FRO-MAT</td><td class="n">₪100</td><td class="n">—</td></tr>
+<tr><td class="name">מטרפת במבוק</td><td class="mono">AP-WHK-MAT</td><td class="n">₪37</td><td class="n">—</td></tr>
+<tr><td class="name">כוס זכוכית 600 מ״ל</td><td class="mono">AP-CUP-MAT-600</td><td class="n">₪30</td><td class="n">—</td></tr>
+<tr><td class="name">מעמד למטרפה</td><td class="mono">AP-STA-MAT</td><td class="n">₪25</td><td class="n">—</td></tr>
+<tr><td class="name">כוס מדידה</td><td class="mono">GT-GLA-CUP</td><td class="n">₪20</td><td class="n">—</td></tr>
+<tr><td class="name">כף מדידה במבוק</td><td class="mono">AP-SCO-MAT</td><td class="n">₪11</td><td class="n">—</td></tr>
+<tr><td class="name">בקבוק מאצ&#x27;ה 500 מ״ל</td><td class="mono">GT-MAT-BTL-RU</td><td class="n">₪10</td><td class="n">—</td></tr>
+</tbody></table></div>
+<div class="note warn"><b>שש שורות ירדו מהמחירון — ארבע שורות ירדו מהמחירון בהכרעת טום 2026-08-31</b>
+<ul class="tight">
+<li><b>FRESH · 300 מ״ל</b> — טום 2026-08-31: &quot;לא להציע בכלל — זה היה רק להזמנה ספציפית&quot; <span class="pill open">פתוח</span></li>
+<li><b>DETOX · 300 מ״ל</b> — כמו GT-HIB-LOW-0 <span class="pill open">פתוח</span></li>
+<li><b>CALM · 300 מ״ל</b> — כמו GT-HIB-LOW-0 <span class="pill open">פתוח</span></li>
+<li><b>REVIVE · 300 מ״ל</b> — כמו GT-HIB-LOW-0 <span class="pill open">פתוח</span></li>
+<li><b>MATCHA שיזואוקה 50 גרם</b> — טום 2026-08-06: &quot;אנחנו לא מוכרים אותה&quot; <span class="pill open">TOM-B</span></li>
+<li><b>GT ELITA מאצ&#x27;ה פחית 30 גרם</b> — טום 2026-08-06: &quot;זה לא אמור להיות שם&quot; <span class="pill open">TOM-B</span></li>
+<li><b>מקציף קוקטיילים</b> — טום 2026-08-06: ירד מהמחירון <span class="pill open">TOM-B</span></li>
+<li><b>קנקן נפוליטן זכוכית עם מסננת</b> — טום 2026-08-06: &quot;לא רלוונטי&quot; <span class="pill open">TOM-B</span></li>
+</ul></div>
+</div></section>
+<section id="drinks"><div class="wrap"><div class="sechead"><span class="num">04</span><h2>48 המשקאות</h2></div><p class="prose">עלות רכיבים ללא מע״מ, ללא גרניש · מחיר מומלץ כולל מע״מ 18% · רווח על ההכנסה נטו. שתי מנות בסיס חוזרות: בסיס מאצ&#x27;ה — 1.8 גרם ב-50 מ״ל מים; בסיס אובה — 2 גרם ב-50 מ״ל מים.</p>
+<div class="filters">
+<button type="button" data-filter="all" aria-pressed="true">הכל · 48</button>
+<button type="button" data-filter="תה" aria-pressed="false">תה · 16</button>
+<button type="button" data-filter="צ&#x27;אי" aria-pressed="false">צ&#x27;אי · 11</button>
+<button type="button" data-filter="אבקות" aria-pressed="false">אבקות · 21</button>
+</div>
+<div class="scroller"><table><thead><tr><th>משקה</th><th class="n">עלות</th><th class="n">מחיר</th><th class="n">רווח לכוס</th><th class="n">רווח</th></tr></thead><tbody>
+<tr class="grp" data-cat="תה"><td colspan="5">תה · חליטות קרות ICED TEA</td></tr>
+<tr data-cat="תה"><td class="name">חליטת היביסקוס וליים</td><td class="n">₪3.25</td><td class="n">₪20</td><td class="n">₪13.70</td><td class="n"><b>81%</b></td></tr>
+<tr data-cat="תה"><td class="name">חליטת קמומיל ותפוח</td><td class="n">₪3.25</td><td class="n">₪20</td><td class="n">₪13.70</td><td class="n"><b>81%</b></td></tr>
+<tr data-cat="תה"><td class="name">חליטה מדברית</td><td class="n">₪3.25</td><td class="n">₪20</td><td class="n">₪13.70</td><td class="n"><b>81%</b></td></tr>
+<tr data-cat="תה"><td class="name">חליטת סנצ&#x27;ה ופסיפלורה</td><td class="n">₪3.25</td><td class="n">₪20</td><td class="n">₪13.70</td><td class="n"><b>81%</b></td></tr>
+<tr data-cat="תה"><td class="name">חליטת תה ירוק וליים</td><td class="n">₪3.25</td><td class="n">₪20</td><td class="n">₪13.70</td><td class="n"><b>81%</b></td></tr>
+<tr data-cat="תה"><td class="name">חליטת תה ירוק ולמון גראס</td><td class="n">₪3.25</td><td class="n">₪20</td><td class="n">₪13.70</td><td class="n"><b>81%</b></td></tr>
+<tr data-cat="תה"><td class="name">חליטת יסמין וליצ&#x27;י</td><td class="n">₪3.25</td><td class="n">₪20</td><td class="n">₪13.70</td><td class="n"><b>81%</b></td></tr>
+<tr class="grp" data-cat="תה"><td colspan="5">תה · לימונדות LEMONADE</td></tr>
+<tr data-cat="תה"><td class="name">לימונדת היביסקוס וליים</td><td class="n">₪3.95</td><td class="n">₪22</td><td class="n">₪14.69</td><td class="n"><b>79%</b></td></tr>
+<tr data-cat="תה"><td class="name">לימונדה מדברית</td><td class="n">₪3.95</td><td class="n">₪22</td><td class="n">₪14.69</td><td class="n"><b>79%</b></td></tr>
+<tr class="grp" data-cat="תה"><td colspan="5">תה · סיגנצ&#x27;ר FRUITEA</td></tr>
+<tr data-cat="תה"><td class="name">חליטת אפרסק מדברית</td><td class="n">₪4.80</td><td class="n">₪31</td><td class="n">₪21.47</td><td class="n"><b>82%</b></td></tr>
+<tr data-cat="תה"><td class="name">חליטת תות לואיזה</td><td class="n">₪4.80</td><td class="n">₪31</td><td class="n">₪21.47</td><td class="n"><b>82%</b></td></tr>
+<tr data-cat="תה"><td class="name">חליטת מנגו סנצ&#x27;ה</td><td class="n">₪4.80</td><td class="n">₪31</td><td class="n">₪21.47</td><td class="n"><b>82%</b></td></tr>
+<tr data-cat="תה"><td class="name">חליטת תפוח היביסקוס</td><td class="n">₪2.88</td><td class="n">₪24</td><td class="n">₪17.46</td><td class="n"><b>86%</b></td></tr>
+<tr class="grp" data-cat="תה"><td colspan="5">תה · גזוז GAZOZ</td></tr>
+<tr data-cat="תה"><td class="name">גזוז יסמין וליצ&#x27;י</td><td class="n">₪3.08</td><td class="n">₪25</td><td class="n">₪18.11</td><td class="n"><b>85%</b></td></tr>
+<tr data-cat="תה"><td class="name">גזוז מדברי ואפרסק</td><td class="n">₪4.80</td><td class="n">₪33</td><td class="n">₪23.17</td><td class="n"><b>83%</b></td></tr>
+<tr data-cat="תה"><td class="name">גזוז היביסקוס ותפוח</td><td class="n">₪2.88</td><td class="n">₪22</td><td class="n">₪15.76</td><td class="n"><b>85%</b></td></tr>
+<tr class="grp" data-cat="צ&#x27;אי"><td colspan="5">צ&#x27;אי · לימונדה</td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">לימונדת צ&#x27;אי מסאלה</td><td class="n">₪3.95</td><td class="n">₪22</td><td class="n">₪14.69</td><td class="n"><b>79%</b></td></tr>
+<tr class="grp" data-cat="צ&#x27;אי"><td colspan="5">צ&#x27;אי · צ&#x27;אי מסאלה CHAI MASSALA</td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">אייס צ&#x27;אי מסאלה קלאסי</td><td class="n">₪5.57</td><td class="n">₪28</td><td class="n">₪18.16</td><td class="n"><b>77%</b></td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">צ&#x27;אי מסאלה על הקרח</td><td class="n">₪3.70</td><td class="n">₪24</td><td class="n">₪16.64</td><td class="n"><b>82%</b></td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">דירטי צ&#x27;אי</td><td class="n">₪6.57</td><td class="n">₪32</td><td class="n">₪20.55</td><td class="n"><b>76%</b></td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">צ&#x27;אי מסאלה תפוז וטוניק</td><td class="n">₪4.75</td><td class="n">₪26</td><td class="n">₪17.28</td><td class="n"><b>78%</b></td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">צ&#x27;אי מסאלה פינק טוניק</td><td class="n">₪4.75</td><td class="n">₪24</td><td class="n">₪15.59</td><td class="n"><b>77%</b></td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">צ&#x27;אי מסאלה ומיץ תפוזים</td><td class="n">₪5.25</td><td class="n">₪28</td><td class="n">₪18.48</td><td class="n"><b>78%</b></td></tr>
+<tr class="grp" data-cat="צ&#x27;אי"><td colspan="5">צ&#x27;אי · קולד פואם COLD FOAM</td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">צ&#x27;אי מסאלה קולד פואם וניל</td><td class="n">₪4</td><td class="n">₪28</td><td class="n">₪19.73</td><td class="n"><b>83%</b></td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">צ&#x27;אי מסאלה קולד פואם פיסטוק</td><td class="n">₪4.90</td><td class="n">₪30</td><td class="n">₪20.52</td><td class="n"><b>81%</b></td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">צ&#x27;אי תאילנדי קוקוס קולד פואם</td><td class="n">₪4.90</td><td class="n">₪32</td><td class="n">₪22.22</td><td class="n"><b>82%</b></td></tr>
+<tr data-cat="צ&#x27;אי"><td class="name">צ&#x27;אי מסאלה קולד פואם בננה</td><td class="n">₪4.20</td><td class="n">₪31</td><td class="n">₪22.07</td><td class="n"><b>84%</b></td></tr>
+<tr class="grp" data-cat="אבקות"><td colspan="5">אבקות · אייס מאצ&#x27;ה ICE MATCHA</td></tr>
+<tr data-cat="אבקות"><td class="name">אייס מאצ&#x27;ה קלאסי</td><td class="n">₪4.26</td><td class="n">₪26</td><td class="n">₪17.77</td><td class="n"><b>81%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס מאצ&#x27;ה מנגו</td><td class="n">₪6.46</td><td class="n">₪39</td><td class="n">₪26.59</td><td class="n"><b>80%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס מאצ&#x27;ה תות</td><td class="n">₪6.46</td><td class="n">₪39</td><td class="n">₪26.59</td><td class="n"><b>80%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס מאצ&#x27;ה אפרסק</td><td class="n">₪6.46</td><td class="n">₪39</td><td class="n">₪26.59</td><td class="n"><b>80%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס מאצ&#x27;ה מסאלה</td><td class="n">₪6.86</td><td class="n">₪37</td><td class="n">₪24.50</td><td class="n"><b>78%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">מאצ&#x27;ה אגבה על הקרח</td><td class="n">₪2.85</td><td class="n">₪26</td><td class="n">₪19.18</td><td class="n"><b>87%</b></td></tr>
+<tr class="grp" data-cat="אבקות"><td colspan="5">אבקות · מאצ&#x27;ה ספיישל MATCHA SPECIALS</td></tr>
+<tr data-cat="אבקות"><td class="name">אייס מאצ&#x27;ה וניל</td><td class="n">₪4.56</td><td class="n">₪28</td><td class="n">₪19.17</td><td class="n"><b>81%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס מאצ&#x27;ה פיסטוק</td><td class="n">₪5.46</td><td class="n">₪28</td><td class="n">₪18.27</td><td class="n"><b>77%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס מאצ&#x27;ה שומשום שחור</td><td class="n">₪5.06</td><td class="n">₪28</td><td class="n">₪18.67</td><td class="n"><b>79%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס מאצ&#x27;ה קפה</td><td class="n">₪5.26</td><td class="n">₪29</td><td class="n">₪19.32</td><td class="n"><b>79%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס מאצ&#x27;ה בננה</td><td class="n">₪4.76</td><td class="n">₪28</td><td class="n">₪18.97</td><td class="n"><b>80%</b></td></tr>
+<tr class="grp" data-cat="אבקות"><td colspan="5">אבקות · מאצ&#x27;ה קוקוס MATCHA COCONUT</td></tr>
+<tr data-cat="אבקות"><td class="name">מאצ&#x27;ה קוקוס אגבה</td><td class="n">₪4.04</td><td class="n">₪34</td><td class="n">₪24.77</td><td class="n"><b>86%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">מאצ&#x27;ה קוקוס ליצ&#x27;י</td><td class="n">₪4.07</td><td class="n">₪32</td><td class="n">₪23.05</td><td class="n"><b>85%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">מאצ&#x27;ה קוקוס תות</td><td class="n">₪5.79</td><td class="n">₪44</td><td class="n">₪31.50</td><td class="n"><b>84%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">מאצ&#x27;ה קוקוס מנגו</td><td class="n">₪5.79</td><td class="n">₪44</td><td class="n">₪31.50</td><td class="n"><b>84%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">מאצ&#x27;ה קוקוס אפרסק</td><td class="n">₪5.79</td><td class="n">₪44</td><td class="n">₪31.50</td><td class="n"><b>84%</b></td></tr>
+<tr class="grp" data-cat="אבקות"><td colspan="5">אבקות · אובה UBE</td></tr>
+<tr data-cat="אבקות"><td class="name">אייס אובה תות</td><td class="n">₪5.22</td><td class="n">₪30</td><td class="n">₪20.20</td><td class="n"><b>79%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס אובה מנגו</td><td class="n">₪5.22</td><td class="n">₪30</td><td class="n">₪20.20</td><td class="n"><b>79%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס אובה אפרסק</td><td class="n">₪5.22</td><td class="n">₪30</td><td class="n">₪20.20</td><td class="n"><b>79%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס אובה מסאלה</td><td class="n">₪6.27</td><td class="n">₪31</td><td class="n">₪20</td><td class="n"><b>76%</b></td></tr>
+<tr data-cat="אבקות"><td class="name">אייס אובה מאצ&#x27;ה</td><td class="n">₪4.96</td><td class="n">₪28</td><td class="n">₪18.77</td><td class="n"><b>79%</b></td></tr>
+</tbody><caption>עלות ורווח לכוס ללא מע״מ · מחיר כולל מע״מ · רווח = <span class="mono">round((price/1.18 − cost) / (price/1.18) × 100)</span> — נגזר, לא מוקלד</caption></table></div></div></section>
+<section id="lead"><div class="wrap"><div class="sechead"><span class="num">05</span><h2>הליד</h2></div><p class="prose">שאלה אחת בתחילת השיחה ממיינת בין שלושת הסוגים. בלי המיון הזה כל השאר מבוזבז.</p><div class="grid3">
+<div class="card"><h4>מחליט — בעל מקום / מנהל</h4>
+<p class="small" style="margin:0"><b>מה עובד:</b> ₪3.25 → ₪20, בלי מכונה, בלי מקום במקרר, בלי מלאי גדול</p></div>
+<div class="card"><h4>משפיע — בר־מנג&#x27;ר / בריסטה</h4>
+<p class="small" style="margin:0 0 8px">⊥ חותם, אבל יכול להרוג את זה</p>
+<p class="small" style="margin:0"><b>מה עובד:</b> מתכונים, גיוון, עשר שניות הכנה, סרטוני ההדרכה</p></div>
+<div class="card"><h4>לא קונה — פרטי / סקרן</h4>
+<p class="small" style="margin:0"><b>מה עובד:</b> תשובה קצרה ואדיבה עם קישור לאתר, וסגירה. ⊥ להשקיע.</p></div>
+</div>
+<h3>רצף השיחה</h3><ul class="tight small">
+<li>המטרה היא הזמנה ראשונה, ⊥ פגישה.</li>
+<li>ההתנגדות האמיתית היא אינרציה, ⊥ מחיר.</li>
+<li>אף חומר ⊥ נשלח לפני שביקשו אותו.</li>
+</ul><div style="margin-top:18px">
+<div class="stage"><div class="idx">01</div><div><div class="when">0–5 דקות</div><h4>מענה מיידי ושאלה אחת</h4>
+<p class="small" style="margin:0 0 6px">⊥ להסביר, ⊥ לשלוח כלום. למיין. שאלה אחת בלבד.</p>
+<p class="small" style="margin:0 0 6px">יותר משאלה אחת מוריד את שיעור המענה בחדות.</p>
+<div class="script">היי [שם], הגעת ל-GT everyday. אנחנו מייצרים תמציות תה טבעיות ומספקים לבתי קפה ומסעדות. לפני שאני שולח לך חומר — איזה עסק יש לך, ואיפה?</div>
+</div></div>
+<div class="stage"><div class="idx">02</div><div><div class="when">מיד אחרי שענה</div><h4>ההסבר האנושי</h4>
+<p class="small" style="margin:0 0 6px">שלוש שורות שבן אדם עסוק קורא בעמידה, ומספר אחד שנתקע לו בראש. מסתיים בבקשת רשות.</p>
+<div class="script">אנחנו מפעל בחולון שמייצר תמציות תה טבעיות — עלי תה וצמחים שאנחנו מביאים ישירות מהמגדלים. בלי חומרים משמרים, בלי צבעי מאכל, בלי תמציות טעם. ההכנה: כוס, קרח, 50 מ״ל תמצית, מים או סודה. עשר שניות, בלי מכונה ובלי מקום במקרר. הקטגוריה יושבת בין הקפה למשקאות מהמקרר — קצת פחות רווחית מקפה, הרבה יותר רווחית מפחית. כוס עולה לך ₪3.25 ונמכרת ב-₪20. רוצה שאשלח לך את המשקאות?</div>
+<p class="small" style="margin:8px 0 0"><span class="pill draft">שונה מהספר</span> הוסר המשפט &quot;אנחנו 8 שנים בשוק, עם כ-700 לקוחות — בהם R2M, קבוצת קיסו, נונו מימי ובבקה&quot;. שני המספרים unsourced (claims#customers_700, claims#years_8) ושניים מהשמות ⊥ אומתו (claims#named_customers). עד הכרעת טום (TOM-C, TOM-D) — ⊥ נאמר.</p>
+</div></div>
+<div class="stage"><div class="idx">03</div><div><div class="when">אחרי &quot;כן&quot;</div><h4>שולחים ערכה, ⊥ קטלוג</h4>
+<p class="small" style="margin:0 0 6px">שלושה מתכונים מהקטגוריה שהביאה אותו — ⊥ 48 משקאות. ליד ממודעת מאצ&#x27;ה מקבל מאצ&#x27;ה בלבד.</p>
+<p class="small" style="margin:0 0 6px">מי שמחפש דבר אחד ומקבל עשרה ⊥ מרגיש שקיבל יותר, אלא שלא הבינו אותו.</p>
+<p class="small" style="margin:0 0 6px">כדאי להזכיר כאן את ההדרכה — זו התשובה הישירה ל&quot;הצוות שלי לא ילמד&quot;.</p>
+</div></div>
+<div class="stage"><div class="idx">04</div><div><div class="when">שיחה פתוחה</div><h4>עונים על שאלות</h4>
+<p class="small" style="margin:0 0 6px">מבנק התשובות בלבד. מה שאין בבנק — עובר לאלכסנדר, ⊥ ממציאים.</p>
+</div></div>
+<div class="stage"><div class="idx">05</div><div><div class="when">כשהשיחה בשלה</div><h4>מבקשים את ההזמנה</h4>
+<p class="small" style="margin:0 0 6px">הצעה מוגדרת שאפשר לאשר בהודעה — ⊥ &quot;בוא נדבר&quot;.</p>
+<p class="small" style="margin:8px 0 0"><span class="pill open">TOM-A.1</span> תוכן ומחיר החבילות ⊥ סגורים. עד שיהיו — ⊥ מציעים חבילה ספציפית, מעבירים לאלכסנדר. אפשר לומר שהמינימום ₪800 + מע״מ ושהחבילה עומדת בו.</p>
+</div></div>
+<div class="stage"><div class="idx">06</div><div><div class="when">אחרי ההזמנה</div><h4>ההדרכה</h4>
+<p class="small" style="margin:0 0 6px">⊥ שירות אחרי מכירה — חלק מהמכירה. מקום שקיבל ארגז ולא יודע להכין נכון יפסיק להזמין תוך חודש.</p>
+</div></div>
+</div><h3>כשאין תשובה</h3><div class="grid3">
+<div class="card"><div class="when small">יום 2</div><h4>תזכורת קצרה</h4>
+<p class="small" style="margin:0 0 6px">בלי התנצלות ובלי חזרה על מה שכבר נאמר.</p>
+<div class="script">שלחתי לך אתמול את המשקאות. יש משהו שאני יכול לענות עליו?</div>
+</div>
+<div class="card"><div class="when small">יום 5</div><h4>ערך, ⊥ דחיפה</h4>
+<div class="script">משקה אחד שכמעט כל מקום מתחיל ממנו — חליטת היביסקוס וליים. עלות ₪3.25, נמכר ב-₪20, נטול קפאין, בצבע אדום שנראה טוב על השולחן. המתכון: קרח, 50 מ״ל תמצית FRESH, מים או סודה, סלייס לימון.</div>
+</div>
+<div class="card"><div class="when small">יום 12</div><h4>סגירת מעגל</h4>
+<p class="small" style="margin:0 0 6px">מקבלת הכי הרבה תשובות מהשלוש, כי היא משחררת.</p>
+<div class="script">לא רוצה להציק. אם זה לא רלוונטי עכשיו — תגיד ואסגור אצלי. ואם זה עניין של תזמון, מתי כדאי לחזור?</div>
+</div>
+<div class="card"><div class="when small">אחרי כן</div><h4>עוצרים</h4>
+<p class="small" style="margin:0 0 6px">שלוש נגיעות ואז עוצרים. תזכורת שחוזרת על עצמה נקראת כרדיפה.</p>
+</div>
+</div></div></section>
+<section id="send"><div class="wrap"><div class="sechead"><span class="num">06</span><h2>מה שולחים</h2></div><p class="prose">קמפיין לכל קטגוריה, וערכה שמתאימה לו. ליד שהגיע ממודעת מאצ&#x27;ה מקבל מאצ&#x27;ה בלבד — מי שמחפש דבר אחד ומקבל עשרה לא מרגיש שקיבל יותר, אלא שלא הבינו אותו.</p><div class="grid2">
+<div class="card"><h4>בית קפה</h4><p class="small" style="margin:0 0 6px"><b>נכנסים עם:</b> תמצית תה — בקבוק אחד, מים וקרח, אפס ציוד</p><p class="small" style="margin:0">הקטגוריה יושבת בדיוק בין הקפה למקרר. הצעה שמתווספת לתפריט ⊥ מתחרה בו.</p>
+</div>
+<div class="card"><h4>מסעדה</h4><p class="small" style="margin:0 0 6px"><b>נכנסים עם:</b> תמצית תה — נטולי קפאין חזקים כאן</p><p class="small" style="margin:0">ארבע תמציות נטולות קפאין — נקודת מכירה למי שמחפש מה להציע אחר הצהריים ולסועד שלא שותה אלכוהול.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">אלרגנים — הסועד מסתמך על המסעדה, והמסעדה עלינו. כלל allergens קריטי כאן.</p>
+</div>
+<div class="card"><h4>בר</h4><p class="small" style="margin:0 0 6px"><b>נכנסים עם:</b> צ&#x27;אי — NAMASTEA פותח 11 משקאות ממה שכבר יש בבר</p><p class="small" style="margin:0">טוניק, אספרסו, מיץ תפוזים וחלב כבר עומדים שם. ההצעה הכי קלה בקו להגיד לה כן.</p>
+</div>
+<div class="card"><h4>בית קפה ספשלטי</h4><p class="small" style="margin:0 0 6px"><b>נכנסים עם:</b> אבקות — מאצ&#x27;ה</p><p class="small" style="margin:0">יש מקציף וחלב, והצוות כבר יודע לעבוד עם בסיס. מובילים ב-₪2.13 למנה, ⊥ ב-₪590 לפחית.</p>
+</div>
+</div><h3>לאן מרחיבים אחרי ההזמנה הראשונה</h3><div class="scroller"><table><thead><tr><th>מ־</th><th>אל</th><th>מה זה עולה ללקוח</th></tr></thead><tbody>
+<tr><td class="name">תה</td><td class="name">צ&#x27;אי</td><td class="small">בקבוק שני. אפס ציוד, אפס למידה.</td></tr>
+<tr><td class="name">חליטה</td><td class="name">לימונדה ← גזוז</td><td class="small">אפס מוצר חדש — רק מתכונים בהודעה.</td></tr>
+<tr><td class="name">מאצ&#x27;ה</td><td class="name">אובה</td><td class="small">אותה שיטת בסיס, אותו מקציף, אותו חלב. 70 אגורות למנה. <span class="pill open">אובה ⊥ עומד לבד — כל 5 משקאותיו דורשים מוצר שני.</span></td></tr>
+<tr><td class="name">אבקות + נמסטאה</td><td class="name">אין מה למכור</td><td class="small">מקום שיש לו גם נמסטאה וגם אבקה מקבל שני משקאות נוספים בחינם — אייס מאצ&#x27;ה מסאלה ואייס אובה מסאלה. יש מה לספר, ⊥ מה למכור — וזו סיבה טובה לשלוח הודעה.</td></tr>
+<tr><td class="name">כל קטגוריה</td><td class="name">מחיות פרי</td><td class="small">מחית אחת ב-₪60 מוסיפה משקאות גם בתה וגם באבקות. ההרחבה הרוחבית היחידה.</td></tr>
+<tr><td class="name">כלל</td><td class="name">כלל</td><td class="small">ההרחבה נקנית ב&quot;כן&quot;, ⊥ בזמן: מציעים אחרי שהזמין, או אחרי שהוא שאל מיוזמתו. והכיוון — לכיוון שדורש הכי פחות מהבר, ⊥ לכיוון שדומה בטעם.</td></tr>
+</tbody></table></div></div></section>
+<section id="answers"><div class="wrap"><div class="sechead"><span class="num">07</span><h2>בנק התשובות</h2></div><p class="prose">אלה התשובות שמותר לתת. שאלה שאינה כאן עוברת לאלכסנדר — גם אם נראה שאפשר להסיק את התשובה.</p>
+<p class="small"><span class="pill ok">מאושר · 18</span> <span class="pill draft">טיוטה · 8</span> <span class="pill move">העברה · 5</span> — שורת "העברה" היא תשובה תקפה. היא מה שמונע ניחוש.</p>
+<div class="qa">
+<details><summary><span class="pill ok">מאושר</span>מה יש לכם?</summary><div class="body"><p style="margin:0">תמציות תה טבעיות ואבקות — מאצ&#x27;ה, אובה ומאצ&#x27;ה שחורה. בנוסף מחיות פרי איטלקיות ועזרי הכנה.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">⚠ &quot;מאצ&#x27;ה שחורה&quot; = HOJICHA. יש לו SKU פעיל ומחיר (₪375 ל-500 גרם, ₪750 לק&quot;ג), אבל **אין לו אף מתכון בקטלוג המשקאות** — אז מותר למכור, וכדאי לומר שהמתכונים בדרך ולא להעמיס עליו את השיחה.</p>
+<div class="src mono">ספר העבודה §07</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>מה אין במוצרים?</summary><div class="body"><p style="margin:0">ללא חומרים משמרים, ללא צבעי מאכל וללא תמציות טעם.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">⚠ על אלרגנים ⊥ עונים — כלל allergens גובר.</p>
+<div class="src mono">ספר העבודה §07 · claims#no_additives</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>יש סוכר?</summary><div class="body"><p style="margin:0">התמציות זמינות עם מעט סוכר, או ללא סוכר כלל — FRESH ללא סוכר ו-DETOX ללא סוכר, באותו מחיר בדיוק.</p>
+<p class="small" style="margin:8px 0 0">שונה מהספר: הוסר &quot;כ-17 קלוריות ל-100 מ״ל&quot; — אין לו מקור מאושר (claims#calories_17). שאלה על קלוריות עוברת לפי כלל nutrition_values.</p>
+<div class="src mono">ספר העבודה §07 + products/catalog.yaml (sugar: none)</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>איפה מייצרים?</summary><div class="body"><p style="margin:0">במפעל שלנו בחולון. חומרי הגלם מיובאים ישירות ממגדלים ברחבי העולם — הייצור והיבוא תחת קורת גג אחת.</p>
+<div class="src mono">ספר העבודה §07 · claims#made_in_holon</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>כשרות?</summary><div class="body"><p style="margin:0">כל המוצרים כשרים בד״ץ בית יוסף, בהשגחת הרבנות חולון.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">⚠ בקשה לתעודה סרוקה / מספר תעודה / פרווה-מול-חלבי — עוברת לאלכסנדר. אין תעודה בשום קובץ מאושר (CLAIM-1).</p>
+<div class="src mono">ספר העבודה §07 · claims#kashrut_badatz</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>חיי מדף?</summary><div class="body"><p style="margin:0">תמציות: שנה סגור, ללא צורך בקירור. אחרי פתיחה — שלושה חודשים בקירור. אבקות: שנתיים.</p>
+<div class="src mono">ספר העבודה §07 · claims#shelf_life</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>מינימום הזמנה?</summary><div class="body"><p style="margin:0">₪800 בתוספת מע״מ.</p>
+<div class="src mono">ספר העבודה §02 + §07 · claims#minimum_order_800</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>מספקים לכל הארץ?</summary><div class="body"><p style="margin:0">כן, דרך המפיץ שלנו אייס דרים. מרכז — ראשון, שני וחמישי. צפון — שלישי. דרום — רביעי.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">⚠ מותר לומר את **ימי החלוקה**. ⊥ מותר לומר באיזה יום הזמנה מסוימת תגיע — שעת הקליטה ⊥ מוגדרת. שאלת תאריך להזמנה ספציפית עוברת (כלל delivery_date).</p>
+<div class="src mono">claims#distributor_ice_dream — טום, בכתב, 2026-08-31</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>איך משלמים?</summary><div class="body"><p style="margin:0">שתי אפשרויות. הזמנה ותשלום מיידי במערכת ההזמנות — במחיר מוזל שיורד בהתאם לצריכה החודשית. או אשראי במחיר קבוע מראש, בכפוף למילוי מסמכים ולהעמדת ערבויות אישיות; גובה האשראי נקבע לפי נתוני העסק.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">⚠ מדרגות ההנחה — אין מספרים (TOM-A.3). כל שאלה על גובה ההנחה, גובה האשראי או תנאי הערבות עוברת — כלל discount_or_terms.</p>
+<div class="src mono">ספר העבודה §07</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>איך מתחילים?</summary><div class="body"><p style="margin:0">בשלוש חבילות התחלה. כל אחת כוללת מוצרים לטעימות, ציוד, הוראות הכנה, תפריט משקאות והדרכה לצוות. את התוכן והמחיר המדויקים אלכסנדר יעביר לך.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">⚠ ⊥ להציע חבילה ספציפית ו⊥ מחיר — TOM-A.1, כלל starter_packages.</p>
+<div class="src mono">ספר העבודה §05 שלב 05 + §07 + §09</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>כבר יש לי ספקים</summary><div class="body"><p style="margin:0">GT מרכזת במקום אחד את חומרי הגלם, מחיות הפרי ועזרי ההכנה — פחות ספקים ופחות התעסקות. אנחנו מובילים בישראל את תחום המשקאות המיוחדים, ומביאים את הטרנדים ראשונים.</p>
+<div class="src mono">ספר העבודה §07</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>איך אדע שזה טעים?</summary><div class="body"><p style="margin:0">אנחנו 8 שנים בשוק, עם כ-700 לקוחות — בהם R2M, קבוצת קיסו, נונו מימי, ויוינו, אליטה אופק ובבקה. וגם: לא צריך להאמין לי. חבילת ההתחלה קיימת בדיוק בשביל שתטעם לפני שתחליט.</p>
+<div class="src mono">ספר העבודה §07 · claims#customers_700 · claims#years_8 · claims#named_customers — כל השלוש אושרו ע&quot;י טום בכתב 2026-08-31.</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>הצוות שלי לא ילמד את זה</summary><div class="body"><p style="margin:0">חליטה קרה היא כוס, קרח, 50 מ״ל תמצית ומים או סודה — עשר שניות, בלי מכונה. ולכל מוצר ולכל משקה יש סרטון הדרכה, ואיתם חוברת משקאות מסודרת עם הוראות הכנה ותמחור לכל משקה.</p>
+<div class="src mono">ספר העבודה §05 שלב 06 + §07 · claims#training_videos</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>אני חושש שזה לא יצליח</summary><div class="body"><p style="margin:0">בדיוק בשביל זה יש חבילות התחלה — מתחילים בקטן, עם טעימות והדרכה, ורק אחר כך מרחיבים.</p>
+<div class="src mono">ספר העבודה §07</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>זה רווחי?</summary><div class="body"><p style="margin:0">קצת פחות מקפה, משמעותית יותר ממשקאות מוכנים מהמקרר. חליטה קרה עולה ₪3.25 ונמכרת ב-₪20 — 81% על ההכנסה נטו.</p>
+<div class="src mono">ספר העבודה §07 · claims#cost_20_to_1 · claims#less_profitable_than_coffee</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>למי זה מתאים?</summary><div class="body"><p style="margin:0">בעיקר למי שעד היום הזמין מים או סודה ומחפש משהו מעניין יותר. זו הרחבה של התפריט, לא תחליף לקפה.</p>
+<div class="src mono">ספר העבודה §07</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>אין לי מקום בבר</summary><div class="body"><p style="margin:0">בקבוק סגור לא דורש קירור ולא תופס מקום במקרר. אחרי פתיחה נשמר בקירור שלושה חודשים.</p>
+<div class="src mono">ספר העבודה §07 · claims#shelf_life</div></div></details>
+<details><summary><span class="pill ok">מאושר</span>יש חוזה? מינימום חודשי? בלעדיות?</summary><div class="body"><p style="margin:0">אין חוזה, אין מינימום חודשי ואין בלעדיות. ההתחייבות היחידה היא מינימום הזמנה של ₪800 בתוספת מע״מ — מזמינים מתי שרוצים.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">⚠ במסלול האשראי כן נדרשים מסמכים וערבויות אישיות. זה תנאי אשראי, ⊥ התחייבות רכש — וגובה האשראי נקבע אצל אלכסנדר.</p>
+<div class="src mono">claims#no_commitment — טום, בכתב, 2026-08-31</div></div></details>
+<details><summary><span class="pill draft">טיוטה</span>מה אני בפועל צריך לשנות כדי לעבור אליכם?</summary><div class="body"><p style="margin:0">פחות ממה שנשמע. חליטה קרה: כוס, קרח, 50 מ״ל תמצית, מים או סודה — עשר שניות, בלי מכונה. הבקבוק סגור לא צריך קירור, אז זה לא לוקח מקום במקרר. צ&#x27;אי זה אותו בקבוק, אותה מנה, אותה פעולה — ברמן שיודע להכין חליטה כבר יודע להכין צ&#x27;אי. רק אבקות דורשות משהו נוסף: מקציף או מטרפה, וחלב.</p>
+<div class="src mono">ספר העבודה §01 &quot;הקו שחשוב להבין&quot; + §05 שלב 02 + §06</div></div></details>
+<details><summary><span class="pill draft">טיוטה</span>אני לא רוצה להחליף את מה שעובד לי</summary><div class="body"><p style="margin:0">גם אני לא ממליץ להחליף. הקטגוריה הזאת יושבת במקום שהיה ריק — בין הקפה למשקאות המוכנים מהמקרר — והיא תוספת לתפריט, לא תחליף לכלום. אפשר להתחיל מבקבוק אחד ולראות מה קורה.</p>
+<div class="src mono">ספר העבודה §01 + §07 &quot;למי זה מתאים&quot;</div></div></details>
+<details><summary><span class="pill draft">טיוטה</span>המינימום שלכם גבוה מדי בשביל ניסיון</summary><div class="body"><p style="margin:0">המינימום הוא ₪800 לפני מע״מ, וחבילת ההתחלה כבר עומדת בו — היא בנויה בדיוק בשביל להתחיל בלי סיכון: מוצרים לטעימות, ציוד, הוראות והדרכה. אני אבקש מאלכסנדר לשלוח לך את הפירוט.</p>
+<div class="src mono">ספר העבודה §05 שלב 05 + §07</div></div></details>
+<details><summary><span class="pill move">העברה</span>ומה אם המשקה לא יימכר?</summary><div class="body"><p style="margin:0">שאלה הוגנת. מדיניות החזרות או החלפה היא משהו שאלכסנדר סוגר, ואני מעדיף שתקבל ממנו תשובה מחייבת ולא ממני הערכה.</p>
+<div class="src mono">⊥ נמצאה מדיניות החזרות בשום קובץ מאושר (נבדק 2026-08-31). ראיית 2026-08-24 מראה 0 refunds ב-25 חודשים — GT מבטלת הזמנות ⊥ מזכה — אבל זו התנהגות היסטורית, ⊥ מדיניות מוצהרת. UNRESOLVED U-016.</div></div></details>
+<details><summary><span class="pill move">העברה</span>מה קורה אם מוצר חסר במלאי?</summary><div class="body"><p style="margin:0">מלאי אני לא מאשר מכאן — אלכסנדר בודק מול המערכת ומעדכן אותך.</p>
+<div class="src mono">אמת המלאי חיה ב-gt-factory-os ומשתנה בכל שעה. כלל 2 — ⊥ עובדה שמורה. אין מדיניות מוצהרת ל&quot;מה עושים כשחסר&quot;. UNRESOLVED U-016.</div></div></details>
+<details><summary><span class="pill move">העברה</span>איך נראית פריסה לרשת?</summary><div class="body"><p style="margin:0">רשת אני מעביר ישירות לאלכסנדר. אשמח לקחת ממך את שם הרשת ומספר הסניפים כדי שהוא יגיע מוכן.</p>
+<div class="src mono">ספר העבודה §08 &quot;מעבירים לאלכסנדר — רשת, או יותר מסניף אחד&quot;</div></div></details>
+<details><summary><span class="pill move">העברה</span>זה לא רק לקיץ?</summary><div class="body"><p style="margin:0">אני מעדיף לא לענות על זה בהערכה. אלכסנדר יראה לך איך זה נראה בפועל לאורך השנה אצל מקומות דומים לשלך.</p>
+<div class="src mono">הקטלוג בתוקף נקרא &quot;GT_Summer_Menu_2026&quot; וכל 48 המשקאות קרים — מה שמעלה את השאלה, ⊥ עונה עליה. אין ניתוח עונתיות בשום קובץ מאושר; טבלת העובדות 2026-08-24 מכילה נתוני חודש×לקוח שיכולים לענות, אבל ניתוח כזה ⊥ נעשה. UNRESOLVED U-015.</div></div></details>
+<details><summary><span class="pill draft">טיוטה</span>איך זה עובד בפועל — חשבונית, הזמנה חוזרת, מי מטפל?</summary><div class="body"><p style="margin:0">ההזמנות עוברות במערכת ההזמנות שלנו, וכל הזמנה מקבלת חשבונית. אחרי ההזמנה הראשונה מגיעים סרטוני ההדרכה וחוברת המשקאות — זה חלק מהמכירה, לא שירות אחרי.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">⚠ ⊥ להבטיח מי מתקשר ומתי — תדירות הזמנה חוזרת וזהות המטפל ⊥ מוגדרות (UNRESOLVED U-016).</p>
+<div class="src mono">ספר העבודה §05 שלב 06 + §07 &quot;איך משלמים&quot;</div></div></details>
+<details><summary><span class="pill draft">טיוטה</span>מי מביא את זה ואיך?</summary><div class="body"><p style="margin:0">ההפצה דרך אייס דרים, המפיץ שלנו, שמגיע לכל אזור בארץ לפחות פעמיים בשבוע.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">⚠ ⊥ לתאר סוג רכב, קירור בהובלה או חלון שעות — אין מקור.</p>
+<div class="src mono">ספר העבודה §07 · claims#distributor_ice_dream</div></div></details>
+<details><summary><span class="pill move">העברה</span>מה ההבדל בינכם לבין [מתחרה]?</summary><div class="body"><p style="margin:0">על מוצר של חברה אחרת אני לא מתייחס. מה שאני כן יכול להראות: העלות למנה אצלנו, מה נפתח בתפריט עם בקבוק אחד, ומה הצוות צריך ללמוד — ותשווה בעצמך.</p>
+<div class="src mono">boundaries/refusals.yaml#competitor_product</div></div></details>
+<details><summary><span class="pill draft">טיוטה</span>מה קורה אחרי ההזמנה הראשונה?</summary><div class="body"><p style="margin:0">מגיעים סרטוני הדרכה לכל מוצר ולכל משקה, וחוברת משקאות מסודרת עם הוראות הכנה ותמחור לכל משקה. זה חלק מהמכירה — מקום שקיבל ארגז ולא יודע להכין נכון מפסיק להזמין תוך חודש, ואנחנו לא רוצים את זה יותר ממך.</p>
+<div class="src mono">ספר העבודה §05 שלב 06 · claims#training_videos</div></div></details>
+<details><summary><span class="pill draft">טיוטה</span>כמה משקאות אני מקבל מבקבוק אחד?</summary><div class="body"><p style="margin:0">בקבוק ליטר נותן 20 כוסות במנה של 50 מ״ל — ₪3.25 לכוס. ובחירת התמצית פותחת עוד: בקבוק NAMASTEA אחד, למשל, פותח 11 משקאות שונים, ורובם דורשים רק מה שכבר יש בבר — חלב, אספרסו, טוניק, מיץ תפוזים.</p>
+<div class="src mono">ספר העבודה §02 + §06 · claims#single_bottle_11_drinks</div></div></details>
+<details><summary><span class="pill draft">טיוטה</span>₪590 לפחית מאצ&#x27;ה זה יקר</summary><div class="body"><p style="margin:0">במספר למנה זה נראה אחרת: פחית 500 גרם היא 277 מנות — ₪2.13 למנה, והמשקה נמכר ב-₪26 ומעלה. ואם רוצים להתחיל קטן, יש ערכת מאצ&#x27;ה ב-₪170.</p>
+<p class="small" style="margin:8px 0 0;color:var(--open)">⚠ הספר מציע גם &quot;50 גרם ב-₪65 כטעימה&quot; — MATCHA 50 גרם הוא רשומת-שלילה (טום 2026-08-06 &quot;אנחנו לא מוכרים אותה&quot;). ⊥ להציע אותו. TOM-B.</p>
+<div class="src mono">ספר העבודה §02 + §06 · claims#matcha_per_serving_2_13 · products/catalog.yaml</div></div></details>
+</div></div></section>
+<section id="limits"><div class="wrap"><div class="sechead"><span class="num">08</span><h2>הגבולות</h2></div><p class="prose">הפרק החשוב בספר. תשובה שגויה ללקוח מסעדה עולה יותר מתשובה מאוחרת.</p>
+<div class="scroller"><table><thead><tr><th>מתי זה נדלק</th><th>מה אומרים</th><th>למי מעבירים</th></tr></thead><tbody>
+<tr><td class="name">allergens <span class="pill open">critical</span><div class="small" style="color:var(--ink-3)">אלרג، alerg، allerg، גלוטן، אגוז، אגוזים…</div></td><td class="small">על אלרגנים אני לא עונה מהראש — זה משהו שאתם מגישים לסועד ואני לא רוצה שתסתמכו על ניחוש. אני מעביר אותך לאלכסנדר עם השאלה המדויקת ותקבל תשובה מוסמכת בכתב.</td><td class="small">alexander</td></tr>
+<tr><td class="name">health_claims <span class="pill open">critical</span><div class="small" style="color:var(--ink-3)">מנקה רעלים، ניקוי רעלים، דיטוקס אמיתי، מחזק חסינות، חיסון، מוריד במשקל…</div></td><td class="small">אנחנו לא טוענים טענות בריאותיות על המוצרים. מה שכן אפשר לומר: המוצרים ללא חומרים משמרים, ללא צבעי מאכל וללא תמציות טעם, וזמינים גם ללא סוכר. כל שאלה תזונתית או רפואית — אני מעביר לאלכסנדר.</td><td class="small">alexander</td></tr>
+<tr><td class="name">nutrition_values <span class="pill draft">high</span><div class="small" style="color:var(--ink-3)">ערכים תזונתיים، טבלת סימון، סימון תזונתי، קלוריות، קלוריה، קלורי…</div></td><td class="small">ערכים תזונתיים מדויקים אני לא מוסר מהראש. אני מעביר לאלכסנדר ותקבל את הנתון הרשמי.</td><td class="small">alexander</td></tr>
+<tr><td class="name">unlisted_price <span class="pill open">critical</span><div class="small" style="color:var(--ink-3)">כמה עולה ה، מה המחיר של، תמחיר לי، מחיר מיוחד، כמה תעלה לי…</div></td><td class="small">את המוצר הזה אני לא מתמחר כאן — אני מעביר לאלכסנדר והוא יחזור אליך עם מחיר מדויק.</td><td class="small">alexander</td></tr>
+<tr><td class="name">discount_or_terms <span class="pill open">critical</span><div class="small" style="color:var(--ink-3)">הנחה، הנחות، מוזל، זול יותר، מחיר מיוחד، מדרגות…</div></td><td class="small">הנחות ותנאי תשלום נקבעים מול אלכסנדר, לא אצלי. אני מעביר לו את הפרטים שלך והוא חוזר אליך.</td><td class="small">alexander</td></tr>
+<tr><td class="name">delivery_date <span class="pill draft">high</span><div class="small" style="color:var(--ink-3)">מתי יגיע، מתי זה מגיע، כמה ימים، תוך כמה זמן، אספקה מהירה، דחוף…</div></td><td class="small">אנחנו מחלקים דרך אייס דרים — מרכז בראשון, שני וחמישי, צפון בשלישי, דרום ברביעי. על איזה מהימים האלה ההזמנה שלך נופלת — אלכסנדר יאשר לך, אני לא רוצה להבטיח יום ולפספס.</td><td class="small">alexander</td></tr>
+<tr><td class="name">starter_packages <span class="pill draft">high</span><div class="small" style="color:var(--ink-3)">חבילת התחלה، חבילות התחלה، ערכת התחלה، מה יש בחבילה، כמה עולה החבילה، החבילה הכי…</div></td><td class="small">יש שלוש חבילות התחלה, וכל אחת כוללת מוצרים לטעימות, את הציוד, הוראות הכנה, תפריט משקאות והדרכה לצוות. את התוכן והמחיר המדויקים של כל חבילה אלכסנדר יעביר לך — אני לא רוצה למסור מספר שישתנה.</td><td class="small">alexander</td></tr>
+<tr><td class="name">chain_or_multi_branch <span class="pill draft">high</span><div class="small" style="color:var(--ink-3)">רשת، סניפים، סניף נוסף، כמה סניפים، כל הסניפים، מטה…</div></td><td class="small">רשת אני מעביר ישירות לאלכסנדר — יש שם דברים שנסגרים ברמת המטה ולא ברמת הסניף. אשמח לקחת ממך את שם הרשת ומספר הסניפים כדי שהוא יגיע מוכן.</td><td class="small">alexander</td></tr>
+<tr><td class="name">existing_order_problem <span class="pill draft">high</span><div class="small" style="color:var(--ink-3)">לא הגיע، חסר، שבור، פגום، תלונה، החזר…</div></td><td class="small">מצטער על זה. אני מעביר את הפרטים לאלכסנדר עכשיו כדי שייקח את זה לטיפול ישירות מולך.</td><td class="small">alexander</td></tr>
+<tr><td class="name">exclusivity_or_commitment <span class="pill draft">high</span><div class="small" style="color:var(--ink-3)">בלעדיות، חוזה، התחייבות، מינימום חודשי، כמה זמן מחויב، לצאת מהעסקה…</div></td><td class="small">התחייבות ובלעדיות הן דברים שאלכסנדר סוגר, לא אני. אני מעביר לו.</td><td class="small">alexander</td></tr>
+<tr><td class="name">stock_or_lead_time_commitment <span class="pill draft">high</span><div class="small" style="color:var(--ink-3)">יש במלאי، במלאי، אזל، אזל המלאי، כמה יש לכם، תשמרו לי…</div></td><td class="small">מלאי אני לא מאשר מכאן — אלכסנדר בודק מול המערכת ומאשר לך.</td><td class="small">alexander</td></tr>
+<tr><td class="name">competitor_product <span class="pill move">medium</span><div class="small" style="color:var(--ink-3)">מתחרה، המתחרים، לעומת، במקום، יותר טוב מ، מונין…</div></td><td class="small">על מוצר של חברה אחרת אני לא מתייחס. מה שאני כן יכול להראות: העלות למנה אצלנו, מה נפתח בתפריט עם בקבוק אחד, ומה הצוות צריך ללמוד — ותשווה בעצמך.</td><td class="small">alexander</td></tr>
+<tr><td class="name">ingredient_origin_beyond_published <span class="pill move">medium</span><div class="small" style="color:var(--ink-3)">מאיזה מטע، איזה מגדל، שם הספק، מאיפה בדיוק، מאיזו מדינה، אחוז…</div></td><td class="small">מה שאני יכול לומר: מייצרים במפעל שלנו בחולון, וחומרי הגלם מיובאים ישירות מהמגדלים. פירוט מעבר לזה — אלכסנדר.</td><td class="small">alexander</td></tr>
+<tr><td class="name">private_label_or_custom <span class="pill move">medium</span><div class="small" style="color:var(--ink-3)">מותג פרטי، private label، לייבל، טעם משלנו، בהתאמה אישית، מיוחד בשבילנו…</div></td><td class="small">זה לא משהו שאני יכול לאשר. אני מעביר לאלכסנדר ותקבל תשובה ברורה.</td><td class="small">alexander</td></tr>
+<tr><td class="name">consumer_or_home_use <span class="pill ok">low</span><div class="small" style="color:var(--ink-3)">לבית، לשימוש ביתי، פרטי، אני לא עסק، בשביל עצמי، אין לי עסק…</div></td><td class="small">אנחנו מוכרים לבתי קפה ומסעדות בסיטונאות. לרכישה פרטית — gteveryday.com. שיהיה בהצלחה!</td><td class="small">—</td></tr>
+<tr><td class="name">negative_record_product <span class="pill draft">high</span><div class="small" style="color:var(--ink-3)">מאצ&#x27;ה 50، מאצה 50، אליטה 30، gt elita، מקציף קוקטיילים، קנקן…</div></td><td class="small">המוצר הזה לא נמצא כרגע במחירון הפעיל שלנו. אני מעביר לאלכסנדר שיבדוק אם הוא זמין ובאיזה מחיר.</td><td class="small">alexander</td></tr>
+<tr><td class="name">ברירת מחדל <span class="pill open">critical</span><div class="small" style="color:var(--ink-3)">כל מה שלא נתפס למעלה</div></td><td class="small">שאלה טובה, ואני לא רוצה לענות עליה בערך. אני מעביר לאלכסנדר והוא חוזר אליך עם תשובה מדויקת.</td><td class="small">alexander</td></tr>
+</tbody><caption>מקור: <span class="mono">knowledge/boundaries/refusals.yaml</span> — נבדק לפני בנק התשובות. סירוב גובר על תשובה, תמיד.</caption></table></div>
+<div class="grid2">
+<div class="note warn" style="margin:0"><b>אלרגנים — למה זה חמור</b>במחירון יש מחית פיסטוק ומשקה שומשום שחור, ושניהם אלרגנים מוכרזים. מסעדה מסתמכת על מה שאנחנו אומרים כדי לענות לסועד עם אלרגיה. לכן לא עונים — גם לא &quot;נראה לי שאין&quot;. מעבירים.</div>
+<div class="note warn" style="margin:0"><b>טענות בריאות</b>DETOX הוא שם מותג, וזה בסדר. משפט שמבטיח מה המשקה עושה לגוף — &quot;מנקה רעלים&quot;, &quot;מחזק חסינות&quot; — הוא חשיפה רגולטורית. לא אומרים ולא כותבים.</div>
+</div></div></section>
+<section id="open"><div class="wrap"><div class="sechead"><span class="num">09</span><h2>עוד לא סגור</h2></div><p class="prose">רוב מה שהיה פתוח נסגר ב-2026-08-31. מה שנשאר: מדרגות ההנחה, תוכן חבילות ההתחלה, ומה שקורה אחרי ההזמנה הראשונה — כולם לפגישה עם אלכס.</p>
+<h3>ארבע החלטות מסחריות — רק טום סוגר</h3><div class="grid2">
+<div class="card"><h4>חבילות ההתחלה <span class="pill open">טום</span></h4><p class="small" style="margin:0">שם, תוכן מדויק ומחיר לכל אחת משלוש החבילות.</p></div>
+<div class="card"><h4>זמן אספקה <span class="pill open">טום</span></h4><p class="small" style="margin:0">בימי עסקים, והאם מרכז ופריפריה שונים. &quot;פעמיים בשבוע&quot; היא תדירות, לא תשובה.</p></div>
+<div class="card"><h4>מדרגות ההנחה <span class="pill open">טום</span></h4><p class="small" style="margin:0">המספרים עצמם, במסלול התשלום המיידי.</p></div>
+<div class="card"><h4>התחייבות ובלעדיות <span class="pill open">טום</span></h4><p class="small" style="margin:0">חוזה? מינימום חודשי? בלעדיות אזורית?</p></div>
+</div>
+<h3>שלוש טענות שנאמרו ללקוחות בלי מקור</h3><div class="scroller"><table><thead><tr><th>הטענה</th><th>מה נמצא בבדיקה</th></tr></thead><tbody>
+<tr><td class="name">כ-17 קלוריות ל-100 מ״ל משקה מוכן <span class="pill open">CLAIM-3</span></td><td class="small">⊥ נמצא מקור. אין טבלת סימון תזונתי בשום קובץ מאושר. ערך תזונתי הוא בדיוק מה שמסעדה מצטטת ללקוח — ⊥ נאמר עד שיש מקור.</td></tr>
+</tbody><caption>עד הכרעת טום — המשפטים האלה ירדו מהעמוד ומהנוסחים. <span class="mono">knowledge/claims/public-claims.yaml</span></caption></table></div>
+<div class="note cold"><b>פגמי הקטלוג שהספר מנה — לא תוקנו כאן, במכוון.</b>שלושה מתכונים שמפנים לתמצית שלא קיימת, מתכון וניל/אגבה כפול, "20–25 כוסות", מספור כפול, וארבעה קטלוגי קנבה שרק אחד מהם בתוקף — כולם בבעלות סשן תפריטי הקטגוריות. נרשמו והועברו.</div>
+</div></section>
+<section id="build"><div class="wrap"><div class="stamp">
+<h4>מאיפה העמוד הזה נבנה</h4>
+<p class="small" style="margin:0">המאגר הוא האמת. העמוד הזה הוא תצוגה שלו, שנבנתה מהקבצים למטה אחרי שכולם עברו את הבודק.</p><dl>
+<dt>build</dt><dd>2026-08-31</dd>
+<dt>Sales-Machine</dt><dd>d751503 · branch claude/gt-specialty-beverages-0p8sbr</dd>
+<dt>production-brain</dt><dd>cee556b · branch claude/gt-specialty-beverages-0p8sbr</dd>
+<dt>generator</dt><dd>scripts/knowledge/build_book.py</dd>
+<dt>gate</dt><dd>scripts/knowledge/reconcile.py cards → 0 rows</dd>
+<dt>drinks</dt><dd>.claude/skills/drinks-pricelist/drinks_final_figures.json (2026-08-27)</dd>
+<dt>prices</dt><dd>docs/pricing/2026-08-05_shopify_products_exvat.tsv</dd>
+<dt>sellable</dt><dd>docs/warehouses/catalog-truth.md (Tom 2026-08-06)</dd>
+</dl></div></div></section>
+<footer><div class="wrap"><p style="margin:0 0 6px"><b>GT everyday</b></p><p style="margin:0 0 14px">gteveryday.com · info@gteveryday.com · 054-398-2444 · המפעל בחולון</p><p class="small" style="margin:0">כשמחיר משתנה — מעדכנים במאגר קודם, ורק אחר כך בעיצוב. עכשיו זה גם נכון מכנית.</p></div></footer>
+<script>
+document.querySelectorAll('[data-filter]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var want = btn.getAttribute('data-filter');
+    document.querySelectorAll('[data-filter]').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b === btn));
+    });
+    document.querySelectorAll('#drinks tbody tr').forEach(function(tr){
+      var cat = tr.getAttribute('data-cat');
+      tr.hidden = !(want === 'all' || cat === want || tr.classList.contains('grp') === false && false);
+    });
+    document.querySelectorAll('#drinks tbody tr.grp').forEach(function(tr){
+      var cat = tr.getAttribute('data-cat');
+      tr.hidden = !(want === 'all' || cat === want);
+    });
+  });
+});
+</script>

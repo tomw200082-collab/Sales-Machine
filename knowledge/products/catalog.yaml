@@ -332,9 +332,9 @@ products:
     cost_per_serving: 2.25
     customer_facing: false
     why_not_customer_facing: >-
-      נמכר בפועל מאז 08/2026 (הוסף ל-TSV 2026-08-30 באישור טום), אבל אינו מופיע
-      בספר העבודה ולא נקבע לו מקום בשיחת המכירה. עד החלטת טום — ⊥ להציע.
-    open_item: UNRESOLVED U-014
+      טום 2026-08-31: "לא להציע בכלל — זה היה רק להזמנה ספציפית". הקו נפתח להזמנת
+      מימי ואזה (17,000 יח', 08/2026) ואינו חלק ממחירון הלקוחות. ⊥ מוזכר ביוזמתנו.
+    closed: U-014 — טום 2026-08-31
     source: TSV 2026-08-05 (שורת 2026-08-30)
     date: 2026-08-30
     authority: system_verified
@@ -347,8 +347,8 @@ products:
     serving: 50 מ״ל
     cost_per_serving: 2.25
     customer_facing: false
-    why_not_customer_facing: כמו GT-HIB-LOW-0.3L — UNRESOLVED U-014
-    open_item: UNRESOLVED U-014
+    why_not_customer_facing: כמו GT-HIB-LOW-0.3L — הזמנה ספציפית בלבד (טום 2026-08-31)
+    closed: U-014 — טום 2026-08-31
     source: TSV 2026-08-05 (שורת 2026-08-30)
     date: 2026-08-30
     authority: system_verified
@@ -361,8 +361,8 @@ products:
     serving: 50 מ״ל
     cost_per_serving: 2.25
     customer_facing: false
-    why_not_customer_facing: כמו GT-HIB-LOW-0.3L — UNRESOLVED U-014
-    open_item: UNRESOLVED U-014
+    why_not_customer_facing: כמו GT-HIB-LOW-0.3L — הזמנה ספציפית בלבד (טום 2026-08-31)
+    closed: U-014 — טום 2026-08-31
     source: TSV 2026-08-05 (שורת 2026-08-30)
     date: 2026-08-30
     authority: system_verified
@@ -375,8 +375,8 @@ products:
     serving: 50 מ״ל
     cost_per_serving: 2.25
     customer_facing: false
-    why_not_customer_facing: כמו GT-HIB-LOW-0.3L — UNRESOLVED U-014
-    open_item: UNRESOLVED U-014
+    why_not_customer_facing: כמו GT-HIB-LOW-0.3L — הזמנה ספציפית בלבד (טום 2026-08-31)
+    closed: U-014 — טום 2026-08-31
     source: TSV 2026-08-05 (שורת 2026-08-30)
     date: 2026-08-30
     authority: system_verified
@@ -599,30 +599,63 @@ products:
     authority: user_confirmed
 
   # ------------------------------------- אין SKU פעיל: בספר עם מחיר, בלי גיבוי מערכת
-  - name_he: AMERICAN · חליטה אמריקאית
+  - sku: GT-AME-LOW-1L
+    name_he: AMERICAN · חליטה אמריקאית
     family: tea_concentrate
-    price_exvat_claimed: {1L: 65, 500ml: 33}
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
     ingredients_he: תה שחור, תה סיני מיושן, יוזו, לימון, ליים, ברגמוט, תפוזים
-    customer_facing: false
-    why_not_customer_facing: >-
-      catalog-truth.md רושם "אין SKU פעיל"; המחיר ₪65/₪33 הוא קביעת טום 2026-08-05
-      בלי מוצר פעיל מאחוריו. ⊥ להציע עד שטום יכריע (TOM-B).
-    printed_in_book_2026_08_31: true
-    open_item: TOM-B
-    source: catalog-truth.md §תמציות תה (מאושר-טום)
-    date: 2026-08-06
-    authority: user_confirmed
-  - name_he: HOJICHA 500 גרם
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    note: >-
+      עד 2026-08-31 נרשם ב-catalog-truth "אין SKU פעיל" — שגוי. פעיל בשופיפיי מאז
+      2026-04-23. באותה בדיקה התגלה שהמחיר היה הפוך (₪33 לליטר) ותוקן ל-₪65 באישור טום.
+    source: בדיקה חיה מול Shopify Admin + catalog-truth.md
+    date: '2026-08-31'
+    authority: system_verified
+  - sku: GT-AME-LOW-0.5L
+    name_he: AMERICAN · חליטה אמריקאית
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: תה שחור, תה סיני מיושן, יוזו, לימון, ליים, ברגמוט, תפוזים
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    note: המחיר היה ₪65 בשופיפיי (הפוך) ותוקן ל-₪33 ב-2026-08-31 באישור טום.
+    source: בדיקה חיה מול Shopify Admin + catalog-truth.md
+    date: '2026-08-31'
+    authority: system_verified
+  - sku: GT-HOJ-BLK-500
+    name_he: HOJICHA 500 גרם
     family: powder
-    price_exvat_claimed: 375
-    customer_facing: false
-    why_not_customer_facing: >-
-      אין SKU פעיל, ואין לו אף מתכון בקטלוג המשקאות — הספר עצמו מציין זאת ובכל
-      זאת מתמחר אותו. שני הפערים יחד ⇒ ⊥ להציע. (TOM-E)
-      הערה נוספת: הספר מתאר אותו "מאצ'ה שחורה, קלויה סינית". הוג'יצ'ה הוא תה
-      ירוק יפני קלוי, ⊥ מאצ'ה ו⊥ סיני — התיאור הזה בעצמו לא מאומת.
-    printed_in_book_2026_08_31: true
-    open_item: TOM-E
-    source: catalog-truth.md §מאצ'ה ואבקות (מאושר-טום)
-    date: 2026-08-06
-    authority: user_confirmed
+    pack: 500 גרם
+    price_exvat: 375
+    customer_facing: true
+    requires_equipment: [מקציף או מטרפה, חלב]
+    caution: >-
+      אין לו אף מתכון בקטלוג המשקאות. מותר למכור, אבל מקום שיקבל אותו ⊥ יידע מה
+      לעשות איתו — שווה מתכונים בסשן תפריטי הקטגוריות.
+    note: עד 2026-08-31 נרשם "אין SKU פעיל" — שגוי. פעיל מאז 2026-07-27, 20 יח' במלאי.
+    source: בדיקה חיה מול Shopify Admin + catalog-truth.md
+    date: '2026-08-31'
+    authority: system_verified
+  - sku: GT-HOJ-BLK-1000
+    name_he: HOJICHA 1 ק״ג
+    family: powder
+    pack: 1 ק״ג
+    price_exvat: 750
+    customer_facing: true
+    requires_equipment: [מקציף או מטרפה, חלב]
+    caution: כמו 500 גרם — אין מתכון בקטלוג.
+    note: פעיל מאז 2026-08-18, ⊥ הופיע בשום קובץ עד 2026-08-31. נוסף באישור טום.
+    source: בדיקה חיה מול Shopify Admin
+    date: '2026-08-31'
+    authority: system_verified
