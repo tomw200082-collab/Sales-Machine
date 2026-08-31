@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-08-24.
+> Last updated: 2026-08-31.
 
 ## Build ladder status
 
@@ -55,6 +55,11 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-011 | The Today queue currently holds all 188 leads, because every imported lead is genuinely untouched and past SLA. Honest, but a queue the size of the whole table is not "call these two, follow up on these three". Work the backlog down, or cap the daily queue? | Tom — product decision, deliberately not taken during the build |
 | U-012 | Erik's role and how leads get assigned. The schema and the queue already scope per assignee (`assignee = me OR unassigned`, admins see all); only the UI to assign at scale is missing | Tom, when a second person joins |
 | U-013 | Should the Facebook form ask for a business name again? The live form is two questions (name, phone, email), so an incoming lead is close to anonymous and the org has to be inferred | Tom + Alex — marketing decision with a direct data consequence |
+| U-014 | No drink page and no documented preparation spec exists for any cocktail base — the catalog deliberately excludes cocktails (Tom, 2026-08-05). This blocks the `MUZA` replacement play: 20 customers, ₪192,147/yr, phase B opens 2026-09-07 with nothing to send | **Tom — highest-value open item in the Q4 plan** (masterprompt §6.B) |
+| U-015 | 19 brand groupings await Tom's approval. Decides whether a board row is one conversation or five — changes both workload and script | Tom |
+| U-016 | `פתאל` (₪47,304) and `ליאוני` (₪24,278) have no LionWheel delivery since 2026-05-10, so their route day is defaulted to centre rather than measured, unlike the other 151 | Check Green Invoice / a different delivery channel |
+| U-017 | `אבי` does not appear in `gt-factory-os-production-brain/docs/ceo/reference/people_rhythm.md` at all — no hours, no email, no portal user, no capacity. He is assigned 16 accounts worth ₪241,383 of opportunity, dated on an assumed 3 calls/day | **Tom — blocks every date in Avi's book** (masterprompt §6.A) |
+| U-018 | Chains spanning several regions (`גאפן גאפן`: Ashkelon, Jerusalem, Netanya) carry one dominant route day in the plan. Correct at chain level, wrong at branch level — a chain call that ends in a branch list must split by region | Method fix in the next planning run |
 
 ## Pointers
 
@@ -62,6 +67,15 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
+- **Q4 existing-customer plan — LANDED 2026-08-31.** 153 accounts assigned, 740 dated tasks
+  over 84 working days, targets with their arithmetic, a one-command scoreboard.
+  Plan: `evidence/2026-08-31-q4-plan.md` · assignment: `evidence/2026-08-31-q4-assignment.md` ·
+  task list: `evidence/2026-08-31-q4-daily-plan.csv` · collateral: `evidence/2026-08-31-q4-collateral/` ·
+  method: `recipes/q4-scoreboard.md` · runtime: `gt-factory-os/scripts/sales-report/q4_scoreboard.py` ·
+  screen: `https://claude.ai/code/artifact/39c9dc45-7e50-487e-8013-f255f1b84de7`.
+  Source masterprompt + execution record: `gt-factory-os-production-brain/docs/plans/2026-08-31-existing-customers-q4-masterprompt.md`.
+  **Nothing was sent to any customer** — `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` stays `false`.
+  Open against it: U-014 (blocking, ₪192,147), U-015, U-016, U-017, U-018.
 - Latest evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
   (intake hand-over to Make) · `evidence/2026-08-24-sales-report.md` (sales report).
   Previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`.
