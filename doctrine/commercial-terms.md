@@ -54,23 +54,27 @@ kit differs by category. §W1 of the architecture decision is affected according
 
 ### The 12 drinks it builds, with GT's own figures
 
-Food cost is **ex-VAT**; recommended consumer price is **incl. VAT**. Both as printed in
-the deck, `Summer 2026`.
+Recommended consumer prices as printed in the deck, `Summer 2026`.
 
-| # | Drink | Base | Food cost | RRP | Margin |
-|---|---|---|---|---|---|
-| 1 | חליטת היביסקוס וליים | FRESH | ₪3.25 | ₪20 | 81 % |
-| 2 | משקה תפוח היביסקוס | FRESH + apple juice | ₪2.88 | ₪24 | 86 % |
-| 3 | גזוז היביסקוס ותפוח | FRESH + apple juice + soda | ₪2.88 | ₪22 | 85 % |
-| 4 | חליטת תה ירוק לואיזה וליים | DETOX | ₪3.25 | ₪20 | 81 % |
-| 5 | משקה תות לואיזה | DETOX + strawberry purée | ₪4.80 | ₪31 | 82 % |
-| 6 | אייס צ'אי מסאלה קלאסי | NAMASTEA + milk | ₪5.57 | ₪28 | 77 % |
-| 7 | צ'אי מסאלה קולד פואם וניל | NAMASTEA + vanilla foam | ₪4.00 | ₪28 | 83 % |
-| 8 | צ'אי מסאלה על הקרח | NAMASTEA + water | ₪3.70 | ₪24 | 82 % |
-| 9 | אייס מאצ'ה קלאסי | MATCHA + milk | ₪4.26 | ₪26 | 81 % |
-| 10 | אייס מאצ'ה תות | MATCHA + strawberry purée | ₪6.46 | ₪39 | 80 % |
-| 11 | אייס מאצ'ה מסאלה | MATCHA + NAMASTEA | ₪6.86 | ₪37 | 78 % |
-| 12 | מאצ'ה אגבה על הקרח | MATCHA + agave | ₪2.85 | ₪26 | 87 % |
+| # | Drink | Base | מחיר מומלץ לצרכן |
+|---|---|---|---|
+| 1 | חליטת היביסקוס וליים | FRESH | ₪20 |
+| 2 | משקה תפוח היביסקוס | FRESH + apple juice | ₪24 |
+| 3 | גזוז היביסקוס ותפוח | FRESH + apple juice + soda | ₪22 |
+| 4 | חליטת תה ירוק לואיזה וליים | DETOX | ₪20 |
+| 5 | משקה תות לואיזה | DETOX + strawberry purée | ₪31 |
+| 6 | אייס צ'אי מסאלה קלאסי | NAMASTEA + milk | ₪28 |
+| 7 | צ'אי מסאלה קולד פואם וניל | NAMASTEA + vanilla foam | ₪28 |
+| 8 | צ'אי מסאלה על הקרח | NAMASTEA + water | ₪24 |
+| 9 | אייס מאצ'ה קלאסי | MATCHA + milk | ₪26 |
+| 10 | אייס מאצ'ה תות | MATCHA + strawberry purée | ₪39 |
+| 11 | אייס מאצ'ה מסאלה | MATCHA + NAMASTEA | ₪37 |
+| 12 | מאצ'ה אגבה על הקרח | MATCHA + agave | ₪26 |
+
+Recommended consumer prices are **incl. VAT** (§1) — they are what the café puts on its own
+menu board, so they are a selling argument and are safe to state.
+
+**Food cost is deliberately absent from this table.** See §2.1.
 
 Coverage the menu is built to give: cold · carbonated · milk-based · water-based.
 
@@ -80,12 +84,34 @@ Coverage the menu is built to give: cold · carbonated · milk-based · water-ba
 **Matcha preparation, the one technical detail every matcha drink depends on:**
 `בסיס מאצ'ה Classic` = **1.8 g powder + 50 ml water**, mixed smooth.
 
-### UNRESOLVED on this menu
+### 2.1 The two numbers GT deliberately does not state
 
-The deck states food cost and consumer price **per drink**. It does **not** state what the
-opening order itself costs, or in what quantities each component ships. Open as `U-018`
-(§below). Until it closes, the price of the opening menu is a **transfer row**: a human
-answers it.
+**Tom, 2026-08-31, explicitly:** neither the **price of the opening menu** nor the
+**food cost per drink** is stated by the system.
+
+This is not a gap waiting to be filled. It is the offer's design. Those two numbers are the
+ones a café owner most wants, which makes them the reason to have the conversation at all —
+*"זה פיתוי של סקרנות הלקוח כי זה הכי מעניין ולכן דווקא את שניהם אנחנו לא אומרים."*
+
+∴ In the answer bank both are **transfer rows**. Asked either question, the system says a
+person will answer and hands over. It never quotes a figure, never estimates one, and never
+says "it depends" as a way of half-answering.
+
+| Asked | The system does |
+|---|---|
+| "כמה עולה החבילה?" | transfers to a human |
+| "מה העלות למנה / כמה זה עולה לי לייצר?" | transfers to a human |
+| "כמה אני יכול למכור את זה?" | **answers** — the recommended consumer price is public |
+
+**One consequence Tom should decide on, flagged rather than acted on:** the margin
+percentages printed on the deck (77–87 %) together with the consumer price imply the food
+cost by arithmetic — ₪20 at 81 % is ₪3.80. If the food cost is meant to be genuinely
+withheld, the margin figures leak it. They are on Tom's own deck, so they stay here until he
+says otherwise; this file only records that the two are not independent.
+
+Food cost figures themselves live in `gt-factory-os-production-brain/docs/pricing/`
+(`2026-08-27_COST_MODEL.md`, `GT_FOOD_COST_2026-08-27.xlsx`) and are **internal**. They are
+not repeated in this repo, so the answer bank cannot quote them by accident.
 
 ---
 
@@ -118,16 +144,59 @@ run per week, not of anything going wrong.
 ∴ For north and south, **the order cutoff is a bigger lever on delivery time than the
 truck is.** Moving a customer from just-missed to just-made is worth six days.
 
-### UNRESOLVED on delivery
+### The order cutoff — **14:00**
 
-- `U-019` — **the order cutoff.** How late can an order arrive and still make that day's
-  or the next day's run? Without it, no exact day can be promised, only the regional
-  pattern above.
-- `U-020` — **where the regions divide.** "North / centre / south" has to become something
-  a person or a query can decide from an address, or orders cannot be routed to a day.
+**Confirmed by Tom, 2026-08-31.** An order that arrives by **14:00** makes the next run for
+its region. After 14:00 it waits for the one after.
 
-Until both close, **the honest customer-facing answer is the regional pattern, never a
-specific date.**
+Combined with §3, that gives an exact answer for the first time:
+
+| Region | Order in by 14:00 on… | Arrives |
+|---|---|---|
+| **מרכז** | Sat / Sun | Sunday / Monday |
+| | Mon–Wed | Thursday |
+| | Thu | Sunday |
+| **צפון** | Mon | Tuesday |
+| | Tue (after 14:00) – Sun | the **following** Tuesday |
+| **דרום** | Tue | Wednesday |
+| | Wed (after 14:00) – Mon | the **following** Wednesday |
+
+**The 14:00 line is worth six days to a northern or southern customer.** For the centre it
+is worth one to three. That asymmetry is the single most useful operational fact in this
+file, and it should be said out loud in the conversation — *"אם ההזמנה אצלנו עד 14:00 ביום
+שני, זה מגיע מחר"* is a far better sentence than any delivery-time promise.
+
+### Which region a city belongs to — derived from GT's own deliveries
+
+**Method:** 1,555 completed LionWheel deliveries over the last 365 days
+(`private_core.orders_mirror`, mirrored from `/api/v1/tasks.json`), grouped by destination
+city and by the weekday the delivery actually completed. This is not a guess at a map — it
+is where the truck has been going. Authority `system_verified`, measured 2026-08-31.
+
+| Region | Day | Cities that ride it | How consistent |
+|---|---|---|---|
+| **צפון** | שלישי | חיפה · הקריות · נשר · זכרון יעקב · נתניה · תל יצחק · בני דרור | **88 %** — the tightest of the three; these cities are served on Tuesday and essentially no other day |
+| **דרום** | רביעי | **ירושלים** · מודיעין · רחובות · ראשון לציון · נס ציונה · אשדוד · אשקלון · באר שבע · כנות | 71 % |
+| **מרכז** | ראשון · שני · חמישי | תל אביב · רמת גן · גבעתיים · בני ברק · חולון · בת ים · פתח תקווה · ראש העין · הרצליה · רעננה · כפר סבא · הוד השרון · רמת השרון · קרית אונו · רשפון | 32–47 % per day — low **because** centre cities appear on all three centre days, which is correct, not noise |
+
+**Two things the plain three-region label hides, and a salesperson needs:**
+
+1. **Jerusalem and the Shfela ride the Wednesday "south" run.** ירושלים, מודיעין, רחובות,
+   ראשון לציון and נס ציונה are not centre. A Jerusalem café is a Wednesday customer with a
+   one-run-a-week cadence, and telling it "up to 3 business days" would be wrong.
+2. **The boundaries are two belts, not lines.**
+   - South: the ראשון לציון / נס ציונה / רחובות belt is where centre becomes south — those
+     cities appear on both Wednesday and centre days in the data.
+   - North: between הרצליה / רעננה (centre) and נתניה (north).
+
+**The simple rule that follows:** anything in Gush Dan and the Sharon up to Herzliya/Ra'anana
+is centre. Netanya and north is Tuesday. Rishon LeZion and south, plus Jerusalem and
+Modi'in, is Wednesday. Anything on a belt — ask.
+
+**Data-quality note, because it blocks automating this:** the same city appears under
+several spellings in the mirror (`Tel Aviv-Yafo`, `Tel Aviv-Jaffa`, `תל אביב יפו`,
+`תל אביב`; `Haifa` / `חיפה`). Routing a lead's address to a delivery day by string match
+would need normalisation first. For a human reading the table this is a non-issue.
 
 ---
 
@@ -168,6 +237,7 @@ Tracked as `U-003`-adjacent and as the one remaining item of masterprompt §6.C.
 
 | ID | Question |
 |---|---|
-| U-018 | What does the recommended opening menu cost, and in what quantities does each component ship? The deck prices drinks, not the order |
-| U-019 | The order cutoff — how late can an order arrive and still make the next regional run? |
-| U-020 | Where do north / centre / south divide, as something decidable from an address? |
+| U-018 | **Withdrawn, not answered** — Tom decided on 2026-08-31 that the opening menu's price is deliberately not stated (§2.1). It is a transfer row by design, not an open question |
+| U-019 | **CLOSED** 2026-08-31 — the cutoff is 14:00 |
+| U-020 | **CLOSED** 2026-08-31 — derived from 1,555 LionWheel deliveries (§3). Residual: city-name normalisation before any automated routing |
+| U-021 | The margin percentages on the deck imply the food cost by arithmetic. If food cost is meant to be withheld (§2.1), is the margin figure meant to stay? | Tom |
