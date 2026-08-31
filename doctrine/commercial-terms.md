@@ -200,6 +200,45 @@ would need normalisation first. For a human reading the table this is a non-issu
 
 ---
 
+## 3.1 What the WhatsApp messaging actually costs
+
+**Israel marketing-template rate: `$0.0353` per delivered message** (€0.0292 · £0.0254).
+Utility and authentication: `$0.0053` — 85 % cheaper, but a promotional follow-up is
+marketing and does not qualify.
+
+> **Authority `doc_confirmed`, and the limit matters.** Meta's public pricing page defers
+> to an interactive rate card that serves no fetchable document, so this is read from a
+> compiled, dated, DOI-registered mirror of that card (`wha.tools`, dataset `rates`,
+> effective **2026-07-01**, verified 2026-08-03, upstream
+> `developers.facebook.com/docs/whatsapp/pricing`). It is **not** `system_verified` —
+> that would mean read from GT's own Meta Business Manager billing page. Good enough to
+> budget with; confirm before signing anything. **Meta re-issues rate cards quarterly**,
+> so the next revision is due around 2026-10-01.
+
+### The monthly operating cost
+
+Only two messages in the whole sequence are paid: **day-5 and day-12**. Everything else
+sits inside a free window (§5.1 of the artifact reconciliation).
+
+Measured lead volume, 2026-08-31: **39.3/month** (90-day average) · **~48/month**
+(1.58/day since the live intake resumed 2026-08-24).
+
+| At | Paid messages/month | Cost |
+|---|---|---|
+| 39 leads | 78 | **$2.78** ≈ ₪10 |
+| 48 leads | 96 | **$3.39** ≈ ₪13 |
+| 10× today's volume (480) | 960 | **$33.90** ≈ ₪125 |
+
+**This is an upper bound, not a forecast** — every lead who replies or orders cancels the
+follow-ups still queued for them (the 7.5 rule).
+
+**∴ The message budget is not a constraint and must never be allowed to gate a decision.**
+The plan treats "the true monthly operating cost" as a number Tom has to approve before
+anything runs. It is roughly the price of a coffee. The real cost of this system is media
+spend and human time; the messaging is rounding error. Closes `U-015`.
+
+---
+
 ## 4. Minimum order
 
 **₪800 + VAT.** (Per §1, stated to the customer as `800 ש"ח ללא מע"מ`.)
