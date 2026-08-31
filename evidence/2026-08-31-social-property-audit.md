@@ -26,16 +26,43 @@ block `1592799116158`, type `contact-info`, setting `phone: "0723939395"`.
 Claude cannot write it — the Shopify MCP blocks theme-file writes to the live theme.
 One field, manual, path recorded in the credentials sheet risk tab.
 
-## 2. Legal identity — recovered from GT's own published page
+## 2. Legal identity — resolved later the same day against Meta's verified record
 
-`/pages/אודות` published, and still publishes: **`גרינטי אוירי דיי בע"מ` · ח.פ. `515788461`**.
-Authority: `doc_confirmed` (GT's own page), **not** `system_verified` — never checked
-against רשם החברות. Logged as UNRESOLVED. The same page carried the company name in
-two spellings (`די` / `דיי`); normalised to `דיי`, the spelling used in the formal block.
+First pass, from `/pages/אודות`: **`גרינטי אוירי דיי בע"מ` · ח.פ. `515788461`**, graded
+`doc_confirmed`. The page carried the name in two spellings (`די` / `דיי`); it was
+normalised to `דיי`, the spelling in the formal block.
 
-**This matters beyond tidiness.** Meta business verification is rejected on a
-name/address mismatch far more often than on missing documents. The name, the address
-and the document must be byte-identical before submitting.
+**That normalisation was wrong, and was reverted the same day.** Tom opened Meta
+Business settings, which hold a record Meta verified against official documents on
+**2022-12-30**:
+
+| Field | Meta's verified record |
+|---|---|
+| Business portfolio | `GTeveryday`, id `385165928990715` |
+| Legal business name | **`גרינטי אוירי די בע"מ`** — `די`, not `דיי` |
+| Registered address | **`מיכ"ל 4, תל אביב יפו 63261`** |
+| Business phone | `+972547689911` |
+| Website | `greentea-everyday.com` (the old domain) |
+| Tax ID | `515788461` — independently corroborates the page |
+| Verification status | ✅ verified 2022-12-30 |
+| Portfolio created by | Alex Berov, 2019-03-28 |
+| Ad-account creation limit | 5 |
+
+`/pages/אודות` was corrected to `די` on Tom's approval, 2026-08-31.
+
+**Two consequences.**
+
+1. **Business verification was never needed.** It has been done since 2022. A session
+   that had not looked would have spent days re-submitting it. `f2` and the whole of
+   §6.E are closed.
+2. **A third address, and a fourth phone.** `מיכ"ל 4, תל אביב` is the *registered*
+   address; `הלהב 15, חולון` is what Tom chose as the *published* one and what Shopify
+   and Klaviyo hold. Those are two different fields for two different purposes and both
+   can be right — but Meta's copy is four years old, and `+972547689911` appears in no
+   other GT system and nobody has said whose it is.
+
+**Do not casually edit the verified record.** Changing a verified business's legal name
+or address can trigger re-review and put a working 2022 verification at risk.
 
 ## 3. Properties — what was actually verifiable
 
