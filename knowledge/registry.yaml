@@ -75,3 +75,35 @@ cards:
     date: 2026-08-31
     freshness: review_30d
     source: masterprompt §W4. Channel state read live 2026-08-31 — 7 videos inventoried.
+
+  - id: evidence/2026-08-31-social-handle-sweep
+    title: Social handle sweep — TikTok, X, LinkedIn availability and ownership
+    type: evidence-snapshot
+    authority: system_verified      # embedded profile JSON parsed from public pages; no login
+    date: 2026-08-31
+    freshness: snapshot             # immutable; supersede with a newer snapshot
+    source: >-
+      Unauthenticated HTTP + embedded profile JSON. Found TikTok @gteveryday to be a
+      live GT-owned account with 13 published videos and no known holder (U-027),
+      correcting an earlier same-day note that recorded the handle as free.
+      X confirmed free after calibrating against a known-live handle.
+
+  - id: doctrine/playbooks/tiktok-recovery-kit
+    title: TikTok — account recovery, not a name grab
+    type: playbook
+    authority: system_verified      # every profile field read live; the recovery steps are inferred
+    date: 2026-08-31
+    freshness: review_30d
+    source: >-
+      masterprompt §W4, task z1. Recovery path is a proposal; nothing on the account
+      was touched, per §7 (a property whose owner is unproven is not cleaned up).
+
+  - id: doctrine/playbooks/lead-response-sop
+    title: Lead response SOP — ownership, SLA, templates, and what is deliberately not automated
+    type: playbook
+    authority: user_confirmed       # ownership split + the 142-lead decision are Tom's, 2026-08-31
+    date: 2026-08-31
+    freshness: review_30d           # §0 counts are a dated snapshot — re-run the recipe, never quote them
+    source: >-
+      masterprompt §W5, task f5. Every count and setting read live from sales_core
+      2026-08-31. Binding only after Tom's written approval.
