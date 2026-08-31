@@ -144,3 +144,16 @@ cards:
       post count and no claim about either handle: both served a login wall to this
       environment. Nothing is published until U-015 answers which handle is GT's and
       whether the empty one was compromised.
+
+  - id: recipes/coexistence-liveness
+    title: Proving the WhatsApp coexistence link is still alive
+    type: recipe
+    authority: system_verified      # the query and the baseline are live reads; the threshold is inferred
+    date: 2026-08-31
+    freshness: review_30d
+    source: >-
+      order_intake.wa_event_log read live 2026-08-31 on the order line — 24,162 rows
+      unbroken since 2026-06-26, 9,501 of them echo. Written for U-031: coexistence
+      lapses silently after 13 days without the app being opened, and with D-014 every
+      lead automation now rides one number. Implementation belongs in the existing
+      sales-leads-poll daily heartbeat (D11), not in this repo and not as a second monitor.
