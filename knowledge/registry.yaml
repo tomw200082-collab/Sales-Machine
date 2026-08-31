@@ -120,3 +120,27 @@ cards:
       2 lists created inside one 39-second installer window on 2026-07-18.
       Churn Risks reads 0 for a structural reason, not an empirical one (U-029).
       Six account-identity fields are wrong, country first (U-030).
+
+  - id: doctrine/playbooks/whatsapp-setup-kit
+    title: WhatsApp Business setup — greeting, quick replies, labels, catalog, QR
+    type: playbook
+    authority: inferred             # wording; the sales_core statuses and numbers inside are system_verified
+    date: 2026-08-31
+    freshness: review_30d
+    source: >-
+      masterprompt §W1, tasks wa4-wa9. Labels are mapped one-to-one onto
+      sales_core.lead.status so the two systems cannot disagree. The whole section
+      is gated on U-020 (which number), and every improvement here widens U-025
+      (inbound WhatsApp never becomes a lead) until that is closed.
+
+  - id: doctrine/playbooks/instagram-ready-kit
+    title: Instagram — bio, highlights and opening baseline, held until ownership is settled
+    type: playbook
+    authority: inferred             # wording only — NOT system_verified: neither profile was readable
+    date: 2026-08-31
+    freshness: review_30d
+    source: >-
+      masterprompt §W4, tasks i2-i6. Deliberately carries no follower count, no
+      post count and no claim about either handle: both served a login wall to this
+      environment. Nothing is published until U-015 answers which handle is GT's and
+      whether the empty one was compromised.
