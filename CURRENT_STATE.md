@@ -78,11 +78,16 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
 - Social/public-property base (2026-08-31): ownership audit
-  `evidence/2026-08-31-social-property-audit.md` · Q4 content calendar
+  `evidence/2026-08-31-social-property-audit.md` · handle sweep
+  `evidence/2026-08-31-social-handle-sweep.md` · Q4 content calendar
   `doctrine/playbooks/social-calendar-2026-Q4.md` · launch kits
-  `doctrine/playbooks/linkedin-launch-kit.md`, `doctrine/playbooks/youtube-refresh-kit.md`.
-  Credentials sheet lives in Tom's Drive, **not in this repo** — no secret value is ever
-  written here (`GT — כרטיס גישה`, folder `GT Everyday — נכסי מותג`).
+  `doctrine/playbooks/linkedin-launch-kit.md`, `doctrine/playbooks/youtube-refresh-kit.md`,
+  `doctrine/playbooks/tiktok-recovery-kit.md` · lead-response SOP
+  `doctrine/playbooks/lead-response-sop.md` (binding only on Tom's written approval).
+  Credentials sheet and the 72-row action board live in Tom's Drive, **not in this repo** —
+  no secret value is ever written here (`GT — כרטיס גישה` and `GT — לוח פעולות רשתות`,
+  folder `GT Everyday — נכסי מותג`). Tracker artifact: the digital roadmap, 72 tasks,
+  12 done as of 2026-08-31.
 - Latest evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
   (intake hand-over to Make) · `evidence/2026-08-24-sales-report.md` (sales report).
   Previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`.
