@@ -1,7 +1,8 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-08-31 (third pass — the agent's asset gap opened as U-020/U-021).
+> Last updated: 2026-08-31 — two landings the same day: the knowledge layer (U-020/U-021)
+> and the Q4 existing-customer plan (U-022–U-031).
 
 ## Build ladder status
 
@@ -64,6 +65,16 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | ~~U-019~~ | **נסגר 2026-08-31.** ארבע רשומות-השלילה נשארות פעילות בשופיפיי (טום: "תשאיר"). כלומר: ⊥ במחירון הלקוחות ו⊥ מוצעות בשיחה, אבל לקוח שמגיע לחנות יכול להזמין. זו הכרעה, ⊥ פער | — |
 | U-020 | תיקיית `05 · מה שולחים ללקוח` בדרייב ריקה. הסוכן יודע מה להגיד ו**אין לו קובץ אחד לשלוח**: קטלוג המשקאות בתוקף (PDF), מחירון ללקוח (PDF), סרטוני ההדרכה שהספר מבטיח, ו-48 המתכונים. שלב 03 ברצף השיחה הוא "שולחים ערכה" — בלי הקבצים הוא ⊥ ניתן לביצוע | **טום — בתהליך.** הצהיר 2026-08-31 שיעלה חומרים שיווקיים ל-`06 · העלאות` |
 | U-021 | 17 מתוך 17 כללי `boundaries/refusals.yaml` מסתיימים ב"מעביר לאלכסנדר" — ו**אין בשום קובץ מספר, מייל או קבוצה**. סוכן ווצאפ שיגיע לכלל כזה נעצר באמצע שיחה בלי מסלול המשך | טום — פרט קשר אחד, ואז כרטיס `user_confirmed` |
+| U-022 | Cocktail collateral. **Partly closed 2026-08-31:** MUZA is gone entirely (cocktails and mixers), and Tom ruled that the only alcohol GT markets which is not another customer's private label is GT Pink / White Sangria — white then dropped for zero stock. The replacement was re-founded on **tea extract as the cocktail base** (₪65/L, 20 serves, better food cost than MUZA gave) with Pink Sangria as the ready-to-pour fallback. Two collateral pieces built: `mixer-serve-cards.md`, `muza-migration-map.md`. **Still open:** the Pink Sangria product page, and kitchen calibration of the suggested ratios | Tom / Denis |
+| U-023 | 19 brand groupings await Tom's approval. Decides whether a board row is one conversation or five — changes both workload and script | Tom |
+| U-024 | `פתאל` (₪47,304) and `ליאוני` (₪24,278) have no LionWheel delivery since 2026-05-10, so their route day is defaulted to centre rather than measured, unlike the other 151 | Check Green Invoice / a different delivery channel |
+| ~~U-025~~ | **CLOSED 2026-08-31.** Avi absent from the system — — `private_core.app_users`: `avi@gteveryday.com`, display_name `Avi`, role `planner`, active since 2026-08-25, portal password set. No fixed hours by design; 3–4 calls a day (Tom). Now owns 22 accounts solo plus 15 joint meetings with Alex | closed |
+| U-026 | Chains spanning several regions (`גאפן גאפן`: Ashkelon, Jerusalem, Netanya) carry one dominant route day in the plan. Correct at chain level, wrong at branch level — a chain call that ends in a branch list must split by region | Method fix in the next planning run |
+| U-027 | `GTCC-NM-SAN-3.85L` is titled "GT Sangria Cocktail 3850ml" but its SKU carries `NM`, and `GTCC-NON-SAN-3.85L` (Nonomimi) exists alongside it. Ours or theirs? Until Tom rules, it is offered to nobody | Tom |
+| U-028 | `GT-HIB-LOW-1L` (FRESH) and `GT-LUI-LOW-1L` (DETOX) are both at **zero stock** in Shopify (verified 2026-08-31). **79 accounts and ₪490,702 of opportunity** depend on one of them. CALM 340 · NAMASTEA 353 · ENERGY 251 · REVIVE 259 are ready | **Production — first task in the plan, 2026-09-01** |
+| U-029 | `sales-leads-poll` `routeDaily()` selects conversion candidates with `status in (new,working) and shopify_customer_id is not null`. Loading the 153 plan accounts as leads would mark every one `won` on their next routine order. One-line fix: `and l.source <> 'q4_existing_2026'`. **The plan is not loaded into the sales system until this lands** | Backend |
+| U-030 | Stock of `GT-SHI-CER-500` is **80 bags against 74 target accounts** (verified 2026-08-31). Enough for one wave, not a quarter — and matcha is the plan's lead motion, so this blocks it before it starts | **Production — first task in the plan, 2026-09-01** |
+| U-031 | The contents of `GT-MAT-KIT` (₪170) are undocumented in every file checked. Until Tom rules, the kit is not offered — a whisk and a frother are quoted separately | Tom |
 
 ## החלטות שממתינות לטום — עודכן 2026-08-31
 
@@ -107,6 +118,36 @@ TOM-D (700 ו-8 שנים מאושרים) · TOM-E (HOJICHA נשאר, + 1 ק״ג 
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
+- **Q4 existing-customer plan — v3 LANDED 2026-08-31, led by catalog expansion.**
+  Tom's correction: switching a customer off MUZA is less likely than adding matcha or ube.
+  So the plan measured **real 12-month penetration** from 3,872 Shopify orders instead of
+  trusting the growth board's comparison-group model — which is circular on an
+  under-penetrated category. Tea is **94%** penetrated; **matcha 48% and already GT's
+  second-largest category at ₪423,949** against the board's ₪43,942 (×9.6). **74 accounts
+  buy tea and no matcha, worth ₪351,270** priced at the median comparable buyer in the
+  same revenue band; six of them are A-band, hold ₪202,860, and already sit in the
+  joint-meeting lane. Target rises ₪147,644 → **₪262,661** run-rate, ₪212,492 gross.
+  **MUZA is demoted to a second sentence** — a gate now enforces that it never opens a
+  call with an account still buying tea, and it caught one that had slipped through.
+  Only the **5 accounts that stopped buying tea as well** get a win-back conversation.
+  New collateral: `matcha-business-case.md` (21 of 48 catalogue drinks are matcha or ube;
+  a ₪590 bag is 277 serves and ₪7,756 on the menu — ×13.1 against tea's ×5.8).
+  Builder: `q4_plan_v3.py`, 15/15 gates. Penetration: `q4_penetration.py`.
+  Opened U-030 (80 matcha bags for 74 target accounts) and U-031 (`GT-MAT-KIT` contents undocumented).
+- ~~Q4 existing-customer plan — v2, 2026-08-31~~ **superseded by v3 the same day** (v1 of the same day superseded after Tom's
+  corrections). **Three sales channels**, not a flat partner split: T1 joint Alex+Avi meetings (15
+  accounts, 51% of revenue, ₪86,465 of the target) · T2 Avi solo calls (22) · T3 Tom WhatsApp (116).
+  755 dated tasks over 84 working days; target ₪147,644 run-rate / ₪119,444 gross profit.
+  **Product gate:** 37 opportunity lines in 35 accounts (₪168,418) had been pointing at Nonomimi's
+  and Babka's own private-label SKUs — fixed in the SKU *and* in the script copy.
+  Dashboard: `https://claude.ai/code/artifact/9267cc69-a432-43d5-8e18-94b6057db483`.
+  Plan: `evidence/2026-08-31-q4-plan.md` · assignment: `evidence/2026-08-31-q4-assignment.md` ·
+  task list: `evidence/2026-08-31-q4-daily-plan.csv` · collateral: `evidence/2026-08-31-q4-collateral/` ·
+  method: `recipes/q4-scoreboard.md` · runtime: `gt-factory-os/scripts/sales-report/q4_scoreboard.py` ·
+  screen: `https://claude.ai/code/artifact/39c9dc45-7e50-487e-8013-f255f1b84de7`.
+  Source masterprompt + execution record: `gt-factory-os-production-brain/docs/plans/2026-08-31-existing-customers-q4-masterprompt.md`.
+  **Nothing was sent to any customer** — `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` stays `false`.
+  Open against it: U-022 (blocking, ₪192,147), U-023, U-024, U-025, U-026.
 - Latest evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
   (intake hand-over to Make) · `evidence/2026-08-24-sales-report.md` (sales report).
   Previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`.
