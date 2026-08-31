@@ -70,7 +70,23 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
-- **Q4 existing-customer plan — v2 LANDED 2026-08-31** (v1 of the same day superseded after Tom's
+- **Q4 existing-customer plan — v3 LANDED 2026-08-31, led by catalog expansion.**
+  Tom's correction: switching a customer off MUZA is less likely than adding matcha or ube.
+  So the plan measured **real 12-month penetration** from 3,872 Shopify orders instead of
+  trusting the growth board's comparison-group model — which is circular on an
+  under-penetrated category. Tea is **94%** penetrated; **matcha 48% and already GT's
+  second-largest category at ₪423,949** against the board's ₪43,942 (×9.6). **74 accounts
+  buy tea and no matcha, worth ₪351,270** priced at the median comparable buyer in the
+  same revenue band; six of them are A-band, hold ₪202,860, and already sit in the
+  joint-meeting lane. Target rises ₪147,644 → **₪262,661** run-rate, ₪212,492 gross.
+  **MUZA is demoted to a second sentence** — a gate now enforces that it never opens a
+  call with an account still buying tea, and it caught one that had slipped through.
+  Only the **5 accounts that stopped buying tea as well** get a win-back conversation.
+  New collateral: `matcha-business-case.md` (21 of 48 catalogue drinks are matcha or ube;
+  a ₪590 bag is 277 serves and ₪7,756 on the menu — ×13.1 against tea's ×5.8).
+  Builder: `q4_plan_v3.py`, 15/15 gates. Penetration: `q4_penetration.py`.
+  Opened U-022 (80 matcha bags for 74 target accounts) and U-023 (`GT-MAT-KIT` contents undocumented).
+- ~~Q4 existing-customer plan — v2, 2026-08-31~~ **superseded by v3 the same day** (v1 of the same day superseded after Tom's
   corrections). **Three sales channels**, not a flat partner split: T1 joint Alex+Avi meetings (15
   accounts, 51% of revenue, ₪86,465 of the target) · T2 Avi solo calls (22) · T3 Tom WhatsApp (116).
   755 dated tasks over 84 working days; target ₪147,644 run-rate / ₪119,444 gross profit.
