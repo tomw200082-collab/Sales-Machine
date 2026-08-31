@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-08-24.
+> Last updated: 2026-08-31.
 
 ## Build ladder status
 
@@ -55,6 +55,14 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-011 | The Today queue currently holds all 188 leads, because every imported lead is genuinely untouched and past SLA. Honest, but a queue the size of the whole table is not "call these two, follow up on these three". Work the backlog down, or cap the daily queue? | Tom — product decision, deliberately not taken during the build |
 | U-012 | Erik's role and how leads get assigned. The schema and the queue already scope per assignee (`assignee = me OR unassigned`, admins see all); only the UI to assign at scale is missing | Tom, when a second person joins |
 | U-013 | Should the Facebook form ask for a business name again? The live form is two questions (name, phone, email), so an incoming lead is close to anonymous and the org has to be inferred | Tom + Alex — marketing decision with a direct data consequence |
+| U-014 | Legal name `גרינטי אוירי דיי בע"מ` and ח.פ `515788461` are `doc_confirmed` from GT's own `/pages/אודות` — never checked against רשם החברות. Meta business verification rejects on a name/address mismatch more often than on missing documents, so this must be verified **before** any Meta submission | Tom — registrar check, or the company's accountant |
+| U-015 | Which Instagram handle is GT's, and is `@greenteaeveryday` (zero posts, follows hundreds) compromised? Both handles serve a login/challenge wall to this environment — no public data obtainable. No Instagram work happens until this is answered | Tom (§6.B) — log in, or run account recovery |
+| U-016 | GT holds no admin on its own Meta Business account. Blocks the WhatsApp green tag, business verification, the lead-form fix, CTWA, and re-authorising the connection before `2026-10-23` | Tom (§6.E) — find today's admin, or open a Meta support case |
+| U-017 | `judge.me` and Yotpo both run on the live storefront — the theme config points at judge.me while the Yotpo loader fires on the same page. Customer reviews may be split across two systems with half invisible | Choose one. Yotpo already runs reviews **and** loyalty (`z2`), so it is the natural survivor |
+| U-018 | Google Tag Manager loads on the storefront and nobody has said who owns the container or what fires in it. GA4 itself is still not connected (`g3`) | Tom — GTM account access |
+| U-019 | Registrar and renewal date for `gteveryday.com` and `greentea-everyday.com` were never checked. A domain that lapses quietly takes the whole store down | Tom — registrar login, then record in `GT — כרטיס גישה` |
+| U-020 | What `054-758-8132` is for — API number for the lead system, manual second line, or retired and merged into `054-398-2444`. It already carries a product catalog. Blocks stage 1 of the lead system and decides which number enters the identity card, the site, the `wa.me` link and the QR code | Tom (§6.A) — five minutes, unblocks two documents |
+| U-021 | Cups-per-bottle is published as 33 / 30 / 13 on different live pages, and customer count as 700 / 200 (artifact `w5`). Until one approved number exists per claim, no number goes into any caption, page or profile | Tom — one number per claim |
 
 ## Pointers
 
@@ -62,6 +70,12 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
+- Social/public-property base (2026-08-31): ownership audit
+  `evidence/2026-08-31-social-property-audit.md` · Q4 content calendar
+  `doctrine/playbooks/social-calendar-2026-Q4.md` · launch kits
+  `doctrine/playbooks/linkedin-launch-kit.md`, `doctrine/playbooks/youtube-refresh-kit.md`.
+  Credentials sheet lives in Tom's Drive, **not in this repo** — no secret value is ever
+  written here (`GT — כרטיס גישה`, folder `GT Everyday — נכסי מותג`).
 - Latest evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
   (intake hand-over to Make) · `evidence/2026-08-24-sales-report.md` (sales report).
   Previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`.
