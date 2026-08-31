@@ -55,10 +55,13 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-011 | The Today queue currently holds all 188 leads, because every imported lead is genuinely untouched and past SLA. Honest, but a queue the size of the whole table is not "call these two, follow up on these three". Work the backlog down, or cap the daily queue? | Tom — product decision, deliberately not taken during the build |
 | U-012 | Erik's role and how leads get assigned. The schema and the queue already scope per assignee (`assignee = me OR unassigned`, admins see all); only the UI to assign at scale is missing | Tom, when a second person joins |
 | U-013 | Should the Facebook form ask for a business name again? The live form is two questions (name, phone, email), so an incoming lead is close to anonymous and the org has to be inferred | Tom + Alex — marketing decision with a direct data consequence |
-| U-014 | No drink page and no documented preparation spec exists for any cocktail base — the catalog deliberately excludes cocktails (Tom, 2026-08-05). This blocks the `MUZA` replacement play: 20 customers, ₪192,147/yr, phase B opens 2026-09-07 with nothing to send | **Tom — highest-value open item in the Q4 plan** (masterprompt §6.B) |
+| U-014 | Cocktail collateral. **Partly closed 2026-08-31:** MUZA is gone entirely (cocktails and mixers), and Tom ruled that the only alcohol GT markets which is not another customer's private label is GT Pink / White Sangria — white then dropped for zero stock. The replacement was re-founded on **tea extract as the cocktail base** (₪65/L, 20 serves, better food cost than MUZA gave) with Pink Sangria as the ready-to-pour fallback. Two collateral pieces built: `mixer-serve-cards.md`, `muza-migration-map.md`. **Still open:** the Pink Sangria product page, and kitchen calibration of the suggested ratios | Tom / Denis |
 | U-015 | 19 brand groupings await Tom's approval. Decides whether a board row is one conversation or five — changes both workload and script | Tom |
 | U-016 | `פתאל` (₪47,304) and `ליאוני` (₪24,278) have no LionWheel delivery since 2026-05-10, so their route day is defaulted to centre rather than measured, unlike the other 151 | Check Green Invoice / a different delivery channel |
-| U-017 | `אבי` does not appear in `gt-factory-os-production-brain/docs/ceo/reference/people_rhythm.md` at all — no hours, no email, no portal user, no capacity. He is assigned 16 accounts worth ₪241,383 of opportunity, dated on an assumed 3 calls/day | **Tom — blocks every date in Avi's book** (masterprompt §6.A) |
+| U-017 | ~~Avi absent from the system~~ **CLOSED 2026-08-31** — `private_core.app_users`: `avi@gteveryday.com`, display_name `Avi`, role `planner`, active since 2026-08-25, portal password set. No fixed hours by design; 3–4 calls a day (Tom). Now owns 22 accounts solo plus 15 joint meetings with Alex | closed |
+| U-019 | `GTCC-NM-SAN-3.85L` is titled "GT Sangria Cocktail 3850ml" but its SKU carries `NM`, and `GTCC-NON-SAN-3.85L` (Nonomimi) exists alongside it. Ours or theirs? Until Tom rules, it is offered to nobody | Tom |
+| U-020 | `GT-HIB-LOW-1L` (FRESH) and `GT-LUI-LOW-1L` (DETOX) are both at **zero stock** in Shopify (verified 2026-08-31). **79 accounts and ₪490,702 of opportunity** depend on one of them. CALM 340 · NAMASTEA 353 · ENERGY 251 · REVIVE 259 are ready | **Production — first task in the plan, 2026-09-01** |
+| U-021 | `sales-leads-poll` `routeDaily()` selects conversion candidates with `status in (new,working) and shopify_customer_id is not null`. Loading the 153 plan accounts as leads would mark every one `won` on their next routine order. One-line fix: `and l.source <> 'q4_existing_2026'`. **The plan is not loaded into the sales system until this lands** | Backend |
 | U-018 | Chains spanning several regions (`גאפן גאפן`: Ashkelon, Jerusalem, Netanya) carry one dominant route day in the plan. Correct at chain level, wrong at branch level — a chain call that ends in a branch list must split by region | Method fix in the next planning run |
 
 ## Pointers
@@ -67,8 +70,13 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
-- **Q4 existing-customer plan — LANDED 2026-08-31.** 153 accounts assigned, 740 dated tasks
-  over 84 working days, targets with their arithmetic, a one-command scoreboard.
+- **Q4 existing-customer plan — v2 LANDED 2026-08-31** (v1 of the same day superseded after Tom's
+  corrections). **Three sales channels**, not a flat partner split: T1 joint Alex+Avi meetings (15
+  accounts, 51% of revenue, ₪86,465 of the target) · T2 Avi solo calls (22) · T3 Tom WhatsApp (116).
+  755 dated tasks over 84 working days; target ₪147,644 run-rate / ₪119,444 gross profit.
+  **Product gate:** 37 opportunity lines in 35 accounts (₪168,418) had been pointing at Nonomimi's
+  and Babka's own private-label SKUs — fixed in the SKU *and* in the script copy.
+  Dashboard: `https://claude.ai/code/artifact/9267cc69-a432-43d5-8e18-94b6057db483`.
   Plan: `evidence/2026-08-31-q4-plan.md` · assignment: `evidence/2026-08-31-q4-assignment.md` ·
   task list: `evidence/2026-08-31-q4-daily-plan.csv` · collateral: `evidence/2026-08-31-q4-collateral/` ·
   method: `recipes/q4-scoreboard.md` · runtime: `gt-factory-os/scripts/sales-report/q4_scoreboard.py` ·
