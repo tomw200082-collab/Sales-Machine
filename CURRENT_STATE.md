@@ -63,7 +63,7 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | ~~U-019~~ | **CLOSED 2026-08-31** — the order cutoff is **14:00** (Tom). Worth six days to a north/south customer, one to three in the centre | closed |
 | ~~U-020~~ | **CLOSED 2026-08-31** — derived from 1,555 completed LionWheel deliveries: צפון=שלישי · דרום=רביעי (**including Jerusalem and the Shfela**) · מרכז=ראשון/שני/חמישי. `doctrine/commercial-terms.md` §3 | closed |
 | U-021 | The deck's margin percentages (77–87 %) imply the food cost arithmetically, which D-013 says is never stated. Do the margin figures stay? | Tom |
-| ~~U-022~~ | **CLOSED 2026-08-31** — the number **is** in use, and that is not a blocker: **coexistence** keeps it in the WhatsApp app while the Cloud API rides alongside, exactly as GT's order line has since 2026-06-26 (9,440 staff-echo events prove it). The artifact's warning that a number entering the API leaves the app permanently is true of classic onboarding, **not** of coexistence. Standing requirement: the app must be opened at least once every 13 days and never uninstalled, or coexistence lapses — needs a named owner | closed |
+| ~~U-022~~ | **CLOSED 2026-08-31** — owner named: **Tom** (D-018). The number **is** in use, and that is not a blocker: **coexistence** keeps it in the WhatsApp app while the Cloud API rides alongside, exactly as GT's order line has since 2026-06-26 (9,440 staff-echo events prove it). The artifact's warning that a number entering the API leaves the app permanently is true of classic onboarding, **not** of coexistence. Standing requirement: the app must be opened at least once every 13 days and never uninstalled, or coexistence lapses — needs a named owner | closed |
 
 ## Pointers
 
