@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-08-24.
+> Last updated: 2026-08-31.
 
 ## Build ladder status
 
@@ -52,9 +52,13 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-008 | "The website" scope — storefront vs. marketing site vs. B2B portal (separate runtime repo either way, per D-003) | Tom decision |
 | U-009 | Data quirk: account with 58 orders and ₪0.00 amountSpent — explain before trusting spend fields | Interview #3 / system check |
 | U-010 | 4 identity questions from the 2026-08-06 tracker build (MUZA×2, נונומימי/נונו, קפה עם, קלאוד ניין) — merge or keep separate? | Tom, via `knowledge/accounts/customer-notes.yaml` |
-| U-011 | The Today queue currently holds all 188 leads, because every imported lead is genuinely untouched and past SLA. Honest, but a queue the size of the whole table is not "call these two, follow up on these three". Work the backlog down, or cap the daily queue? | Tom — product decision, deliberately not taken during the build |
+| U-011 | Work the backlog down, or cap the daily queue? **Now costed (2026-08-31):** 141 `new`, all with a phone — 94 recent (≤90d) · 35 cold (>90d) · 10 already Shopify customers · 2 duplicates. At the configured `queue.daily_cap = 15` that is **7 working days for the recent tier, 10 for all 141**. 58 leads have already been worked. Triage published as `api_read.v_sales_backlog_triage` (gt-factory-os migration 0341); no lead's status was changed — a 141-row re-state is a mass write and stays Tom's | Tom — product decision, deliberately not taken during the build |
 | U-012 | Erik's role and how leads get assigned. The schema and the queue already scope per assignee (`assignee = me OR unassigned`, admins see all); only the UI to assign at scale is missing | Tom, when a second person joins |
 | U-013 | Should the Facebook form ask for a business name again? The live form is two questions (name, phone, email), so an incoming lead is close to anonymous and the org has to be inferred | Tom + Alex — marketing decision with a direct data consequence |
+| U-014 | 275 distinct phone numbers have written to GT's live WhatsApp since 2026-06-28 (163 in the last 30 days) and are classified `ignored_unknown_or_disabled`; essentially none exists in `sales_core` (1 of 275). How many are leads rather than unmapped customers, suppliers or staff? No identification layer exists to answer it. Shape argues most are not enquiries (avg 20.8 messages/sender; 117 conversations span >7 days); the lead-shaped floor is the 36 single-message senders, 11 of them in the last 30 days | build the first-message write (architecture doc §Q2), then measure for 30 days |
+| U-015 | Meta's current marketing-template rate for Israel. The public pricing page defers to an interactive rate card that serves no fetchable document | Tom — GT holds a WABA, so the authoritative rate is in GT's own Meta Business Manager billing page. ~2 minutes |
+| U-016 | `META_PAGE_ACCESS_TOKEN` carries no Leads Access on the page — the cause of two real leads rejected on 2026-08-24 (leadgen `1807021066847822`, `1469012341930658`), recoverable from Meta only until **2026-11-22**. Distinct from D-006: Make carries the lead, this token fetches its content | technical — next intake session |
+| U-017 | A second Facebook form id, `1771287887148857`, appears in `lead_reject` but the pulse reports `forms_visible: 1`. Live form or stale test form? | Tom + Alex, via Meta Ads Manager |
 
 ## Pointers
 
@@ -62,7 +66,13 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
   `docs/decisions/modules/sales-declaration.md` — **APPROVED (Tom, 2026-08-04)**;
   **Amendment A APPROVED (Tom, in writing, 2026-08-17)**. The earlier
   "PR #46 — DRAFT, awaiting Tom" pointer was stale and is corrected here.
-- Latest evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
+- Latest evidence snapshot: `evidence/2026-08-31-lead-response-ground-truth.md` — measured lead,
+  transport, backlog, first-response and WhatsApp ground truth; **records that GT's WhatsApp Business
+  Cloud API has been live since 2026-06-26 (Dualhook coexistence, 24,028 events), which several planning
+  documents still describe as not built.** Companion decisions in `gt-factory-os-production-brain`:
+  `docs/decisions/2026-08-31-lead-intake-architecture.md` (awaiting Tom) and
+  `docs/plans/2026-08-31-lead-setup-artifact-reconciliation.md`.
+- Previous evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
   (intake hand-over to Make) · `evidence/2026-08-24-sales-report.md` (sales report).
   Previous: `evidence/2026-08-23-live-intake-bringup.md`, `evidence/2026-07-18-two-numbers.md`.
 - Sales report recipe: `recipes/sales-report.md` (taxonomy + anchors Tom-approved 2026-08-24).
