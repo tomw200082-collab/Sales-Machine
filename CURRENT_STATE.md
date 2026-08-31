@@ -99,6 +99,8 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 - Knowledge layer (2026-08-31): `knowledge/README.md` — reading order for an agent;
   `evidence/2026-08-31-knowledge-book-reconciliation.md` — the reconciliation run.
   Gate: `gt-factory-os-production-brain/scripts/knowledge/reconcile.py`.
+  Rendering (generated, never hand-edited): https://claude.ai/code/artifact/513456cd-5fa3-4ff1-8616-8ea82e020b22
+  — the original shared artifact `f0457ed1-…` cannot be published to from this session.
 - Sales report recipe: `recipes/sales-report.md` (taxonomy + anchors Tom-approved 2026-08-24).
 - Customer-count recipe (rule 2): `recipes/customer-count.md` — never quote a stored count.
 - Decisions log (incl. PROPOSED items awaiting Tom): `doctrine/decisions.md`.

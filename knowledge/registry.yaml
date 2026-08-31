@@ -111,3 +111,15 @@ cards:
     freshness: review_30d
     source: ספר העבודה §07 + §08
     note: 42 פריטים. הבדיקה היחידה שמודדת התנהגות של סוכן, ⊥ קבצים.
+
+  - id: story/chapters
+    title: פרקי הפרוזה של ספר העבודה
+    type: prose
+    authority: per-entry
+    date: 2026-08-31
+    freshness: stable
+    source: ספר העבודה 2026-08-31 — הטקסט כפי שנמסר ע"י טום בסשן
+    note: >-
+      ⊥ doctrine. doctrine/core-story.md עדיין UNRESOLVED; זו פרוזה מתועדת,
+      ⊥ קופי מאושר. ⊥ לשכתב לקופי שיווקי — הקול הזה עובד.
+
