@@ -157,3 +157,16 @@ cards:
       lapses silently after 13 days without the app being opened, and with D-014 every
       lead automation now rides one number. Implementation belongs in the existing
       sales-leads-poll daily heartbeat (D11), not in this repo and not as a second monitor.
+
+  - id: evidence/2026-08-31-lead-flow-wiring
+    title: How a lead actually flows today — the three inbound paths and the one that never joins
+    type: evidence-snapshot
+    authority: system_verified      # live DB reads + repo source; the open decisions are marked as decisions
+    date: 2026-08-31
+    freshness: snapshot             # immutable; the wiring changes the moment 8132 is connected
+    source: >-
+      order_intake.wa_event_log, list_edge_functions, and gt-factory-os source.
+      Answers the question coexistence-liveness.md left open: payloads carry
+      phone_number_id and today hold exactly one value, so the two lines will be
+      distinguishable with nothing retrofitted. Draws U-025 precisely — WhatsApp is
+      the highest-volume inbound channel and lands in a different schema from leads.
