@@ -2,7 +2,7 @@
 # authority: user_confirmed | system_verified | doc_confirmed | inferred
 # freshness: stable | review_30d | snapshot
 schema: v1
-updated: 2026-08-06
+updated: 2026-08-31
 
 cards:
   - id: market/sales-buildout-research-2026-07-18
@@ -37,3 +37,22 @@ cards:
     date: 2026-08-06
     freshness: review_30d           # every entry dated; sweep for stale identity questions
     source: tracker dashboard sync blocks + rebuild observations (append-only)
+
+  - id: doctrine/commercial-terms
+    title: Commercial terms — ex-VAT rule, opening menu, delivery grid, minimum, no commitment
+    type: doctrine
+    authority: user_confirmed       # Tom answered the four blocking questions in writing
+    date: 2026-08-31
+    freshness: review_30d           # prices and delivery days move; the ex-VAT rule is stable
+    source: Tom, 2026-08-31 + Canva DAHTY5nfDxo (opening menu, updated 2026-08-30)
+    decisions: D-007, D-008, D-009, D-010, D-011
+    open: U-018 (menu price + pack sizes), U-019 (order cutoff), U-020 (region boundaries)
+
+  - id: evidence/2026-08-31-lead-response-ground-truth
+    title: Lead machine ground truth — leads, transport, backlog, first response, WhatsApp
+    type: evidence-snapshot
+    authority: system_verified      # every figure a read-only query result
+    date: 2026-08-31
+    freshness: snapshot             # immutable; supersede with a newer snapshot
+    source: Supabase rvadsozabmxkkrktwgnv, read-only, 2026-08-31 11:32Z-12:10Z
+

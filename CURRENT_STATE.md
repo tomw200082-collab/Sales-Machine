@@ -59,6 +59,9 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-015 | Meta's current marketing-template rate for Israel. The public pricing page defers to an interactive rate card that serves no fetchable document | Tom — GT holds a WABA, so the authoritative rate is in GT's own Meta Business Manager billing page. ~2 minutes |
 | U-016 | `META_PAGE_ACCESS_TOKEN` carries no Leads Access on the page — the cause of two real leads rejected on 2026-08-24 (leadgen `1807021066847822`, `1469012341930658`), recoverable from Meta only until **2026-11-22**. Distinct from D-006: Make carries the lead, this token fetches its content | technical — next intake session |
 | U-017 | A second Facebook form id, `1771287887148857`, appears in `lead_reject` but the pulse reports `forms_visible: 1`. Live form or stale test form? | Tom + Alex, via Meta Ads Manager |
+| U-018 | What does the recommended opening menu cost, and in what quantities does each component ship? The Canva deck (`DAHTY5nfDxo`) prices **drinks** — food cost and RRP per drink — but never the order. Blocks quoting the starter offer | Tom — one number plus pack sizes |
+| U-019 | The order cutoff: how late can an order arrive and still make that region's next run? For north and south this is worth up to six days per customer | Tom / operations |
+| U-020 | Where north / centre / south divide, as something decidable from a delivery address. Without it an order cannot be routed to a day | Tom / operations |
 
 ## Pointers
 
