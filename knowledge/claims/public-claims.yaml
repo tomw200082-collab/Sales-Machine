@@ -1,0 +1,178 @@
+# GT — כל טענה שנאמרת ללקוח, והראיה שמאחוריה.
+# הכלל: טענה בלי מקור מאושר ⇒ authority: unsourced ⇒ ⊥ נאמרת ללקוח עד הכרעת טום.
+# ⊥ "כנראה", ⊥ "סביר", ⊥ "כך תמיד אמרנו". מקור = נתיב קובץ או שאילתה, ותאריך.
+card:
+  id: claims/public-claims
+  title: טענות פומביות — מה מותר להגיד ומה הראיה
+  type: claims-register
+  authority: per-entry
+  date: 2026-08-31
+  freshness: review_30d
+  source: ספר העבודה 2026-08-31 + בדיקה חיה מול Shopify + docs/warehouses/catalog-truth.md
+
+claims:
+  - id: cost_20_to_1
+    text_he: כוס חליטה קרה עולה ₪3.25 ונמכרת ב-₪20 — רווח 81% על ההכנסה נטו
+    status: approved
+    evidence: >-
+      drinks_final_figures.json p.8 (cost ₪3.25 · price ₪20 · marg 81%);
+      הרווח נגזר מהנוסחה ⊥ נטען: (20/1.18 − 3.25)/(20/1.18) = 81%
+    source: .claude/skills/drinks-pricelist/drinks_final_figures.json
+    date: '2026-08-27'
+    authority: system_verified
+
+  - id: less_profitable_than_coffee
+    text_he: קצת פחות רווחי מקפה, משמעותית יותר רווחי ממשקה מוכן מהמקרר
+    status: approved
+    evidence: >-
+      נוסח מכוון-חסר. הספר מסרב לנפח את ההשוואה לקפה, ובצדק: בעל מסעדה יבדוק
+      מספר מנופח ויפסיק להאמין לשאר. אין ולא נדרש מספר משווה — הטענה איכותית.
+    source: ספר העבודה §02 + §07 "זה רווחי?"
+    date: '2026-08-31'
+    authority: doc_confirmed
+
+  - id: no_additives
+    text_he: ללא חומרים משמרים, ללא צבעי מאכל, ללא תמציות טעם
+    status: approved
+    evidence: הופיע בקטלוג המוצרים 2026 ובספר; נאמר ללקוחות שנים
+    source: ספר העבודה §01 + §07
+    date: '2026-08-31'
+    authority: doc_confirmed
+    upgrade_to: system_verified כשיצורף מפרט מוצר / תווית
+
+  - id: made_in_holon
+    text_he: מייצרים במפעל שלנו בחולון; חומרי הגלם מיובאים ישירות מהמגדלים
+    status: approved
+    evidence: זהות החברה — gt-factory-os-production-brain/CLAUDE.md §Identity ("small beverage factory, Israel")
+    source: ספר העבודה §01 + brain CLAUDE.md
+    date: '2026-08-31'
+    authority: doc_confirmed
+
+  - id: kashrut_badatz
+    text_he: כל המוצרים כשרים בד״ץ בית יוסף, בהשגחת הרבנות חולון
+    status: approved_pending_certificate
+    evidence: >-
+      מופיע בספר העבודה. ⊥ נמצא תעודת כשרות סרוקה ו⊥ מספר תעודה בשום קובץ
+      מאושר בשני המאגרים (נבדק 2026-08-31). זו טענת ציות שלקוח עשוי לבקש
+      להציג — צריכה תעודה, ⊥ משפט.
+    open_item: CLAIM-1 — לצרף תעודה + תוקף
+    source: ספר העבודה §07 "כשרות"
+    date: '2026-08-31'
+    authority: doc_confirmed
+
+  - id: shelf_life
+    text_he: >-
+      תמציות: שנה סגור, ללא צורך בקירור; אחרי פתיחה — שלושה חודשים בקירור.
+      אבקות: שנתיים.
+    status: approved_pending_source
+    evidence: >-
+      מופיע בספר. ⊥ נמצא מפרט יציבות / תווית מוצר בשום קובץ מאושר (2026-08-31).
+    open_item: CLAIM-2 — לצרף מפרט או תווית
+    source: ספר העבודה §07 "חיי מדף"
+    date: '2026-08-31'
+    authority: doc_confirmed
+
+  - id: calories_17
+    text_he: כ-17 קלוריות ל-100 מ״ל משקה מוכן
+    status: withheld
+    evidence: >-
+      ⊥ נמצא מקור. אין טבלת סימון תזונתי בשום קובץ מאושר. ערך תזונתי הוא בדיוק
+      מה שמסעדה מצטטת ללקוח — ⊥ נאמר עד שיש מקור.
+    open_item: CLAIM-3
+    replacement_he: >-
+      התמציות זמינות עם מעט סוכר או ללא סוכר כלל. ערך תזונתי מדויק — אלכסנדר.
+    source: ספר העבודה §07 "יש סוכר"
+    date: '2026-08-31'
+    authority: unsourced
+
+  - id: customers_700
+    text_he: כ-700 לקוחות
+    status: withheld
+    evidence: >-
+      ⊥ מתאים לשום מדידה. בדיקה חיה 2026-08-31 מול Shopify Admin (ShopifyQL
+      `FROM sales SHOW customers, orders, total_sales`):
+      12 חודשים אחרונים — **599 לקוחות מזמינים**, 4,088 הזמנות;
+      מאז 2015 — **3,239 לקוחות**, 13,317 הזמנות.
+      טבלת העובדות של 2026-08-24 (evidence/2026-08-24-sales-report.md) סופרת
+      **804 לקוחות** ב-25 חודשים. 700 ⊥ אף אחד מהם.
+      אזהרה: המספרים האלה תנודתיים ⇒ recipes/customer-count.md, ⊥ עובדה שמורה.
+    open_item: TOM-D
+    replacement_candidate_he: כ-600 בתי עסק הזמינו מאיתנו בשנה האחרונה
+    source: >-
+      ShopifyQL live 2026-08-31 (greenteaeveryday.myshopify.com) +
+      Sales-Machine/evidence/2026-08-24-sales-report.md
+    date: '2026-08-31'
+    authority: unsourced
+
+  - id: years_8
+    text_he: 8 שנים בשוק
+    status: withheld
+    evidence: >-
+      ⊥ נמצא מקור לתאריך ההקמה בשום קובץ מאושר. חנות Shopify מכילה הזמנות מ-2015
+      ואילך, מה שמרמז על ותק גדול מ-8 שנים — אבל ותק החנות ⊥ ותק החברה, וניחוש
+      אינו מקור. טום נותן את המספר ואת הבסיס שלו.
+    open_item: TOM-D
+    source: בדיקה 2026-08-31 — אין
+    date: '2026-08-31'
+    authority: unsourced
+
+  - id: named_customers
+    text_he: 'לקוחות לציטוט: R2M, קבוצת קיסו, נונו מימי, ויוינו, אליטה אופק, בבקה'
+    status: partially_verified
+    evidence: >-
+      ארבעה מהשמות מאומתים כלקוחות בפועל בטבלת העובדות 2026-08-24:
+      נונומימי ₪471,938 (₪533,089 עם נונו ג'ירף) · עלית אופק ₪516,241 ·
+      R2M ₪132,976 · בבקה (הרצליה + כיכר הבימה, איחוד תצוגה מאושר-טום).
+      "קבוצת קיסו" ו"ויוינו" ⊥ מופיעים בעמודי הרשתות של אותה ראיה.
+      **קיום לקוח ⊥ רשות לפרסם את שמו.** רשות פרסום היא החלטה נפרדת של טום.
+    open_item: TOM-C
+    source: Sales-Machine/evidence/2026-08-24-sales-report.md §מספרי ליבה
+    date: '2026-08-24'
+    authority: system_verified
+
+  - id: distributor_ice_dream
+    text_he: אספקה לכל הארץ דרך המפיץ אייס דרים, לכל אזור לפחות פעמיים בשבוע
+    status: approved_frequency_only
+    evidence: >-
+      מופיע בספר. תדירות ⊥ תאריך אספקה — ראה boundaries/refusals#delivery_date.
+      מספר ימים מהזמנה עד הגעה ⊥ מוגדר (TOM-A.2).
+    source: ספר העבודה §07 "מספקים לכל הארץ"
+    date: '2026-08-31'
+    authority: doc_confirmed
+
+  - id: minimum_order_800
+    text_he: מינימום הזמנה ₪800 בתוספת מע״מ
+    status: approved
+    evidence: מופיע בספר פעמיים (§02 המספרים, §07 בנק התשובות) — עקבי
+    source: ספר העבודה §02 + §07
+    date: '2026-08-31'
+    authority: doc_confirmed
+
+  - id: training_videos
+    text_he: לכל מוצר ולכל משקה יש סרטון הדרכה, ואיתם חוברת משקאות עם הוראות הכנה ותמחור
+    status: approved
+    evidence: >-
+      מופיע בספר §05 שלב 06 ו-§07. חוברת המשקאות = "קטלוג משקאות סופי 26" —
+      הקטלוג היחיד בתוקף מבין ארבעה בקנבה (§09).
+    source: ספר העבודה §05 + §07 + §09
+    date: '2026-08-31'
+    authority: doc_confirmed
+    caution: ⊥ לשלוח אף אחד משלושת הקטלוגים האחרים
+
+  - id: single_bottle_11_drinks
+    text_he: בקבוק NAMASTEA אחד ב-₪65 פותח 11 משקאות
+    status: approved
+    evidence: >-
+      נספר מ-drinks/catalog.yaml — category "צ'אי" = 11 משקאות, כולם על בסיס
+      NAMASTEA. נבדק ע"י scripts/knowledge/reconcile.py.
+    source: knowledge/drinks/catalog.yaml
+    date: '2026-08-27'
+    authority: system_verified
+
+  - id: matcha_per_serving_2_13
+    text_he: פחית מאצ'ה 500 גרם ב-₪590 היא ₪2.13 למנה
+    status: approved
+    evidence: 590 ÷ 277 מנות (1.8 גרם למנה) = ₪2.13
+    source: knowledge/products/catalog.yaml · GT-SHI-CER-500
+    date: '2026-08-06'
+    authority: doc_confirmed

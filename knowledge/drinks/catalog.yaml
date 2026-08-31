@@ -1,0 +1,600 @@
+# GT — 48 המשקאות. נוצר אוטומטית; ⊥ לערוך ביד.
+# מקור יחיד לעלות/מחיר/רווח:
+#   gt-factory-os-production-brain/.claude/skills/drinks-pricelist/drinks_final_figures.json (2026-08-27)
+# הקובץ docs/pricing/2026-08-05_drinks_final_figures.json הוא גרסה מוחלפת — ⊥ לקרוא ממנו.
+# מפתח: canva_page — מספר העמוד ב"קטלוג משקאות סופי 26" (הקטלוג היחיד בתוקף).
+card:
+  id: drinks/catalog
+  title: 48 המשקאות — עלות, מחיר מומלץ, רווח
+  type: drinks-catalog
+  authority: system_verified
+  date: 2026-08-27
+  freshness: review_30d
+  source: >-
+    gt-factory-os-production-brain/.claude/skills/drinks-pricelist/drinks_final_figures.json
+    (_meta.date 2026-08-27 — מודל עלות בוטום-אפ מ-GT_Summer_Menu_2026.xls, טום)
+  generated_by: gt-factory-os-production-brain/scripts/knowledge/build_drinks_card.py
+  formulas:
+    profit: price / 1.18 - cost
+    margin_pct: round(profit / (price / 1.18) * 100)
+  cost_basis: >-
+    ex-VAT ingredients only — ⊥ גרניש, ⊥ קרח, ⊥ מים, ⊥ סודה, ⊥ אריזה, ⊥ עבודה
+  price_basis: VAT-inclusive (18%)
+
+drinks:
+  - canva_page: 8
+    name: חליטת היביסקוס וליים
+    category: תה
+    family: חליטות קרות ICED TEA
+    cost: 3.25
+    price: 20
+    margin_pct: 81
+    profit_per_cup: 13.70
+    base: tea_concentrate
+    source: drinks_final_figures.json p.8
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 9
+    name: חליטת קמומיל ותפוח
+    category: תה
+    family: חליטות קרות ICED TEA
+    cost: 3.25
+    price: 20
+    margin_pct: 81
+    profit_per_cup: 13.70
+    base: tea_concentrate
+    source: drinks_final_figures.json p.9
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 10
+    name: חליטה מדברית
+    category: תה
+    family: חליטות קרות ICED TEA
+    cost: 3.25
+    price: 20
+    margin_pct: 81
+    profit_per_cup: 13.70
+    base: tea_concentrate
+    source: drinks_final_figures.json p.10
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 11
+    name: חליטת סנצ'ה ופסיפלורה
+    category: תה
+    family: חליטות קרות ICED TEA
+    cost: 3.25
+    price: 20
+    margin_pct: 81
+    profit_per_cup: 13.70
+    base: tea_concentrate
+    source: drinks_final_figures.json p.11
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 12
+    name: חליטת תה ירוק וליים
+    category: תה
+    family: חליטות קרות ICED TEA
+    cost: 3.25
+    price: 20
+    margin_pct: 81
+    profit_per_cup: 13.70
+    base: tea_concentrate
+    source: drinks_final_figures.json p.12
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 13
+    name: חליטת תה ירוק ולמון גראס
+    category: תה
+    family: חליטות קרות ICED TEA
+    cost: 3.25
+    price: 20
+    margin_pct: 81
+    profit_per_cup: 13.70
+    base: tea_concentrate
+    source: drinks_final_figures.json p.13
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 14
+    name: חליטת יסמין וליצ'י
+    category: תה
+    family: חליטות קרות ICED TEA
+    cost: 3.25
+    price: 20
+    margin_pct: 81
+    profit_per_cup: 13.70
+    base: tea_concentrate
+    source: drinks_final_figures.json p.14
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 16
+    name: לימונדת היביסקוס וליים
+    category: תה
+    family: לימונדות LEMONADE
+    cost: 3.95
+    price: 22
+    margin_pct: 79
+    profit_per_cup: 14.69
+    base: tea_concentrate
+    source: drinks_final_figures.json p.16
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 17
+    name: לימונדה מדברית
+    category: תה
+    family: לימונדות LEMONADE
+    cost: 3.95
+    price: 22
+    margin_pct: 79
+    profit_per_cup: 14.69
+    base: tea_concentrate
+    source: drinks_final_figures.json p.17
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 18
+    name: לימונדת צ'אי מסאלה
+    category: צ'אי
+    family: לימונדה
+    cost: 3.95
+    price: 22
+    margin_pct: 79
+    profit_per_cup: 14.69
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.18
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 20
+    name: חליטת אפרסק מדברית
+    category: תה
+    family: סיגנצ'ר FRUITEA
+    cost: 4.80
+    price: 31
+    margin_pct: 82
+    profit_per_cup: 21.47
+    base: tea_concentrate
+    source: drinks_final_figures.json p.20
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 21
+    name: חליטת תות לואיזה
+    category: תה
+    family: סיגנצ'ר FRUITEA
+    cost: 4.80
+    price: 31
+    margin_pct: 82
+    profit_per_cup: 21.47
+    base: tea_concentrate
+    source: drinks_final_figures.json p.21
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 22
+    name: חליטת מנגו סנצ'ה
+    category: תה
+    family: סיגנצ'ר FRUITEA
+    cost: 4.80
+    price: 31
+    margin_pct: 82
+    profit_per_cup: 21.47
+    base: tea_concentrate
+    source: drinks_final_figures.json p.22
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 23
+    name: חליטת תפוח היביסקוס
+    category: תה
+    family: סיגנצ'ר FRUITEA
+    cost: 2.88
+    price: 24
+    margin_pct: 86
+    profit_per_cup: 17.46
+    base: tea_concentrate
+    source: drinks_final_figures.json p.23
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 25
+    name: גזוז יסמין וליצ'י
+    category: תה
+    family: גזוז GAZOZ
+    cost: 3.08
+    price: 25
+    margin_pct: 85
+    profit_per_cup: 18.11
+    base: tea_concentrate
+    source: drinks_final_figures.json p.25
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 26
+    name: גזוז מדברי ואפרסק
+    category: תה
+    family: גזוז GAZOZ
+    cost: 4.80
+    price: 33
+    margin_pct: 83
+    profit_per_cup: 23.17
+    base: tea_concentrate
+    source: drinks_final_figures.json p.26
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 27
+    name: גזוז היביסקוס ותפוח
+    category: תה
+    family: גזוז GAZOZ
+    cost: 2.88
+    price: 22
+    margin_pct: 85
+    profit_per_cup: 15.76
+    base: tea_concentrate
+    source: drinks_final_figures.json p.27
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 29
+    name: אייס מאצ'ה קלאסי
+    category: אבקות
+    family: אייס מאצ'ה ICE MATCHA
+    cost: 4.26
+    price: 26
+    margin_pct: 81
+    profit_per_cup: 17.77
+    base: powder
+    source: drinks_final_figures.json p.29
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 30
+    name: אייס מאצ'ה מנגו
+    category: אבקות
+    family: אייס מאצ'ה ICE MATCHA
+    cost: 6.46
+    price: 39
+    margin_pct: 80
+    profit_per_cup: 26.59
+    base: powder
+    source: drinks_final_figures.json p.30
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 31
+    name: אייס מאצ'ה תות
+    category: אבקות
+    family: אייס מאצ'ה ICE MATCHA
+    cost: 6.46
+    price: 39
+    margin_pct: 80
+    profit_per_cup: 26.59
+    base: powder
+    source: drinks_final_figures.json p.31
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 32
+    name: אייס מאצ'ה אפרסק
+    category: אבקות
+    family: אייס מאצ'ה ICE MATCHA
+    cost: 6.46
+    price: 39
+    margin_pct: 80
+    profit_per_cup: 26.59
+    base: powder
+    source: drinks_final_figures.json p.32
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 33
+    name: אייס מאצ'ה מסאלה
+    category: אבקות
+    family: אייס מאצ'ה ICE MATCHA
+    cost: 6.86
+    price: 37
+    margin_pct: 78
+    profit_per_cup: 24.50
+    base: powder
+    source: drinks_final_figures.json p.33
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 34
+    name: מאצ'ה אגבה על הקרח
+    category: אבקות
+    family: אייס מאצ'ה ICE MATCHA
+    cost: 2.85
+    price: 26
+    margin_pct: 87
+    profit_per_cup: 19.18
+    base: powder
+    source: drinks_final_figures.json p.34
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 36
+    name: אייס מאצ'ה וניל
+    category: אבקות
+    family: מאצ'ה ספיישל MATCHA SPECIALS
+    cost: 4.56
+    price: 28
+    margin_pct: 81
+    profit_per_cup: 19.17
+    base: powder
+    source: drinks_final_figures.json p.36
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 37
+    name: אייס מאצ'ה פיסטוק
+    category: אבקות
+    family: מאצ'ה ספיישל MATCHA SPECIALS
+    cost: 5.46
+    price: 28
+    margin_pct: 77
+    profit_per_cup: 18.27
+    base: powder
+    source: drinks_final_figures.json p.37
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 38
+    name: אייס מאצ'ה שומשום שחור
+    category: אבקות
+    family: מאצ'ה ספיישל MATCHA SPECIALS
+    cost: 5.06
+    price: 28
+    margin_pct: 79
+    profit_per_cup: 18.67
+    base: powder
+    source: drinks_final_figures.json p.38
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 39
+    name: אייס מאצ'ה קפה
+    category: אבקות
+    family: מאצ'ה ספיישל MATCHA SPECIALS
+    cost: 5.26
+    price: 29
+    margin_pct: 79
+    profit_per_cup: 19.32
+    base: powder
+    source: drinks_final_figures.json p.39
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 40
+    name: אייס מאצ'ה בננה
+    category: אבקות
+    family: מאצ'ה ספיישל MATCHA SPECIALS
+    cost: 4.76
+    price: 28
+    margin_pct: 80
+    profit_per_cup: 18.97
+    base: powder
+    source: drinks_final_figures.json p.40
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 42
+    name: מאצ'ה קוקוס אגבה
+    category: אבקות
+    family: מאצ'ה קוקוס MATCHA COCONUT
+    cost: 4.04
+    price: 34
+    margin_pct: 86
+    profit_per_cup: 24.77
+    base: powder
+    source: drinks_final_figures.json p.42
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 43
+    name: מאצ'ה קוקוס ליצ'י
+    category: אבקות
+    family: מאצ'ה קוקוס MATCHA COCONUT
+    cost: 4.07
+    price: 32
+    margin_pct: 85
+    profit_per_cup: 23.05
+    base: powder
+    source: drinks_final_figures.json p.43
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 44
+    name: מאצ'ה קוקוס תות
+    category: אבקות
+    family: מאצ'ה קוקוס MATCHA COCONUT
+    cost: 5.79
+    price: 44
+    margin_pct: 84
+    profit_per_cup: 31.50
+    base: powder
+    source: drinks_final_figures.json p.44
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 45
+    name: מאצ'ה קוקוס מנגו
+    category: אבקות
+    family: מאצ'ה קוקוס MATCHA COCONUT
+    cost: 5.79
+    price: 44
+    margin_pct: 84
+    profit_per_cup: 31.50
+    base: powder
+    source: drinks_final_figures.json p.45
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 46
+    name: מאצ'ה קוקוס אפרסק
+    category: אבקות
+    family: מאצ'ה קוקוס MATCHA COCONUT
+    cost: 5.79
+    price: 44
+    margin_pct: 84
+    profit_per_cup: 31.50
+    base: powder
+    source: drinks_final_figures.json p.46
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 48
+    name: אייס צ'אי מסאלה קלאסי
+    category: צ'אי
+    family: צ'אי מסאלה CHAI MASSALA
+    cost: 5.57
+    price: 28
+    margin_pct: 77
+    profit_per_cup: 18.16
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.48
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 49
+    name: צ'אי מסאלה על הקרח
+    category: צ'אי
+    family: צ'אי מסאלה CHAI MASSALA
+    cost: 3.70
+    price: 24
+    margin_pct: 82
+    profit_per_cup: 16.64
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.49
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 50
+    name: דירטי צ'אי
+    category: צ'אי
+    family: צ'אי מסאלה CHAI MASSALA
+    cost: 6.57
+    price: 32
+    margin_pct: 76
+    profit_per_cup: 20.55
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.50
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 51
+    name: צ'אי מסאלה תפוז וטוניק
+    category: צ'אי
+    family: צ'אי מסאלה CHAI MASSALA
+    cost: 4.75
+    price: 26
+    margin_pct: 78
+    profit_per_cup: 17.28
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.51
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 52
+    name: צ'אי מסאלה פינק טוניק
+    category: צ'אי
+    family: צ'אי מסאלה CHAI MASSALA
+    cost: 4.75
+    price: 24
+    margin_pct: 77
+    profit_per_cup: 15.59
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.52
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 53
+    name: צ'אי מסאלה ומיץ תפוזים
+    category: צ'אי
+    family: צ'אי מסאלה CHAI MASSALA
+    cost: 5.25
+    price: 28
+    margin_pct: 78
+    profit_per_cup: 18.48
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.53
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 55
+    name: צ'אי מסאלה קולד פואם וניל
+    category: צ'אי
+    family: קולד פואם COLD FOAM
+    cost: 4.00
+    price: 28
+    margin_pct: 83
+    profit_per_cup: 19.73
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.55
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 56
+    name: צ'אי מסאלה קולד פואם פיסטוק
+    category: צ'אי
+    family: קולד פואם COLD FOAM
+    cost: 4.90
+    price: 30
+    margin_pct: 81
+    profit_per_cup: 20.52
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.56
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 57
+    name: צ'אי תאילנדי קוקוס קולד פואם
+    category: צ'אי
+    family: קולד פואם COLD FOAM
+    cost: 4.90
+    price: 32
+    margin_pct: 82
+    profit_per_cup: 22.22
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.57
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 58
+    name: צ'אי מסאלה קולד פואם בננה
+    category: צ'אי
+    family: קולד פואם COLD FOAM
+    cost: 4.20
+    price: 31
+    margin_pct: 84
+    profit_per_cup: 22.07
+    base: tea_concentrate (NAMASTEA)
+    source: drinks_final_figures.json p.58
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 60
+    name: אייס אובה תות
+    category: אבקות
+    family: אובה UBE
+    cost: 5.22
+    price: 30
+    margin_pct: 79
+    profit_per_cup: 20.20
+    base: powder
+    source: drinks_final_figures.json p.60
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 61
+    name: אייס אובה מנגו
+    category: אבקות
+    family: אובה UBE
+    cost: 5.22
+    price: 30
+    margin_pct: 79
+    profit_per_cup: 20.20
+    base: powder
+    source: drinks_final_figures.json p.61
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 62
+    name: אייס אובה אפרסק
+    category: אבקות
+    family: אובה UBE
+    cost: 5.22
+    price: 30
+    margin_pct: 79
+    profit_per_cup: 20.20
+    base: powder
+    source: drinks_final_figures.json p.62
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 63
+    name: אייס אובה מסאלה
+    category: אבקות
+    family: אובה UBE
+    cost: 6.27
+    price: 31
+    margin_pct: 76
+    profit_per_cup: 20.00
+    base: powder
+    source: drinks_final_figures.json p.63
+    date: '2026-08-27'
+    authority: system_verified
+  - canva_page: 64
+    name: אייס אובה מאצ'ה
+    category: אבקות
+    family: אובה UBE
+    cost: 4.96
+    price: 28
+    margin_pct: 79
+    profit_per_cup: 18.77
+    base: powder
+    source: drinks_final_figures.json p.64
+    date: '2026-08-27'
+    authority: system_verified
