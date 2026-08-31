@@ -126,7 +126,7 @@ The defensible claim is therefore narrow and still serious: **GT's largest inbou
 channel has no identification layer, so the number of real leads inside it is unknown.**
 The only lead-shaped population that can be named today is the single-message tail —
 **36 senders all time, 11 in the last 30 days** — and that is a floor, not an estimate.
-Opened as `U-014`.
+Opened as `U-020`.
 
 ## 7. Attribution is nearly absent
 

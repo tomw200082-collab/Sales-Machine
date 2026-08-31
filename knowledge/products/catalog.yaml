@@ -1,0 +1,661 @@
+# GT — product catalog card (rule 1: every entry graded, dated, sourced)
+# Prices are EX-VAT and are re-joined to the approved price list by
+# gt-factory-os-production-brain/scripts/knowledge/reconcile.py cards.
+# ⊥ edit a price here. Prices change in the TSV first, then here.
+card:
+  id: products/catalog
+  title: מחירון המוצרים — מה GT מוכרת ובכמה (ללא מע״מ)
+  type: product-catalog
+  authority: per-entry
+  date: 2026-08-31
+  freshness: review_30d
+  source: >-
+    gt-factory-os-production-brain/docs/pricing/2026-08-05_shopify_products_exvat.tsv (מחיר)
+    + docs/warehouses/catalog-truth.md (האם נמכר בכלל, מאושר-טום 2026-08-06)
+  vat: prices are ex-VAT; a customer-facing VAT-inclusive figure is price × 1.18
+  note: >-
+    customer_facing: false ⇒ ⊥ להזכיר ללקוח, ⊥ לנקוב במחיר. הרשומה נשמרת כדי
+    שסוכן שנשאל עליה ידע לסרב, ולא ימציא תשובה.
+
+products:
+  # ---------------------------------------------------------------- תמציות תה
+  - sku: GT-HIB-LOW-1L
+    name_he: FRESH · חליטה תאילנדית
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: היביסקוס, ליים
+    caffeine_free: true
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-HIB-LOW-0.5L
+    name_he: FRESH · חליטה תאילנדית
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: היביסקוס, ליים
+    caffeine_free: true
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-HIB-FRE-1L
+    name_he: FRESH ללא סוכר
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: היביסקוס, ליים
+    caffeine_free: true
+    sugar: none
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-HIB-FRE-0.5L
+    name_he: FRESH ללא סוכר
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: היביסקוס, ליים
+    caffeine_free: true
+    sugar: none
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-LUI-LOW-1L
+    name_he: DETOX · חליטה ישראלית
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: תה ירוק, לואיזה, נענע, ליים
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-LUI-LOW-0.5L
+    name_he: DETOX · חליטה ישראלית
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: תה ירוק, לואיזה, נענע, ליים
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-LUI-FRE-1L
+    name_he: DETOX ללא סוכר
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: תה ירוק, לואיזה, נענע, ליים
+    caffeine_free: false
+    sugar: none
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-LUI-FRE-0.5L
+    name_he: DETOX ללא סוכר
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: תה ירוק, לואיזה, נענע, ליים
+    caffeine_free: false
+    sugar: none
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-LEM-LOW-1L
+    name_he: ENERGY · חליטת שנגחאי
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: תה ירוק, למון גראס, נענע, לימון
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-LEM-LOW-0.5L
+    name_he: ENERGY · חליטת שנגחאי
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: תה ירוק, למון גראס, נענע, לימון
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-CHA-LOW-1L
+    name_he: CALM · חליטה צרפתית
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: קמומיל, תפוח, ציפורן
+    caffeine_free: true
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-CHA-LOW-0.5L
+    name_he: CALM · חליטה צרפתית
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: קמומיל, תפוח, ציפורן
+    caffeine_free: true
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-JAS-LOW-1L
+    name_he: CONSCIOUSNESS · חליטה קוריאנית
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: 70% תה יסמין, ליצ'י
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-JAS-LOW-0.5L
+    name_he: CONSCIOUSNESS · חליטה קוריאנית
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: 70% תה יסמין, ליצ'י
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-SEN-LOW-1L
+    name_he: REVIVE · חליטה יפנית
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: 70% סנצ'ה יפנית, פסיפלורה
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-SEN-LOW-0.5L
+    name_he: REVIVE · חליטה יפנית
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: 70% סנצ'ה יפנית, פסיפלורה
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-INF-DES-1L
+    name_he: DESERTEA · חליטה מדברית
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: לואיזה, נענע, אורגנו, מליסה, מרווה, זוטה לבנה
+    caffeine_free: true
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-INF-DES-0.5L
+    name_he: DESERTEA · חליטה מדברית
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: לואיזה, נענע, אורגנו, מליסה, מרווה, זוטה לבנה
+    caffeine_free: true
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-MAS-CHA-1L
+    name_he: NAMASTEA · צ'אי מסאלה הודי
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: שני זני תה שחור, קינמון, הל, ג'ינג'ר, פלפל שחור, ציפורן
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    unlocks_drinks: 11
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-MAS-CHA-0.5L
+    name_he: NAMASTEA · צ'אי מסאלה הודי
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: שני זני תה שחור, קינמון, הל, ג'ינג'ר, פלפל שחור, ציפורן
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+
+  # ------------------------------------------------- 0.3 ל' — קיים, ⊥ במחירון הספר
+  - sku: GT-HIB-LOW-0.3L
+    name_he: FRESH · 300 מ״ל
+    family: tea_concentrate
+    pack: 300 מ״ל
+    price_exvat: 13.5
+    servings_per_unit: 6
+    serving: 50 מ״ל
+    cost_per_serving: 2.25
+    customer_facing: false
+    why_not_customer_facing: >-
+      טום 2026-08-31: "לא להציע בכלל — זה היה רק להזמנה ספציפית". הקו נפתח להזמנת
+      מימי ואזה (17,000 יח', 08/2026) ואינו חלק ממחירון הלקוחות. ⊥ מוזכר ביוזמתנו.
+    closed: U-014 — טום 2026-08-31
+    source: TSV 2026-08-05 (שורת 2026-08-30)
+    date: 2026-08-30
+    authority: system_verified
+  - sku: GT-LUI-LOW-0.3L
+    name_he: DETOX · 300 מ״ל
+    family: tea_concentrate
+    pack: 300 מ״ל
+    price_exvat: 13.5
+    servings_per_unit: 6
+    serving: 50 מ״ל
+    cost_per_serving: 2.25
+    customer_facing: false
+    why_not_customer_facing: כמו GT-HIB-LOW-0.3L — הזמנה ספציפית בלבד (טום 2026-08-31)
+    closed: U-014 — טום 2026-08-31
+    source: TSV 2026-08-05 (שורת 2026-08-30)
+    date: 2026-08-30
+    authority: system_verified
+  - sku: GT-CHA-LOW-0.3L
+    name_he: CALM · 300 מ״ל
+    family: tea_concentrate
+    pack: 300 מ״ל
+    price_exvat: 13.5
+    servings_per_unit: 6
+    serving: 50 מ״ל
+    cost_per_serving: 2.25
+    customer_facing: false
+    why_not_customer_facing: כמו GT-HIB-LOW-0.3L — הזמנה ספציפית בלבד (טום 2026-08-31)
+    closed: U-014 — טום 2026-08-31
+    source: TSV 2026-08-05 (שורת 2026-08-30)
+    date: 2026-08-30
+    authority: system_verified
+  - sku: GT-SEN-LOW-0.3L
+    name_he: REVIVE · 300 מ״ל
+    family: tea_concentrate
+    pack: 300 מ״ל
+    price_exvat: 13.5
+    servings_per_unit: 6
+    serving: 50 מ״ל
+    cost_per_serving: 2.25
+    customer_facing: false
+    why_not_customer_facing: כמו GT-HIB-LOW-0.3L — הזמנה ספציפית בלבד (טום 2026-08-31)
+    closed: U-014 — טום 2026-08-31
+    source: TSV 2026-08-05 (שורת 2026-08-30)
+    date: 2026-08-30
+    authority: system_verified
+
+  # ---------------------------------------------------------------- אבקות
+  - sku: GT-SHI-CER-500
+    name_he: MATCHA שיזואוקה 500 גרם
+    family: powder
+    pack: 500 גרם
+    price_exvat: 590
+    servings_per_unit: 277
+    serving: 1.8 גרם
+    cost_per_serving: 2.13
+    requires_equipment: [מקציף או מטרפה, חלב]
+    customer_facing: true
+    lead_with: cost_per_serving
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-SHI-CER-18*22
+    name_he: MATCHA 22×18 גרם — מנות אישיות
+    family: powder
+    pack: 22×18 גרם
+    price_exvat: 590
+    requires_equipment: [מקציף או מטרפה, חלב]
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: UBE-POWDER-1-KG
+    name_he: UBE — אבקת שורש יאם סגול, 1 ק״ג
+    family: powder
+    pack: 1 ק״ג
+    price_exvat: 340
+    servings_per_unit: 500
+    serving: 2 גרם
+    cost_per_serving: 0.68
+    requires_equipment: [מקציף או מטרפה, חלב]
+    requires_second_product: true
+    why: כל 5 משקאות האובה דורשים מוצר שני (מחית / מאצ'ה / מסאלה)
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: UBE-POWDER-0.5-KG
+    name_he: UBE — אבקת שורש יאם סגול, 500 גרם
+    family: powder
+    pack: 500 גרם
+    price_exvat: 175
+    servings_per_unit: 250
+    serving: 2 גרם
+    cost_per_serving: 0.70
+    requires_equipment: [מקציף או מטרפה, חלב]
+    requires_second_product: true
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-MAT-KIT
+    name_he: MATCHA KIT — ערכת מאצ'ה מלאה
+    family: kit
+    price_exvat: 170
+    customer_facing: true
+    role: נקודת כניסה לאבקות
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+
+  # ---------------------------------------------------------------- מחיות פרי
+  - sku: GT-ODK-MAN-1
+    name_he: ODK מחית מנגו 1 ליטר
+    family: puree
+    pack: 1 ליטר
+    price_exvat: 60
+    servings_per_unit: 25
+    serving: 40 מ״ל
+    cost_per_serving: 2.40
+    customer_facing: true
+    role: ההרחבה הרוחבית היחידה — מוסיפה משקאות גם בתה וגם באבקות
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-ODK-STR-1
+    name_he: ODK מחית תות 1 ליטר
+    family: puree
+    pack: 1 ליטר
+    price_exvat: 60
+    servings_per_unit: 25
+    serving: 40 מ״ל
+    cost_per_serving: 2.40
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-ODK-PEA-1
+    name_he: ODK מחית אפרסק 1 ליטר
+    family: puree
+    pack: 1 ליטר
+    price_exvat: 60
+    servings_per_unit: 25
+    serving: 40 מ״ל
+    cost_per_serving: 2.40
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+
+  # ---------------------------------------------------------------- עזרי הכנה
+  - sku: AP-BWL-MAT
+    name_he: קערת מאצ'ה קרמית
+    family: accessory
+    price_exvat: 118
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: AP-FRO-MAT
+    name_he: מקציף מאצ'ה חשמלי
+    family: accessory
+    price_exvat: 100
+    customer_facing: true
+    required_for: [powder]
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: AP-WHK-MAT
+    name_he: מטרפת במבוק
+    family: accessory
+    price_exvat: 37
+    customer_facing: true
+    required_for: [powder]
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: AP-CUP-MAT-600
+    name_he: כוס זכוכית 600 מ״ל
+    family: accessory
+    price_exvat: 30
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: AP-STA-MAT
+    name_he: מעמד למטרפה
+    family: accessory
+    price_exvat: 25
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-GLA-CUP
+    name_he: כוס מדידה
+    family: accessory
+    price_exvat: 20
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: AP-SCO-MAT
+    name_he: כף מדידה במבוק
+    family: accessory
+    price_exvat: 11
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+  - sku: GT-MAT-BTL-RU
+    name_he: בקבוק מאצ'ה 500 מ״ל
+    family: accessory
+    price_exvat: 10
+    customer_facing: true
+    source: TSV 2026-08-05 + catalog-truth 2026-08-06
+    date: 2026-08-06
+    authority: doc_confirmed
+
+  # ------------------------------------- רשומות-שלילה: בספר, ⊥ נמכרות (טום 2026-08-06)
+  - sku: GT-SHI-CER-50
+    name_he: MATCHA שיזואוקה 50 גרם
+    family: powder
+    price_exvat: 65
+    customer_facing: false
+    why_not_customer_facing: 'טום 2026-08-06: "אנחנו לא מוכרים אותה"'
+    printed_in_book_2026_08_31: true
+    open_item: TOM-B
+    source: catalog-truth.md §רשומות-שלילה
+    date: 2026-08-06
+    authority: user_confirmed
+  - sku: GT-SHI-CER-30
+    name_he: GT ELITA מאצ'ה פחית 30 גרם
+    family: powder
+    price_exvat: 38
+    customer_facing: false
+    why_not_customer_facing: 'טום 2026-08-06: "זה לא אמור להיות שם"'
+    printed_in_book_2026_08_31: true
+    open_item: TOM-B
+    source: catalog-truth.md §רשומות-שלילה
+    date: 2026-08-06
+    authority: user_confirmed
+  - sku: GTCFR-GTCOC-FRO
+    name_he: מקציף קוקטיילים
+    family: accessory
+    price_exvat: 75
+    customer_facing: false
+    why_not_customer_facing: 'טום 2026-08-06: ירד מהמחירון'
+    printed_in_book_2026_08_31: true
+    open_item: TOM-B
+    source: catalog-truth.md §רשומות-שלילה
+    date: 2026-08-06
+    authority: user_confirmed
+  - sku: AP-JUG-NEA
+    name_he: קנקן נפוליטן זכוכית עם מסננת
+    family: accessory
+    price_exvat: 36
+    customer_facing: false
+    why_not_customer_facing: 'טום 2026-08-06: "לא רלוונטי"'
+    printed_in_book_2026_08_31: true
+    open_item: TOM-B
+    source: catalog-truth.md §רשומות-שלילה
+    date: 2026-08-06
+    authority: user_confirmed
+
+  # ------------------------------------- אין SKU פעיל: בספר עם מחיר, בלי גיבוי מערכת
+  - sku: GT-AME-LOW-1L
+    name_he: AMERICAN · חליטה אמריקאית
+    family: tea_concentrate
+    pack: 1 ליטר
+    price_exvat: 65
+    servings_per_unit: 20
+    serving: 50 מ״ל
+    cost_per_serving: 3.25
+    ingredients_he: תה שחור, תה סיני מיושן, יוזו, לימון, ליים, ברגמוט, תפוזים
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    note: >-
+      עד 2026-08-31 נרשם ב-catalog-truth "אין SKU פעיל" — שגוי. פעיל בשופיפיי מאז
+      2026-04-23. באותה בדיקה התגלה שהמחיר היה הפוך (₪33 לליטר) ותוקן ל-₪65 באישור טום.
+    source: בדיקה חיה מול Shopify Admin + catalog-truth.md
+    date: '2026-08-31'
+    authority: system_verified
+  - sku: GT-AME-LOW-0.5L
+    name_he: AMERICAN · חליטה אמריקאית
+    family: tea_concentrate
+    pack: 500 מ״ל
+    price_exvat: 33
+    servings_per_unit: 10
+    serving: 50 מ״ל
+    cost_per_serving: 3.30
+    ingredients_he: תה שחור, תה סיני מיושן, יוזו, לימון, ליים, ברגמוט, תפוזים
+    caffeine_free: false
+    sugar: low
+    customer_facing: true
+    note: המחיר היה ₪65 בשופיפיי (הפוך) ותוקן ל-₪33 ב-2026-08-31 באישור טום.
+    source: בדיקה חיה מול Shopify Admin + catalog-truth.md
+    date: '2026-08-31'
+    authority: system_verified
+  - sku: GT-HOJ-BLK-500
+    name_he: HOJICHA 500 גרם
+    family: powder
+    pack: 500 גרם
+    price_exvat: 375
+    customer_facing: true
+    requires_equipment: [מקציף או מטרפה, חלב]
+    caution: >-
+      אין לו אף מתכון בקטלוג המשקאות. מותר למכור, אבל מקום שיקבל אותו ⊥ יידע מה
+      לעשות איתו — שווה מתכונים בסשן תפריטי הקטגוריות.
+    note: עד 2026-08-31 נרשם "אין SKU פעיל" — שגוי. פעיל מאז 2026-07-27, 20 יח' במלאי.
+    source: בדיקה חיה מול Shopify Admin + catalog-truth.md
+    date: '2026-08-31'
+    authority: system_verified
+  - sku: GT-HOJ-BLK-1000
+    name_he: HOJICHA 1 ק״ג
+    family: powder
+    pack: 1 ק״ג
+    price_exvat: 750
+    customer_facing: true
+    requires_equipment: [מקציף או מטרפה, חלב]
+    caution: כמו 500 גרם — אין מתכון בקטלוג.
+    note: פעיל מאז 2026-08-18, ⊥ הופיע בשום קובץ עד 2026-08-31. נוסף באישור טום.
+    source: בדיקה חיה מול Shopify Admin
+    date: '2026-08-31'
+    authority: system_verified

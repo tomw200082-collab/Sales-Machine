@@ -38,6 +38,91 @@ cards:
     freshness: review_30d           # every entry dated; sweep for stale identity questions
     source: tracker dashboard sync blocks + rebuild observations (append-only)
 
+  # ---------------------------------------------------------------- ספר העבודה, 2026-08-31
+  # הספר (ארטיפקט HTML) הפך משכבת האמת לתצוגה של הכרטיסים האלה.
+  # השער: gt-factory-os-production-brain/scripts/knowledge/reconcile.py — 0 שורות.
+  - id: products/catalog
+    title: מחירון המוצרים — מה GT מוכרת ובכמה (ללא מע״מ)
+    type: product-catalog
+    authority: per-entry            # doc_confirmed מה-TSV; user_confirmed לרשומות-שלילה
+    date: 2026-08-31
+    freshness: review_30d
+    source: >-
+      brain docs/pricing/2026-08-05_shopify_products_exvat.tsv (מחיר) +
+      docs/warehouses/catalog-truth.md (האם נמכר, מאושר-טום 2026-08-06)
+
+  - id: drinks/catalog
+    title: 48 המשקאות — עלות, מחיר מומלץ, רווח
+    type: drinks-catalog
+    authority: system_verified
+    date: 2026-08-27
+    freshness: review_30d
+    source: brain .claude/skills/drinks-pricelist/drinks_final_figures.json (_meta.date 2026-08-27)
+    generated: brain scripts/knowledge/build_drinks_card.py — ⊥ לערוך ביד
+
+  - id: answers/answer-bank
+    title: בנק התשובות — מה מותר לענות, ומה עובר לאלכסנדר
+    type: answer-bank
+    authority: per-entry
+    date: 2026-08-31
+    freshness: review_30d
+    source: ספר העבודה §07 (17) + הרחבה 2026-08-31 (13) — 30 שורות
+    note: המקור היחיד. גיליון שהמערכת קוראת נבנה מכאן. שני בנקים = כישלון D3.
+
+  - id: boundaries/refusals
+    title: הגבולות — מה אף פעם לא עונים, ומה אומרים במקום
+    type: refusal-rules
+    authority: per-entry
+    date: 2026-08-31
+    freshness: stable
+    source: ספר העבודה §08 + CLAUDE.md §Stop conditions
+    note: נבדק לפני בנק התשובות. ברירת מחדל לכל מה שלא נתפס — refuse_and_transfer.
+
+  - id: claims/public-claims
+    title: טענות פומביות — מה מותר להגיד ומה הראיה
+    type: claims-register
+    authority: per-entry
+    date: 2026-08-31
+    freshness: review_30d
+    source: ספר העבודה + בדיקה חיה מול Shopify 2026-08-31 + evidence/2026-08-24-sales-report.md
+    note: 3 טענות בדרגה unsourced — ⊥ נאמרות ללקוח (calories_17, customers_700, years_8).
+
+  - id: segments/buyers
+    title: סוגי הליד וסוגי העסק — מה עובד על מי
+    type: segment-map
+    authority: per-entry
+    date: 2026-08-31
+    freshness: review_30d
+    source: ספר העבודה §05 + gt-acquisition-os/CLAUDE.md
+
+  - id: segments/sales-motion
+    title: רצף הליד, מה שולחים, ולאן מרחיבים
+    type: playbook
+    authority: per-entry
+    date: 2026-08-31
+    freshness: review_30d
+    source: ספר העבודה §05 + §06
+
+  - id: eval/questions
+    title: סט ההערכה — 17 תשובות, 5 סירובים, 20 פראפרזות
+    type: eval-set
+    authority: doc_confirmed
+    date: 2026-08-31
+    freshness: review_30d
+    source: ספר העבודה §07 + §08
+    note: 42 פריטים. הבדיקה היחידה שמודדת התנהגות של סוכן, ⊥ קבצים.
+
+  - id: story/chapters
+    title: פרקי הפרוזה של ספר העבודה
+    type: prose
+    authority: per-entry
+    date: 2026-08-31
+    freshness: stable
+    source: ספר העבודה 2026-08-31 — הטקסט כפי שנמסר ע"י טום בסשן
+    note: >-
+      ⊥ doctrine. doctrine/core-story.md עדיין UNRESOLVED; זו פרוזה מתועדת,
+      ⊥ קופי מאושר. ⊥ לשכתב לקופי שיווקי — הקול הזה עובד.
+
   - id: doctrine/commercial-terms
     title: Commercial terms — ex-VAT rule, opening menu, delivery grid, minimum, no commitment
     type: doctrine
@@ -45,8 +130,8 @@ cards:
     date: 2026-08-31
     freshness: review_30d           # prices and delivery days move; the ex-VAT rule is stable
     source: Tom, 2026-08-31 + Canva DAHTY5nfDxo (opening menu, updated 2026-08-30)
-    decisions: D-007, D-008, D-009, D-010, D-011
-    open: U-018 (menu price + pack sizes), U-019 (order cutoff), U-020 (region boundaries)
+    decisions: D-012, D-013, D-014, D-015, D-016
+    open: U-024 (menu price + pack sizes), U-025 (order cutoff), U-026 (region boundaries)
 
   - id: evidence/2026-08-31-lead-response-ground-truth
     title: Lead machine ground truth — leads, transport, backlog, first response, WhatsApp
@@ -63,6 +148,6 @@ cards:
     date: 2026-08-31
     freshness: review_30d           # statutory amounts and case law move
     source: סעיף 30א לחוק התקשורת (בזק ושידורים) התשמ"ב-1982, תיקון 40 · ע"א לפיד (2019)
-    decisions: D-019
-    open: three narrow questions for a lawyer (§6); U-023 (opt-out plumbing)
+    decisions: D-024
+    open: three narrow questions for a lawyer (§6); U-029 (opt-out plumbing)
 

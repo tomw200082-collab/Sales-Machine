@@ -25,6 +25,20 @@
 #   2. Tom writes new notes inside the dashboard itself; the page collects them and
 #      produces a sync block ("סנכרון הערות") that any Claude session appends here.
 
+# Registry header (rule 1) — added 2026-08-31 so the card validator can see the grade
+# that until now lived only in knowledge/registry.yaml.
+card:
+  id: accounts/customer-notes
+  title: Customer & product notes — living memory of the customer-product tracker
+  type: notes-store
+  authority: per-entry            # per note: user_confirmed | system_verified | inferred
+  date: 2026-08-06
+  freshness: review_30d
+  source: tracker dashboard sync blocks + rebuild observations (append-only)
+  entry_keys:                     # this store names its per-entry keys `grade` / `by`
+    authority: grade
+    source: by
+
 schema: v1
 updated: 2026-08-06
 

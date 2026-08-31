@@ -2,7 +2,7 @@
 
 > **Authority: `user_confirmed`.** Tom answered these directly on **2026-08-31**, in
 > writing, in response to the four questions the lead-response masterprompt §6.C names as
-> blocking. Logged in `doctrine/decisions.md` as D-007 … D-010.
+> blocking. Logged in `doctrine/decisions.md` as D-012 … D-015.
 > **Freshness: `review_30d`** for prices and delivery days; `stable` for the ex-VAT rule.
 >
 > This file is the source the answer bank quotes from. **A machine may reproduce a line
@@ -235,7 +235,7 @@ follow-ups still queued for them (the 7.5 rule).
 **∴ The message budget is not a constraint and must never be allowed to gate a decision.**
 The plan treats "the true monthly operating cost" as a number Tom has to approve before
 anything runs. It is roughly the price of a coffee. The real cost of this system is media
-spend and human time; the messaging is rounding error. Closes `U-015`.
+spend and human time; the messaging is rounding error. Closes `U-021`.
 
 ---
 
@@ -276,7 +276,7 @@ Tracked as `U-003`-adjacent and as the one remaining item of masterprompt §6.C.
 
 | ID | Question |
 |---|---|
-| U-018 | **Withdrawn, not answered** — Tom decided on 2026-08-31 that the opening menu's price is deliberately not stated (§2.1). It is a transfer row by design, not an open question |
-| U-019 | **CLOSED** 2026-08-31 — the cutoff is 14:00 |
-| U-020 | **CLOSED** 2026-08-31 — derived from 1,555 LionWheel deliveries (§3). Residual: city-name normalisation before any automated routing |
-| U-021 | The margin percentages on the deck imply the food cost by arithmetic. If food cost is meant to be withheld (§2.1), is the margin figure meant to stay? | Tom |
+| U-024 | **Withdrawn, not answered** — Tom decided on 2026-08-31 that the opening menu's price is deliberately not stated (§2.1). It is a transfer row by design, not an open question |
+| U-025 | **CLOSED** 2026-08-31 — the cutoff is 14:00 |
+| U-026 | **CLOSED** 2026-08-31 — derived from 1,555 LionWheel deliveries (§3). Residual: city-name normalisation before any automated routing |
+| U-027 | The margin percentages on the deck imply the food cost by arithmetic. If food cost is meant to be withheld (§2.1), is the margin figure meant to stay? | Tom |

@@ -1,0 +1,96 @@
+# GT — למי מוכרים, ומה סוגר כל אחד.
+# הערה על מקור: המאסטרפרומפט הפנה ל"ארכיטיפים TEA-ONLY / SPECIALTY-LED / MIXED /
+# BAR-LED שטבלת העובדות כבר משתמשת בהם". נבדק 2026-08-31 בשני המאגרים — הארכיטיפים
+# האלה ⊥ קיימים בשום קובץ. הכרטיס הזה ⊥ ממציא אותם. הוא בנוי על מה שכן מאומת:
+# שלושת סוגי הליד של §05 בספר, וסוגי העסק שמופיעים ב-gt-acquisition-os/CLAUDE.md.
+card:
+  id: segments/buyers
+  title: סוגי הליד וסוגי העסק — מה עובד על מי
+  type: segment-map
+  authority: per-entry
+  date: 2026-08-31
+  freshness: review_30d
+  source: ספר העבודה §05 + gt-acquisition-os/CLAUDE.md §Identity
+  rule: >-
+    המיון קודם לכל השאר. שאלה אחת בתחילת השיחה: "איזה עסק יש לך, ואיפה?"
+    בלי המיון — כל השאר מבוזבז.
+
+buyer_types:
+  - id: decider
+    name_he: מחליט — בעל מקום / מנהל
+    cares_about: [רווח, סיכון, כאב ראש]
+    does_not_care_about: [זני תה, מקור עלה, סיפור המותג]
+    what_works_he: ₪3.25 → ₪20, בלי מכונה, בלי מקום במקרר, בלי מלאי גדול
+    signs: [שואל על מחיר ראשון, שואל על מינימום, שואל "כמה אני מרוויח"]
+    source: ספר העבודה §05
+    date: '2026-08-31'
+    authority: doc_confirmed
+  - id: influencer
+    name_he: משפיע — בר־מנג'ר / בריסטה
+    cares_about: [טעם, זמן הכנה, גיוון]
+    authority_he: ⊥ חותם, אבל יכול להרוג את זה
+    what_works_he: מתכונים, גיוון, עשר שניות הכנה, סרטוני ההדרכה
+    signs: [שואל על מתכון, שואל מה מתאים לתפריט, שואל על ציוד]
+    source: ספר העבודה §05
+    date: '2026-08-31'
+    authority: doc_confirmed
+  - id: not_a_buyer
+    name_he: לא קונה — פרטי / סקרן
+    what_works_he: תשובה קצרה ואדיבה עם קישור לאתר, וסגירה. ⊥ להשקיע.
+    signs: [אין שם עסק, "בשביל הבית", שואל על מחיר יחידה בודדת]
+    source: ספר העבודה §05
+    date: '2026-08-31'
+    authority: doc_confirmed
+
+venue_types:
+  - id: cafe
+    name_he: בית קפה
+    entry_product: תמצית תה — בקבוק אחד, מים וקרח, אפס ציוד
+    why_he: >-
+      הקטגוריה יושבת בדיוק בין הקפה למקרר. הצעה שמתווספת לתפריט ⊥ מתחרה בו.
+    expand_to: [צ'אי, אבקות]
+    source: ספר העבודה §01 + §06
+    date: '2026-08-31'
+    authority: doc_confirmed
+  - id: restaurant
+    name_he: מסעדה
+    entry_product: תמצית תה — נטולי קפאין חזקים כאן
+    why_he: >-
+      ארבע תמציות נטולות קפאין — נקודת מכירה למי שמחפש מה להציע אחר הצהריים
+      ולסועד שלא שותה אלכוהול.
+    caution: אלרגנים — הסועד מסתמך על המסעדה, והמסעדה עלינו. כלל allergens קריטי כאן.
+    expand_to: [מחיות פרי, צ'אי]
+    source: ספר העבודה §01 + §06 + §08
+    date: '2026-08-31'
+    authority: doc_confirmed
+  - id: bar
+    name_he: בר
+    entry_product: צ'אי — NAMASTEA פותח 11 משקאות ממה שכבר יש בבר
+    why_he: >-
+      טוניק, אספרסו, מיץ תפוזים וחלב כבר עומדים שם. ההצעה הכי קלה בקו להגיד
+      לה כן.
+    expand_to: [אבקות, מחיות פרי]
+    source: ספר העבודה §06
+    date: '2026-08-31'
+    authority: doc_confirmed
+  - id: specialty_coffee
+    name_he: בית קפה ספשלטי
+    entry_product: אבקות — מאצ'ה
+    why_he: >-
+      יש מקציף וחלב, והצוות כבר יודע לעבוד עם בסיס. מובילים ב-₪2.13 למנה,
+      ⊥ ב-₪590 לפחית.
+    entry_offer: ערכת מאצ'ה ₪170
+    expand_to: [אובה, מחיות פרי]
+    source: ספר העבודה §01 + §06
+    date: '2026-08-31'
+    authority: doc_confirmed
+  - id: hotel_catering_office
+    name_he: מלון / קייטרינג / משרד
+    status: unresolved
+    why_he: >-
+      gt-acquisition-os מגדיר אותם כקהל יעד, אבל לספר אין להם תסריט, ואין בשום
+      קובץ מאושר נתון על מה סוגר אותם. ⊥ להמציא תסריט — לעבור לאלכסנדר.
+    open_item: UNRESOLVED U-015
+    source: gt-acquisition-os/CLAUDE.md §Identity — קהל מוגדר, תסריט חסר
+    date: '2026-08-31'
+    authority: inferred
