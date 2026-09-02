@@ -1,0 +1,1180 @@
+# נוצר אוטומטית ע"י scripts/knowledge/build_recipes_card.py — ⊥ לערוך ביד.
+# מנות: מודל העלות המאושר 2026-08-27. שיטת הגשה: קבצי הקנבה 2026-08-05.
+card:
+  id: drinks/recipes
+  title: מתכוני 48 המשקאות — מנות ושיטת הכנה
+  type: recipes
+  authority: per-entry
+  date: '2026-08-31'
+  freshness: stable
+  source: 'מנות: GT_FOOD_COST_2026-08-27.xlsx (מודל העלות המאושר, טום 2026-08-27) · שיטת הגשה: canva_workfiles/recipes.json
+    2026-08-05, טקסט בלבד'
+  generated_by: scripts/knowledge/build_recipes_card.py @ 5959567
+  entry_keys:
+    authority: doses_authority
+    date: doses_date
+    source: doses_source
+  note: המנות הן מה שמודל העלות המאושר מתמחר — ולכן הן מתאימות בדיוק לעלות שבכרטיס. בסיס העלות ⊥ כולל
+    גרניש, קרח, מים, סודה, אריזה ועבודה, ולכן שיטת ההגשה מופיעה בנפרד ובדרגה נמוכה יותר.
+recipes:
+- name: חליטת היביסקוס וליים
+  canva_page: 8
+  category: תה
+  family: חליטות קרות ICED TEA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  doses_total: 3.25
+  approved_cost: 3.25
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל תרכיז GT
+  - סלייס לימון
+  - עשבי קישוט
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: חליטת קמומיל ותפוח
+  canva_page: 9
+  category: תה
+  family: חליטות קרות ICED TEA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  doses_total: 3.25
+  approved_cost: 3.25
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל תרכיז GT
+  - סלייס לימון
+  - עשבי קישוט
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: חליטה מדברית
+  canva_page: 10
+  category: תה
+  family: חליטות קרות ICED TEA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  doses_total: 3.25
+  approved_cost: 3.25
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל תרכיז GT
+  - סלייס לימון
+  - עשבי קישוט
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: חליטת סנצ'ה ופסיפלורה
+  canva_page: 11
+  category: תה
+  family: חליטות קרות ICED TEA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  doses_total: 3.25
+  approved_cost: 3.25
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל תרכיז GT
+  - סלייס לימון
+  - עשבי קישוט
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: חליטת תה ירוק וליים
+  canva_page: 12
+  category: תה
+  family: חליטות קרות ICED TEA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  doses_total: 3.25
+  approved_cost: 3.25
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל תרכיז GT
+  - סלייס לימון
+  - עשבי קישוט
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: חליטת תה ירוק ולמון גראס
+  canva_page: 13
+  category: תה
+  family: חליטות קרות ICED TEA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  doses_total: 3.25
+  approved_cost: 3.25
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל תרכיז GT
+  - סלייס לימון
+  - עשבי קישוט
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: חליטת יסמין וליצ'י
+  canva_page: 14
+  category: תה
+  family: חליטות קרות ICED TEA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  doses_total: 3.25
+  approved_cost: 3.25
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל תרכיז GT
+  - סלייס לימון
+  - עשבי קישוט
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: לימונדת היביסקוס וליים
+  canva_page: 16
+  category: תה
+  family: לימונדות LEMONADE
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 233 מ"ל לימונדה
+    cost: 0.7
+  doses_total: 3.95
+  approved_cost: 3.95
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל תרכיז GT
+  - ~250 מ״ל לימונדה
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: לימונדה מדברית
+  canva_page: 17
+  category: תה
+  family: לימונדות LEMONADE
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 233 מ"ל לימונדה
+    cost: 0.7
+  doses_total: 3.95
+  approved_cost: 3.95
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל תרכיז GT
+  - ~250 מ״ל לימונדה
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: לימונדת צ'אי מסאלה
+  canva_page: 18
+  category: צ'אי
+  family: לימונדה
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 233 מ"ל לימונדה
+    cost: 0.7
+  doses_total: 3.95
+  approved_cost: 3.95
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל תרכיז GT
+  - ~250 מ״ל לימונדה
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: חליטת אפרסק מדברית
+  canva_page: 20
+  category: תה
+  family: סיגנצ'ר FRUITEA
+  doses:
+  - item: 40 מ"ל GT
+    cost: 2.6
+  - item: 40 מ"ל מחית אפרסק
+    cost: 2.2
+  doses_total: 4.8
+  approved_cost: 4.8
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מחית אפרסק
+  - 40 מ״ל תרכיז GT
+  - גרניש
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: חליטת תות לואיזה
+  canva_page: 21
+  category: תה
+  family: סיגנצ'ר FRUITEA
+  doses:
+  - item: 40 מ"ל GT
+    cost: 2.6
+  - item: 40 מ"ל מחית תות
+    cost: 2.2
+  doses_total: 4.8
+  approved_cost: 4.8
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מחית תות
+  - 40 מ״ל תרכיז GT
+  - גרניש
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: חליטת מנגו סנצ'ה
+  canva_page: 22
+  category: תה
+  family: סיגנצ'ר FRUITEA
+  doses:
+  - item: 40 מ"ל GT
+    cost: 2.6
+  - item: 40 מ"ל מנגו
+    cost: 2.2
+  doses_total: 4.8
+  approved_cost: 4.8
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מנגו
+  - 40 מ״ל תרכיז GT
+  - גרניש
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: חליטת תפוח היביסקוס
+  canva_page: 23
+  category: תה
+  family: סיגנצ'ר FRUITEA
+  doses:
+  - item: 40 מ"ל GT
+    cost: 2.6
+  - item: 40 מ"ל מיץ תפוחים
+    cost: 0.28
+  doses_total: 2.88
+  approved_cost: 2.88
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מיץ תפוחים
+  - 40 מ״ל תרכיז GT
+  - גרניש
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: גזוז יסמין וליצ'י
+  canva_page: 25
+  category: תה
+  family: גזוז GAZOZ
+  doses:
+  - item: 40 מ"ל GT
+    cost: 2.6
+  - item: 40 מ"ל מי ליצ'י
+    cost: 0.48
+  doses_total: 3.08
+  approved_cost: 3.08
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מי ליצ'י
+  - 40 מ״ל תרכיז GT
+  - ~150 מ״ל סודה
+  - 2 ליצ'י
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: גזוז מדברי ואפרסק
+  canva_page: 26
+  category: תה
+  family: גזוז GAZOZ
+  doses:
+  - item: 40 מ"ל GT
+    cost: 2.6
+  - item: 40 מ"ל מחית אפרסק
+    cost: 2.2
+  doses_total: 4.8
+  approved_cost: 4.8
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מחית אפרסק
+  - 40 מ״ל תרכיז GT
+  - ~150 מ״ל סודה
+  - גרניש לפי טעם
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: גזוז היביסקוס ותפוח
+  canva_page: 27
+  category: תה
+  family: גזוז GAZOZ
+  doses:
+  - item: 40 מ"ל GT
+    cost: 2.6
+  - item: 40 מ"ל מיץ תפוחים
+    cost: 0.28
+  doses_total: 2.88
+  approved_cost: 2.88
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מיץ תפוחים
+  - 40 מ״ל תרכיז GT
+  - ~150 מ״ל סודה
+  - גרניש לפי טעם
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס מאצ'ה קלאסי
+  canva_page: 29
+  category: אבקות
+  family: אייס מאצ'ה ICE MATCHA
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  doses_total: 4.26
+  approved_cost: 4.26
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס חלב
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס מאצ'ה מנגו
+  canva_page: 30
+  category: אבקות
+  family: אייס מאצ'ה ICE MATCHA
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: 40 מ"ל מנגו
+    cost: 2.2
+  doses_total: 6.46
+  approved_cost: 6.46
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מנגו
+  - ⅔ כוס חלב
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס מאצ'ה תות
+  canva_page: 31
+  category: אבקות
+  family: אייס מאצ'ה ICE MATCHA
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: 40 מ"ל מחית תות
+    cost: 2.2
+  doses_total: 6.46
+  approved_cost: 6.46
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מחית תות
+  - ⅔ כוס חלב
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס מאצ'ה אפרסק
+  canva_page: 32
+  category: אבקות
+  family: אייס מאצ'ה ICE MATCHA
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: 40 מ"ל מחית אפרסק
+    cost: 2.2
+  doses_total: 6.46
+  approved_cost: 6.46
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מחית אפרסק
+  - ⅔ כוס חלב
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס מאצ'ה מסאלה
+  canva_page: 33
+  category: אבקות
+  family: אייס מאצ'ה ICE MATCHA
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: 40 מ"ל GT מסאלה
+    cost: 2.6
+  doses_total: 6.86
+  approved_cost: 6.86
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל תמצית מסאלה GT
+  - ⅔ כוס חלב
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: מאצ'ה אגבה על הקרח
+  canva_page: 34
+  category: אבקות
+  family: אייס מאצ'ה ICE MATCHA
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 15 מ"ל אגבה
+    cost: 0.45
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  doses_total: 2.84
+  approved_cost: 2.85
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס מים
+  - 15 מ״ל סירופ אגבה
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+  rounding_note: סכום המנות ₪2.84 מול עלות מאושרת ₪2.85 — פער -0.01 מעיגול אגורה בגיליון. העלות המאושרת
+    גוברת.
+- name: אייס מאצ'ה וניל
+  canva_page: 36
+  category: אבקות
+  family: מאצ'ה ספיישל MATCHA SPECIALS
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: וניל
+    cost: 0.3
+  doses_total: 4.56
+  approved_cost: 4.56
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס חלב
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - מקל וניל
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס מאצ'ה פיסטוק
+  canva_page: 37
+  category: אבקות
+  family: מאצ'ה ספיישל MATCHA SPECIALS
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: פיסטוק
+    cost: 1.2
+  doses_total: 5.46
+  approved_cost: 5.46
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס חלב
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - פיסטוק גרוס
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס מאצ'ה שומשום שחור
+  canva_page: 38
+  category: אבקות
+  family: מאצ'ה ספיישל MATCHA SPECIALS
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: שומשום שחור
+    cost: 0.8
+  doses_total: 5.06
+  approved_cost: 5.06
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס חלב
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - שומשום שחור
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס מאצ'ה קפה
+  canva_page: 39
+  category: אבקות
+  family: מאצ'ה ספיישל MATCHA SPECIALS
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: קפה
+    cost: 1.0
+  doses_total: 5.26
+  approved_cost: 5.26
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס חלב
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - מנת אספרסו
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס מאצ'ה בננה
+  canva_page: 40
+  category: אבקות
+  family: מאצ'ה ספיישל MATCHA SPECIALS
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: בננה
+    cost: 0.5
+  doses_total: 4.76
+  approved_cost: 4.76
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס חלב
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - מחית בננה
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: מאצ'ה קוקוס אגבה
+  canva_page: 42
+  category: אבקות
+  family: מאצ'ה קוקוס MATCHA COCONUT
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 150 מ"ל מי קוקוס
+    cost: 1.5
+  - item: 70 מ"ל קרם קוקוס
+    cost: 0.15
+  - item: 15 מ"ל אגבה
+    cost: 0.45
+  doses_total: 4.04
+  approved_cost: 4.04
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 15 מ״ל סירופ אגבה
+  - ~150 מ״ל מי קוקוס
+  - 70 מ״ל קרם קוקוס
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: מאצ'ה קוקוס ליצ'י
+  canva_page: 43
+  category: אבקות
+  family: מאצ'ה קוקוס MATCHA COCONUT
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 150 מ"ל מי קוקוס
+    cost: 1.5
+  - item: 70 מ"ל קרם קוקוס
+    cost: 0.15
+  - item: 40 מ"ל מי ליצ'י
+    cost: 0.48
+  doses_total: 4.07
+  approved_cost: 4.07
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מי ליצ'י
+  - ~150 מ״ל מי קוקוס
+  - 70 מ״ל קרם קוקוס
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: מאצ'ה קוקוס תות
+  canva_page: 44
+  category: אבקות
+  family: מאצ'ה קוקוס MATCHA COCONUT
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 150 מ"ל מי קוקוס
+    cost: 1.5
+  - item: 70 מ"ל קרם קוקוס
+    cost: 0.15
+  - item: 40 מ"ל מחית תות
+    cost: 2.2
+  doses_total: 5.79
+  approved_cost: 5.79
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מחית תות
+  - ~150 מ״ל מי קוקוס
+  - 70 מ״ל קרם קוקוס
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: מאצ'ה קוקוס מנגו
+  canva_page: 45
+  category: אבקות
+  family: מאצ'ה קוקוס MATCHA COCONUT
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 150 מ"ל מי קוקוס
+    cost: 1.5
+  - item: 70 מ"ל קרם קוקוס
+    cost: 0.15
+  - item: 40 מ"ל מנגו
+    cost: 2.2
+  doses_total: 5.79
+  approved_cost: 5.79
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מנגו
+  - ~150 מ״ל מי קוקוס
+  - 70 מ״ל קרם קוקוס
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: מאצ'ה קוקוס אפרסק
+  canva_page: 46
+  category: אבקות
+  family: מאצ'ה קוקוס MATCHA COCONUT
+  doses:
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  - item: 150 מ"ל מי קוקוס
+    cost: 1.5
+  - item: 70 מ"ל קרם קוקוס
+    cost: 0.15
+  - item: 40 מ"ל מחית אפרסק
+    cost: 2.2
+  doses_total: 5.79
+  approved_cost: 5.79
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מחית אפרסק
+  - ~150 מ״ל מי קוקוס
+  - 70 מ״ל קרם קוקוס
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס צ'אי מסאלה קלאסי
+  canva_page: 48
+  category: צ'אי
+  family: צ'אי מסאלה CHAI MASSALA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  doses_total: 5.57
+  approved_cost: 5.57
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס חלב
+  - 50 מ״ל מסאלה GT
+  - 70 מ״ל קצף חלב
+  - קינמון
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: צ'אי מסאלה על הקרח
+  canva_page: 49
+  category: צ'אי
+  family: צ'אי מסאלה CHAI MASSALA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  doses_total: 3.7
+  approved_cost: 3.7
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס מים
+  - 50 מ״ל מסאלה GT
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: דירטי צ'אי
+  canva_page: 50
+  category: צ'אי
+  family: צ'אי מסאלה CHAI MASSALA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: אספרסו
+    cost: 1.0
+  doses_total: 6.57
+  approved_cost: 6.57
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס חלב
+  - 50 מ״ל מסאלה GT
+  - מנת אספרסו
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: צ'אי מסאלה תפוז וטוניק
+  canva_page: 51
+  category: צ'אי
+  family: צ'אי מסאלה CHAI MASSALA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 150 מ"ל טוניק
+    cost: 1.5
+  doses_total: 4.75
+  approved_cost: 4.75
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל מסאלה GT
+  - ~150 מ״ל טוניק
+  - תפוז יבש
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: צ'אי מסאלה פינק טוניק
+  canva_page: 52
+  category: צ'אי
+  family: צ'אי מסאלה CHAI MASSALA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 150 מ"ל טוניק
+    cost: 1.5
+  doses_total: 4.75
+  approved_cost: 4.75
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל מסאלה GT
+  - ~150 מ״ל טוניק ורדים
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: צ'אי מסאלה ומיץ תפוזים
+  canva_page: 53
+  category: צ'אי
+  family: צ'אי מסאלה CHAI MASSALA
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 150 מ"ל מיץ תפוזים
+    cost: 2.0
+  doses_total: 5.25
+  approved_cost: 5.25
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל מסאלה GT
+  - ~150 מ״ל מיץ תפוזים
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: צ'אי מסאלה קולד פואם וניל
+  canva_page: 55
+  category: צ'אי
+  family: קולד פואם COLD FOAM
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: וניל
+    cost: 0.3
+  doses_total: 4.0
+  approved_cost: 4.0
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס מים
+  - 50 מ״ל מסאלה GT
+  - 70 מ״ל קצף קר חלבי
+  - תמצית וניל
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: צ'אי מסאלה קולד פואם פיסטוק
+  canva_page: 56
+  category: צ'אי
+  family: קולד פואם COLD FOAM
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: פיסטוק
+    cost: 1.2
+  doses_total: 4.9
+  approved_cost: 4.9
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס חלב
+  - 50 מ״ל מסאלה GT
+  - 70 מ״ל קצף קר חלבי
+  - פיסטוק גרוס
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: צ'אי תאילנדי קוקוס קולד פואם
+  canva_page: 57
+  category: צ'אי
+  family: קולד פואם COLD FOAM
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 150 מ"ל מי קוקוס
+    cost: 1.5
+  - item: 70 מ"ל קרם קוקוס
+    cost: 0.15
+  doses_total: 4.9
+  approved_cost: 4.9
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ~150 מ״ל מי קוקוס
+  - 50 מ״ל מסאלה GT
+  - 70 מ״ל קרם קוקוס
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: צ'אי מסאלה קולד פואם בננה
+  canva_page: 58
+  category: צ'אי
+  family: קולד פואם COLD FOAM
+  doses:
+  - item: 50 מ"ל GT
+    cost: 3.25
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: בננה
+    cost: 0.5
+  doses_total: 4.2
+  approved_cost: 4.2
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - ⅔ כוס חלב
+  - 50 מ״ל מסאלה GT
+  - מחית בננה
+  - 70 מ״ל קצף קר חלבי
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס אובה תות
+  canva_page: 60
+  category: אבקות
+  family: אובה UBE
+  doses:
+  - item: אובה 2 גר'
+    cost: 0.7
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: 40 מ"ל מחית תות
+    cost: 2.2
+  doses_total: 5.22
+  approved_cost: 5.22
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מחית תות
+  - ⅔ כוס חלב
+  - 50 מ״ל אובה (2 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס אובה מנגו
+  canva_page: 61
+  category: אבקות
+  family: אובה UBE
+  doses:
+  - item: אובה 2 גר'
+    cost: 0.7
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: 40 מ"ל מנגו
+    cost: 2.2
+  doses_total: 5.22
+  approved_cost: 5.22
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מנגו
+  - ⅔ כוס חלב
+  - 50 מ״ל אובה (2 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס אובה אפרסק
+  canva_page: 62
+  category: אבקות
+  family: אובה UBE
+  doses:
+  - item: אובה 2 גר'
+    cost: 0.7
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: 40 מ"ל מחית אפרסק
+    cost: 2.2
+  doses_total: 5.22
+  approved_cost: 5.22
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 40 מ״ל מחית אפרסק
+  - ⅔ כוס חלב
+  - 50 מ״ל אובה (2 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס אובה מסאלה
+  canva_page: 63
+  category: אבקות
+  family: אובה UBE
+  doses:
+  - item: אובה 2 גר'
+    cost: 0.7
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: 50 מ"ל GT מסאלה
+    cost: 3.25
+  doses_total: 6.27
+  approved_cost: 6.27
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל מסאלה GT
+  - ⅔ כוס חלב
+  - 50 מ״ל אובה (2 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
+- name: אייס אובה מאצ'ה
+  canva_page: 64
+  category: אבקות
+  family: אובה UBE
+  doses:
+  - item: אובה 2 גר'
+    cost: 0.7
+  - item: 233 מ"ל חלב
+    cost: 1.87
+  - item: 70 מ"ל קצף חלבי
+    cost: 0.45
+  - item: מאצ'ה 1.8 גר'
+    cost: 1.94
+  doses_total: 4.96
+  approved_cost: 4.96
+  doses_source: GT_FOOD_COST_2026-08-27.xlsx · FOOD COST · פירוט עלות
+  doses_date: '2026-08-27'
+  doses_authority: system_verified
+  serve:
+  - קרח
+  - 50 מ״ל מאצ'ה (1.8 גר')
+  - ⅔ כוס חלב
+  - 50 מ״ל אובה (2 גר')
+  - 70 מ״ל קצף חלב
+  serve_source: docs/pricing/canva_workfiles/recipes.json (טקסט בלבד — המחירים בקובץ ההוא מוחלפים)
+  serve_date: '2026-08-05'
+  serve_authority: doc_confirmed
