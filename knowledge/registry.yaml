@@ -38,6 +38,139 @@ cards:
     freshness: review_30d           # every entry dated; sweep for stale identity questions
     source: tracker dashboard sync blocks + rebuild observations (append-only)
 
+  - id: evidence/2026-08-31-social-property-audit
+    title: GT public-property ownership audit — identity sweep, third-party inventory, asset verification
+    type: evidence-snapshot
+    authority: system_verified      # live reads: Shopify Admin API, Drive, Calendar, Dropbox, public HTTP
+    date: 2026-08-31
+    freshness: snapshot             # immutable; supersede with a newer snapshot
+    source: >-
+      gteveryday.com sitemap (30 pages) + Shopify Admin API + Google Drive/Calendar
+      + Dropbox + public HTTP. Instagram and Meta unreachable from this environment
+      and marked so, not guessed.
+
+  - id: doctrine/playbooks/social-calendar-2026-Q4
+    title: 90-day social content calendar, 2026-09-01 → 2026-11-29
+    type: playbook
+    authority: inferred             # a proposal until Tom approves (§6.G) — inferred is never policy
+    date: 2026-08-31
+    freshness: snapshot             # built against the asset and ownership state of that day
+    source: >-
+      masterprompt 20260831socialfoundationmasterprompt §W5. Every asset path verified
+      file-by-file against Dropbox 2026-08-31. Carries no disputed number (see U-021)
+      and no health claim.
+
+  - id: doctrine/playbooks/linkedin-launch-kit
+    title: LinkedIn company page + personal profile — filled text, ready to paste
+    type: playbook
+    authority: inferred             # wording; the business details inside are system_verified
+    date: 2026-08-31
+    freshness: review_30d
+    source: masterprompt §W4/§6.C. Business details from identity card v2.
+
+  - id: doctrine/playbooks/youtube-refresh-kit
+    title: YouTube channel branding + three recycled Shorts
+    type: playbook
+    authority: inferred             # wording; channel inventory inside is system_verified 2026-08-31
+    date: 2026-08-31
+    freshness: review_30d
+    source: masterprompt §W4. Channel state read live 2026-08-31 — 7 videos inventoried.
+
+  - id: evidence/2026-08-31-social-handle-sweep
+    title: Social handle sweep — TikTok, X, LinkedIn availability and ownership
+    type: evidence-snapshot
+    authority: system_verified      # embedded profile JSON parsed from public pages; no login
+    date: 2026-08-31
+    freshness: snapshot             # immutable; supersede with a newer snapshot
+    source: >-
+      Unauthenticated HTTP + embedded profile JSON. Found TikTok @gteveryday to be a
+      live GT-owned account with 13 published videos and no known holder (U-027),
+      correcting an earlier same-day note that recorded the handle as free.
+      X confirmed free after calibrating against a known-live handle.
+
+  - id: doctrine/playbooks/tiktok-recovery-kit
+    title: TikTok — account recovery, not a name grab
+    type: playbook
+    authority: system_verified      # every profile field read live; the recovery steps are inferred
+    date: 2026-08-31
+    freshness: review_30d
+    source: >-
+      masterprompt §W4, task z1. Recovery path is a proposal; nothing on the account
+      was touched, per §7 (a property whose owner is unproven is not cleaned up).
+
+  - id: doctrine/playbooks/lead-response-sop
+    title: Lead response SOP — ownership, SLA, templates, and what is deliberately not automated
+    type: playbook
+    authority: user_confirmed       # ownership split + the 142-lead decision are Tom's, 2026-08-31
+    date: 2026-08-31
+    freshness: review_30d           # §0 counts are a dated snapshot — re-run the recipe, never quote them
+    source: >-
+      masterprompt §W5, task f5. Every count and setting read live from sales_core
+      2026-08-31. Binding only after Tom's written approval.
+
+  - id: evidence/2026-08-31-klaviyo-account-state
+    title: Klaviyo account state — 2,537 lapsed customers, zero emails ever sent
+    type: evidence-snapshot
+    authority: system_verified      # read-only Klaviyo API; every metric ID resolved to its name
+    date: 2026-08-31
+    freshness: snapshot             # immutable; segment counts move daily — re-read, never quote
+    source: >-
+      Klaviyo API account VimR5N. Win-Back Opportunities = 2,537 against a 2,969
+      consented base; 0 campaigns, 0 flows, 0 sending domains; all 9 segments and
+      2 lists created inside one 39-second installer window on 2026-07-18.
+      Churn Risks reads 0 for a structural reason, not an empirical one (U-029).
+      Six account-identity fields are wrong, country first (U-030).
+
+  - id: doctrine/playbooks/whatsapp-setup-kit
+    title: WhatsApp Business setup — greeting, quick replies, labels, catalog, QR
+    type: playbook
+    authority: inferred             # wording; the sales_core statuses and numbers inside are system_verified
+    date: 2026-08-31
+    freshness: review_30d
+    source: >-
+      masterprompt §W1, tasks wa4-wa9. Labels are mapped one-to-one onto
+      sales_core.lead.status so the two systems cannot disagree. The whole section
+      is gated on U-020 (which number), and every improvement here widens U-025
+      (inbound WhatsApp never becomes a lead) until that is closed.
+
+  - id: doctrine/playbooks/instagram-ready-kit
+    title: Instagram — bio, highlights and opening baseline, held until ownership is settled
+    type: playbook
+    authority: inferred             # wording only — NOT system_verified: neither profile was readable
+    date: 2026-08-31
+    freshness: review_30d
+    source: >-
+      masterprompt §W4, tasks i2-i6. Deliberately carries no follower count, no
+      post count and no claim about either handle: both served a login wall to this
+      environment. Nothing is published until U-015 answers which handle is GT's and
+      whether the empty one was compromised.
+
+  - id: recipes/coexistence-liveness
+    title: Proving the WhatsApp coexistence link is still alive
+    type: recipe
+    authority: system_verified      # the query and the baseline are live reads; the threshold is inferred
+    date: 2026-08-31
+    freshness: review_30d
+    source: >-
+      order_intake.wa_event_log read live 2026-08-31 on the order line — 24,162 rows
+      unbroken since 2026-06-26, 9,501 of them echo. Written for U-031: coexistence
+      lapses silently after 13 days without the app being opened, and with D-014 every
+      lead automation now rides one number. Implementation belongs in the existing
+      sales-leads-poll daily heartbeat (D11), not in this repo and not as a second monitor.
+
+  - id: evidence/2026-08-31-lead-flow-wiring
+    title: How a lead actually flows today — the three inbound paths and the one that never joins
+    type: evidence-snapshot
+    authority: system_verified      # live DB reads + repo source; the open decisions are marked as decisions
+    date: 2026-08-31
+    freshness: snapshot             # immutable; the wiring changes the moment 8132 is connected
+    source: >-
+      order_intake.wa_event_log, list_edge_functions, and gt-factory-os source.
+      Answers the question coexistence-liveness.md left open: payloads carry
+      phone_number_id and today hold exactly one value, so the two lines will be
+      distinguishable with nothing retrofitted. Draws U-025 precisely — WhatsApp is
+      the highest-volume inbound channel and lands in a different schema from leads.
+
   # ---------------------------------------------------------------- ספר העבודה, 2026-08-31
   # הספר (ארטיפקט HTML) הפך משכבת האמת לתצוגה של הכרטיסים האלה.
   # השער: gt-factory-os-production-brain/scripts/knowledge/reconcile.py — 0 שורות.
