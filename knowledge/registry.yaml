@@ -193,6 +193,16 @@ cards:
     source: brain .claude/skills/drinks-pricelist/drinks_final_figures.json (_meta.date 2026-08-27)
     generated: brain scripts/knowledge/build_drinks_card.py — ⊥ לערוך ביד
 
+  - id: drinks/recipes
+    title: מתכוני 48 המשקאות — מנות ושיטת הכנה
+    type: recipes
+    authority: per-entry            # מנות system_verified 2026-08-27 · הגשה doc_confirmed 2026-08-05
+    date: 2026-08-31
+    freshness: review_30d           # שיטת ההגשה מ-2026-08-05 — לאמת מול הקטלוג בתוקף
+    source: brain docs/pricing/GT_FOOD_COST_2026-08-27.xlsx (מנות) + canva_workfiles/recipes.json (הגשה, טקסט בלבד)
+    generated: brain scripts/knowledge/build_recipes_card.py — ⊥ לערוך ביד
+    proof: 48/48 — סכום המנות של כל משקה נבדק מול העלות המאושרת ב-drinks/catalog
+
   - id: answers/answer-bank
     title: בנק התשובות — מה מותר לענות, ומה עובר לאלכסנדר
     type: answer-bank
