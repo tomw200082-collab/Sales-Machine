@@ -51,6 +51,28 @@ Mixing the two is the failure mode this repo is built to prevent.
    flag `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` (default `false`, per the module
    declaration) and Tom's confirm-before-acting rules.
 
+## Watching is opt-in (Tom, 2026-09-01)
+
+No session watches a pull request, schedules a check-in for itself, or creates a Routine
+unless Tom asked for it **in that conversation**. The harness default is the opposite — a
+session that opens a PR is told to subscribe without asking — so this rule exists to
+override it, and `.claude/hooks/no_autowatch.sh` enforces it mechanically rather than
+trusting the session to remember.
+
+The opt-in is `.claude/state/watch_enabled`: written only on Tom's word, gitignored, and
+gone when the container is, so consent never carries into the next session. Stopping is
+never blocked — `unsubscribe_pr_activity`, `delete_trigger` and `list_triggers` always work.
+
+One gap the hook cannot close, so the rule closes it: **opening a pull request subscribes
+the session server-side**, with no tool call to intercept — measured 2026-09-01 on
+`gt-site#4`, where the hook was already live and the subscription arrived anyway. So after
+opening a PR, call `unsubscribe_pr_activity` immediately unless Tom asked for that PR to be
+watched. That is why the exit path is kept open by design rather than as a courtesy.
+
+This is not about cost. Check-ins run in Claude's own container and bill zero GitHub Actions
+minutes; only a push to an open PR starts a workflow. It is about the fact that eleven
+overnight check-ins nobody asked for are eleven check-ins nobody asked for.
+
 ## Authority hierarchy (this repo)
 
 1. `CLAUDE.md` (this file) — wins every conflict.

@@ -266,3 +266,31 @@ cards:
       ⊥ doctrine. doctrine/core-story.md עדיין UNRESOLVED; זו פרוזה מתועדת,
       ⊥ קופי מאושר. ⊥ לשכתב לקופי שיווקי — הקול הזה עובד.
 
+  - id: doctrine/commercial-terms
+    title: Commercial terms — ex-VAT rule, opening menu, delivery grid, minimum, no commitment
+    type: doctrine
+    authority: user_confirmed       # Tom answered the four blocking questions in writing
+    date: 2026-08-31
+    freshness: review_30d           # prices and delivery days move; the ex-VAT rule is stable
+    source: Tom, 2026-08-31 + Canva DAHTY5nfDxo (opening menu, updated 2026-08-30)
+    decisions: D-012, D-013, D-014, D-015, D-016
+    open: U-026 (menu price + pack sizes), U-027 (order cutoff), U-028 (region boundaries)
+
+  - id: evidence/2026-08-31-lead-response-ground-truth
+    title: Lead machine ground truth — leads, transport, backlog, first response, WhatsApp
+    type: evidence-snapshot
+    authority: system_verified      # every figure a read-only query result
+    date: 2026-08-31
+    freshness: snapshot             # immutable; supersede with a newer snapshot
+    source: Supabase rvadsozabmxkkrktwgnv, read-only, 2026-08-31 11:32Z-12:10Z
+
+  - id: doctrine/outreach-legal
+    title: Israeli spam law (§30א) applied to GT's day-5 / day-12 follow-up sequence
+    type: doctrine
+    authority: doc_confirmed        # statute read from public sources; NOT legal advice
+    date: 2026-08-31
+    freshness: review_30d           # statutory amounts and case law move
+    source: סעיף 30א לחוק התקשורת (בזק ושידורים) התשמ"ב-1982, תיקון 40 · ע"א לפיד (2019)
+    decisions: D-024
+    open: three narrow questions for a lawyer (§6); U-031 (opt-out plumbing)
+
