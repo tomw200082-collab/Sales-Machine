@@ -22,34 +22,47 @@
 | Industry | `Food and Beverage Manufacturing` (בעברית: מזון ומשקאות) |
 | Company size | `2-10 employees` ← **לאמת מול תום לפני שליחה** |
 | Company type | `Privately Held` |
-| Logo | דרופבוקס: `New/ARCHIVE/Previous-Session-2026-03-16/BRAND-IDENTITY/Logos/GT_Logo_Black.png` (הקובץ ירוק למרות השם) — ריבועי 300×300 |
+| Logo | דרופבוקס: `New/ARCHIVE/Previous-Session-2026-03-16/BRAND-IDENTITY/Logos/GT_Logo_Black.png` (הקובץ ירוק למרות השם). **הקובץ הוא 971×960** (נמדד מכותרת ה-PNG, U-035); 300×300 הוא היעד של לינקדאין והיא מקטינה בעצמה. ⊥ צריך להכין כלום |
 | Cover | דרופבוקס: `AI YASTREBOVA/CATALOG/2 slide/hf_20260717_103013_6f6ccba2-eba5-4411-bcac-1a75f9e9df3b.png` — 1128×191 |
-| Tagline (120 תווים) | `תרכיזי תה בכבישה קרה לבתי קפה, מסעדות ובתי מלון. פריט אחד במקרר, כמה שורות בתפריט.` |
+| Tagline (120 תווים) | **אנגלית, טום 2026-09-03** — `We help Israel's leading cafés build drink menus customers come back for — Israeli-made tea concentrates and matcha.` (116 תווים). ⊥ "cold-brew": טום ביקש להוריד |
 
-## שלב 2 — About (להדביק כמו שהוא)
+## שלב 2 — Overview (להדביק כמו שהוא)
+
+> **אנגלית, טום 2026-09-03.** הדף נפתח באנגלית. הגרסה העברית נוספת דרך
+> `Manage description in another language` — ⊥ דחוף, אבל בלעדיה גולש ישראלי מקבל אנגלית בלבד.
+> 1,383 תווים מתוך 2,000.
 
 ```
-GT Everyday מייצרת תרכיזי תה בכבישה קרה ואבקות משקה לעסקים בישראל — בתי קפה,
-מסעדות, בתי מלון ורשתות.
+GT Everyday makes tea concentrates and matcha for the people who serve them — cafés, restaurants, hotels and chains across Israel. We manufacture everything ourselves, here in Israel.
 
-הבעיה שאנחנו פותרים היא שורה חסרה בתפריט. בין הקפה למים בבועות אין כמעט כלום
-שאפשר למכור בגאווה, והמשקאות שכן מנסים למכור דורשים הכנה שמשתנה לפי מי עומד
-במשמרת. תרכיז פותר את שניהם: למזוג, למהול, אותה כוס בכל פעם.
+Most drink menus have a hole in them. Between the coffee and the bottled soda there is very little a café can sell with any pride, and the drinks that do get made change depending on who is on shift. A concentrate fixes both: pour, dilute, the same cup every time. No training, no waste, no recipe that only one barista remembers.
 
-הקטלוג כולל תמציות תה בכבישה קרה בליטר ובחצי ליטר — היביסקוס, לואיזה ונענע,
-לימונית, קמומיל, יסמין, סנצ׳ה, חליטת מדבר, מסאלה צ׳אי ותה קר קלאסי — כולל קו
-מלא ללא סוכר. לצידן אבקות מאצ׳ה, הוג׳יצ׳ה ואובה, מחיות פרי, והכלים שצריך כדי
-להגיש אותן: קערה, מטרפה, מעמד וג׳יגר.
+We work with Israel's leading cafés, and what we sell them is not a product list — it is a menu. Iced tea infusions, ice matcha, chai masala, matcha specials, matcha coconut, ube, signature fruit teas, cold foam, gazoz and lemonades, all built from a small number of items that live in one fridge.
 
-אנחנו מייצרים בחולון ומספקים ישירות. הזמנה חוזרת נעשית בוואטסאפ — כותבים מה
-נגמר, ומקבלים. בלי נציג שמתקשר להציק ובלי מינימום שמכריח למלא מחסן.
+The range: tea concentrates in 1 L and 500 ml — hibiscus, lemon verbena and mint, chamomile, jasmine, sencha, desert infusion, masala chai and classic iced tea, including a full no-sugar line. Alongside them matcha, hojicha and ube powders, fruit purées, and the tools to serve them properly: bowl, whisk, stand and jigger.
 
-רוצים לטעום? כתבו לנו: https://wa.me/972547588132
+We produce in Holon and deliver direct. Reordering happens on WhatsApp — write what ran out, and it arrives. No rep calling to chase you, no minimum order forcing you to fill a storeroom.
+
+Want to taste? Message us: https://wa.me/972547588132
 ```
+
+**מקורות:** משפחות המשקאות מ-`knowledge/drinks/catalog.yaml` (48 משקאות, `system_verified` 27.08).
+`Israel's leading cafés` — **טום, בכתב, 2026-09-03** → `user_confirmed`.
 
 **⊥ להוסיף:** כמה בתי עסק · כמה שנים · כמה כוסות מבקבוק · מחירים · שמות לקוחות.
-כל אחד מהם שנוי כרגע במחלוקת בין עמודים חיים (משימה `w5`) או דורש אישור פרטני (§6.G).
-כשיהיה מספר אחד מאושר — הוא נכנס לכאן, ⊥ לפני.
+כל אחד מהם שנוי כרגע במחלוקת בין עמודים חיים (U-021) או דורש את אישור הלקוח עצמו.
+
+## שלב 2ב — Specialties (עד 20; אלה מילות חיפוש)
+
+```
+Tea concentrates · Matcha · Iced tea · Chai masala · Hojicha · Fruit purées ·
+Drink menu development · Beverage supply · HoReCa · Cafés · Restaurants · Hotels ·
+Foodservice · Wholesale beverages · Sugar-free drinks · Cold foam · Lemonade ·
+Matcha tools · Beverage manufacturing · Made in Israel
+```
+
+**Year founded — ⊥ ממולא.** אין שנה מאומתת בשום מקום. הרשומה המאומתת של מטא היא מ-30.12.2022;
+הטענה "8 שנים" מופיעה בעמודים חיים ו⊥ אושרה (U-021). השדה ⊥ חובה — נשאר ריק עד שטום ינקוב בשנה.
 
 ## שלב 3 — פרטי מיקום
 
@@ -96,8 +109,13 @@ GT Everyday מייצרת תרכיזי תה בכבישה קרה ואבקות מש
 
 ## שלב 5 — אחרי היצירה
 
-1. **אדמין שני.** דף חברה עם אדמין יחיד הוא דף שאפשר לאבד. אלכס (`alex.berov@gmail.com`)
-   הוא המועמד — הוא כבר מאשר מותג ולקוחות אסטרטגיים.
+1. **אדמין שני — `Super admin`, ⊥ `Content admin`.** דף חברה עם אדמין יחיד הוא דף שאפשר לאבד.
+   אלכס (`alex.berov@gmail.com`) הוא המועמד — הוא כבר מאשר מותג ולקוחות אסטרטגיים.
+   **זה ⊥ היגיינה, זה תנאי להעברה.** לינקדאין, מילה במילה: *"All Pages must have at least one
+   super admin. If you're the only super admin on the Page, you must assign another super admin
+   before removing yourself."* ∴ אם הפרופיל של תום ייעלם לפני שהוסף אדמין שני — הדף מתייתם
+   והמסלול היחיד הוא תמיכה של לינקדאין. רק Super admin יכול לנהל אדמינים.
+   מסלול: `Page super admin view` → `Settings` → `Manage admins` → `Page admins`.
 2. **לרשום בכרטיס הגישה.** השורה `לינקדאין — דף חברה` בגיליון `GT — כרטיס גישה`
    מחכה: בעלים, אדמין, 2FA, מייל שחזור, `אומת בתאריך`.
 3. **נקודת פתיחה.** לרשום עוקבים = 0 ותאריך. בלי זה ⊥ תהיה השוואה בעוד 90 יום.
