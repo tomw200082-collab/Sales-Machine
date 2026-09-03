@@ -235,7 +235,7 @@ follow-ups still queued for them (the 7.5 rule).
 **∴ The message budget is not a constraint and must never be allowed to gate a decision.**
 The plan treats "the true monthly operating cost" as a number Tom has to approve before
 anything runs. It is roughly the price of a coffee. The real cost of this system is media
-spend and human time; the messaging is rounding error. Closes `U-023`.
+spend and human time; the messaging is rounding error. Closes `U-041`.
 
 ---
 
@@ -276,7 +276,7 @@ Tracked as `U-003`-adjacent and as the one remaining item of masterprompt §6.C.
 
 | ID | Question |
 |---|---|
-| U-026 | **Withdrawn, not answered** — Tom decided on 2026-08-31 that the opening menu's price is deliberately not stated (§2.1). It is a transfer row by design, not an open question |
-| U-027 | **CLOSED** 2026-08-31 — the cutoff is 14:00 |
-| U-028 | **CLOSED** 2026-08-31 — derived from 1,555 LionWheel deliveries (§3). Residual: city-name normalisation before any automated routing |
-| U-029 | The margin percentages on the deck imply the food cost by arithmetic. If food cost is meant to be withheld (§2.1), is the margin figure meant to stay? | Tom |
+| U-044 | **Withdrawn, not answered** — Tom decided on 2026-08-31 that the opening menu's price is deliberately not stated (§2.1). It is a transfer row by design, not an open question |
+| U-045 | **CLOSED** 2026-08-31 — the cutoff is 14:00 |
+| U-046 | **CLOSED** 2026-08-31 — derived from 1,555 LionWheel deliveries (§3). Residual: city-name normalisation before any automated routing |
+| U-047 | The margin percentages on the deck imply the food cost by arithmetic. If food cost is meant to be withheld (§2.1), is the margin figure meant to stay? | Tom |
