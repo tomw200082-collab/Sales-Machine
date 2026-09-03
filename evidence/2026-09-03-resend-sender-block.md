@@ -30,9 +30,15 @@ order by started_at desc limit 20;
 **א. השולח.** `supabase/functions/sales-leads-poll/index.ts:60` → `DEFAULT_FROM = 'GT Leads <onboarding@resend.dev>'`,
 בשימוש בשורה 277 אלא אם `RESEND_FROM` מוגדר. זה **השולח המשותף של Resend**, שמוסר **רק לכתובת שבבעלות חשבון ה-Resend**.
 
-**ב. הדומיין.** `resend._domainkey.gteveryday.com` — **⊥ קיים** (DoH, 03.09). ∴ **אף דומיין ⊥ מאומת ב-Resend.**
+**ב. הדומיין — ותיקון.** הגרסה הראשונה של הקובץ הזה אמרה "אף דומיין ⊥ מאומת ב-Resend". זה נבדק על `gteveryday.com` **בלבד** והוכלל ממנו. תום שאל על הדומיין השני, ושם התמונה הפוכה:
 
-∴ אימות דומיין לבדו ⊥ מספיק כל עוד ה-`from` מצביע על השולח המשותף, ו-`RESEND_FROM` לבדו ⊥ מספיק בלי דומיין מאומת. **צריך את שניהם.**
+| דומיין | `resend._domainkey` | `send.<d>` MX | `send.<d>` SPF |
+|---|---|---|---|
+| `greentea-everyday.com` | ✅ `p=MIGfMA0GCSqGSIb3…` | ✅ `feedback-smtp.ap-northeast-1.amazonses.com` | ✅ `v=spf1 include:amazonses.com ~all` |
+| `gteveryday.com` | ⊥ | ⊥ | ⊥ |
+| `greenteaeveryday.com` (בלי מקף) | הדומיין עצמו ⊥ קיים (NXDOMAIN) | — | — |
+
+∴ **`greentea-everyday.com` מוגדר ב-Resend במלואו.** נותרה עובדה א' בלבד: ה-`from` מצביע על השולח המשותף. **∴ שלב אחד: `RESEND_FROM`.** DMARC ⊥ קיים על הדומיין — Resend ⊥ דורש אותו.
 
 ## 3 · מה שה-DNS מראה
 
@@ -43,7 +49,7 @@ order by started_at desc limit 20;
 | TXT | `google-site-verification=…` · `v=spf1 include:dc-aa8e722993._spfm.gteveryday.com include:40143933.spf02.hubspotemail.net ~all` |
 | `resend._domainkey` | ריק |
 
-**∴ תת-דומיין, ⊥ הדומיier הראשי.** ה-SPF בשורש כבר נושא שני `include:`; שלישי מקרב אותו לתקרת 10 ה-lookups של SPF — וכשהיא נחצית, דואר Google Workspace של כל הדומיין מתחיל להיכשל. `send.gteveryday.com` ⊥ נוגע בו.
+**רלוונטי רק אילו היינו מקימים את `gteveryday.com` — ⊥ נדרש, כי הדומיין השני כבר מוגדר.** אילו כן: תת-דומיין, ⊥ השורש. ה-SPF בשורש כבר נושא שני `include:`; שלישי מקרב אותו לתקרת 10 ה-lookups של SPF — וכשהיא נחצית, דואר Google Workspace של כל הדומיין מתחיל להיכשל. `send.gteveryday.com` ⊥ נוגע בו.
 
 ## 4 · מה תוקן כאן — והמגבלה שלו
 
@@ -59,9 +65,11 @@ order by started_at desc limit 20;
 
 ## 5 · מה נשאר, לפי הסדר
 
-1. Resend → Domains → `send.gteveryday.com`
-2. GoDaddy → DNS → להדביק את הרשומות ש-Resend מציג (⊥ להמציא ערכים)
-3. Supabase → `sales-leads-poll` → Secrets → `RESEND_FROM = GT Leads <leads@send.gteveryday.com>`
-4. הוכחה: `health` יחזיר `RESEND_FROM: true` ו-`sends_from_shared_sender: false`. ואז ריצת 06:00 הבאה.
+1. Supabase → `sales-leads-poll` → Secrets → `RESEND_FROM = GT Leads <leads@greentea-everyday.com>`
+2. הוכחה: `health` יחזיר `RESEND_FROM: true` ו-`sends_from_shared_sender: false`. ואז ריצת 06:00 הבאה.
+
+זהו. ⊥ GoDaddy, ⊥ רשומות DNS חדשות, ⊥ פריסה.
+**מה שה-DNS ⊥ מוכיח:** את מצב ה-"verified" בלוח הבקרה של Resend. הרשומות במקום — זה מה שהאימות בודק — אבל הקריאה הסמכותית היא במסך של Resend ו⊥ נקראה מכאן.
+**ותשומת לב אחת:** תשובות לכתובת הזאת נוחתות ב-Google Workspace של `greentea-everyday.com`. צריך תיבה או alias אם מישהו אי-פעם ישיב.
 
 ⊥ מטופל כאן: `reminder_sent` נכתב לפני השליחה (GAP-033) — 33 השורות נשארות, `lead_event` הוא append-only.
