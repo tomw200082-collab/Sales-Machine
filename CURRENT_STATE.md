@@ -1,7 +1,9 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-09-02 — the knowledge-book pass added the 48 recipes and the
+> Last updated: 2026-09-08 — the business/operations/sales audit landed
+> (`evidence/2026-09-08-business-operations-audit.md`): U-037 explained (proposed close), `U-050`…`U-059` opened.
+> Before that, 2026-09-02 — the knowledge-book pass added the 48 recipes and the
 > seasonality measurement, and opened `U-037`.
 > Before that, 2026-08-31: two sessions landed the same day — the knowledge-book pass
 > (`U-014`…`U-021`, `CL-1`…`CL-4`) and the social-property pass (`U-014`…`U-032`).
@@ -76,7 +78,7 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | ~~U-019~~ | **נסגר 2026-08-31.** ארבע רשומות-השלילה נשארות פעילות בשופיפיי (טום: "תשאיר"). כלומר: ⊥ במחירון הלקוחות ו⊥ מוצעות בשיחה, אבל לקוח שמגיע לחנות יכול להזמין. זו הכרעה, ⊥ פער | — |
 | U-020 | תיקיית `05 · מה שולחים ללקוח` ריקה. ✅ **המתכונים נסגרו 2026-09-02** — `knowledge/drinks/recipes.yaml`, 48/48, מנות מאושרות שנבדקו מול העלות + שיטת הגשה, מרונדרים ל-`03 · מתכונים`. ⛔ **עדיין חסר:** קטלוג המשקאות בתוקף (PDF) · מחירון ללקוח (PDF) · סרטוני ההדרכה שהספר מבטיח · תעודת כשרות | **טום — בתהליך.** הצהיר 2026-08-31 שיעלה חומרים שיווקיים ל-`06 · העלאות` |
 | U-021 | 17 מתוך 17 כללי `boundaries/refusals.yaml` מסתיימים ב"מעביר לאלכסנדר" — ו**אין בשום קובץ מספר, מייל או קבוצה**. סוכן ווצאפ שיגיע לכלל כזה נעצר באמצע שיחה בלי מסלול המשך | טום — פרט קשר אחד, ואז כרטיס `user_confirmed` |
-| U-037 | **אפריל 2026: ₪146,254 על 271 הזמנות** — החודש החלש ביותר ב-25 חודשים בהכנסה, אבל ⊥ במספר ההזמנות (מרץ 221, מאי 322). ה-AOV נפל מ-~₪1,400 ל-~₪540 לחודש אחד ואז חזר. זו ⊥ עונתיות — או זיכויים/ביטולים גדולים שנרשמו באותו חודש, או פער נתונים. התגלה אגב מדידת העונתיות 2026-09-02. **ממוספר U-037 בכוונה** — U-022 *וגם* U-033 כבר תפוסים ע"י מעבר נכסי הרשת, ש-U-036 הוא המספר הגבוה בו. ההתנגשות הפתוחה ⊥ אמורה לגדול | בדיקה מול Green Invoice / דוח הזמנות אפריל |
+| ~~U-037~~ | **מוסבר 2026-09-08 (נסגר — ממתין לאישור תום).** ShopifyQL לאפריל 2026: ברוטו ₪476,479 · הנחות −₪85,639 · **היפוכים −₪269,006** — ~60 הזמנות מ-2024–2025 שבוטלו רטרואקטיבית באפריל, כפי שכבר תועד ב-`evidence/2026-08-24-sales-report.md` §דגלים. אפריל האמיתי ≈ ₪391K. ראיה: `evidence/2026-09-08-business-operations-audit.md` §2.1. הרשומה המקורית: **אפריל 2026: ₪146,254 על 271 הזמנות** — החודש החלש ביותר ב-25 חודשים בהכנסה, אבל ⊥ במספר ההזמנות (מרץ 221, מאי 322). ה-AOV נפל מ-~₪1,400 ל-~₪540 לחודש אחד ואז חזר. זו ⊥ עונתיות — או זיכויים/ביטולים גדולים שנרשמו באותו חודש, או פער נתונים. התגלה אגב מדידת העונתיות 2026-09-02. **ממוספר U-037 בכוונה** — U-022 *וגם* U-033 כבר תפוסים ע"י מעבר נכסי הרשת, ש-U-036 הוא המספר הגבוה בו. ההתנגשות הפתוחה ⊥ אמורה לגדול | בדיקה מול Green Invoice / דוח הזמנות אפריל |
 | **RENUMBERED** | The ten rows below arrived as `U-022`…`U-031` from the 2026-08-31 lead-response pass. They are re-prefixed to `U-040`…`U-049` here, above both colliding sets and above `U-039`, main's current highest, because the social-property pass reached `main` first and already holds `U-022`…`U-039` — the same rule this file states at the top. No row was dropped, merged or reworded in the move; only the number changed. | — |
 | U-040 | 275 distinct phone numbers have written to GT's live WhatsApp since 2026-06-28 (163 in the last 30 days) and are classified `ignored_unknown_or_disabled`; essentially none exists in `sales_core` (1 of 275). How many are leads rather than unmapped customers, suppliers or staff? No identification layer exists to answer it. Shape argues most are not enquiries (avg 20.8 messages/sender; 117 conversations span >7 days); the lead-shaped floor is the 36 single-message senders, 11 of them in the last 30 days | build the first-message write (architecture doc §Q2), then measure for 30 days |
 | ~~U-041~~ | **CLOSED 2026-08-31** — Israel marketing template **$0.0353**/message (rate card effective 2026-07-01), graded `doc_confirmed` from a dated DOI-registered mirror, not from GT's console. Operating cost at current volume: **$2.78–$3.39/month**. Not a constraint. `doctrine/commercial-terms.md` §3.1 | closed; re-check after Meta's next quarterly card (~2026-10-01) |
@@ -88,6 +90,24 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-047 | The deck's margin percentages (77–87 %) imply the food cost arithmetically, which D-018 says is never stated. Do the margin figures stay? | Tom |
 | ~~U-048~~ | **CLOSED 2026-08-31** — owner named: **Tom** (D-023). The number **is** in use, and that is not a blocker: **coexistence** keeps it in the WhatsApp app while the Cloud API rides alongside, exactly as GT's order line has since 2026-06-26 (9,440 staff-echo events prove it). The artifact's warning that a number entering the API leaves the app permanently is true of classic onboarding, **not** of coexistence. Standing requirement: the app must be opened at least once every 13 days and never uninstalled, or coexistence lapses — needs a named owner | closed |
 | U-049 | Opt-out must be recorded on the lead and must cancel every queued follow-up (D-024). No column, no event type and no scheduler exists yet — this is a build item, not a question | build, before any follow-up runs |
+
+
+### Audit pass 2026-09-08 (`U-050` … `U-059` — above both colliding sets)
+
+Source: `evidence/2026-09-08-business-operations-audit.md` §9. All `system_verified` unless noted.
+
+| ID | Question | Route |
+|---|---|---|
+| U-050 | What tool creates the orders under the Shopify app `Inventory & OS System` (689 of 1,276 orders in 90 days) and where its per-line price comes from; since July it produces orders with no discount line (Shopify discounts fell from −₪65.9K in July to −₪3.9K in August because net prices are written directly) | Tom / Dorin — one line |
+| U-051 | Customer-specific pricing exists in practice: the same SKU sold at ₪36–₪58.5 in the same week; realized DETOX 1L ₪42.3 against list ₪65 (65%). Tiers, who decides, where it is recorded — merges with U-003 | Interview #3 + `doctrine/pricing-logic.md` |
+| U-052 | 839 open `lw_pick_data_missing` exceptions (499 in August): do lines without `picked_quantity` decrement stock (fallback to ordered qty) or not at all? Stock-truth question — `assumption_failure` until answered | backend-db lane |
+| U-053 | 14.4% gap between Green Invoice revenue and Shopify (tracker 2026-08-06, `doc_confirmed`) versus "all sales go through Shopify" (Tom 2026-08-24, `user_confirmed`) — both cannot hold | monthly reconciliation recipe + Adi |
+| U-054 | Avi — role, hours, backup. All 18 `working` leads are his and all are overdue (extends U-026) | Tom |
+| U-055 | `sales_sleeping_radar_nightly` runs over `sales_core.org` (14 orgs), not the customer base of 596. Widen to the right population or switch off | build decision |
+| U-056 | The WhatsApp order bot: 0 order drafts since 2026-07-12, Anthropic credit-balance errors from 2026-07-27 to 2026-09-07. Fund and enable for named customers, or switch off explicitly | Tom |
+| U-057 | Notion as master (G1): 27 of 30 open tasks overdue, 1 completed in 30 days, 24 on Tom. Reset or retire | Tom + Alex, Saturday night |
+| U-058 | Dorin's discount authority is ₪0 in the playbook, yet every order is entered with a net per-line price. Who sets the price on an order | Tom |
+| U-059 | New customers: 6 in March and 6 in April 2026 against 20–34 in every other month — cause | Tom / Alex |
 
 ## החלטות שממתינות לטום — עודכן 2026-08-31
 **נסגרו באותו יום, בכתב:** TOM-A.2 (ימי אספקה) · TOM-A.4 (אין חוזה/מינימום/בלעדיות) ·
@@ -173,7 +193,11 @@ TOM-D (700 ו-8 שנים מאושרים) · TOM-E (HOJICHA נשאר, + 1 ק״ג 
   14 ready to paste, 23 open, 6 blocked, 16 on the website track. The credentials sheet
   still carries 24 rows and needs a 25th — TikTok (U-027).
 - Latest evidence snapshots (both 2026-08-24): `evidence/2026-08-24-make-intake-handover.md`
-- Latest evidence snapshot: `evidence/2026-08-31-lead-response-ground-truth.md` — measured lead,
+- **Latest evidence snapshot: `evidence/2026-09-08-business-operations-audit.md`** — the business / operations /
+  sales audit: 12-month revenue and growth, concentration, unit economics, realized-vs-list pricing, lead-system
+  ground truth, short-shipped-order rate, count accuracy, production reporting, dated risks, seven-lens analysis,
+  three 90-day rocks and twelve ranked moves. Opens `U-050`…`U-059`, explains `U-037`.
+- Previous evidence snapshot: `evidence/2026-08-31-lead-response-ground-truth.md` — measured lead,
   transport, backlog, first-response and WhatsApp ground truth; **records that GT's WhatsApp Business
   Cloud API has been live since 2026-06-26 (Dualhook coexistence, 24,028 events), which several planning
   documents still describe as not built.** Companion decisions in `gt-factory-os-production-brain`:
