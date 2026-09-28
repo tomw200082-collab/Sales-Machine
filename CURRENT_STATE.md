@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-09-28 — the WhatsApp lead journey (D-027…D-032) opened `U-050`…`U-054`.
+> Last updated: 2026-09-28 — Tom approved the lead journey's texts (U-051 closed; D-033, D-034); the lead line's delivery (U-050) is his next step.
 > Before that, 2026-09-02 — the knowledge-book pass added the 48 recipes and the
 > seasonality measurement, and opened `U-037`.
 > Before that, 2026-08-31: two sessions landed the same day — the knowledge-book pass
@@ -94,10 +94,10 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 
 | ID | Question | Route |
 |---|---|---|
-| U-050 | **The lead line has never delivered a message to GT's webhook.** `wa_event_log` holds 0 events for `phone_number_id 217553368116155` since it was provisioned on 2026-09-02, against 6,441 on the order line in the last 30 days (`evidence/2026-09-28-lead-journey-ground-truth.md` §1). GT's code drops nothing, so either nobody has written to it, or the provider does not forward it, or coexistence lapsed (D-023). Every automated message in the journey depends on it | **First step of the build:** one WhatsApp message to `054-758-8132` from a phone, then the §1 recipe. Non-zero closes it; zero goes to the provider's webhook set-up for that number |
-| U-051 | The journey's message texts are PROPOSED: playbook §2 (five first messages and the footer), §3 (general reply), §4 (button replies and the order confirmation) and §5 (the four wake-up messages and the replies to their buttons) | Tom approves or rewrites, before any template is submitted |
-| U-052 | Meta templates to submit once U-051 closes: four marketing templates (wake-up messages 1–4) and one utility template (the order confirmation sent after 24 h), from the lead line | build, after U-051 |
-| U-053 | The site's questions and answers grow from six to what a lead asks before a call, built only from `מאושר` rows of `knowledge/answers/answer-bank.yaml` (never D-018 rows). The `טיוטה` rows that the new questions need go to Tom for approval first | build, Tom approves the copy |
+| U-050 | **The lead line has never delivered a message to GT's webhook.** `wa_event_log` holds 0 events for `phone_number_id 217553368116155`, ever, against 2,376 on the order line in the 24 h before 2026-09-28 19:00 UTC (re-measured). Two causes are possible on the provider's side (no routing for the number, or coexistence lapsed, D-023) and one on GT's: production authenticates webhooks by WABA id and dropped every entry from another WABA before logging it, so a lead number on its own WABA would vanish. That one is fixed in `gt-factory-os#321` (`WA_LEAD_WABA_ID`), and the route's `health` action reads the number's WABA and coexistence state once the lead key is on Railway | Tom is preparing the number (2026-09-28). Then one WhatsApp message to `054-758-8132`; non-zero in `wa_event_log` closes this |
+| ~~U-051~~ | **CLOSED 2026-09-28 — Tom: "מאשר הכל".** The playbook's texts, round 2, with his edits from the review page (D-033, D-034), are APPROVED. `gt-factory-os` pins the approved playbook in `__fixtures__/whatsapp-lead-journey@<commit>.md`, and its D2 test holds the code to it byte for byte | closed |
+| U-052 | Meta templates to submit: four marketing templates (wake-up messages 1–4, one link button each, no `פרסומת`, D-034) and one utility template (the order confirmation after 24 h), from the lead line. U-051 is closed | build: submit through `/api/v1/internal/jobs/lead-templates` once the lead connection's key (`WA_LEAD_SEND_TOKEN`) is on Railway (Tom) |
+| U-053 | The site's questions and answers grow from six to 22 in three groups, an answer to every general question about working with GT (D-033), from approved sources only and with no price. **Copy APPROVED 2026-09-28 (Tom: "מאשר הכל")** | build: ships with the site's live push (`gt-site#30`) |
 | U-054 | **Parked by Tom:** an AI module connected to Meta Business Suite that classifies Instagram Direct and Messenger enquiries and puts them into `sales_core` like every other lead. Tom: "בזה אל תתעסק עכשיו... נפצח את זה בהמשך" | later — not part of the journey build |
 
 ## החלטות שממתינות לטום — עודכן 2026-08-31
