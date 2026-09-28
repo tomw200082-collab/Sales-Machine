@@ -80,6 +80,10 @@ one.
 
 ## 5. What GT should do — and it is small
 
+> **2026-09-28 — D-034:** Tom decided that the wake-up messages carry no `פרסומת` label, after
+> being told the requirement below and the exposure in §4. The notice (step 1), the refusal record
+> (step 2) and the name and free opt-out in every message (step 3) stay.
+
 1. **Add two sentences to the first response** (free, inside the window, human-approved):
    that GT will send a couple of follow-ups about the products, and exactly how to stop it —
    *"אם לא מעוניינים, כתבו 'הסר' ונפסיק."* This is what closes §30א(ג) conditions 2 and 3.
