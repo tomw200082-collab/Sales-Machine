@@ -1,7 +1,8 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-09-02 — the knowledge-book pass added the 48 recipes and the
+> Last updated: 2026-09-28 — the WhatsApp lead journey (D-027…D-032) opened `U-050`…`U-054`.
+> Before that, 2026-09-02 — the knowledge-book pass added the 48 recipes and the
 > seasonality measurement, and opened `U-037`.
 > Before that, 2026-08-31: two sessions landed the same day — the knowledge-book pass
 > (`U-014`…`U-021`, `CL-1`…`CL-4`) and the social-property pass (`U-014`…`U-032`).
@@ -88,6 +89,16 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-047 | The deck's margin percentages (77–87 %) imply the food cost arithmetically, which D-018 says is never stated. Do the margin figures stay? | Tom |
 | ~~U-048~~ | **CLOSED 2026-08-31** — owner named: **Tom** (D-023). The number **is** in use, and that is not a blocker: **coexistence** keeps it in the WhatsApp app while the Cloud API rides alongside, exactly as GT's order line has since 2026-06-26 (9,440 staff-echo events prove it). The artifact's warning that a number entering the API leaves the app permanently is true of classic onboarding, **not** of coexistence. Standing requirement: the app must be opened at least once every 13 days and never uninstalled, or coexistence lapses — needs a named owner | closed |
 | U-049 | Opt-out must be recorded on the lead and must cancel every queued follow-up (D-024). No column, no event type and no scheduler exists yet — this is a build item, not a question | build, before any follow-up runs |
+
+### WhatsApp lead journey (2026-09-28 — D-027…D-032, `doctrine/playbooks/whatsapp-lead-journey.md`)
+
+| ID | Question | Route |
+|---|---|---|
+| U-050 | **The lead line has never delivered a message to GT's webhook.** `wa_event_log` holds 0 events for `phone_number_id 217553368116155` since it was provisioned on 2026-09-02, against 6,441 on the order line in the last 30 days (`evidence/2026-09-28-lead-journey-ground-truth.md` §1). GT's code drops nothing, so either nobody has written to it, or the provider does not forward it, or coexistence lapsed (D-023). Every automated message in the journey depends on it | **First step of the build:** one WhatsApp message to `054-758-8132` from a phone, then the §1 recipe. Non-zero closes it; zero goes to the provider's webhook set-up for that number |
+| U-051 | The journey's message texts are PROPOSED: playbook §2 (five first messages and the footer), §3 (general reply), §4 (button replies and the order confirmation) and §5 (the four wake-up messages and the replies to their buttons) | Tom approves or rewrites, before any template is submitted |
+| U-052 | Meta templates to submit once U-051 closes: four marketing templates (wake-up messages 1–4) and one utility template (the order confirmation sent after 24 h), from the lead line | build, after U-051 |
+| U-053 | The site's questions and answers grow from six to what a lead asks before a call, built only from `מאושר` rows of `knowledge/answers/answer-bank.yaml` (never D-018 rows). The `טיוטה` rows that the new questions need go to Tom for approval first | build, Tom approves the copy |
+| U-054 | **Parked by Tom:** an AI module connected to Meta Business Suite that classifies Instagram Direct and Messenger enquiries and puts them into `sales_core` like every other lead. Tom: "בזה אל תתעסק עכשיו... נפצח את זה בהמשך" | later — not part of the journey build |
 
 ## החלטות שממתינות לטום — עודכן 2026-08-31
 **נסגרו באותו יום, בכתב:** TOM-A.2 (ימי אספקה) · TOM-A.4 (אין חוזה/מינימום/בלעדיות) ·

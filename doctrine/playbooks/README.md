@@ -9,6 +9,7 @@ Playbooks are written **after** their doctrine inputs exist (interviews), never 
 | `land-and-expand.md` — chain HQ → branch rollout | ICP, chain dossiers, white-space recipe | KAM / account-hierarchy sources |
 | `dream-100.md` — targeted acquisition | ICP + Dream-100 criteria, Core Story | Holmes 7-step (verified) |
 | `first-90-days.md` — new-account onboarding cadence | sales-process interview | Follow-up/bonding doctrine |
+| `whatsapp-lead-journey.md` — **written 2026-09-28.** The automated WhatsApp journey on the lead line: first reply, three buttons, the draft order, the wake-up sequence | D-027…D-032 (Tom, 2026-09-28) | `evidence/2026-09-28-follow-up-cadence-research.md` |
 
 Each playbook ships with: trigger, steps, scripts (Hebrew), owner, evidence to log,
 and its stop conditions.
