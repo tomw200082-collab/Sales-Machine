@@ -10,7 +10,7 @@
 
 **Spec:** docs/superpowers/specs/2026-09-29-sales-activity-task-loop-design.md; מסמך האב docs/superpowers/specs/2026-09-29-gt-pulse-crm-program-design.md.
 
-**Status:** טיוטת תוכנית לסקירת טום; אינה אישור ביצוע, מיזוג או פריסה.
+**Status:** התוכנית אושרה על ידי טום ב־2026-09-29 לביצוע Native בסשן חדש. אין באישור זה הפעלה של פניות אוטומטיות ללקוחות; מיזוג ופריסה כפופים לשערי הריפואים ולהוכחת runtime.
 
 ## Global Constraints
 
@@ -42,8 +42,8 @@
 | Backend API | api/src/sales/schemas.ts, mutations_handler.ts, queries_handler.ts, route.ts; api/test/sales_workspace_tasks.test.ts | POST activity, GET tasks, POST task completion, PATCH contact, auth-bound reads/writes |
 | Backend journey/email | api/src/order-intake/sales/wake.ts; api/src/order-intake/sales/__tests__/wake.test.ts; supabase/functions/sales-leads-poll/_lib/email.ts; api/test/sales_leads_poll_alerts.test.ts | wake guard, verified source triggers, staff email CTA |
 | Portal auth/proxy | src/middleware.ts; src/lib/auth/safe-redirect.ts; src/app/(auth)/login/page.tsx; src/app/auth/callback/page.tsx; src/app/api/sales/tasks/route.ts; src/app/api/sales/tasks/[task_id]/complete/route.ts; src/app/api/sales/leads/[lead_id]/{activity,contact}/route.ts | safe deep link, thin API proxy |
-| Portal UI | src/app/(sales)/_lib/{types,api,labels,useOutcomeCapture,useQueueScope}.ts; _components/{OutcomeSheet,TodayQueue,TodayCard,LeadDrawer}.tsx; sales/{today,leads}/page.tsx; sales-tokens.css; new _lib/activityDraft.ts; new _components/{TaskCard,LeadJourneyRail}.tsx | source-backed task cards and fast, durable mobile capture |
-| Portal verification | tests/unit/middleware.test.ts; tests/unit/sales/{outcome-sheet,today-queue,activity-draft}.test.tsx; tests/e2e/{sales-outcome-integrity,sales-visual-a11y,mobile-sales-today}.spec.ts; new tests/e2e/sales-email-to-task.spec.ts | real user journey and responsive gate |
+| Portal UI | src/app/(sales)/_lib/{types,api,labels,useOutcomeCapture,useQueueScope}.ts; _components/{OutcomeSheet,TodayQueue,TodayCard,LeadDrawer}.tsx; sales/{today,leads,attention}/page.tsx; sales-tokens.css; new _lib/activityDraft.ts; new _components/{TaskCard,LeadJourneyRail}.tsx | source-backed task cards and fast, durable mobile capture from every existing outcome entrypoint |
+| Portal verification | tests/unit/middleware.test.ts; tests/unit/sales/{outcome-sheet,today-queue,activity-draft}.test.tsx; tests/e2e/{sales-outcome-integrity,sales-attention,sales-visual-a11y,mobile-sales-today}.spec.ts; new tests/e2e/sales-email-to-task.spec.ts | real user journey and responsive gate |
 | Documentation | New portal tranche manifest and registry entry; Sales-Machine/CURRENT_STATE.md only after observed release | scoped execution and dated evidence |
 
 One plan spans two runtime repos because the delivered contact loop crosses their API. Commit independently in each repo. No runtime code is added to Sales-Machine. If the backend SHA or migration slot advances, re-map names and tests before touching code.
@@ -350,14 +350,14 @@ Render task source as a short Hebrew reason; link to lead/event. Personal task c
 
 **Files:**
 - Create: gt-factory-os-portal/src/app/api/sales/leads/[lead_id]/activity/route.ts; src/app/(sales)/_lib/activityDraft.ts
-- Modify: gt-factory-os-portal/src/app/(sales)/_lib/api.ts, types.ts, labels.ts, useOutcomeCapture.ts; _components/OutcomeSheet.tsx, LeadDrawer.tsx; sales/today/page.tsx, sales/leads/page.tsx
-- Test: gt-factory-os-portal/tests/unit/sales/{activity-draft,outcome-sheet,use-outcome-capture}.test.tsx; tests/e2e/sales-outcome-integrity.spec.ts
+- Modify: gt-factory-os-portal/src/app/(sales)/_lib/api.ts, types.ts, labels.ts, useOutcomeCapture.ts; _components/OutcomeSheet.tsx, LeadDrawer.tsx; sales/today/page.tsx, sales/leads/page.tsx, sales/attention/page.tsx
+- Test: gt-factory-os-portal/tests/unit/sales/{activity-draft,outcome-sheet,use-outcome-capture}.test.tsx; tests/e2e/{sales-outcome-integrity,sales-attention}.spec.ts
 
 **Interfaces:**
 - Consumes Task 6 activity endpoint. A draft key is authenticated user email + lead UUID; it stores raw form fields and a stable request_id in sessionStorage, with no remote write until Save.
 - Produces answered + note≥5 + action/date or wait review; quick no_answer/whatsapp_sent one tap with previewed date; "won"/"lost" stay on their evidence/reason routes.
 
-- [ ] **Step 1: Write failing tests.** Four trimmed chars block Save; five Hebrew chars enable; date required; waiting review future date required; quick no_answer posts no fake note; timeout then retry keeps same request_id; same agent/lead reload restores draft, different lead or agent does not; after 200 clear draft+armed intent, after 422/500 keep both.
+- [ ] **Step 1: Write failing tests.** Four trimmed chars block Save; five Hebrew chars enable; date required; waiting review future date required; quick no_answer posts no fake note; timeout then retry keeps same request_id; same agent/lead reload restores draft, different lead or agent does not; after 200 clear draft+armed intent, after 422/500 keep both. Exercise the existing outcome entrypoints on Today, Leads and Attention, including Attention card and drawer, with the new /activity endpoint.
 ~~~tsx
 await user.type(screen.getByLabelText('מה קרה?'), 'אבגד');
 expect(screen.getByRole('button', {name: 'שמור'})).toBeDisabled();
@@ -382,9 +382,9 @@ type ActivitySubmission = {
   additional_actions?: PrimaryAction[];
 };
 ~~~
-A native keyboard microphone writes into the same textarea. No recording/upload/AI. Both Today and Leads use the same submit helper; remove any answered path that still calls useOutcome. Arm the existing mailto link in LeadDrawer with channel=email so a substantive reply can be captured; do not call a sent email a two-way exchange automatically. Preserve explicit lost undo and won evidence behavior.
+A native keyboard microphone writes into the same textarea. No recording/upload/AI. Today, Leads and Attention use the same submit helper; remove every answered path that still calls useOutcome, while the explicit lost path may keep the old route. Arm the existing mailto link in LeadDrawer with channel=email so a substantive reply can be captured; do not call a sent email a two-way exchange automatically. Preserve explicit lost undo and won evidence behavior.
 
-- [ ] **Step 4: Run green.** Focused Vitest and sales-outcome-integrity Playwright. Simulate pagehide, app return, reload, offline/timeout, stale lead ID, and a server 422. Verify the sheet remains keyboard safe at 320 and 390 px.
+- [ ] **Step 4: Run green.** Focused Vitest and sales-outcome-integrity + sales-attention Playwright. Simulate pagehide, app return, reload, offline/timeout, stale lead ID, and a server 422. Verify the sheet remains keyboard safe at 320 and 390 px. Search all /(sales) callers of useOutcome and /outcome before enabling activity_required; only explicit lost remains on the legacy route.
 
 - [ ] **Step 5: Commit portal files** within the sales tranche.
 
@@ -422,7 +422,7 @@ Browser asserts on 320, 390 and 430px: document.documentElement.scrollWidth <= w
 }
 ~~~
 
-- [ ] **Step 4: Verify full flow and deployment gates.** Local throwaway DB: pg_prove 0362 and neighboring 0322/0324/0360/0361; backend npm run typecheck, api npm test, journey Vitest; portal npm run typecheck, npm run lint, npm test, targeted Playwright, portal-pr-guard. Email login → same lead → call/WA return → valid note/action → exactly one assigned task → completion with note; unassigned manager path and contactless resolution; waiting and stop/race path. Screenshot before/after for Tom. Compare runtime migrations, deployed flags and SHA; set activity_required to true via audited sales_core.set_app_setting only when the new portal is serving and rollback can restore the old route. No new wake sends are enabled by this plan.
+- [ ] **Step 4: Verify full flow and deployment gates.** Local throwaway DB: pg_prove 0362 and neighboring 0322/0324/0360/0361; backend npm run typecheck, api npm test, journey Vitest; portal npm run typecheck, npm run lint, npm test, targeted Playwright including sales-attention, portal-pr-guard. Email login → same lead → call/WA return from Today/Leads/Attention → valid note/action → exactly one assigned task → completion with note; unassigned manager path and contactless resolution; waiting and stop/race path. Screenshot before/after for Tom. Compare runtime migrations, deployed flags and SHA; set activity_required to true via audited sales_core.set_app_setting only when the new portal is serving and rollback can restore the old route. No new wake sends are enabled by this plan.
 
 - [ ] **Step 5: Release one-time backlog deliberately.** Preview counts by owner/unowned/status and new task type; run an idempotent backfill for open leads after owner triage (contact_resolution for neither phone nor email; otherwise first contact when first_touch_at null, or due follow-up). Create only if no equivalent open task exists. Use stable source_key bootstrap:<lead-id>, source_kind=bootstrap and source_id=<lead-id>; never invent a lead_event ID for history that lacks one. Do not notify or call a customer. Verify counts and task URLs on the exact deployed SHA; log dated evidence, unresolved gaps and rollback path. Only then update Sales-Machine/CURRENT_STATE.md as observed state.
 
