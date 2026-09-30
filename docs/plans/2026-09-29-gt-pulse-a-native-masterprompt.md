@@ -1,6 +1,6 @@
 # MASTERPROMPT — GT Pulse sales contact loop built, audited, simplified and verified
 
-**STATUS: LIVE — not yet executed**
+**STATUS: LIVE — implementation branches built 2026-09-30; release HOLD pending connected verification, exact Hebrew copy approval and count-specific backlog approval. No production deployment or customer send.**
 
 > **Usage:** Paste this entire document as the first message of a fresh coding session with access to `tomw200082-collab/Sales-Machine`, `tomw200082-collab/gt-factory-os`, `tomw200082-collab/gt-factory-os-portal`, and `tomw200082-collab/gt-factory-os-production-brain`. The session owns Unit A from implementation through a sales-specific UX release gate, remediation, simplification and verification. Do not answer with another plan; execute the approved plan.
 >

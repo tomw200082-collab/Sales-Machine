@@ -1,7 +1,8 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-09-28 — Tom approved the lead journey's texts (U-051 closed; D-033, D-034); the lead line's delivery (U-050) is his next step.
+> Last updated: 2026-09-30 — GT Pulse Unit A implementation branches exist; release HOLD pending final connected and production proof below.
+> Before that, 2026-09-28 — Tom approved the lead journey's texts (U-051 closed; D-033, D-034); the lead line's delivery (U-050) is his next step.
 > Before that, 2026-09-02 — the knowledge-book pass added the 48 recipes and the
 > seasonality measurement, and opened `U-037`.
 > Before that, 2026-08-31: two sessions landed the same day — the knowledge-book pass
@@ -11,6 +12,12 @@
 > pass reaches `U-036`) — so the open collision does not grow while Tom arbitrates it.
 
 ## Build ladder status
+
+### GT Pulse Unit A — 2026-09-30 UTC observed checkpoint
+
+Backend review branch `feat/gt-pulse-a-sales-contact-loop` remote `ee84be34cdc1a76596a1e1d70a2a5f66d0ec6050`; portal review branch `feat/gt-pulse-a-sales-corridor` remote `103354bdce2e93cc4b19232dadc46745640d3ffb`. Local worktree heads have identical Git trees. Migration 0362 and portal tranche 185 exist **on branches only**. A synthetic browser matrix covered 40 route/role/width combinations with no horizontal overflow, and the final portal head passed 57/57 relevant sales Chromium cases, 125/125 whole-portal `@mocked` Chromium cases by JSON reporter, and 1,517/1,517 unit tests; build, typecheck and lint also passed locally (lint had 558 warnings, zero errors). Two independent code reviewers found and rechecked Important defects; no remaining Important code finding was reported. The five-lens self-audit is saved under the brain's `docs/phase8/dry-runs/`; it is **HOLD**, not a live release gate pass.
+
+Read-only production SQL on 2026-09-30 counted **257 leads, 183 open, 150 open unassigned**; `sales_core.task` is absent, migration-history version 0362 count is zero and `activity_required` has no row. A provisional pre-schema candidate breakdown was 148 unassigned first-contact, 2 unassigned call and 33 owned call tasks. This is **not** the guarded post-schema batch preview: new events can make tasks before the script runs. Exact backend/portal deployed SHAs and the frozen outreach environment flag are unverified; no production task backfill, flag change, customer send or outreach activation occurred in this execution. Final backend pgTAP/two-connection DB and authenticated browser→API→DB checks are unproved: no disposable PostgreSQL/healthy sales staging database was available locally, and branch-push CI runs are not retrievable through the connected GitHub tool. The exact new Hebrew copy register entry in portal tranche 185 awaits Tom's approval; the production backlog batch requires a separate count-specific written go/no-go after a real post-schema preview. Preserve `LIVE`/HOLD until these gates and exact deployed SHA/flag checks pass.
 
 | Phase | Scope | Status |
 |---|---|---|
