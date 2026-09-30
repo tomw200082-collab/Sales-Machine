@@ -1,6 +1,6 @@
 # MASTERPROMPT — Resume GT Pulse Unit A from verified branches to release
 
-**STATUS: LIVE — handoff written 2026-09-30 UTC; execution in the next session has not begun. Unit A is built on review branches, not deployed.**
+**STATUS: LIVE — HOLD (2026-09-30 UTC). Resume execution repaired and verified final review branches; connected auth/DB UX and controlled release remain blocked. [Final execution evidence](2026-09-30-gt-pulse-a-execution-index.md) and [fresh UX gate](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-09-30-gt-pulse-a-sales-ux-gate-final-followup.md). No production deployment or customer send.**
 
 > Paste this entire file into a fresh coding session with access to the four private repositories below, their authorized CI and connected staging/production read-only tools. Execute; do not produce another plan. The prior, broader [Unit A masterprompt](2026-09-29-gt-pulse-a-native-masterprompt.md) and [execution index](2026-09-30-gt-pulse-a-execution-index.md) remain the detailed specification and ledger. This file is the **resume delta**, not a reset of nine completed coding tasks. If linked files are unavailable, stop rather than infer their contents.
 >

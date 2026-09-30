@@ -2,6 +2,34 @@
 
 **Status: LIVE / HOLD.** This is a dated engineering evidence index, not a change to the approved specs or a production release declaration. The detailed Native task ledgers remain in each isolated worktree's `.superpowers/sdd/2026-09-29-gt-pulse-a-sales-task-loop/progress.md`.
 
+## Resume execution — final review heads, 2026-09-30 UTC
+
+This section supersedes the earlier branch/check rows below. The nine original tasks were verified, not restarted. Backend `feat/gt-pulse-a-sales-contact-loop` is at `42b560422cd327533135333b12390994a39304c9`; portal `feat/gt-pulse-a-sales-corridor` is at `a2e1786c33fc8b257240d7076113222ec8a80028`; brain `audit/gt-pulse-a-ux` at `0da1f35799427ad5e87f1008cafb7a024fea7e89`. Local worktree base commits are earlier ancestors with uncommitted tree-equivalent changes; the canonical remote SHAs above identify the reviewable artifacts. Sales-Machine's pinned resume source was `a22ff30e46173f324480f4cd75478d8b7c2dd74c`.
+
+Backend remediation commits after the handoff: `9049f8c`, `2566a90`, `d4df086`, `96b3f6a`, `34b50fc`, `487e939`, `42b5604`. The final work isolates the performed task via `source_task_id`, keeps unrelated due tasks open, resolves waiting and draft cancellation/undo, records repeat lead-line free text as source work without an advisory/row-lock inversion, and stops wake after lost→undo until a new answered conversation. SQL/API journey and race regressions accompany the changes. [Final exact-SHA CI](https://github.com/tomw200082-collab/gt-factory-os/actions/runs/36688872012): two green jobs; 0362 pgTAP 79/79, neighboring sales SQL green, wake/lead DB 19/19, role/activity API 11/11, legacy workspace 14/14, staff alert 38/38, disposable guarded backfill checks and root typecheck. Earlier [run 36687895494](https://github.com/tomw200082-collab/gt-factory-os/actions/runs/36687895494) exposed nondeterministic timestamp/UUID selection under lost undo; the final SQL selects the cancellation event actually referenced by openable tasks. Two subsequent exact-SQL CI runs, including the final head, passed 79/79.
+
+Portal remediation commits after the handoff: `a91c915`, `7a06478`, `399798c`, `b002d9d`, `a2e1786`. Today/Leads/Attention use a channel-valid outcome sheet with durable drafts; TaskCard preserves source ID; rep ownership, missing deep links, email-only actions, date/DST and Leads background inertness are covered. The original approved Hebrew table is recorded in tranche 185 with its contextual assent; **additional exact strings** remain proposed there pending register assent. Final local source: Vitest 1,525/1,525; sales Chromium `@mocked` 58/58; all Chromium `@mocked` 126 expected with zero skipped/unexpected/flaky; `npm run build`, `npm run typecheck`, `npx eslint .` exit 0 (558 warnings); synthetic matrix 40/40 with zero horizontal overflow and zero missing headings. Vercel [final preview](https://gt-factory-os-portal-oc0b75ert-tom-1486s-projects.vercel.app) is READY at `target=null`, not production. No actual PR-triggered `portal-pr-guard` ran because safe immediate unsubscribe is not exposed.
+
+The equivalent post-remediation five-lens [UX report](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-09-30-gt-pulse-a-sales-ux-gate-final-followup.md) found zero verified open P0/P1 **in synthetic render/interaction coverage only**. Fresh 320/390/430/1440 screenshots and matrix are linked there. `/simplify` was unavailable. A labelled ponytail pass removed the redundant `atNineAM` wrapper; request identity, locks, audit history and access checks remained. Independent backend/portal whole-branch reviewers rechecked their final findings and reported no Important/Critical code issue. The [read-only release check](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-09-30-gt-pulse-a-release-check-final-followup.md) is HOLD.
+
+| Gate | Verdict | Exact reason |
+|---|---|---|
+| D1 | HOLD | Task 9's controlled release is unfinished; tasks 1–8 and the implementation portion of 9 are reviewable. |
+| R1 | PASS | Scoped remote branches, task/commit index and original copy ruling are recorded; no PR watcher was created. |
+| D2 / R2 | HOLD | Staff email and safe link have test coverage; signed-out real Supabase auth→browser→API→DB is unproved. |
+| D3–D4 | PASS | Atomic activity, source tasks, rep/manager roles and retry pass disposable DB and mocked browser coverage; the separate R2 connected gate stays HOLD. |
+| D5 / R3 | HOLD | Two-connection stop/send, wait, lost undo and forced wake tests pass; deployed SHA/flag and actual runtime path unverified. |
+| D6 | HOLD | Hebrew RTL, mobile widths, source-backed rail and keyboard tests pass synthetically; real keyboard/WebKit unproved. |
+| D7 / R4 | HOLD | Five-lens follow-up has zero synthetic P0/P1, but connected staging UX gate is absent. |
+| D8 | PASS | Equivalent ponytail cut, two independent clear reviews and exact-head code checks ran. |
+| R5 | HOLD | Authenticated path and actual PR-triggered check are absent, so full release verification cannot pass. |
+| D9 / R6 | HOLD | No production 0362 schema, post-schema preview/digest, batch-specific approval, merge, deployment or flag switch. |
+| D10 / R7 | PASS | Exact SHAs and limits recorded, no `SHIPPED` claim. |
+
+Read-only production SQL at **2026-09-30 08:25:25 UTC**: 259 leads, 183 open, 148 open unassigned; `sales_core.task` absent, `activity_required` absent, migration-history 0362 count zero. Preliminary pre-schema counts from the earlier snapshot are stale and cannot authorize a batch. Actual production backend deployed SHA and Railway outreach variable value remain unverified. No production migration, deploy, customer message, flag flip or backfill happened. The documented rollback cancels only digest-matched open bootstrap tasks with append-only audit after a separately approved write; it never deletes task history. A paid Supabase dev branch needs current hourly price and explicit cost confirmation; the eventual production backfill needs an exact count/digest and separate written go/no-go. **Next human action:** authorize a quoted connected staging resource if no free equivalent is available, then review the fresh connected gate and exact new copy before any release/batch approval.
+
+## Earlier implementation ledger (dated baseline)
+
 | Plan task | Owning repo | Local commit evidence | State and missing proof |
 |---|---|---|---|
 | 1 staff email | backend | `148b010`, `26ab6fe`, `de48c6f`; later email correction on branch | Code built; final-head staff alert tests 38/38. Real signed-out staff-email login still unproved. |
