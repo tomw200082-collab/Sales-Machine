@@ -1,7 +1,7 @@
 # Sales-Machine — Current State
 
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-09-30 08:25 UTC — GT Pulse Unit A final review branches exist; release HOLD pending connected and production proof below.
+> Last updated: 2026-09-30 15:35 UTC — GT Pulse Unit A exact review branches prepared; release HOLD; Tom explicitly deferred production deployment.
 > Before that, 2026-09-28 — Tom approved the lead journey's texts (U-051 closed; D-033, D-034); the lead line's delivery (U-050) is his next step.
 > Before that, 2026-09-02 — the knowledge-book pass added the 48 recipes and the
 > seasonality measurement, and opened `U-037`.
@@ -12,6 +12,12 @@
 > pass reaches `U-036`) — so the open collision does not grow while Tom arbitrates it.
 
 ## Build ladder status
+
+### GT Pulse Unit A — 2026-09-30 15:35 UTC release preparation update
+
+Backend branch now `ff69e3cecc0ffcd522c69eeb09255adcf98e51f4`, reconciled with newer production `main` and verified by [exact-head CI 36737309399](https://github.com/tomw200082-collab/gt-factory-os/actions/runs/36737309399): 0362 pgTAP 79/79, two-connection/lead DB 19/19, role/activity API 11/11, legacy workspace 14/14, staff mail 38/38, root typecheck and guarded disposable backfill. A RED→GREEN review fix removed a journey result's unproven task-creation claim. Portal branch remains `a2e1786c33fc8b257240d7076113222ec8a80028`; fresh local typecheck, ESLint and build exited 0, unit tests 1,525/1,525. Fresh Playwright could not start the dev server in this sandbox (`uv_interface_addresses`), so earlier 58/58 mocked browser checks remain dated evidence, not connected proof.
+
+Tom wants this prepared up to a release decision and **does not authorize full production deployment now**. Existing Supabase project and existing portal are the targets; standalone project suggestion withdrawn. A new isolated branch in the existing project costs $0.01344/hour and has not been created without cost-specific consent. The prior branch failed migration replay; a working connected API/real Auth/DB staging run remains unproven. Later Hebrew copy entries still need exact register assent. PR creation would subscribe this session and the connector cannot unsubscribe, so no PR or PR-triggered portal guard exists. Read-only production at 15:17 UTC: 260 leads, 184 open, 147 open unassigned; `sales_core.task`, migration 0362 and `activity_required` absent. No post-schema backfill preview or batch authorization. **LIVE — HOLD**; the 08:25 snapshot below is historical.
 
 ### GT Pulse Unit A — 2026-09-30 final branch checkpoint
 
