@@ -82,7 +82,7 @@ The pre-production masterprompt was executed. Tom approved the Q1–Q9 recommend
 2. UX finding B-FLOW-04 (P1) stays open until Tom approves one Hebrew string. A disabled Save currently shows its cause only as a red field border.
 
 **Production observation, untouched**
-- Railway has `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED=true`, and 4 real `first_menu` sends exist, the last at 2026-09-30 14:32 UTC. This contradicts the line below that says it "remains `false`".
+- Railway has `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED=true`, and 4 real `first_menu` sends exist, the last at 2026-09-30 14:32 UTC. Tom decided on 2026-10-01 to keep it on; the line below is corrected.
 - The production API deployment carries no commit SHA.
 
 No production merge, deploy, migration, flag change, backfill or customer message happened in this session. The local staging stack lived only in the session container.
@@ -150,7 +150,7 @@ Read-only production SQL on 2026-09-30 counted **257 leads, 183 open, 150 open u
 | Conversion job + heartbeat | first Shopify order at-or-after a lead writes `won` + evidence; daily heartbeat | **LANDED** 2026-08-24. `sales_core.convert_lead()` is the sole writer of `won`. Heartbeat proven working 2026-08-24 04:00Z (sent, severity=alarm, correct). Now judges **whichever path is carrying leads** and, under Make, watches an **hourly pulse** — because with a third party in front a dead connection and a quiet day are otherwise indistinguishable, which is exactly how the 2026-06-07 failure hid for two months. Pulse route is live; the Make scenario that feeds it is not yet built |
 
 Nothing in this track sends anything to a lead or a customer.
-`SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` remains `false`.
+`SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` is **`true` in production, and stays so by Tom's decision of 2026-10-01** ("להשאיר פתוח"). Every other gate on a customer-facing send still applies.
 
 ## Interview plan (Phase 2)
 
