@@ -1,5 +1,26 @@
 # Sales-Machine — Current State
 
+## 2026-10-01 08:00 UTC — GT Pulse Unit A is live in production (Tom approved)
+
+Tom approved production ("אני מאשר הכל"), after "קודם A ואז D שלב 1".
+
+**What went live:**
+- **Migration 0362:** applied via `deploy-production` run 36830904172 on `9d423c1`. `rebuild_verifier()=0`. Tables, functions and the reply index are present. `activity_required` is false.
+- **Backend:** #329 squash-merged as `30759a2`. Railway deployment SUCCESS at that SHA, `/health` ok, `/queries/sales/tasks` returns 401 without auth.
+- **Portal:** #239 squash-merged as `eb36b83`. Vercel production `dpl_CcCQwinFQVn6GNVmbfWvzh2Hyksx` is READY. The signed-out deep link keeps its destination through login.
+
+**Backlog backfill:** not applied. The production preview found 184 tasks, digest `23175e69b922d1c7861478b90271799d`:
+- 146 `contact_first` in the manager queue
+- 37 `call` for one owner
+- 1 `call` in the manager queue
+
+Applying it needs Tom's count-specific go.
+
+**Still open:**
+- WebKit/iOS check on a real phone.
+- The outreach flag stays `true`; it was not touched.
+- Next: a D phase 1 spec.
+
 ## 2026-10-01 07:40 UTC — B-FLOW-04 closed
 
 Tom approved the disabled-Save string ("אני מאשר"). It is registered in tranche 185 and shipped in portal `4b94597`. The only open gate is now WebKit/iOS keyboard proof, which needs a real device in the production session. Status remains **LIVE — HOLD**. There was no redesign beyond the verified UX-gate fixes; that would be a separate scope.
