@@ -68,8 +68,8 @@ completed tasks.
 
 **Backend (`gt-factory-os`, PR #329):**
 
-1. New migration (next free slot, listed immediately before writing) amending
-   `sales_core.tg_lead_event_task` and `tg_lead_task_owner`:
+1. Amend `db/migrations/0362_sales_activity_tasks.sql` in place (never applied to any
+   environment, so no new slot) — `sales_core.tg_lead_event_task` and `tg_lead_task_owner`:
    - D8 owner rule: `v_owner := v_lead.assignee` for every kind; reassignment drops the
      `kind<>'contact_resolution'` exclusion.
    - D5: accept `whatsapp_order_line` in the `repeat_contact` source list.
@@ -126,5 +126,4 @@ HOLD.
 
 - The order-line hook never throws into the order pipeline; it logs and continues.
 - A rep's denied read returns 403 with no lead data in the body.
-- Migration is additive (function replacement only); rollback = re-create the 0362 function
-  bodies, listed in the release packet.
+- 0362 is unapplied anywhere; its rollback is unchanged from the release checklist.
