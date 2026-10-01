@@ -1,5 +1,16 @@
 # Sales-Machine — Current State
 
+## 2026-10-01 09:20 UTC — GT Pulse D1 (visual, phase 1) is live in production (Tom approved)
+
+Tom gave the full production go after seeing the iteration-2 video ("יש לך את הgo המלא לפרודקשן").
+- **Code:** portal [#240](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/240) was squash-merged as `e6d7e7f`; `ci` was green on head `933d442` (127/127 mocked e2e).
+- **Deploy:** Vercel `dpl_31zwFtmuoYe3vWsJD2wKUTJQTUvu` is READY in production, built from that SHA. No new runtime errors.
+- **Rollback:** Vercel instant rollback to `dpl_CcCQwinFQVn6GNVmbfWvzh2Hyksx`.
+- **What shipped:** the live lead-journey flow on Today, the petrol aurora band, the shape lock and motion with a reduced-motion fallback. Spec: [D1 design](docs/superpowers/specs/2026-10-01-gt-pulse-d1-visual-design.md), V1–V12.
+- **Scope:** presentation only — no backend change, no new copy, no flag.
+- **Not yet proven:** the live screen with real data under a real login. This session cannot log in to production.
+- **Next:** D phase 2 (contact compass, event river, basket map) needs units B and C.
+
 ## 2026-10-01 08:10 UTC — Unit A backlog backfill applied
 
 Tom gave the count-specific go ("מאשר הכל", in direct reply to 184 / `23175e69…`). The script's guards were applied in one transaction through the Supabase connector, because psql has no network route from the session container:
