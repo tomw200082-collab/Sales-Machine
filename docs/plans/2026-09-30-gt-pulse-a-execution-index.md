@@ -1,5 +1,9 @@
 # GT Pulse Unit A — execution index (2026-09-30 UTC)
 
+## 2026-10-01 07:40 UTC — B-FLOW-04 closed
+
+Tom approved the disabled-Save string ("אני מאשר"). It is registered in tranche 185 and shipped in portal `4b94597`. The only open gate is now WebKit/iOS keyboard proof, which needs a real device in the production session. Status remains **LIVE — HOLD**. There was no redesign beyond the verified UX-gate fixes; that would be a separate scope.
+
 ## 2026-10-01 07:10 UTC — pre-production session result: LIVE — HOLD
 
 The pre-production masterprompt was executed. Tom approved the Q1–Q9 recommendations and delegated the remaining design decisions. The decisions are recorded as D1–D13 in [the closure spec](docs/superpowers/specs/2026-10-01-gt-pulse-a-preprod-closure-design.md), with the [plan](docs/superpowers/plans/2026-10-01-gt-pulse-a-preprod-closure.md).

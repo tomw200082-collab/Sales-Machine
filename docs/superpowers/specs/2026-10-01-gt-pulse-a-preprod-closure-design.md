@@ -135,4 +135,4 @@ HOLD.
 - **D16:** every scheduling date starts at the first date whose 09:00 Israel time is still ahead. A typed or restored earlier date is raised to it; an already-attempted draft keeps its date. Source: UX gate and portal review.
 - **D17:** at most one open reply per lead is enforced by a partial unique index. `resolve_contact_gap` refuses a phone that already belongs to another open lead. The order-line port writes to the phone's latest open lead only. Source: backend review.
 - **Accepted:** a rep's org list shows lead counts that include other reps' leads (counts only, no rows). Source: backend review M5.
-- **Open:** a textual reason on a disabled Save (B-FLOW-04) needs Tom's approval of an exact string. Proposed: `כדי לשמור צריך: מה קרה (5 תווים לפחות), מה הפעולה הבאה ומתי לבצע.`
+- **Closed 2026-10-01:** Tom approved the textual reason on a disabled Save (B-FLOW-04): `כדי לשמור צריך: מה קרה (5 תווים לפחות), מה הפעולה הבאה ומתי לבצע.`
