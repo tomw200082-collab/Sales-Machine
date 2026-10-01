@@ -1,17 +1,27 @@
 # Sales-Machine — Current State
 
+## 2026-10-01 13:20 UTC — copy round live (tranche 188): the five UX-gate copy decisions
+
+Tom approved the round on 2026-10-01 ("מאשר הכל").
+- **Code:** portal [#243](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/243) was squash-merged as `89aa411`; `ci` was green.
+- **Deploy:** Vercel `dpl_J6zstx3ZCfrcythvyR4xb9aPA8dL` is READY in production. Rollback: `dpl_8Nw7a1xL8N1AvtxNdkUzD1MUz5y2`.
+- **Now live:**
+  - The flow caption reads "כל הלידים".
+  - The org list shows "טרם לקוח".
+  - The lead card says "כתבו הערה כדי לשמור" when Save is disabled.
+  - The customer status ("פעיל"/"לא פעיל") is in the register.
+  - The nav landmarks are named "ניווט ראשי" and "סרגל ניווט".
+- **Open copy items from the gate:** none.
+- **Still not proven:** WebKit/iOS and screen-reader behaviour on a real device.
+- **Next:** a planning checkpoint with Tom, then the unit B masterprompt in a new session.
+
 ## 2026-10-01 12:40 UTC — D1 corridor-wide live (tranche 187): every sales screen at the D1 level
 
 - **Code:** portal [#242](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/242) was squash-merged as `e9179d2`; `ci` was green. Vercel `dpl_8Nw7a1xL8N1AvtxNdkUzD1MUz5y2` is READY in production. `/login` returns 200, and `/sales/*` redirects to login (307). Rollback: `dpl_8fK9NzguyAvny47Pf2Meyaputhze`.
 - **What changed:** a glass app bar; a floating tab bar; a round FAB on phones; a petrol band on every screen; the mini rail on lead list cards; the org card in the lead card's frame; settings, feed and states in panels. The note save now has an "in flight" ring on every save, and lost on /attention has an undo. The toast sits above the lead card, where the undo had been unreachable.
 - **Copy (Tom approved 2026-10-01):** "כל הצוות" and "נשמר ✓" are live. "כל הלידים הפתוחים" is registered but not rendered (its meaning is wrong for the order node); the flow caption shows "לידים".
 - **UX gate (sales profile):** **CONDITIONAL_SHIP**, 0 P0 ([report](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-10-01-gt-pulse-d1-corridor-ux-gate.md)).
-- **Waiting for Tom:**
-  - A corrected flow caption (proposed: "כל הלידים").
-  - A neutral badge for the org list.
-  - Copy for the reason a save is disabled.
-  - Register keys for `CustomerBadge`.
-  - Names for the two nav landmarks.
+- **Waiting for Tom:** resolved by the 13:20 UTC copy round (tranche 188).
 - **Not proven:** WebKit/iOS and screen reader on a real device.
 
 ## 2026-10-01 10:40 UTC — D1 follow-up live: lead card redesign, no sideways scroll, simplify + UX gate
