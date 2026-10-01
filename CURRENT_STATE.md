@@ -1,7 +1,139 @@
 # Sales-Machine — Current State
 
+## 2026-10-01 13:20 UTC — copy round live (tranche 188): the five UX-gate copy decisions
+
+Tom approved the round on 2026-10-01 ("מאשר הכל").
+- **Code:** portal [#243](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/243) was squash-merged as `89aa411`; `ci` was green.
+- **Deploy:** Vercel `dpl_J6zstx3ZCfrcythvyR4xb9aPA8dL` is READY in production. Rollback: `dpl_8Nw7a1xL8N1AvtxNdkUzD1MUz5y2`.
+- **Now live:**
+  - The flow caption reads "כל הלידים".
+  - The org list shows "טרם לקוח".
+  - The lead card says "כתבו הערה כדי לשמור" when Save is disabled.
+  - The customer status ("פעיל"/"לא פעיל") is in the register.
+  - The nav landmarks are named "ניווט ראשי" and "סרגל ניווט".
+- **Open copy items from the gate:** none.
+- **Still not proven:** WebKit/iOS and screen-reader behaviour on a real device.
+- **Next:** a planning checkpoint with Tom, then the unit B masterprompt in a new session.
+
+## 2026-10-01 12:40 UTC — D1 corridor-wide live (tranche 187): every sales screen at the D1 level
+
+- **Code:** portal [#242](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/242) was squash-merged as `e9179d2`; `ci` was green. Vercel `dpl_8Nw7a1xL8N1AvtxNdkUzD1MUz5y2` is READY in production. `/login` returns 200, and `/sales/*` redirects to login (307). Rollback: `dpl_8fK9NzguyAvny47Pf2Meyaputhze`.
+- **What changed:** a glass app bar; a floating tab bar; a round FAB on phones; a petrol band on every screen; the mini rail on lead list cards; the org card in the lead card's frame; settings, feed and states in panels. The note save now has an "in flight" ring on every save, and lost on /attention has an undo. The toast sits above the lead card, where the undo had been unreachable.
+- **Copy (Tom approved 2026-10-01):** "כל הצוות" and "נשמר ✓" are live. "כל הלידים הפתוחים" is registered but not rendered (its meaning is wrong for the order node); the flow caption shows "לידים".
+- **UX gate (sales profile):** **CONDITIONAL_SHIP**, 0 P0 ([report](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-10-01-gt-pulse-d1-corridor-ux-gate.md)).
+- **Waiting for Tom:** resolved by the 13:20 UTC copy round (tranche 188).
+- **Not proven:** WebKit/iOS and screen reader on a real device.
+
+## 2026-10-01 10:40 UTC — D1 follow-up live: lead card redesign, no sideways scroll, simplify + UX gate
+
+- **Code:** portal [#241](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/241) was squash-merged as `49435b1`; `ci` was green on head `09a0d17`. Vercel `dpl_8fK9NzguyAvny47Pf2Meyaputhze` is READY in production with no runtime errors. Rollback: `dpl_31zwFtmuoYe3vWsJD2wKUTJQTUvu`.
+- **Lead card:** long values no longer push it sideways. A regression e2e at 320/390/430 fails on the old code and passes on the new. The card also has a petrol header with the mini rail, icons, panels, and a history line, with the note above the details.
+- **Gates:** the simplify pass (4 lenses) and an independent correctness review ran and their fixes landed. The UX release gate ran with the sales profile and returned **CONDITIONAL_SHIP**, 0 P0 ([report](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-10-01-gt-pulse-d1-ux-gate.md)).
+- **Open:**
+  - The copy HOLDs need Tom's approval: FLOW-001 (a label for the flow population), FLOW-003 (a "saved" confirmation for notes), FLOW-004 (a team label on the counts).
+  - Next tranche: D1 treatment for leads, attention, orgs and settings.
+  - The FAB overlap existed before D1.
+
+## 2026-10-01 09:20 UTC — GT Pulse D1 (visual, phase 1) is live in production (Tom approved)
+
+Tom gave the full production go after seeing the iteration-2 video ("יש לך את הgo המלא לפרודקשן").
+- **Code:** portal [#240](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/240) was squash-merged as `e6d7e7f`; `ci` was green on head `933d442` (127/127 mocked e2e).
+- **Deploy:** Vercel `dpl_31zwFtmuoYe3vWsJD2wKUTJQTUvu` is READY in production, built from that SHA. No new runtime errors.
+- **Rollback:** Vercel instant rollback to `dpl_CcCQwinFQVn6GNVmbfWvzh2Hyksx`.
+- **What shipped:** the live lead-journey flow on Today, the petrol aurora band, the shape lock and motion with a reduced-motion fallback. Spec: [D1 design](docs/superpowers/specs/2026-10-01-gt-pulse-d1-visual-design.md), V1–V12.
+- **Scope:** presentation only — no backend change, no new copy, no flag.
+- **Not yet proven:** the live screen with real data under a real login. This session cannot log in to production.
+- **Next:** D phase 2 (contact compass, event river, basket map) needs units B and C.
+
+## 2026-10-01 08:10 UTC — Unit A backlog backfill applied
+
+Tom gave the count-specific go ("מאשר הכל", in direct reply to 184 / `23175e69…`). The script's guards were applied in one transaction through the Supabase connector, because psql has no network route from the session container:
+- task table lock and per-lead locks
+- re-check of total and digest (184 / `23175e69b922d1c7861478b90271799d`, matched)
+- insert with `created_by='system:gt-pulse-backfill'`, no partial insert
+
+Result: 184 open `bootstrap:` tasks, `rebuild_verifier()=0`:
+- 146 `contact_first` in the manager queue
+- 37 `call` for one owner
+- 1 `call` in the manager queue
+
+No message was sent.
+
+**Rollback if ever needed:** cancel the open `source_key like 'bootstrap:%'` tasks with an actor and a reason. Never delete them.
+
+## 2026-10-01 08:00 UTC — GT Pulse Unit A is live in production (Tom approved)
+
+Tom approved production ("אני מאשר הכל"), after "קודם A ואז D שלב 1".
+
+**What went live:**
+- **Migration 0362:** applied via `deploy-production` run 36830904172 on `9d423c1`. `rebuild_verifier()=0`. Tables, functions and the reply index are present. `activity_required` is false.
+- **Backend:** #329 squash-merged as `30759a2`. Railway deployment SUCCESS at that SHA, `/health` ok, `/queries/sales/tasks` returns 401 without auth.
+- **Portal:** #239 squash-merged as `eb36b83`. Vercel production `dpl_CcCQwinFQVn6GNVmbfWvzh2Hyksx` is READY. The signed-out deep link keeps its destination through login.
+
+**Backlog backfill:** not applied. The production preview found 184 tasks, digest `23175e69b922d1c7861478b90271799d`:
+- 146 `contact_first` in the manager queue
+- 37 `call` for one owner
+- 1 `call` in the manager queue
+
+Applying it needs Tom's count-specific go.
+
+**Still open:**
+- WebKit/iOS check on a real phone.
+- The outreach flag stays `true`; it was not touched.
+- Next: a D phase 1 spec.
+
+## 2026-10-01 07:40 UTC — B-FLOW-04 closed
+
+Tom approved the disabled-Save string ("אני מאשר"). It is registered in tranche 185 and shipped in portal `4b94597`. The only open gate is now WebKit/iOS keyboard proof, which needs a real device in the production session. Status remains **LIVE — HOLD**. There was no redesign beyond the verified UX-gate fixes; that would be a separate scope.
+
+## 2026-10-01 07:10 UTC — pre-production session result: LIVE — HOLD
+
+The pre-production masterprompt was executed. Tom approved the Q1–Q9 recommendations and delegated the remaining design decisions. The decisions are recorded as D1–D13 in [the closure spec](docs/superpowers/specs/2026-10-01-gt-pulse-a-preprod-closure-design.md), with the [plan](docs/superpowers/plans/2026-10-01-gt-pulse-a-preprod-closure.md).
+
+**Final heads**
+- Backend [#329](https://github.com/tomw200082-collab/gt-factory-os/pull/329) `9d423c1`: `sales-db`, `staff-mail` and `typecheck` green.
+- Portal [#239](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/239) `a7ccffd`: `ci` green.
+- Both are drafts, mergeable clean, and 0 commits behind `main`.
+
+**What changed**
+- Rep read scope covers leads, timeline, orgs and the activity feed.
+- A reply on the order line routes one reply task. There is at most one open reply per lead, enforced by a partial unique index.
+- Contact resolution follows the owner, and a rep can resolve their own contact gap.
+- A retry from another entry point replays the original activity.
+- Every scheduling date starts at the first date whose 09:00 Israel time is still ahead.
+- UX gate repairs added no new copy.
+
+**Proof on the final heads**
+- pgTAP 0362: 88/88, plus all neighbouring files.
+- order-intake: 267/267. API: 14/14, 14/14, 38/38.
+- Portal unit: 1536/1536.
+- Connected isolated staging: 22/22 at 390px and 22/22 at 1280px. The stack is local GoTrue with ES256, the production portal build, the real API and a DB built from `db/migrations`, with synthetic identities only.
+- Governor: fixture gate SHIP, connected audit CONDITIONAL_SHIP, 0 P0.
+- Details: [release packet](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-10-01-gt-pulse-a-release-packet.md).
+
+**Why HOLD rather than READY**
+1. WebKit/iOS keyboard-open save cannot be proven here; only Chromium is available.
+2. UX finding B-FLOW-04 (P1) stays open until Tom approves one Hebrew string. A disabled Save currently shows its cause only as a red field border.
+
+**Production observation, untouched**
+- Railway has `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED=true`, and 4 real `first_menu` sends exist, the last at 2026-09-30 14:32 UTC. Tom decided on 2026-10-01 to keep it on; the line below is corrected.
+- The production API deployment carries no commit SHA.
+
+No production merge, deploy, migration, flag change, backfill or customer message happened in this session. The local staging stack lived only in the session container.
+
+## 2026-09-30 16:05 UTC — superseding pre-production handoff
+
+Tom deferred production and asked for a fresh Claude Code product-discovery/build session. The new [pre-production masterprompt](docs/plans/2026-09-30-gt-pulse-preproduction-claude-code-masterprompt.md) orders Caveman/Ponytail, Grill with Docs plus domain modeling, Brainstorm, plan approval, Anthropic frontend-design and UI/UX Pro Max, connected five-lens UX release gate with P0/P1 repair and rerun, /simplify, whole-branch code review, then exact-final-head verification-before-completion. The nine built tasks remain the baseline; any new design needs his approval.
+
+Backend [draft PR #329](https://github.com/tomw200082-collab/gt-factory-os/pull/329) at `ff69e3cecc0ffcd522c69eeb09255adcf98e51f4` passed [PR typecheck](https://github.com/tomw200082-collab/gt-factory-os/actions/runs/36740413352). Portal [draft PR #239](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/239) at `1ba2c98bcf8aad63b5d81b3fb1113dbe91439093` (runtime tree from `a2e1786`, later copy-assent documentation) passed [portal-pr-guard](https://github.com/tomw200082-collab/gt-factory-os-portal/actions/runs/36740472210). Tom authorized temporary watching of these two PRs. Tranche 185 now records his exact assent to the sixteen later Hebrew strings. New copy still needs its own authority.
+
+The second cost-approved temporary Supabase branch in the **existing** project failed with `MIGRATIONS_FAILED`. Its earliest concrete replay error at 15:51:31 UTC was `relation "private_core.supplier_items" does not exist` in `0090_readiness_view_pack_conversion_fix`; migration history and sales schema were empty. The branch was deleted and absence verified. See the [connected staging attempt](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-09-30-gt-pulse-a-connected-staging-attempt.md). No paid branch remains, and no production merge, migration, deploy, flag, backfill or outreach occurred.
+
+**Current HOLD:** connected staff Auth→browser→API→DB and WebKit keyboard proof, full connected UX gate, final-head review/verification and later production decision. PR CI passing does not close those gates. Earlier dated paragraphs below preserve their historical observations; superseded claims that copy assent, draft PRs or the PR guard are pending do not describe the current state.
+
 > Sole authority on build status and open unknowns. Volatile by design.
-> Last updated: 2026-09-28 — Tom approved the lead journey's texts (U-051 closed; D-033, D-034); the lead line's delivery (U-050) is his next step.
+> Last updated: 2026-09-30 15:35 UTC — GT Pulse Unit A exact review branches prepared; release HOLD; Tom explicitly deferred production deployment.
+> Before that, 2026-09-28 — Tom approved the lead journey's texts (U-051 closed; D-033, D-034); the lead line's delivery (U-050) is his next step.
 > Before that, 2026-09-02 — the knowledge-book pass added the 48 recipes and the
 > seasonality measurement, and opened `U-037`.
 > Before that, 2026-08-31: two sessions landed the same day — the knowledge-book pass
@@ -11,6 +143,24 @@
 > pass reaches `U-036`) — so the open collision does not grow while Tom arbitrates it.
 
 ## Build ladder status
+
+### GT Pulse Unit A — 2026-09-30 15:35 UTC release preparation update
+
+Backend branch now `ff69e3cecc0ffcd522c69eeb09255adcf98e51f4`, reconciled with newer production `main` and verified by [exact-head CI 36737309399](https://github.com/tomw200082-collab/gt-factory-os/actions/runs/36737309399): 0362 pgTAP 79/79, two-connection/lead DB 19/19, role/activity API 11/11, legacy workspace 14/14, staff mail 38/38, root typecheck and guarded disposable backfill. A RED→GREEN review fix removed a journey result's unproven task-creation claim. Portal branch remains `a2e1786c33fc8b257240d7076113222ec8a80028`; fresh local typecheck, ESLint and build exited 0, unit tests 1,525/1,525. Fresh Playwright could not start the dev server in this sandbox (`uv_interface_addresses`), so earlier 58/58 mocked browser checks remain dated evidence, not connected proof.
+
+Tom wants this prepared up to a release decision and **does not authorize full production deployment now**. Existing Supabase project and existing portal are the targets; standalone project suggestion withdrawn. A new isolated branch in the existing project costs $0.01344/hour and has not been created without cost-specific consent. The prior branch failed migration replay; a working connected API/real Auth/DB staging run remains unproven. Later Hebrew copy entries still need exact register assent. PR creation would subscribe this session and the connector cannot unsubscribe, so no PR or PR-triggered portal guard exists. Read-only production at 15:17 UTC: 260 leads, 184 open, 147 open unassigned; `sales_core.task`, migration 0362 and `activity_required` absent. No post-schema backfill preview or batch authorization. **LIVE — HOLD**; the 08:25 snapshot below is historical.
+
+### GT Pulse Unit A — 2026-09-30 final branch checkpoint
+
+Backend review branch `feat/gt-pulse-a-sales-contact-loop` at `42b560422cd327533135333b12390994a39304c9`; portal review branch `feat/gt-pulse-a-sales-corridor` at `a2e1786c33fc8b257240d7076113222ec8a80028`. Backend [exact-SHA CI 36688872012](https://github.com/tomw200082-collab/gt-factory-os/actions/runs/36688872012) passed both jobs: disposable 0362 pgTAP 79/79, two-connection lead/wake 19/19 (including lost undo), role/activity API 11/11, legacy workspace 14/14, staff mail 38/38, root typecheck and guarded synthetic backfill checks. Portal local final-source verification: 1,525/1,525 unit, 58/58 sales mocked Chromium, 126/126 full mocked Chromium with zero skipped/unexpected/flaky, build, typecheck and lint (0 errors, 558 warnings). A fresh synthetic 40-cell role/route/width matrix had zero horizontal overflow or missing headings. Independent whole-branch reviews cleared all Important/Critical findings; `/simplify` was unavailable, so a labelled ponytail cut removed one redundant date wrapper. [Five-lens follow-up](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-09-30-gt-pulse-a-sales-ux-gate-final-followup.md) remains HOLD: connected authenticated API/DB, true WebKit keyboard-open save and the actual PR guard were not proven.
+
+Read-only production SQL at **2026-09-30 08:25:25 UTC**: 259 leads, 183 open, 148 open unassigned; `sales_core.task` absent, migration-history 0362 zero, `activity_required` absent. These are dated live counts, **not** a post-schema guarded backfill preview. The Vercel final-SHA deployment is READY with `target=null` (branch preview only). Vercel production deployment `dpl_CuXtU3i8wc1Rb3NzyPMU1Sn5MWqL` is READY at default-branch SHA `5e45b2d91cc8938ec1945925e46f481b9146c404`, separate from the final branch preview. Railway production API deployment `f285afb2-1a71-4f35-b625-4528cbeea043` is SUCCESS, but metadata gives no source SHA. `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` appears by name in redacted Railway variables; its value remains unverified. No migration, flag change, mass task insertion, customer send or production deploy occurred. The original exact Hebrew register table had contextual assent recorded in tranche 185; newly introduced exact strings are proposed there and await separate register assent. Tom approved the quoted $0.01344/hour Supabase development branch. It was created at 09:04 UTC, returned `MIGRATIONS_FAILED` with no `sales_core` schema or migration history, then was deleted and absent from the next branch listing. This did not prove authenticated route→API→DB. A future paid resource would need its own cost boundary; the eventual production task batch still requires a separate count/digest approval. No PR was opened because an immediate unsubscribe capability was unavailable under the no-autowatch rule. The detailed [execution index](docs/plans/2026-09-30-gt-pulse-a-execution-index.md), [staging attempt](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-09-30-gt-pulse-a-connected-staging-attempt.md) and [release check](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-09-30-gt-pulse-a-release-check-final-followup.md) record gates and rollback. Status remains **LIVE — HOLD**.
+
+### Earlier 2026-09-30 checkpoint (superseded by final branch checkpoint)
+
+Backend review branch `feat/gt-pulse-a-sales-contact-loop` remote `fa9c0454dd0856594678448c750fa22b09e58f29`; portal review branch `feat/gt-pulse-a-sales-corridor` remote `103354bdce2e93cc4b19232dadc46745640d3ffb`. Local worktree heads have identical Git trees. Migration 0362 and portal tranche 185 exist **on branches only**. Backend [push CI 36676625217](https://github.com/tomw200082-collab/gt-factory-os/actions/runs/36676625217) succeeded on the exact backend tree: sales pgTAP through assertion 68, guarded staging backfill and idempotence, two-connection wake/lead DB 18/18, role/activity API 11/11, legacy 14/14, staff alert 38/38 and root typecheck. A synthetic browser matrix covered 40 route/role/width combinations with no horizontal overflow, and the final portal head passed 57/57 relevant sales Chromium cases, 125/125 whole-portal `@mocked` Chromium cases by JSON reporter, and 1,517/1,517 unit tests; build, typecheck and lint also passed locally (lint had 558 warnings, zero errors). Two independent code reviewers found and rechecked Important defects, including a same-display-name request collision proved RED before the final fix; no remaining Important code finding was reported. The five-lens self-audit is saved under the brain's `docs/phase8/dry-runs/`; it is **HOLD**, not a live release gate pass.
+
+Read-only production SQL on 2026-09-30 counted **257 leads, 183 open, 150 open unassigned**; `sales_core.task` is absent, migration-history version 0362 count is zero and `activity_required` has no row. A provisional pre-schema candidate breakdown was 148 unassigned first-contact, 2 unassigned call and 33 owned call tasks. This is **not** the guarded post-schema batch preview: new events can make tasks before the script runs. Exact backend/portal deployed SHAs and the frozen outreach environment flag are unverified; no production task backfill, flag change, customer send or outreach activation occurred in this execution. Final backend disposable-PostgreSQL CI is green, but authenticated browser→API→DB staging proof and production runtime checks remain unavailable. The exact new Hebrew copy register entry in portal tranche 185 awaits Tom's approval; the production backlog batch requires a separate count-specific written go/no-go after a real post-schema preview. Detailed per-task evidence and rollback boundaries: `docs/plans/2026-09-30-gt-pulse-a-execution-index.md`. Preserve `LIVE`/HOLD until these gates and exact deployed SHA/flag checks pass.
 
 | Phase | Scope | Status |
 |---|---|---|
@@ -34,7 +184,7 @@
 | Conversion job + heartbeat | first Shopify order at-or-after a lead writes `won` + evidence; daily heartbeat | **LANDED** 2026-08-24. `sales_core.convert_lead()` is the sole writer of `won`. Heartbeat proven working 2026-08-24 04:00Z (sent, severity=alarm, correct). Now judges **whichever path is carrying leads** and, under Make, watches an **hourly pulse** — because with a third party in front a dead connection and a quiet day are otherwise indistinguishable, which is exactly how the 2026-06-07 failure hid for two months. Pulse route is live; the Make scenario that feeds it is not yet built |
 
 Nothing in this track sends anything to a lead or a customer.
-`SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` remains `false`.
+`SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` is **`true` in production, and stays so by Tom's decision of 2026-10-01** ("להשאיר פתוח"). Every other gate on a customer-facing send still applies.
 
 ## Interview plan (Phase 2)
 
