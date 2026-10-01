@@ -5,6 +5,7 @@
 Tom approved on 2026-10-01 ("מאשר הכל") the red-team summary: T1–T12, then spec v2, a build plan and an autonomous backend build; the Hebrew UI starts only after he approves mockups and string round 1. Decisions D-035 to D-038.
 - **W0 ground truth, done (D1):** the GT Pulse docs are on `main` and the two docs branches are ancestors of `main` (Sales-Machine #38 and #40, brain #242 and #243). Migrations `0353` and `0354` are on backend `main` (#333); a CI run on a database built from `main` matched production's column and grant hashes for the four objects (run 36883627787). The sales database gate runs on every PR touching `db/`, the sales API or order-intake (#331); with one assertion broken it went red (run 36874266028).
 - **Spec:** `docs/superpowers/specs/2026-10-01-gt-pulse-b-design.md` (v2), glossary `CONTEXT.md`, ADRs `docs/adr/0001` and `0002`. Six independent reviewers attacked v1 first.
+- **Build plan:** `docs/superpowers/plans/2026-10-01-gt-pulse-b-build.md` — 30 tasks in six backend and portal PRs. First PR: the CI gate (pinned skips and failures, idempotency check, every sales API test). Mockups and string round 1 run in parallel; the portal starts only after Tom approves them.
 - **Still Tom's:** the backfill go on exact counts and digest; one batch of Hebrew strings with mockups; the visual approval; his security actions (U-058); how Ice Dream orders will appear in Shopify (U-055).
 - **Not built yet:** anything of Unit B. Unit A and D1 are unchanged in production.
 
