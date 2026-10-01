@@ -57,8 +57,23 @@
 4. **הצלבה** — מול העוגנים של האבחון/ה-evidence הקודם; פער מהותי ⇒ למצוא מי טועה לפני שממשיכים.
 5. **שפיות ידנית** — 3 הזמנות אקראיות, שליפה חוזרת ישירה מה-API, השוואה שורה-שורה. `3/3` או עצירה.
 
-## תוצרים
+## תוצרים ולוחות זמנים (תום, 2026-08-25)
 
-- Artifact הדוח (עדכון לאותו URL — ראו evidence עדכני), עמוד שער-אישור נפרד.
-- snapshot ל-`evidence/` בכל ריצה מהותית. CURRENT_STATE מצביע על האחרון.
-- הרצה מחדש: `build_facts.py → build_gate_page.py (בשינוי טקסונומיה — שער תום!) → build_report.py → Artifact`.
+| תוצר | קצב | מי מריץ | יעד |
+|---|---|---|---|
+| Artifact הדוח | **שבועי**, רביעי 07:30 | `weekly-sales-report` | אותו URL קבוע |
+| `מכירות MM.YY.xlsx` | **חודשי**, 1 לחודש 08:00 | `monthly-sales-excel` | דרופבוקס `/Business/Sales` |
+
+- שניהם על אותה טבלת עובדות ואותם 5 שערים. האקסל מכסה ינואר→החודש שנסגר; ב-1 לחודש
+  הוא כבר לא חלקי. שם הקובץ = החודש שנסגר (1/9/2026 ⇒ `מכירות 08.26.xlsx`).
+- עמוד שער-אישור נפרד; snapshot ל-`evidence/` בכל ריצה מהותית. CURRENT_STATE מצביע על האחרון.
+- הרצה מחדש: `build_facts.py → build_gate_page.py (בשינוי טקסונומיה — שער תום!) →
+  build_report.py → Artifact` · לאקסל: `build_facts.py → build_excel.py → upload_dropbox.py`.
+
+## מלכודות שנמדדו (2026-08-25)
+
+- **שאילתת ה-bulk נעולה** ב-`gt-factory-os/scripts/sales-report/orders_bulk.graphql`. בלי
+  `id` על `lineItems`, שורות ה-JSONL מגיעות בלי gid, נופלות ל-`__UNKNOWN__`, ו-`fact_rows`
+  יוצא **0 בלי שגיאה** — אקסל ריק שנראה תקין. `build_excel.py` חוסם את זה מאז.
+- **ShopifyQL רק דרך ה-MCP.** ל-`shopifyqlQuery` של ה-Admin API ב-`2025-07` אין
+  `sales_reversals`; והמספרים חוזרים כמחרוזות — להמיר לפני `build_facts.py`.
