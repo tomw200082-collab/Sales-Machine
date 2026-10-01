@@ -127,3 +127,12 @@ HOLD.
 - The order-line hook never throws into the order pipeline; it logs and continues.
 - A rep's denied read returns 403 with no lead data in the body.
 - 0362 is unapplied anywhere; its rollback is unchanged from the release checklist.
+
+## 8. Amendments made during execution (2026-10-01, under the same delegation)
+
+- **D14:** a rep's Today hides the team-wide triage strip, and trigger-made task kinds show their registered reason instead of an unregistered title. Source: UX gate.
+- **D15:** the activity request hash excludes `source_task_id`, because one request ID is one human activity. A retry from another entry point replays the original result. Source: portal review.
+- **D16:** every scheduling date starts at the first date whose 09:00 Israel time is still ahead. A typed or restored earlier date is raised to it; an already-attempted draft keeps its date. Source: UX gate and portal review.
+- **D17:** at most one open reply per lead is enforced by a partial unique index. `resolve_contact_gap` refuses a phone that already belongs to another open lead. The order-line port writes to the phone's latest open lead only. Source: backend review.
+- **Accepted:** a rep's org list shows lead counts that include other reps' leads (counts only, no rows). Source: backend review M5.
+- **Open:** a textual reason on a disabled Save (B-FLOW-04) needs Tom's approval of an exact string. Proposed: `כדי לשמור צריך: מה קרה (5 תווים לפחות), מה הפעולה הבאה ומתי לבצע.`

@@ -1,5 +1,40 @@
 # Sales-Machine — Current State
 
+## 2026-10-01 07:10 UTC — pre-production session result: LIVE — HOLD
+
+The pre-production masterprompt was executed. Tom approved the Q1–Q9 recommendations and delegated the remaining design decisions. The decisions are recorded as D1–D13 in [the closure spec](docs/superpowers/specs/2026-10-01-gt-pulse-a-preprod-closure-design.md), with the [plan](docs/superpowers/plans/2026-10-01-gt-pulse-a-preprod-closure.md).
+
+**Final heads**
+- Backend [#329](https://github.com/tomw200082-collab/gt-factory-os/pull/329) `9d423c1`: `sales-db`, `staff-mail` and `typecheck` green.
+- Portal [#239](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/239) `a7ccffd`: `ci` green.
+- Both are drafts, mergeable clean, and 0 commits behind `main`.
+
+**What changed**
+- Rep read scope covers leads, timeline, orgs and the activity feed.
+- A reply on the order line routes one reply task. There is at most one open reply per lead, enforced by a partial unique index.
+- Contact resolution follows the owner, and a rep can resolve their own contact gap.
+- A retry from another entry point replays the original activity.
+- Every scheduling date starts at the first date whose 09:00 Israel time is still ahead.
+- UX gate repairs added no new copy.
+
+**Proof on the final heads**
+- pgTAP 0362: 88/88, plus all neighbouring files.
+- order-intake: 267/267. API: 14/14, 14/14, 38/38.
+- Portal unit: 1536/1536.
+- Connected isolated staging: 22/22 at 390px and 22/22 at 1280px. The stack is local GoTrue with ES256, the production portal build, the real API and a DB built from `db/migrations`, with synthetic identities only.
+- Governor: fixture gate SHIP, connected audit CONDITIONAL_SHIP, 0 P0.
+- Details: [release packet](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-10-01-gt-pulse-a-release-packet.md).
+
+**Why HOLD rather than READY**
+1. WebKit/iOS keyboard-open save cannot be proven here; only Chromium is available.
+2. UX finding B-FLOW-04 (P1) stays open until Tom approves one Hebrew string. A disabled Save currently shows its cause only as a red field border.
+
+**Production observation, untouched**
+- Railway has `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED=true`, and 4 real `first_menu` sends exist, the last at 2026-09-30 14:32 UTC. This contradicts the line below that says it "remains `false`".
+- The production API deployment carries no commit SHA.
+
+No production merge, deploy, migration, flag change, backfill or customer message happened in this session. The local staging stack lived only in the session container.
+
 ## 2026-09-30 16:05 UTC — superseding pre-production handoff
 
 Tom deferred production and asked for a fresh Claude Code product-discovery/build session. The new [pre-production masterprompt](docs/plans/2026-09-30-gt-pulse-preproduction-claude-code-masterprompt.md) orders Caveman/Ponytail, Grill with Docs plus domain modeling, Brainstorm, plan approval, Anthropic frontend-design and UI/UX Pro Max, connected five-lens UX release gate with P0/P1 repair and rerun, /simplify, whole-branch code review, then exact-final-head verification-before-completion. The nine built tasks remain the baseline; any new design needs his approval.
