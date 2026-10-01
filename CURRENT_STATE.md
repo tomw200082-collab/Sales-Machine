@@ -1,5 +1,13 @@
 # Sales-Machine — Current State
 
+## 2026-10-01 — GT Pulse Unit B: ground truth closed, spec v2 approved, build starts
+
+Tom approved on 2026-10-01 ("מאשר הכל") the red-team summary: T1–T12, then spec v2, a build plan and an autonomous backend build; the Hebrew UI starts only after he approves mockups and string round 1. Decisions D-035 to D-038.
+- **W0 ground truth, done (D1):** the GT Pulse docs are on `main` and the two docs branches are ancestors of `main` (Sales-Machine #38 and #40, brain #242 and #243). Migrations `0353` and `0354` are on backend `main` (#333); a CI run on a database built from `main` matched production's column and grant hashes for the four objects (run 36883627787). The sales database gate runs on every PR touching `db/`, the sales API or order-intake (#331); with one assertion broken it went red (run 36874266028).
+- **Spec:** `docs/superpowers/specs/2026-10-01-gt-pulse-b-design.md` (v2), glossary `CONTEXT.md`, ADRs `docs/adr/0001` and `0002`. Six independent reviewers attacked v1 first.
+- **Still Tom's:** the backfill go on exact counts and digest; one batch of Hebrew strings with mockups; the visual approval; his security actions (U-058); how Ice Dream orders will appear in Shopify (U-055).
+- **Not built yet:** anything of Unit B. Unit A and D1 are unchanged in production.
+
 ## 2026-10-01 13:20 UTC — copy round live (tranche 188): the five UX-gate copy decisions
 
 Tom approved the round on 2026-10-01 ("מאשר הכל").
@@ -249,6 +257,10 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-052 | Meta templates to submit: four marketing templates (wake-up messages 1–4, one link button each, no `פרסומת`, D-034) and one utility template (the order confirmation after 24 h), from the lead line. U-051 is closed | build: submit through `/api/v1/internal/jobs/lead-templates` once the lead connection's key (`WA_LEAD_SEND_TOKEN`) is on Railway (Tom) |
 | U-053 | The site's questions and answers grow from six to 22 in three groups, an answer to every general question about working with GT (D-033), from approved sources only and with no price. **Copy APPROVED 2026-09-28 (Tom: "מאשר הכל")** | build: ships with the site's live push (`gt-site#30`) |
 | U-054 | **Parked by Tom:** an AI module connected to Meta Business Suite that classifies Instagram Direct and Messenger enquiries and puts them into `sales_core` like every other lead. Tom: "בזה אל תתעסק עכשיו... נפצח את זה בהמשך" | later — not part of the journey build |
+| U-055 | **How will the orders of customers moved to the distributor Ice Dream appear in Shopify** — completed under the customer with a tag, or left as drafts (D-029)? Until decided, Unit B shows no silence count for branches moved to a distributor and labels money "order value (Shopify, customer price)". Today no order carries an Ice Dream marker and no Ice Dream customer exists in Shopify. | Tom — before the switch |
+| U-056 | `client_key` is the link to a Green Invoice client (the Ice Dream scripts call `client(client_key)`), and Unit B's verified-customer rule (D-035) depends on it, but nobody has identified what writes it on new customers: the customer-setup skill writes only a note. If the switch stops client creation in Green Invoice, new customers would fall into review. | Tom + system check |
+| U-057 | Obligations for contact persons' data under Israeli privacy law (registration, access logging, deletion and correction). A question for counsel, not asserted here. Unit B ships a redaction action and an access record. | Tom → counsel |
+| U-058 | Security actions for Tom, details shared privately and not written in this public repository. One of them: a read-only Shopify token for the order mirror. | Tom |
 
 ## החלטות שממתינות לטום — עודכן 2026-08-31
 **נסגרו באותו יום, בכתב:** TOM-A.2 (ימי אספקה) · TOM-A.4 (אין חוזה/מינימום/בלעדיות) ·
