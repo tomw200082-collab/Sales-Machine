@@ -1,5 +1,15 @@
 # Sales-Machine — Current State
 
+## 2026-10-01 10:40 UTC — D1 follow-up live: lead card redesign, no sideways scroll, simplify + UX gate
+
+- **Code:** portal [#241](https://github.com/tomw200082-collab/gt-factory-os-portal/pull/241) was squash-merged as `49435b1`; `ci` was green on head `09a0d17`. Vercel `dpl_8fK9NzguyAvny47Pf2Meyaputhze` is READY in production with no runtime errors. Rollback: `dpl_31zwFtmuoYe3vWsJD2wKUTJQTUvu`.
+- **Lead card:** long values no longer push it sideways. A regression e2e at 320/390/430 fails on the old code and passes on the new. The card also has a petrol header with the mini rail, icons, panels, and a history line, with the note above the details.
+- **Gates:** the simplify pass (4 lenses) and an independent correctness review ran and their fixes landed. The UX release gate ran with the sales profile and returned **CONDITIONAL_SHIP**, 0 P0 ([report](https://github.com/tomw200082-collab/gt-factory-os-production-brain/blob/audit/gt-pulse-a-ux/docs/phase8/dry-runs/2026-10-01-gt-pulse-d1-ux-gate.md)).
+- **Open:**
+  - The copy HOLDs need Tom's approval: FLOW-001 (a label for the flow population), FLOW-003 (a "saved" confirmation for notes), FLOW-004 (a team label on the counts).
+  - Next tranche: D1 treatment for leads, attention, orgs and settings.
+  - The FAB overlap existed before D1.
+
 ## 2026-10-01 09:20 UTC — GT Pulse D1 (visual, phase 1) is live in production (Tom approved)
 
 Tom gave the full production go after seeing the iteration-2 video ("יש לך את הgo המלא לפרודקשן").
