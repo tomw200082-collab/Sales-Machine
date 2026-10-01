@@ -1,5 +1,21 @@
 # GT Pulse Unit A — execution index (2026-09-30 UTC)
 
+## 2026-10-01 08:10 UTC — Unit A backlog backfill applied
+
+Tom gave the count-specific go ("מאשר הכל", in direct reply to 184 / `23175e69…`). The script's guards were applied in one transaction through the Supabase connector, because psql has no network route from the session container:
+- task table lock and per-lead locks
+- re-check of total and digest (184 / `23175e69b922d1c7861478b90271799d`, matched)
+- insert with `created_by='system:gt-pulse-backfill'`, no partial insert
+
+Result: 184 open `bootstrap:` tasks, `rebuild_verifier()=0`:
+- 146 `contact_first` in the manager queue
+- 37 `call` for one owner
+- 1 `call` in the manager queue
+
+No message was sent.
+
+**Rollback if ever needed:** cancel the open `source_key like 'bootstrap:%'` tasks with an actor and a reason. Never delete them.
+
 ## 2026-10-01 08:00 UTC — GT Pulse Unit A is live in production (Tom approved)
 
 Tom approved production ("אני מאשר הכל"), after "קודם A ואז D שלב 1".
