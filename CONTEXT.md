@@ -1,6 +1,6 @@
-# GT Pulse — sales language
+# GT CRM — sales language
 
-The terms of GT's sales CRM (GT Pulse), as Tom has decided them. A glossary only: no implementation, no status. Business rules live in `doctrine/`, designs in `docs/superpowers/specs/`.
+The terms of GT's sales CRM, named **GT CRM** in the product (Tom 2026-10-02, D-046; earlier "GT Pulse", which stays the name of past build units and of the D1 visual system), as Tom has decided them. A glossary only: no implementation, no status. Business rules live in `doctrine/`, designs in `docs/superpowers/specs/`.
 
 ## Language
 
