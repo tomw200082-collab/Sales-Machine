@@ -8,6 +8,12 @@ Tom answered the closure page on 2026-10-02: "מאשר הכל, אלכס הוא �
   - Portal #245 (tranche 197), squash `aedaa65`, Vercel `dpl_2Um2wQmaCpaN4HL6vMf6hE6kAHJm` READY.
   - Signed-out smoke: pages answer 307 and the APIs 401.
   - After the deploy, production still had 26 open identity tasks and `rebuild_verifier()` = 0.
+- **Closure fixes, live the same day.**
+  - An identity link or merge now names the holder it saw. The server refuses with `SALES_IDENTITY_HOLDER_CHANGED` if that holder changed.
+  - The legacy `GET /queries/sales/orgs` is removed. It answers 404 in production.
+  - The portal proxy ignores the dev-shim flag on a production deployment.
+  - Shipped as backend #341 (`76b2a4a`, deploy run 37015914312) and portal #246 (tranche 198, `b03d4c2`, Vercel `dpl_Ghsx6Ck5BTQ7DSbZFbGCP7R6mwjq` READY).
+  - After the deploy: drift 0, 26 open identity tasks, and no portal runtime errors in the following hour.
 - **Still Tom's:**
   - the 26 clicks in `/sales/orgs/review`, per D-040;
   - naming the `client_key` writer (U-056);
