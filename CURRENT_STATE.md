@@ -1,5 +1,45 @@
 # Sales-Machine — Current State
 
+## 2026-10-02 12:25 UTC — GT Pulse Unit B portal (Session 2): live in production
+
+Verified against production on 2026-10-02.
+- **Portal:** gt-factory-os-portal #244, squash `acfe2358`, Vercel production deployment `dpl_B4ykh8ZrwNVmpFdvRMWTGSk2iDXV`. It is READY and aliased to `gt-factory-os-portal.vercel.app`; the previous production deployment was `dpl_J6zstx3ZCfrcythvyR4xb9aPA8dL` on `89aa411`. Tranches 189 to 196:
+  - the business list, server-paged;
+  - the business workspace `/sales/orgs/[id]`;
+  - the two-year business circle;
+  - the managers' identity review;
+  - bulk owners;
+  - org search in the command palette;
+  - the orders timeline (Tom: the circle's second view, redesigned at his word).
+- **Backend:** gt-factory-os #339, squash `e9855e8`, adds `held_by` on identity candidates, so a merge names its destination before it happens.
+  - Deployed by deploy-production run 37005367572. The only migration in that run was an idempotent re-apply of `0373`, used as the vehicle.
+  - Pre-flight `rebuild_verifier()` was 0. After the run, exactly one `sales_shopify_mirror_refresh` job remains (`40 0 * * *`, active) and `rebuild_verifier()` is 0. Health is OK.
+- **Checks on the released head:**
+  - vitest 1737/1737, typecheck 0, eslint 0 errors, `next build` green.
+  - Playwright `@mocked` 150/150, including the Unit B journeys, a 320 to 1440 matrix, dark mode with reduced motion, and a touch phone.
+  - CI `portal-pr-guard` green.
+- **UX release gate** (sales profile, strict): four rounds, from P0 2 / P1 23 to **P0 0 / P1 0**, verdict SHIP. The record is in the brain repo, `docs/phase8/dry-runs/gt-pulse-b-ux/`. An independent code review found no Critical issue; its three Important findings were fixed red-first. `/simplify` and ponytail-review were applied.
+- **Production smoke, signed out:**
+  - every new page redirects to login;
+  - every new proxy route answers 401;
+  - the API refuses its org routes without auth (401);
+  - no runtime errors in the following hour.
+- **Not yet observed:**
+  - an authenticated read through the portal. There was no user session in this session, and none was faked.
+  - the first scheduled mirror refresh (00:40 UTC, 2026-10-03).
+  - a WebKit or real iPhone run. Touch was tested with Chromium touch emulation only.
+- **Known limits:**
+  - 8 review orgs (`customer_not_verified`) cannot be resolved from the portal: the held customer is not in the mirror, and resolving them needs a backend change.
+  - The merge-target check is advisory. A server-side expected-holder check (409) is a backend follow-up.
+  - The legacy backend `/orgs` route still exists; the portal no longer calls it.
+- **Still Tom's:**
+  - the 26 identity-review decisions, now on the screen;
+  - Ice Dream (U-055);
+  - his security actions (U-058);
+  - the read-only mirror token.
+
+  No real identity decision, outreach, automation or Shopify, Green Invoice or LionWheel write was made.
+
 ## 2026-10-02 08:05 UTC — GT Pulse Unit B backend (Session 1): live in production; Portal/UI is Session 2
 
 Everything below was verified against production on 2026-10-02. Tom approved the edge-function deploy and the exact backfill (count and digest) in the session; the migrations and the merge followed the approved W6 order.
