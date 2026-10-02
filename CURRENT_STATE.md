@@ -1,5 +1,20 @@
 # Sales-Machine — Current State
 
+## 2026-10-02 13:45 UTC — GT Pulse Unit B: closure decisions; "keep as a lead" is live
+
+Tom answered the closure page on 2026-10-02: "מאשר הכל, אלכס הוא הבעלים של גרינטי". The decisions are D-040 (the 26 identity-review orgs) and D-041 (Ice Dream, which closes U-055).
+- **Keep as a lead, live in production.** A `customer_not_verified` org can now be resolved: the manager keeps it as a lead, its Shopify account is unlinked, and no rejection is kept.
+  - Backend gt-factory-os #340, squash `48b4535`, deploy run 37012414528. Pre-flight `rebuild_verifier` was 0. Health 200.
+  - Portal #245 (tranche 197), squash `aedaa65`, Vercel `dpl_2Um2wQmaCpaN4HL6vMf6hE6kAHJm` READY.
+  - Signed-out smoke: pages answer 307 and the APIs 401.
+  - After the deploy, production still had 26 open identity tasks and `rebuild_verifier()` = 0.
+- **Still Tom's:**
+  - the 26 clicks in `/sales/orgs/review`, per D-040;
+  - naming the `client_key` writer (U-056);
+  - counsel (U-057);
+  - the read-only mirror token (U-058).
+- **Found, not in scope:** the production portal logs `NODE_TLS_REJECT_UNAUTHORIZED=0` (TLS verification off) on server routes. This has been seen since 2026-06-16.
+
 ## 2026-10-02 12:25 UTC — GT Pulse Unit B portal (Session 2): live in production
 
 Verified against production on 2026-10-02.
@@ -313,8 +328,8 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-052 | Meta templates to submit: four marketing templates (wake-up messages 1–4, one link button each, no `פרסומת`, D-034) and one utility template (the order confirmation after 24 h), from the lead line. U-051 is closed | build: submit through `/api/v1/internal/jobs/lead-templates` once the lead connection's key (`WA_LEAD_SEND_TOKEN`) is on Railway (Tom) |
 | U-053 | The site's questions and answers grow from six to 22 in three groups, an answer to every general question about working with GT (D-033), from approved sources only and with no price. **Copy APPROVED 2026-09-28 (Tom: "מאשר הכל")** | build: ships with the site's live push (`gt-site#30`) |
 | U-054 | **Parked by Tom:** an AI module connected to Meta Business Suite that classifies Instagram Direct and Messenger enquiries and puts them into `sales_core` like every other lead. Tom: "בזה אל תתעסק עכשיו... נפצח את זה בהמשך" | later — not part of the journey build |
-| U-055 | **How will the orders of customers moved to the distributor Ice Dream appear in Shopify** — completed under the customer with a tag, or left as drafts (D-029)? Until decided, Unit B shows no silence count for branches moved to a distributor and labels money "order value (Shopify, customer price)". Today no order carries an Ice Dream marker and no Ice Dream customer exists in Shopify. | Tom — before the switch |
-| U-056 | `client_key` is the link to a Green Invoice client (the Ice Dream scripts call `client(client_key)`), and Unit B's verified-customer rule (D-035) depends on it, but nobody has identified what writes it on new customers: the customer-setup skill writes only a note. If the switch stops client creation in Green Invoice, new customers would fall into review. | Tom + system check |
+| U-055 | ~~How will Ice Dream orders appear in Shopify~~ **Closed 2026-10-02 (D-041):** as completed orders under the customer, tagged `ice-dream`. | closed |
+| U-056 | `client_key` links a customer to a Green Invoice client, and D-035 depends on it. **System check 2026-10-02:** 25 of the 25 newest Shopify customers with an order (2026-08-02 to 2026-09-30) carry `custom.client_key`, written minutes to days after the customer was created. So it is written today. The writer is still unidentified: it is not an active Make scenario (team 1240098, checked) and not the customer-setup skill (it writes only a note). If the writer stops, new customers fall into review. | Tom: name the writer |
 | U-057 | Obligations for contact persons' data under Israeli privacy law (registration, access logging, deletion and correction). A question for counsel, not asserted here. Unit B ships a redaction action and an access record. | Tom → counsel |
 | U-058 | Security actions for Tom, details shared privately and not written in this public repository. One of them: a read-only Shopify token for the order mirror. | Tom |
 
