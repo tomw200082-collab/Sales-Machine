@@ -1,5 +1,27 @@
 # Sales-Machine — Current State
 
+## 2026-10-02 23:25 UTC — GT CRM: one loader and a native sales report, live in production
+
+- **Loader (portal #250, tranche 201, `aa7fbc5`):**
+  - one continuous GT loader, with a factory variant and a sales variant;
+  - the sales app is named "GT CRM".
+- **Sales report (portal #251, tranche 202, `574bc92`):** `/sales/report` replaces the Artifact report inside the CRM.
+  - five tabs: יומי, לקוחות, מוצרים, רשתות, מגמה;
+  - managers only;
+  - refreshed every 15 minutes by `sales_core.report_run`. The last run was 23:18 UTC and the data is current.
+- **Gates:**
+  - UX release gate round 2: SHIP (P0 0, P1 0, 5 non-blocking P2s);
+  - vitest 1998/1998, tsc 0, eslint 0;
+  - CI green.
+- **Fixed on the way:**
+  - The 320px month view fitted only one month beside the total under a wider fallback font. Month headers now wrap, so the figures set the column width.
+  - A first-route-compile wait was added to the report e2e.
+- **Production smoke (signed out):**
+  - pages answer 307 and the APIs answer 401;
+  - API health 200;
+  - no portal runtime errors in the hour after;
+  - `rebuild_verifier()` = 0.
+
 ## 2026-10-02 13:45 UTC — GT Pulse Unit B: closure decisions; "keep as a lead" is live
 
 Tom answered the closure page on 2026-10-02: "מאשר הכל, אלכס הוא הבעלים של גרינטי". The decisions are D-040 (the 26 identity-review orgs) and D-041 (Ice Dream, which closes U-055).
