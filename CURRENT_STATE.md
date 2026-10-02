@@ -14,12 +14,18 @@ Tom answered the closure page on 2026-10-02: "מאשר הכל, אלכס הוא �
   - The portal proxy ignores the dev-shim flag on a production deployment.
   - Shipped as backend #341 (`76b2a4a`, deploy run 37015914312) and portal #246 (tranche 198, `b03d4c2`, Vercel `dpl_Ghsx6Ck5BTQ7DSbZFbGCP7R6mwjq` READY).
   - After the deploy: drift 0, 26 open identity tasks, and no portal runtime errors in the following hour.
+- **Identity review done (Tom, 2026-10-02 14:09–14:11 UTC).** All 26 tasks were closed by `tom@gteveryday.com`:
+  - 18 confirmed (`resolved_by_manager`, now verified, no merges). This includes `תום בדיקת בוט WhatsApp`, which D-040 had left in review.
+  - 8 kept as leads (`rejected_by_manager`, unlinked).
+  - 0 open identity tasks afterwards. `rebuild_verifier()` = 0.
+- **TLS.** `NODE_TLS_REJECT_UNAUTHORIZED=0` is a Vercel project variable. Both upstreams have valid certificates.
+  - Portal tranche 199 (#247, #248) drops it at boot in the Node runtime, which covers the API routes.
+  - The edge middleware, which calls Supabase, stays unverified until the variable is deleted in the Vercel dashboard. This session gets 403 on project env vars.
 - **Still Tom's:**
-  - the 26 clicks in `/sales/orgs/review`, per D-040;
+  - deleting `NODE_TLS_REJECT_UNAUTHORIZED` from the Vercel project;
   - naming the `client_key` writer (U-056);
   - counsel (U-057);
   - the read-only mirror token (U-058).
-- **Found, not in scope:** the production portal logs `NODE_TLS_REJECT_UNAUTHORIZED=0` (TLS verification off) on server routes. This has been seen since 2026-06-16.
 
 ## 2026-10-02 12:25 UTC — GT Pulse Unit B portal (Session 2): live in production
 
