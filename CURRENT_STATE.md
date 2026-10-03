@@ -1,5 +1,29 @@
 # Sales-Machine — Current State
 
+## 2026-10-03 09:30 UTC — UX refinement across Production and GT CRM, live in production (portal tranche 206)
+
+- **Portal #255, squash `45b4cfa`.** UX only: no business logic, data, permission or API change.
+- **Navigation:**
+  - inside one world, the menus stay put, a thin top bar acknowledges a slow click, and the page shows its own skeleton;
+  - the full GT loader is kept only for a cold start and for crossing between the factory and GT CRM.
+- **One system:**
+  - shared motion timings, with one reduced-motion rule;
+  - one skeleton look;
+  - every save button is disabled while pending, with exactly one pending signal and no layout jump;
+  - drawers and dialogs animate and give focus back to their opener.
+- **Gates:**
+  - rendered UX release gate: round 1 found 3 P1s, round 2 was SHIP (P0 0, P1 0);
+  - the GT CRM screens are pixel-identical to before;
+  - vitest 2123/2123, build passes, CI green.
+- **Production smoke:**
+  - the Vercel deploy is READY;
+  - signed out, the pages answer 307 and the APIs answer 401;
+  - no runtime errors.
+  - An in-browser production check was not possible: the container's browser cannot verify the egress proxy's certificate.
+- **Open, not blocking:**
+  - programmatic redirects show no pending bar;
+  - these were already present before this work: partial scroll restore on Back, and a few controls that overflow at 320px on factory screens.
+
 ## 2026-10-03 06:10 UTC — GT CRM settings phase 3: team and rules, and Tom's control room, live in production (D-045)
 
 - **Backend (gt-factory-os #345, `f9ff931`, migration 0378):**
