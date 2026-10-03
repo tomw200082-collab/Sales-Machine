@@ -1,5 +1,34 @@
 # Sales-Machine — Current State
 
+## 2026-10-03 06:10 UTC — GT CRM settings phase 3: team and rules, and Tom's control room, live in production (D-045)
+
+- **Backend (gt-factory-os #345, `f9ff931`, migration 0378):**
+  - **signers by account:** follow-up messages are now signed by account: `lead_journey_signers_by_email` = avi@ → אבי, tom@ → תום. Both entries were mapped from the old name keys, each to exactly one roster person. The old key stays as a fallback. An emptied signer is stored as an explicit null, so the old name can no longer sign for that person.
+  - **menu files:** each menu file is checked server-side (HEAD, https on cdn.shopify.com only, cached 10 minutes).
+  - **history:** every settings area has a history of its last 20 changes.
+  - **control room:** `/queries/sales/control` answers only for tom@gteveryday.com, checked server-side on the session email; every other session gets 404. It shows tiles for intake, the WhatsApp line, follow-ups, the Shopify sync, the sales report, the sleeping radar and the settings log.
+  - **wake runs:** each follow-up run is now recorded in the new `sales_core.wake_run`. Older runs were never recorded, so the tile reads "עוד לא נרשמה ריצה" until the first run.
+- **Portal (#254, tranche 205, `497bd4e`):**
+  - settings now have "צוות וכללים": signers per salesperson, with a warning when someone has none; menu files per line with a "תקין / חסר קובץ" state and an editor; queue and lost reasons with separate saves; history for every area;
+  - `/sales/control` is for Tom only. For anyone else it is the same 404 as an unknown address (status, title and text), and Tom's email is not in the code that other users download;
+  - fixes folded in from the earlier gates: whole hours from 3 up, focus on the first invalid field, "חדש מהיום", the picker marks the current choice.
+- **Gates:**
+  - UX release gate: round 1 HOLD (the page showed it existed; the WhatsApp tile was green when nothing was delivered), round 2 SHIP (P0 0, P1 0);
+  - backend: sales-db CI green (idempotency included), pgTAP 0378 16/16, team/control 11/11;
+  - portal: vitest 2081/2081, axe 0;
+  - CI green on both PRs.
+- **Production smoke:**
+  - the deploy succeeded and health returned 200;
+  - `rebuild_verifier()` = 0;
+  - signed out, every new route answers 401;
+  - a forged test header claiming Tom answers 401;
+  - signed out, the portal pages redirect to the login (so the dev shim is off in production);
+  - no runtime errors.
+- **Follow-ups (P2, not blocking):**
+  - the `control/access` call reveals to admins and planners that a control feature exists, though no data;
+  - the API's 404 body for non-Tom sessions differs slightly from Fastify's unknown-route 404;
+  - signed out, `/control` answers 401 while an unknown route answers 404.
+
 ## 2026-10-03 05:10 UTC — GT CRM settings phase 2: response time in working hours, live in production (D-043)
 
 - **Backend (gt-factory-os #344, `bbac2ce`, migration 0377):**
