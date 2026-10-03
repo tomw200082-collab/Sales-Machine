@@ -8,6 +8,17 @@ The terms of GT's sales CRM, named **GT CRM** in the product (Tom 2026-10-02, D-
 One enquiry or opportunity from a business. Status is `new`, `working`, `won` or `lost`. `won` needs evidence of an order.
 _Avoid_: prospect, deal
 
+**Menu Builder**:
+The self-serve page where a business lead picks drinks and gets a starter kit, a menu and a ready cart. In Hebrew: ממשק המשקאות.
+_Avoid_: ממשק המשקעות
+
+**Lead journey**:
+The one path every business lead takes, whatever the channel, from the first menu message to the first order. It holds a single round of buttons.
+
+**Routing step**:
+The questions asked before the lead journey when the sender has not yet said who they are: private or business, then what interests them. A private answer ends at Elita Ofek; a business answer starts the lead journey. Not part of the lead journey.
+_Avoid_: bot, qualification flow
+
 **Org**:
 The business that buys from GT, one Shopify customer, which is one branch. A business with several branches is several orgs under one chain.
 _Avoid_: account, company, client
@@ -40,11 +51,19 @@ A verified customer with a clean order in the last 12 months. A label, not a con
 **Dormant customer**:
 A verified customer who is not active.
 
+**Activated customer**:
+A verified customer with a second clean order. The goal of a new customer's first 30 days.
+_Avoid_: active customer (that is the 12-month label), converted customer
+
 **Link status**:
 How far GT trusts the connection between an org and a Shopify customer: `verified`, `review`, `disputed` or `retired`. Nothing derived from Shopify is shown for an org unless its link is `verified`.
 
 **Review queue**:
 The managers' list of orgs whose link is `review` or `disputed`. Identity tasks live here, never in Today.
+
+**Private buyer**:
+A consumer who wants GT for home use. Never worked as a lead: sent to Elita Ofek, the outside shop that resells GT to private buyers. A lead found to be a private buyer is closed as `lost` with reason "private".
+_Avoid_: B2C lead, private lead
 
 **Contact**:
 A named person with a way to reach them at the buying business. A café's own customers are never contacts.
@@ -56,7 +75,7 @@ A contact a person confirmed, or whose phone placed an approved order for the or
 A contact with provenance that nobody has confirmed. Shown in a separate review area.
 
 **Owner**:
-The person responsible for a lead or an org. A lead's owner is its assignee; an org without a lead has no owner until Tom assigns one.
+The person responsible for a lead or an org. A lead's owner is its assignee, and becomes the org's owner at its first clean order. An org without a lead is owned by Tom, except chains, hotels and multi-branch orgs, which are owned by Avi or Alex.
 
 **Manager**:
 A user with role `planner` or `admin`. **Rep**: a user with role `sales_rep`, who sees only own work.
