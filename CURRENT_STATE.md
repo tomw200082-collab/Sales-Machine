@@ -480,6 +480,12 @@ Each interview → compiled cards → Tom confirms → merged as `user_confirmed
 | U-065 | Which number sends the automatic messages to existing customers: the order line (054-398-2444, already on the WhatsApp API through the order bot) or the lead line? | Tom |
 | U-066 | What does the owner offer in a win-back call to a silent customer (D-052)? The 2026-08-30 growth decisions exclude discounts and samples | Tom |
 | U-067 | The 505 verified customers with no clean order in 12 months (2026-10-03): what, if anything, to do with them | Tom, workshop |
+| U-068 | Doctrine against live: the lead line answers later free text automatically (the "רוצה לשמוע עוד" text and the FAQ button, at most once a day; gt-factory-os PR #328, on Tom's spoken instruction), which D-027 ("free text is answered by a person") forbids as written. Amend D-027 or change the code | Tom |
+| U-069 | `SALES_CUSTOMER_OUTREACH_WRITE_ENABLED` is open in production (the order-bot health endpoint reports `outreach_gate_open: true`, read 2026-10-03) and real lead-line sends have gone out since 2026-09-30, but no decisions-log row records Tom opening it; D-005 still describes it as closed by default | Tom: record the decision |
+| U-070 | An inactive Make scenario, "GT \| Meta Leads → Airtable" (7653343), built on Michael's Facebook login, was run by hand 8 times on 2026-09-28 and copied leads into Airtable. D-027 keeps Airtable out of the lead journey. Delete the scenario and the copied rows, or keep them? | Tom, with Michael |
+| U-071 | The sleeping radar scans only verified orgs that have a lead (`radar_org_batch`): 9 of 1,093 customers on 2026-10-03, and none of the 488 with five or more orders. D-052 needs it to cover every customer | build |
+| U-072 | The site's "כתבו לנו בוואטסאפ" link opens the order line (gt-site `theme/sections/gt-home.liquid:319`), where a new business never becomes a lead. D-047 needs it on the lead line | build, Tom |
+| U-073 | Who issues the Green Invoice tax invoice a few seconds after a completed order is unidentified: not Make, not GT's code, and no Green Invoice app is installed in Shopify; LionWheel's own integration is the likely source, unverified. Whether the invoice is also emailed is unknown; it travels printed with the driver | check one recent invoice's send log in Green Invoice |
 
 ## החלטות שממתינות לטום — עודכן 2026-08-31
 **נסגרו באותו יום, בכתב:** TOM-A.2 (ימי אספקה) · TOM-A.4 (אין חוזה/מינימום/בלעדיות) ·
