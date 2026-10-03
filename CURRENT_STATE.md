@@ -1,5 +1,34 @@
 # Sales-Machine — Current State
 
+## 2026-10-03 05:10 UTC — GT CRM settings phase 2: response time in working hours, live in production (D-043)
+
+- **Backend (gt-factory-os #344, `bbac2ce`, migration 0377):**
+  - the response clock counts working hours only: Sunday–Thursday 09:00–17:00 Asia/Jerusalem, with full holidays skipped;
+  - two targets: a hot lead gets 2 working hours (it tapped "אני רוצה להזמין" / "רוצה לשמוע עוד" or wrote on WhatsApp), every other lead gets 8;
+  - the state is on time, "עומד לעבור" (the last quarter of the allowed time) or "עבר הזמן", and it clears at the first human touch;
+  - the settings live in `app_setting` `response_time`. The new view `v_sales_lead_clock` carries the class and the working time left; `v_sales_response_week` carries the weekly per-rep metric.
+- **Portal (#253, tranche 204, `4479b5c`):**
+  - only "עומד לעבור" and "עבר הזמן" get a pill. An on-time lead shows quiet text with the working time left;
+  - Today puts "עומד לעבור" leads first. Everything else keeps the configured order, newest first, so the old backlog cannot hide new leads;
+  - settings have a "זמני תגובה" section, managers only, with its own save;
+  - the attention screen shows "ענו בזמן" / "ענו באיחור" / "עוד לא ענו" per rep for the last 7 days, with the share met.
+- **Gates:**
+  - UX release gate: round 1 HOLD (the backlog hid the hot leads; a loud calm badge), round 2 SHIP (P0 0, P1 0);
+  - backend: sales-db CI green (idempotency included), pgTAP 0377 38/38, sales_response_time 8/8;
+  - portal: vitest 2052/2052, tsc 0, axe 0;
+  - CI green on both PRs.
+- **Production smoke:**
+  - the deploy succeeded and health returned 200;
+  - `rebuild_verifier()` = 0;
+  - live states: 145 overdue, 4 on time, 116 touched; 1 hot lead;
+  - Thursday 16:30 + 2 working hours = Sunday 10:30;
+  - signed out, the pages answer 307 and the APIs answer 401;
+  - no portal runtime errors.
+- **Open for Tom:**
+  - holidays: only full holidays stop the clock; erev chag and chol hamoed count as working days, the factory's own rule;
+  - no sales morning digest exists, so the "N leads were late yesterday" line was not built.
+- **Next:** phase 3 (team and rules, and Tom's control room, D-045) is in build.
+
 ## 2026-10-03 01:45 UTC — GT CRM settings phase 1: the lead conversation, live in production (D-042/D-044)
 
 - **Backend (gt-factory-os #343, `53e5f43`, migration 0376):**
