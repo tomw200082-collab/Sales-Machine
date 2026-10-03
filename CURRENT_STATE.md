@@ -1,5 +1,29 @@
 # Sales-Machine — Current State
 
+## 2026-10-03 01:45 UTC — GT CRM settings phase 1: the lead conversation, live in production (D-042/D-044)
+
+- **Backend (gt-factory-os #343, `53e5f43`, migration 0376):**
+  - every lead and Today row carries its conversation: the automatic messages sent, the buttons tapped, the menu, opt-out, and a suggested situation;
+  - `GET /api/v1/queries/sales/journey` serves the automatic journey, read-only (D-044);
+  - six quick messages per situation in `app_setting` `whatsapp_quick_messages`, signed "{{rep}}, GT Everyday";
+  - WhatsApp to an opted-out lead is refused (409 `SALES_LEAD_OPTED_OUT`). A rep asking about another rep's lead gets 403 and never learns whether it opted out.
+- **Portal (#252, tranche 203, `394e054`):**
+  - the drawer and the Today card suggest the quick message for the lead's situation, with "הודעה אחרת" to pick another;
+  - opted-out leads show a disabled WhatsApp button that explains why;
+  - settings show the automatic journey read-only and edit the quick messages with a live preview.
+- **Gates:**
+  - pgTAP 0376 11/11 and backend suites green;
+  - vitest 2033/2033, tsc 0, mocked e2e 38/38, axe 0;
+  - UX release gate round 2: SHIP (P0 0, P1 0; two P2 nits open: the pill gap before a comma, and the picker not marking the current choice);
+  - CI green on both PRs.
+- **Production smoke:**
+  - the deploy run succeeded and API health returned 200;
+  - the `whatsapp_quick_messages` key holds 6 situations;
+  - `rebuild_verifier()` = 0;
+  - signed out, the pages answer 307 and the APIs answer 401;
+  - no portal runtime errors.
+- **Next:** phase 2 (working-hours response time, D-043) is in build.
+
 ## 2026-10-02 23:25 UTC — GT CRM: one loader and a native sales report, live in production
 
 - **Loader (portal #250, tranche 201, `aa7fbc5`):**
